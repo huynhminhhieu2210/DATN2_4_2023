@@ -16,6 +16,12 @@ import { RoleUserComponent } from './modules/role-user/role-user.component';
 import { SupplierComponent } from './modules/supplier/supplier.component';
 import { UserComponent } from './modules/user/user.component';
 import { WarehouseComponent } from './modules/warehouse/warehouse.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { SideBarComponent } from './shared/header/sidebar.component';
+import { NavBarComponent } from './shared/header/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DateFormatPipe } from './shared/pipes/date-format.pipe';
 
 @NgModule({
   declarations: [
@@ -32,11 +38,17 @@ import { WarehouseComponent } from './modules/warehouse/warehouse.component';
     AreaComponent,
     ColorComponent,
     WarehouseComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    HeaderComponent,
+    SideBarComponent,
+    NavBarComponent,
+    FooterComponent,
+    DateFormatPipe,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

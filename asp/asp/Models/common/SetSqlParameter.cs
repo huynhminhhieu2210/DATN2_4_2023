@@ -89,17 +89,17 @@ namespace asp.Models.common
         }
         public string setParamInvoice(INVOICE input)
         {
-            string result = $@"INVOICE_ID       = '{input.INVOICE_ID}',
-                               INVOICE_CODE     = '{input.INVOICE_CODE}',
-                               CUSTOMER_ID      = '{input.CUSTOMER_ID}',
-                               RECEIVER         = '{input.RECEIVER}',
-                               RECEIVER_ADDRESS = '{input.RECEIVER_ADDRESS}',
-                               RECEIVER_PHONE   = '{input.RECEIVER_PHONE}',
-                               TOTAL            = '{input.TOTAL}',
-                               STATUS           = '{input.STATUS}',
-                               MONEY_PAYED      = '{input.MONEY_PAYED}',
-                               CREATE_ID        = '{input.CREATE_ID}',
-                               CREATE_DATE      = '{input.CREATE_DATE}'";
+            string result = $@"@INVOICE_ID       = '{input.INVOICE_ID}',
+                               @INVOICE_CODE     = '{input.INVOICE_CODE}',
+                               @CUSTOMER_ID      = '{input.CUSTOMER_ID}',
+                               @RECEIVER         = '{input.RECEIVER}',
+                               @RECEIVER_ADDRESS = '{input.RECEIVER_ADDRESS}',
+                               @RECEIVER_PHONE   = '{input.RECEIVER_PHONE}',
+                               @TOTAL            = '{input.TOTAL}',
+                               @STATUS           = '{input.STATUS}',
+                               @MONEY_PAYED      = '{input.MONEY_PAYED}',
+                               @CREATE_ID        = '{input.CREATE_ID}',
+                               @CREATE_DATE      = '{input.CREATE_DATE}'";
             return result;
         }
         public string setParamInvoiceDetail(INVOICE_DT input)

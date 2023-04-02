@@ -3,14 +3,52 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AreaComponent } from './modules/area/area.component';
+import { BranchComponent } from './modules/branch/branch.component';
+import { ColorComponent } from './modules/color/color.component';
+import { CustomerComponent } from './modules/customer/customer.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { DocImpProductComponent } from './modules/doc-imp-product/doc-imp-product.component';
+import { InvoiceComponent } from './modules/invoice/invoice.component';
+import { ProductTypeComponent } from './modules/product-type/product-type.component';
+import { ProductsComponent } from './modules/products/products.component';
+import { RoleUserComponent } from './modules/role-user/role-user.component';
+import { SupplierComponent } from './modules/supplier/supplier.component';
+import { UserComponent } from './modules/user/user.component';
+import { WarehouseComponent } from './modules/warehouse/warehouse.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { SideBarComponent } from './shared/header/sidebar.component';
+import { NavBarComponent } from './shared/header/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DateFormatPipe } from './shared/pipes/date-format.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent,
+    ProductsComponent,
+    ProductTypeComponent,
+    SupplierComponent,
+    UserComponent,
+    CustomerComponent,
+    RoleUserComponent,
+    DocImpProductComponent,
+    BranchComponent,
+    AreaComponent,
+    ColorComponent,
+    WarehouseComponent,
+    InvoiceComponent,
+    HeaderComponent,
+    SideBarComponent,
+    NavBarComponent,
+    FooterComponent,
+    DateFormatPipe,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
