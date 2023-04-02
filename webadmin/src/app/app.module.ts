@@ -3,19 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProductsComponent } from './products/products.component';
-import { ProductTypeComponent } from './product-type/product-type.component';
-import { SupplierComponent } from './supplier/supplier.component';
-import { UserComponent } from './user/user.component';
-import { CustomerComponent } from './customer/customer.component';
-import { RoleUserComponent } from './role-user/role-user.component';
-import { DocImpProductComponent } from './doc-imp-product/doc-imp-product.component';
-import { BranchComponent } from './branch/branch.component';
-import { AreaComponent } from './area/area.component';
-import { ColorComponent } from './color/color.component';
-import { WarehouseComponent } from './warehouse/warehouse.component';
-import { InvoiceComponent } from './invoice/invoice.component';
+import { AreaComponent } from './modules/area/area.component';
+import { BranchComponent } from './modules/branch/branch.component';
+import { ColorComponent } from './modules/color/color.component';
+import { CustomerComponent } from './modules/customer/customer.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { DocImpProductComponent } from './modules/doc-imp-product/doc-imp-product.component';
+import { InvoiceComponent } from './modules/invoice/invoice.component';
+import { ProductTypeComponent } from './modules/product-type/product-type.component';
+import { ProductsComponent } from './modules/products/products.component';
+import { RoleUserComponent } from './modules/role-user/role-user.component';
+import { SupplierComponent } from './modules/supplier/supplier.component';
+import { UserComponent } from './modules/user/user.component';
+import { WarehouseComponent } from './modules/warehouse/warehouse.component';
 
 @NgModule({
   declarations: [
