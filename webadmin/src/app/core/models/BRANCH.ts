@@ -1,9 +1,9 @@
 import * as moment from 'moment';
 export class BRANCH {
-  BRANCH_ID: string | undefined;
-  AREA_ID: string | undefined;
-  BRANCH_CODE: string | undefined;
-  BRANCH_NAME: string | undefined;
-  CREATE_ID: string | undefined;
-  CREATE_DATE: moment.Moment | undefined;
+  brancH_ID: string | undefined;
+  areA_ID: string | undefined;
+  brancH_CODE: string | undefined;
+  brancH_NAME: string | undefined;
+  creatE_ID: string | undefined;
+  creatE_DATE: moment.Moment | undefined;
 }

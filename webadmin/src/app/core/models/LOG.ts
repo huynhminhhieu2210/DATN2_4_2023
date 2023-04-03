@@ -1,10 +1,10 @@
 import * as moment from 'moment';
 export class LOG {
-  LOG_ID: string | undefined;
-  REF_ID: string | undefined;
-  LOG_DATE: moment.Moment | undefined;
-  LOG_STEP: string | undefined;
-  LOG_DESC: string | undefined;
-  CREATE_ID: string | undefined;
-  CREATE_DATE: moment.Moment | undefined;
+  loG_ID: string | undefined;
+  reF_ID: string | undefined;
+  loG_DATE: moment.Moment | undefined;
+  loG_STEP: string | undefined;
+  loG_DESC: string | undefined;
+  creatE_ID: string | undefined;
+  creatE_DATE: moment.Moment | undefined;
 }

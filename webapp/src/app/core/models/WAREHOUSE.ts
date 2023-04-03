@@ -1,11 +1,11 @@
 import * as moment from 'moment';
-export class WAREHOUSE {
-  WAREHOUSE_ID: string | undefined;
-  BRANCH_ID: string | undefined;
-  AREA_ID: string | undefined;
-  WAREHOUSE_CODE: string | undefined;
-  WAREHOUSE_NAME: string | undefined;
-  WAREHOUSE_ADDRESS: string | undefined;
-  CREATE_ID: string | undefined;
-  CREATE_DATE: moment.Moment | undefined;
+export class warehousE {
+  warehousE_ID: string | undefined;
+  brancH_ID: string | undefined;
+  areA_ID: string | undefined;
+  warehousE_CODE: string | undefined;
+  warehousE_NAME: string | undefined;
+  warehousE_ADDRESS: string | undefined;
+  creatE_ID: string | undefined;
+  creatE_DATE: moment.Moment | undefined;
 }

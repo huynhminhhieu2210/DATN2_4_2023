@@ -1,8 +1,8 @@
 import * as moment from 'moment';
 export class COLOR {
-  COLOR_ID: string | undefined;
-  COLOR_CODE: string | undefined;
-  COLOR_NAME: string | undefined;
-  CREATE_ID: string | undefined;
-  CREATE_DATE: moment.Moment | undefined;
+  coloR_ID: string | undefined;
+  coloR_CODE: string | undefined;
+  coloR_NAME: string | undefined;
+  creatE_ID: string | undefined;
+  creatE_DATE: moment.Moment | undefined;
 }

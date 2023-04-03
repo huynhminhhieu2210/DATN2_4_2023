@@ -1,8 +1,8 @@
 import * as moment from 'moment';
 export class INVOICE_DT {
-  INVOICE_DT_ID: string | undefined;
-  INVOICE_ID: string | undefined;
-  PRODUCT_COLOR_ID: string | undefined;
-  QUANTITY: number | undefined;
-  PRICE: number | undefined;
+  invoicE_DT_ID: string | undefined;
+  invoicE_ID: string | undefined;
+  producT_COLOR_ID: string | undefined;
+  quantity: number | undefined;
+  price: number | undefined;
 }

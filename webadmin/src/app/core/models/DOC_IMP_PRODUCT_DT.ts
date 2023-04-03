@@ -1,12 +1,12 @@
 import * as moment from 'moment';
 export class DOC_IMP_PRODUCT {
-  DOC_IMP_PRODUCT_ID: string | undefined;
-  DOC_IMP_PRODUCT_CODE: string | undefined;
-  BRANCH_ID: string | undefined;
-  DELIVER: string | undefined;
-  RECEIVER: string | undefined;
-  TOTAL: string | undefined;
-  STATUS: string | undefined;
-  CREATE_ID: string | undefined;
-  CREATE_DATE: moment.Moment | undefined;
+  doC_IMP_PRODUCT_ID: string | undefined;
+  doC_IMP_PRODUCT_CODE: string | undefined;
+  brancH_ID: string | undefined;
+  deliver: string | undefined;
+  receiver: string | undefined;
+  total: string | undefined;
+  status: string | undefined;
+  creatE_ID: string | undefined;
+  creatE_DATE: moment.Moment | undefined;
 }

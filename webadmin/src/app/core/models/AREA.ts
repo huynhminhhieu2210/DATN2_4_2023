@@ -1,8 +1,8 @@
 import * as moment from 'moment';
 export class AREA {
-  AREA_ID: string | undefined;
-  AREA_CODE: string | undefined;
-  AREA_NAME: string | undefined;
-  CREATE_ID: string | undefined;
-  CREATE_DATE: moment.Moment | undefined;
+  areA_ID: string | undefined;
+  areA_CODE: string | undefined;
+  areA_NAME: string | undefined;
+  creatE_ID: string | undefined;
+  crearE_DATE: moment.Moment | undefined;
 }

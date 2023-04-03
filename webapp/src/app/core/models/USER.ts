@@ -1,15 +1,15 @@
 import * as moment from 'moment';
 export class USER {
-  USER_ID: string | undefined;
-  BRANCH_ID: string | undefined;
-  ROLE_USER_ID: string | undefined;
-  USER_CODE: string | undefined;
-  USER_NAME: string | undefined;
-  USER_FULLNAME: string | undefined;
-  EMAIL: string | undefined;
-  PHONE: string | undefined;
-  ADDRESS: string | undefined;
-  STATUS: string | undefined;
-  CREATE_ID: string | undefined;
-  CREATE_DATE: moment.Moment | undefined;
+  useR_ID: string | undefined;
+  brancH_ID: string | undefined;
+  rolE_USER_ID: string | undefined;
+  useR_CODE: string | undefined;
+  useR_NAME: string | undefined;
+  useR_FULLNAME: string | undefined;
+  email: string | undefined;
+  phone: string | undefined;
+  address: string | undefined;
+  status: string | undefined;
+  creatE_ID: string | undefined;
+  creatE_DATE: moment.Moment | undefined;
 }

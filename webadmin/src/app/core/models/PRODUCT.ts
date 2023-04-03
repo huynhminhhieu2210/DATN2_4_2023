@@ -1,12 +1,12 @@
 import * as moment from 'moment';
 export class User {
-  PRODUCT_ID: string | undefined;
-  PRODUCT_TYPE_ID: string | undefined;
-  SUPPLIER_ID: string | undefined;
-  PRODUCT_CODE: string | undefined;
-  PRODUCT_NAME: string | undefined;
-  DESCRIPTION: string | undefined;
-  NOTE: string | undefined;
-  CREATE_ID: string | undefined;
-  CREATE_DATE: moment.Moment | undefined;
+  producT_ID: string | undefined;
+  producT_TYPE_ID: string | undefined;
+  supplieR_ID: string | undefined;
+  producT_CODE: string | undefined;
+  producT_NAME: string | undefined;
+  description: string | undefined;
+  note: string | undefined;
+  creatE_ID: string | undefined;
+  creatE_DATE: moment.Moment | undefined;
 }
