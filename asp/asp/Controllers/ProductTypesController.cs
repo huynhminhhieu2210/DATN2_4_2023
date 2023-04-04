@@ -30,17 +30,17 @@ namespace asp.Controllers
             return await _productTypesService.PRODUCT_TYPE_SEARCH(input);
         }
         [HttpPost]
-        public async Task<InsertResult> PRODUCT_TYPE_INSERT([FromBody] PRODUCT_TYPE input)
+        public async Task<IEnumerable<InsertResult>> PRODUCT_TYPE_INSERT([FromBody] PRODUCT_TYPE input)
         {
             return await _productTypesService.PRODUCT_TYPE_INSERT(input);
         }
         [HttpPost]
-        public async Task<UpdateResult> PRODUCT_TYPE_UPDATE([FromBody] PRODUCT_TYPE input)
+        public async Task<IEnumerable<UpdateResult>> PRODUCT_TYPE_UPDATE([FromBody] PRODUCT_TYPE input)
         {
             return await _productTypesService.PRODUCT_TYPE_UPDATE(input);
         }
         [HttpPost]
-        public async Task<DeleteResult> PRODUCT_TYPE_DELETE(string id)
+        public async Task<IEnumerable<DeleteResult>> PRODUCT_TYPE_DELETE(string id)
         {
             return await _productTypesService.PRODUCT_TYPE_DELETE(id);
         }

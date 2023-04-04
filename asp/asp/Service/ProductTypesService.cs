@@ -26,20 +26,20 @@ namespace asp.Service
             var store = "EXEC PRODUCT_TYPE_SEARCH " + _setSqlParameter.setParamProductType(input);
             return await _context.PRODUCT_TYPE.FromSqlRaw(store).ToListAsync();
         }
-        public async Task<InsertResult> PRODUCT_TYPE_INSERT(PRODUCT_TYPE input)
+        public async Task<IEnumerable<InsertResult>> PRODUCT_TYPE_INSERT(PRODUCT_TYPE input)
         {
             var store = "EXEC PRODUCT_TYPE_INSERT " + _setSqlParameter.setParamProductType(input); ;
-            return await _context.InsertResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.InsertResult.FromSqlRaw(store).ToListAsync();;
         }
-        public async Task<UpdateResult> PRODUCT_TYPE_UPDATE(PRODUCT_TYPE input)
+        public async Task<IEnumerable<UpdateResult>> PRODUCT_TYPE_UPDATE(PRODUCT_TYPE input)
         {
             var store = "EXEC PRODUCT_TYPE_UPDATE " + _setSqlParameter.setParamProductType(input); ;
-            return await _context.UpdateResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync();;
         }
-        public async Task<DeleteResult> PRODUCT_TYPE_DELETE(string id)
+        public async Task<IEnumerable<DeleteResult>> PRODUCT_TYPE_DELETE(string id)
         {
             var store = "EXEC PRODUCT_TYPE_DELETE " + id;
-            return await _context.DeleteResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.DeleteResult.FromSqlRaw(store).ToListAsync();;
         }
         
     }

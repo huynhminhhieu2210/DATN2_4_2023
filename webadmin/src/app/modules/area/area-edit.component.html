@@ -1,0 +1,104 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="page-header">
+                <h4 class="page-title">Danh mục</h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        Danh mục
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/area" routerLinkActive="active" ariaCurrentWhenActive="page">Khu vực</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">{{title}}</a>
+                    </li>
+                </ul>
+            </div>
+            <form #loginForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <p *ngIf="titleinfo" style="    background-color: #00ce49;
+                                color: white;
+                                border-radius: 4px;
+                                padding: 5px;">{{titleinfo}}</p>
+                                <div class="card-title">{{title}}</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="form-group">
+                                            <label for="areA_CODE">Mã khu vực</label>
+                                            <input disabled="{{disabledInput}}" id="areA_CODE" name="areA_CODE" [(ngModel)]="inputModel!.areA_CODE" type="text" class="form-control form-control" placeholder="Mã khu vực">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="creatE_ID">Người tạo</label>
+                                            <input disabled="{{disabledInput}}" id="creatE_ID" name="creatE_ID" [(ngModel)]="inputModel!.creatE_ID" type="text" class="form-control form-control" placeholder="Người tạo">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="form-group">
+                                            <label for="areA_NAME">Tên khu vực</label>
+                                            <input disabled="{{disabledInput}}" id="areA_NAME" name="areA_NAME" [(ngModel)]="inputModel!.areA_NAME" type="text" class="form-control form-control" placeholder="Tên khu vực">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="crearE_DATE">Ngày tạo</label>
+                                            <input disabled="{{disabledInput}}" id="crearE_DATE" name="crearE_DATE" [(ngModel)]="inputModel!.creatE_DATE" type="date" class="form-control form-control" placeholder="Ngày tạo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <button *ngIf="disabledInput" class="btn btn-success" style="margin-right: 10px;" disabled>Lưu</button>
+                                <button *ngIf="!disabledInput" class="btn btn-success" style="margin-right: 10px;">Lưu</button>
+                                <button routerLink="/area" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-danger">Trở về</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <nav class="pull-left">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.themekita.com">
+                            ThemeKita
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Help
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright ml-auto">
+                2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
+            </div>
+        </div>
+    </footer>
+</div>

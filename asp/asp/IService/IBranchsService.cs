@@ -11,8 +11,8 @@ namespace asp.IService
     public interface IBranchsService : IApplicationService
     {
         Task<IEnumerable<BRANCH>> BRANCH_SEARCH(BRANCH input);
-        Task<InsertResult> BRANCH_INSERT(BRANCH input);
-        Task<UpdateResult> BRANCH_UPDATE(BRANCH input);
-        Task<DeleteResult> BRANCH_DELETE(string id);
+        Task<IEnumerable<InsertResult>> BRANCH_INSERT(BRANCH input);
+        Task<IEnumerable<UpdateResult>> BRANCH_UPDATE(BRANCH input);
+        Task<IEnumerable<DeleteResult>> BRANCH_DELETE(string id);
     }
 }

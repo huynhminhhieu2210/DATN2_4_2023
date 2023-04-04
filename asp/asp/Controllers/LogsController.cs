@@ -30,17 +30,17 @@ namespace asp.Controllers
             return await _LOGService.LOG_SEARCH(input);
         }
         [HttpPost]
-        public async Task<InsertResult> LOG_INSERT([FromBody] LOG input)
+        public async Task<IEnumerable<InsertResult>> LOG_INSERT([FromBody] LOG input)
         {
             return await _LOGService.LOG_INSERT(input);
         }
         [HttpPost]
-        public async Task<UpdateResult> LOG_UPDATE([FromBody] LOG input)
+        public async Task<IEnumerable<UpdateResult>> LOG_UPDATE([FromBody] LOG input)
         {
             return await _LOGService.LOG_UPDATE(input);
         }
         [HttpPost]
-        public async Task<DeleteResult> LOG_DELETE(string id)
+        public async Task<IEnumerable<DeleteResult>> LOG_DELETE(string id)
         {
             return await _LOGService.LOG_DELETE(id);
         }

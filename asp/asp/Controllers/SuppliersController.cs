@@ -30,17 +30,17 @@ namespace asp.Controllers
             return await _suppliersService.SUPPLIER_SEARCH(input);
         }
         [HttpPost]
-        public async Task<InsertResult> SUPPLIER_INSERT([FromBody] SUPPLIER input)
+        public async Task<IEnumerable<InsertResult>> SUPPLIER_INSERT([FromBody] SUPPLIER input)
         {
             return await _suppliersService.SUPPLIER_INSERT(input);
         }
         [HttpPost]
-        public async Task<UpdateResult> SUPPLIER_UPDATE([FromBody] SUPPLIER input)
+        public async Task<IEnumerable<UpdateResult>> SUPPLIER_UPDATE([FromBody] SUPPLIER input)
         {
             return await _suppliersService.SUPPLIER_UPDATE(input);
         }
         [HttpPost]
-        public async Task<DeleteResult> SUPPLIER_DELETE(string id)
+        public async Task<IEnumerable<DeleteResult>> SUPPLIER_DELETE(string id)
         {
             return await _suppliersService.SUPPLIER_DELETE(id);
         }

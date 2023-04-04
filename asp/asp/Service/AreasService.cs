@@ -26,21 +26,26 @@ namespace asp.Service
             var store = "EXEC AREA_SEARCH " + _setSqlParameter.setParamArea(input);
             return await _context.AREA.FromSqlRaw(store).ToListAsync();
         }
-        public async Task<InsertResult> AREA_INSERT(AREA input)
+        public async Task<IEnumerable<InsertResult>> AREA_INSERT(AREA input)
         {
-            var store = "EXEC AREA_INSERT " + _setSqlParameter.setParamArea(input); ;
-            return await _context.InsertResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            var store = "EXEC AREA_INSERT " + _setSqlParameter.setParamArea(input);
+            return await _context.InsertResult.FromSqlRaw(store).ToListAsync();
         }
-        public async Task<UpdateResult> AREA_UPDATE(AREA input)
+        public async Task<IEnumerable<UpdateResult>> AREA_UPDATE(AREA input)
         {
-            var store = "EXEC AREA_UPDATE " + _setSqlParameter.setParamArea(input); ;
-            return await _context.UpdateResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            var store = "EXEC AREA_UPDATE " + _setSqlParameter.setParamArea(input);
+            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync();;
         }
-        public async Task<DeleteResult> AREA_DELETE(string id)
+        public async Task<IEnumerable<DeleteResult>> AREA_DELETE(string id)
         {
             var store = "EXEC AREA_DELETE " + id;
-            return await _context.DeleteResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.DeleteResult.FromSqlRaw(store).ToListAsync();
         }
-        
+        public async Task<IEnumerable<AREA>> AREA_BYID(string id)
+        {
+            var store = "EXEC AREA_BYID " + id;
+            return await _context.AREA.FromSqlRaw(store).ToListAsync();
+        }
+
     }
 }

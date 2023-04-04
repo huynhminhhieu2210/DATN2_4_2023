@@ -30,17 +30,17 @@ namespace asp.Controllers
             return await _branchsService.BRANCH_SEARCH(input);
         }
         [HttpPost]
-        public async Task<InsertResult> BRANCH_INSERT([FromBody] BRANCH input)
+        public async Task<IEnumerable<InsertResult>> BRANCH_INSERT([FromBody] BRANCH input)
         {
             return await _branchsService.BRANCH_INSERT(input);
         }
         [HttpPost]
-        public async Task<UpdateResult> BRANCH_UPDATE([FromBody] BRANCH input)
+        public async Task<IEnumerable<UpdateResult>> BRANCH_UPDATE([FromBody] BRANCH input)
         {
             return await _branchsService.BRANCH_UPDATE(input);
         }
         [HttpPost]
-        public async Task<DeleteResult> BRANCH_DELETE(string id)
+        public async Task<IEnumerable<DeleteResult>> BRANCH_DELETE(string id)
         {
             return await _branchsService.BRANCH_DELETE(id);
         }

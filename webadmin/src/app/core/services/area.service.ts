@@ -20,6 +20,9 @@ export class AreaService {
         return this.http.post(this.url + "AREA_UPDATE", filter);
     }
     Area_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "AREA_DELETE", id);
+        return this.http.delete(this.url + "AREA_DELETE/" + id);
+    }
+    Area_byid(id: string): Observable<Object>{
+        return this.http.get(this.url + "AREA_BYID/"+ id);
     }
 }

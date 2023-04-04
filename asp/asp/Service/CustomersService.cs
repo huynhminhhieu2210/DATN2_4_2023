@@ -26,20 +26,20 @@ namespace asp.Service
             var store = "EXEC CUSTOMER_SEARCH " + _setSqlParameter.setParamCustomer(input);
             return await _context.CUSTOMER.FromSqlRaw(store).ToListAsync();
         }
-        public async Task<InsertResult> CUSTOMER_INSERT(CUSTOMER input)
+        public async Task<IEnumerable<InsertResult>> CUSTOMER_INSERT(CUSTOMER input)
         {
             var store = "EXEC CUSTOMER_INSERT " + _setSqlParameter.setParamCustomer(input); ;
-            return await _context.InsertResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.InsertResult.FromSqlRaw(store).ToListAsync();;
         }
-        public async Task<UpdateResult> CUSTOMER_UPDATE(CUSTOMER input)
+        public async Task<IEnumerable<UpdateResult>> CUSTOMER_UPDATE(CUSTOMER input)
         {
             var store = "EXEC CUSTOMER_UPDATE " + _setSqlParameter.setParamCustomer(input); ;
-            return await _context.UpdateResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync();;
         }
-        public async Task<DeleteResult> CUSTOMER_DELETE(string id)
+        public async Task<IEnumerable<DeleteResult>> CUSTOMER_DELETE(string id)
         {
             var store = "EXEC CUSTOMER_DELETE " + id;
-            return await _context.DeleteResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.DeleteResult.FromSqlRaw(store).ToListAsync();;
         }
         
     }

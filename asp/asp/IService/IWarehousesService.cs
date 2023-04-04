@@ -11,8 +11,8 @@ namespace asp.IService
     public interface IWarehousesService : IApplicationService
     {
         Task<IEnumerable<WAREHOUSE>> WAREHOUSE_SEARCH(WAREHOUSE input);
-        Task<InsertResult> WAREHOUSE_INSERT(WAREHOUSE input);
-        Task<UpdateResult> WAREHOUSE_UPDATE(WAREHOUSE input);
-        Task<DeleteResult> WAREHOUSE_DELETE(string id);
+        Task<IEnumerable<InsertResult>> WAREHOUSE_INSERT(WAREHOUSE input);
+        Task<IEnumerable<UpdateResult>> WAREHOUSE_UPDATE(WAREHOUSE input);
+        Task<IEnumerable<DeleteResult>> WAREHOUSE_DELETE(string id);
     }
 }

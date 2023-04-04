@@ -11,8 +11,8 @@ namespace asp.IService
     public interface IUsersService: IApplicationService
     {
         Task<IEnumerable<USER>> USER_SEARCH(USER input);
-        Task<InsertResult> USER_INSERT(USER input);
-        Task<UpdateResult> USER_UPDATE(USER input);
-        Task<DeleteResult> USER_DELETE(string id);
+        Task<IEnumerable<InsertResult>> USER_INSERT(USER input);
+        Task<IEnumerable<UpdateResult>> USER_UPDATE(USER input);
+        Task<IEnumerable<DeleteResult>> USER_DELETE(string id);
     }
 }

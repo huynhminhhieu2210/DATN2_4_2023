@@ -11,8 +11,8 @@ namespace asp.IService
     public interface ICustomersService : IApplicationService
     {
         Task<IEnumerable<CUSTOMER>> CUSTOMER_SEARCH(CUSTOMER input);
-        Task<InsertResult> CUSTOMER_INSERT(CUSTOMER input);
-        Task<UpdateResult> CUSTOMER_UPDATE(CUSTOMER input);
-        Task<DeleteResult> CUSTOMER_DELETE(string id);
+        Task<IEnumerable<InsertResult>> CUSTOMER_INSERT(CUSTOMER input);
+        Task<IEnumerable<UpdateResult>> CUSTOMER_UPDATE(CUSTOMER input);
+        Task<IEnumerable<DeleteResult>> CUSTOMER_DELETE(string id);
     }
 }

@@ -11,8 +11,8 @@ namespace asp.IService
     public interface ISuppliersService : IApplicationService
     {
         Task<IEnumerable<SUPPLIER>> SUPPLIER_SEARCH(SUPPLIER input);
-        Task<InsertResult> SUPPLIER_INSERT(SUPPLIER input);
-        Task<UpdateResult> SUPPLIER_UPDATE(SUPPLIER input);
-        Task<DeleteResult> SUPPLIER_DELETE(string id);
+        Task<IEnumerable<InsertResult>> SUPPLIER_INSERT(SUPPLIER input);
+        Task<IEnumerable<UpdateResult>> SUPPLIER_UPDATE(SUPPLIER input);
+        Task<IEnumerable<DeleteResult>> SUPPLIER_DELETE(string id);
     }
 }

@@ -20,6 +20,9 @@ export class BranchService {
         return this.http.post(this.url + "BRANCH_UPDATE", filter);
     }
     Branch_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "BRANCH_DELETE", id);
+        return this.http.delete(this.url + "BRANCH_DELETE/" + id);
+    }
+    Branch_byid(id: string): Observable<Object>{
+        return this.http.get(this.url + "BRANCH_BYID/"+ id);
     }
 }

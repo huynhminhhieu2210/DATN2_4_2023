@@ -30,17 +30,17 @@ namespace asp.Controllers
             return await _customersService.CUSTOMER_SEARCH(input);
         }
         [HttpPost]
-        public async Task<InsertResult> CUSTOMER_INSERT([FromBody] CUSTOMER input)
+        public async Task<IEnumerable<InsertResult>> CUSTOMER_INSERT([FromBody] CUSTOMER input)
         {
             return await _customersService.CUSTOMER_INSERT(input);
         }
         [HttpPost]
-        public async Task<UpdateResult> CUSTOMER_UPDATE([FromBody] CUSTOMER input)
+        public async Task<IEnumerable<UpdateResult>> CUSTOMER_UPDATE([FromBody] CUSTOMER input)
         {
             return await _customersService.CUSTOMER_UPDATE(input);
         }
         [HttpPost]
-        public async Task<DeleteResult> CUSTOMER_DELETE(string id)
+        public async Task<IEnumerable<DeleteResult>> CUSTOMER_DELETE(string id)
         {
             return await _customersService.CUSTOMER_DELETE(id);
         }

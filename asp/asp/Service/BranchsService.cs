@@ -26,20 +26,20 @@ namespace asp.Service
             var store = "EXEC BRANCH_SEARCH " + _setSqlParameter.setParamBranch(input);
             return await _context.BRANCH.FromSqlRaw(store).ToListAsync();
         }
-        public async Task<InsertResult> BRANCH_INSERT(BRANCH input)
+        public async Task<IEnumerable<InsertResult>> BRANCH_INSERT(BRANCH input)
         {
             var store = "EXEC BRANCH_INSERT " + _setSqlParameter.setParamBranch(input); ;
-            return await _context.InsertResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.InsertResult.FromSqlRaw(store).ToListAsync();;
         }
-        public async Task<UpdateResult> BRANCH_UPDATE(BRANCH input)
+        public async Task<IEnumerable<UpdateResult>> BRANCH_UPDATE(BRANCH input)
         {
             var store = "EXEC BRANCH_UPDATE " + _setSqlParameter.setParamBranch(input); ;
-            return await _context.UpdateResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync();;
         }
-        public async Task<DeleteResult> BRANCH_DELETE(string id)
+        public async Task<IEnumerable<DeleteResult>> BRANCH_DELETE(string id)
         {
             var store = "EXEC BRANCH_DELETE " + id;
-            return await _context.DeleteResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.DeleteResult.FromSqlRaw(store).ToListAsync();;
         }
         
     }

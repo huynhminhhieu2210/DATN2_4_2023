@@ -11,8 +11,9 @@ namespace asp.IService
     public interface IAreasService : IApplicationService
     {
         Task<IEnumerable<AREA>> AREA_SEARCH(AREA input);
-        Task<InsertResult> AREA_INSERT(AREA input);
-        Task<UpdateResult> AREA_UPDATE(AREA input);
-        Task<DeleteResult> AREA_DELETE(string id);
+        Task<IEnumerable<InsertResult>> AREA_INSERT(AREA input);
+        Task<IEnumerable<UpdateResult>> AREA_UPDATE(AREA input);
+        Task<IEnumerable<DeleteResult>> AREA_DELETE(string id);
+        Task<IEnumerable<AREA>> AREA_BYID(string id);
     }
 }

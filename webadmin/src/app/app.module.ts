@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AreaComponent } from './modules/area/area.component';
-import { BranchComponent } from './modules/branch/branch.component';
+import { AreaListComponent } from './modules/area/area-list.component';
 import { ColorComponent } from './modules/color/color.component';
 import { CustomerComponent } from './modules/customer/customer.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
@@ -22,6 +21,10 @@ import { NavBarComponent } from './shared/header/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
+import { AreaEditComponent } from './modules/area/area-edit.component';
+import { FormsModule } from '@angular/forms';
+import { BranchEditComponent } from './modules/branch/branch-edit.component';
+import { BranchListComponent } from './modules/branch/branch-list.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +37,10 @@ import { DateFormatPipe } from './shared/pipes/date-format.pipe';
     CustomerComponent,
     RoleUserComponent,
     DocImpProductComponent,
-    BranchComponent,
-    AreaComponent,
+    BranchListComponent,
+    BranchEditComponent,
+    AreaListComponent,
+    AreaEditComponent,
     ColorComponent,
     WarehouseComponent,
     InvoiceComponent,
@@ -49,6 +54,7 @@ import { DateFormatPipe } from './shared/pipes/date-format.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

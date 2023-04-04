@@ -30,19 +30,24 @@ namespace asp.Controllers
             return await _areasService.AREA_SEARCH(input);
         }
         [HttpPost]
-        public async Task<InsertResult> AREA_INSERT([FromBody] AREA input)
+        public async Task<IEnumerable<InsertResult>> AREA_INSERT([FromBody] AREA input)
         {
             return await _areasService.AREA_INSERT(input);
         }
         [HttpPost]
-        public async Task<UpdateResult> AREA_UPDATE([FromBody] AREA input)
+        public async Task<IEnumerable<UpdateResult>> AREA_UPDATE([FromBody] AREA input)
         {
             return await _areasService.AREA_UPDATE(input);
         }
-        [HttpPost]
-        public async Task<DeleteResult> AREA_DELETE(string id)
+        [HttpDelete("{id}")]
+        public async Task<IEnumerable<DeleteResult>> AREA_DELETE(string id)
         {
             return await _areasService.AREA_DELETE(id);
+        }
+        [HttpGet("{id}")]
+        public async Task<IEnumerable<AREA>> AREA_BYID(string id)
+        {
+            return await _areasService.AREA_BYID(id);
         }
     }
 }

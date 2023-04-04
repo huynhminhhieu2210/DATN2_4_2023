@@ -30,17 +30,17 @@ namespace asp.Controllers
             return await _warehousesService.WAREHOUSE_SEARCH(input);
         }
         [HttpPost]
-        public async Task<InsertResult> WAREHOUSE_INSERT([FromBody] WAREHOUSE input)
+        public async Task<IEnumerable<InsertResult>> WAREHOUSE_INSERT([FromBody] WAREHOUSE input)
         {
             return await _warehousesService.WAREHOUSE_INSERT(input);
         }
         [HttpPost]
-        public async Task<UpdateResult> WAREHOUSE_UPDATE([FromBody] WAREHOUSE input)
+        public async Task<IEnumerable<UpdateResult>> WAREHOUSE_UPDATE([FromBody] WAREHOUSE input)
         {
             return await _warehousesService.WAREHOUSE_UPDATE(input);
         }
         [HttpPost]
-        public async Task<DeleteResult> WAREHOUSE_DELETE(string id)
+        public async Task<IEnumerable<DeleteResult>> WAREHOUSE_DELETE(string id)
         {
             return await _warehousesService.WAREHOUSE_DELETE(id);
         }

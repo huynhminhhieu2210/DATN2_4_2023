@@ -26,20 +26,20 @@ namespace asp.Service
             var store = "EXEC LOG_SEARCH " + _setSqlParameter.setParamLog(input);
             return await _context.LOG.FromSqlRaw(store).ToListAsync();
         }
-        public async Task<InsertResult> LOG_INSERT(LOG input)
+        public async Task<IEnumerable<InsertResult>> LOG_INSERT(LOG input)
         {
             var store = "EXEC LOG_INSERT " + _setSqlParameter.setParamLog(input); ;
-            return await _context.InsertResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.InsertResult.FromSqlRaw(store).ToListAsync();;
         }
-        public async Task<UpdateResult> LOG_UPDATE(LOG input)
+        public async Task<IEnumerable<UpdateResult>> LOG_UPDATE(LOG input)
         {
             var store = "EXEC LOG_UPDATE " + _setSqlParameter.setParamLog(input); ;
-            return await _context.UpdateResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync();;
         }
-        public async Task<DeleteResult> LOG_DELETE(string id)
+        public async Task<IEnumerable<DeleteResult>> LOG_DELETE(string id)
         {
             var store = "EXEC LOG_DELETE " + id;
-            return await _context.DeleteResult.FromSqlRaw(store).FirstOrDefaultAsync();
+            return await _context.DeleteResult.FromSqlRaw(store).ToListAsync();;
         }
         
     }
