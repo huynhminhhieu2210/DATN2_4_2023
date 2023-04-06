@@ -1,0 +1,115 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="page-header">
+                <h4 class="page-title">Quản lý hệ thống</h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        Quản lý hệ thống
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/app/customer" routerLinkActive="active" ariaCurrentWhenActive="page">Quản lý tài khoản</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">{{title}}</a>
+                    </li>
+                </ul>
+            </div>
+            <form #loginForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <p *ngIf="titleinfo" style="    background-color: #00ce49;
+                                color: white;
+                                border-radius: 4px;
+                                padding: 5px;">{{titleinfo}}</p>
+                                <div class="card-title">{{title}}</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="form-group">
+                                            <label for="customeR_CODE">Mã khách hàng</label>
+                                            <input disabled="{{disabledInput}}" id="customeR_CODE" name="customeR_CODE" [(ngModel)]="inputModel!.customeR_CODE" type="text" class="form-control form-control" placeholder="Mã khách hàng">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">Số điện thoại</label>
+                                            <input disabled="{{disabledInput}}" id="phone" name="phone" [(ngModel)]="inputModel!.phone" type="text" class="form-control form-control" placeholder="Số điện thoại">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="form-group">
+                                            <label for="customeR_NAME">Tên đăng nhập</label>
+                                            <input disabled="{{disabledInput}}" id="customeR_NAME" name="customeR_NAME" [(ngModel)]="inputModel!.customeR_NAME" type="text" class="form-control form-control" placeholder="Tên đăng nhập">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address">Địa chỉ</label>
+                                            <textarea disabled="{{disabledInput}}" id="address" name="address" [(ngModel)]="inputModel!.address" type="date" class="form-control form-control" placeholder="Địa chỉ">
+                                                </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="form-group">
+                                            <label for="customeR_FULLNAME">Họ tên khách hàng</label>
+                                            <input disabled="{{disabledInput}}" id="customeR_FULLNAME" name="customeR_FULLNAME" [(ngModel)]="inputModel!.customeR_FULLNAME" type="text" class="form-control form-control" placeholder="Họ tên khách hàng">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input disabled="{{disabledInput}}" id="email" name="email" [(ngModel)]="inputModel!.email" type="email" class="form-control form-control" placeholder="Email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <button *ngIf="disabledInput" class="btn btn-success" style="margin-right: 10px;" disabled>Lưu</button>
+                                <button *ngIf="!disabledInput" class="btn btn-success" style="margin-right: 10px;">Lưu</button>
+                                <button routerLink="/app/customer" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-danger">Trở về</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <nav class="pull-left">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.themekita.com">
+                            ThemeKita
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Help
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright ml-auto">
+                2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
+            </div>
+        </div>
+    </footer>
+</div>

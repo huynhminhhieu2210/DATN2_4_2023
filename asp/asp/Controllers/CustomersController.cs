@@ -39,10 +39,15 @@ namespace asp.Controllers
         {
             return await _customersService.CUSTOMER_UPDATE(input);
         }
-        [HttpPost]
+        [HttpDelete("{id}")]
         public async Task<IEnumerable<DeleteResult>> CUSTOMER_DELETE(string id)
         {
             return await _customersService.CUSTOMER_DELETE(id);
+        }
+        [HttpGet("{id}")]
+        public async Task<IEnumerable<CUSTOMER>> CUSTOMER_BYID(string id)
+        {
+            return await _customersService.CUSTOMER_BYID(id);
         }
     }
 }

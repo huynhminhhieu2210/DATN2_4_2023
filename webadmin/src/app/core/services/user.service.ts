@@ -20,6 +20,9 @@ export class UserService {
         return this.http.post(this.url + "USER_UPDATE", filter);
     }
     User_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "USER_DELETE", id);
+        return this.http.delete(this.url + "USER_DELETE/" + id);
+    }
+    User_byid(id: string): Observable<Object>{
+        return this.http.get(this.url + "USER_BYID/"+ id);
     }
 }

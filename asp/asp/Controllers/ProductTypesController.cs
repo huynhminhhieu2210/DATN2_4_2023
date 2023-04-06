@@ -39,10 +39,15 @@ namespace asp.Controllers
         {
             return await _productTypesService.PRODUCT_TYPE_UPDATE(input);
         }
-        [HttpPost]
+        [HttpDelete("{id}")]
         public async Task<IEnumerable<DeleteResult>> PRODUCT_TYPE_DELETE(string id)
         {
             return await _productTypesService.PRODUCT_TYPE_DELETE(id);
+        }
+        [HttpGet("{id}")]
+        public async Task<IEnumerable<PRODUCT_TYPE>> PRODUCT_TYPE_BYID(string id)
+        {
+            return await _productTypesService.PRODUCT_TYPE_BYID(id);
         }
     }
 }

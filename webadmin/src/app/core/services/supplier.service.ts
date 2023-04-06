@@ -20,6 +20,9 @@ export class SupplierService {
         return this.http.post(this.url + "SUPPLIER_UPDATE", filter);
     }
     Supplier_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "SUPPLIER_DELETE", id);
+        return this.http.delete(this.url + "SUPPLIER_DELETE/" + id);
+    }
+    Supplier_byid(id: string): Observable<Object>{
+        return this.http.get(this.url + "SUPPLIER_BYID/"+ id);
     }
 }

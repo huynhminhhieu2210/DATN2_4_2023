@@ -1,4 +1,5 @@
-﻿using asp.Models;
+﻿using asp.Data;
+using asp.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -16,6 +17,11 @@ namespace asp.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        private readonly aspContext _context;
+        public AuthController(aspContext context)
+        {
+            _context = context;
+        }
         [HttpPost, Route("Login")]
         public IActionResult Login([FromBody] LOGIN user)
         {
@@ -23,7 +29,8 @@ namespace asp.Controllers
             {
                 return BadRequest("Invalid client request");
             }
-            if(user.USER_NAME == "johndoe" && user.PASSWORD == "def@123")
+            var checkuser = _context.USER.Where(us => us.USER_NAME == user.USER_NAME && us.PASSWORD == user.PASSWORD).FirstOrDefault();
+            if(checkuser != null)
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);

@@ -20,6 +20,9 @@ export class CustomerService {
         return this.http.post(this.url + "CUSTOMER_UPDATE", filter);
     }
     Customer_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "CUSTOMER_DELETE", id);
+        return this.http.delete(this.url + "CUSTOMER_DELETE/" + id);
+    }
+    Customer_byid(id: string): Observable<Object>{
+        return this.http.get(this.url + "CUSTOMER_BYID/"+ id);
     }
 }

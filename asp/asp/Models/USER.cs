@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,5 +22,8 @@ namespace asp.Models
         public string STATUS { get; set; }
         public string CREATE_ID { get; set; }
         public DateTime? CREATE_DATE { get; set; }
+        [NotMapped]
+        public string ROLE_USER_NAME { get; set; }
+        public string PASSWORD { get; set; }
     }
 }

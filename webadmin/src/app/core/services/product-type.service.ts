@@ -8,7 +8,7 @@ import { PRODUCT_TYPE } from '../models/PRODUCT_TYPE';
 export class ProductTypeService {
     private heroes: PRODUCT_TYPE[] = [];
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:44377/api/Product_Types/';
+    private url: string ='https://localhost:44377/api/ProductTypes/';
 
     Product_Type_search(filter :PRODUCT_TYPE): Observable<Object>{
         return this.http.post(this.url + "PRODUCT_TYPE_SEARCH", filter);
@@ -20,6 +20,9 @@ export class ProductTypeService {
         return this.http.post(this.url + "PRODUCT_TYPE_UPDATE", filter);
     }
     Product_Type_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "PRODUCT_TYPE_DELETE", id);
+        return this.http.delete(this.url + "PRODUCT_TYPE_DELETE/" + id);
+    }
+    Product_Type_byid(id: string): Observable<Object>{
+        return this.http.get(this.url + "PRODUCT_TYPE_BYID/"+ id);
     }
 }

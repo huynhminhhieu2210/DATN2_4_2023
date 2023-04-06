@@ -1,0 +1,111 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="page-header">
+                <h4 class="page-title">Danh sách tài khoản nhân viên</h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Quản lý hệ thống</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Quản lý tài khoản</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                                <!-- <h4 class="card-title">Add Row</h4> -->
+                                <button class="btn btn-primary" routerLink="/app/user-add" routerLinkActive="active" ariaCurrentWhenActive="page">
+                                    <i class="fa fa-plus"></i>
+                                    Thêm mới
+                                </button>
+                                <button style="margin-left: 10px;" class="btn btn-primary" (click)="search()">
+                                    <i class="fa fa-search"></i>
+                                    Tìm kiếm
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- Modal -->
+                            <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 200px;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header no-bd">
+                                            <h5 class="modal-title">
+                                                <span class="fw-mediumbold">Xác nhận xoá</span>
+                                            </h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="small" style="text-align: center;">{{tilte_info_delete}}</p>
+                                        </div>
+                                        <div class="modal-footer no-bd">
+                                            <button class="close" data-dismiss="modal" aria-label="Close" (click)="onDel()" type="button" style="margin-right: 17px;" class="btn btn-primary">Xác nhận</button>
+                                            <button class="close" data-dismiss="modal" aria-label="Close" type="button" style="margin-right: 130px;" id="addRowButton" class="btn btn-danger">Đóng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="add-row" class="display table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên đăng nhập</th>
+                                            <th>Mã nhân viên</th>
+                                            <th>Tên nhân viên</th>
+                                            <th>Quyền</th>
+                                            <th>Email</th>
+                                            <th>SDT</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Người tạo</th>
+                                            <th style="width: 10%">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of listUser">
+                                            <td>{{item.useR_NAME}}</td>
+                                            <td>{{item.useR_CODE}}</td>
+                                            <td>{{item.useR_FULLNAME}}</td>
+                                            <td>{{item.rolE_USER_NAME}}</td>
+                                            <td>{{item.email}}</td>
+                                            <td>{{item.phone}}</td>
+                                            <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
+                                            <td>{{item.creatE_ID}}</td>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <button (click)="onEdit(item.useR_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Chỉnh sửa">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <!-- <button (click)="onView(item.useR_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xem chi tiết">
+                                                        <i class="fa fa-info"></i>
+                                                    </button> -->
+                                                    <button (click)="onConfirm(item.useR_FULLNAME!,item.useR_CODE!,item.useR_ID!)" data-toggle="modal" data-target="#addRowModal" type="button" title="" class="btn btn-link btn-danger" data-original-title="Xoá">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

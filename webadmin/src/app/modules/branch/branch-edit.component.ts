@@ -70,7 +70,7 @@ export class BranchEditComponent extends ComponentBase implements OnInit{
     //     })
   }
   onSave(){
-    if(!this.inputModel?.areA_ID){
+    if(!this.inputModel?.brancH_ID){
       this.branchService.Branch_insert(this.inputModel!).subscribe((response: any)=>{
         console.log(response);
         this.titleinfo = 'Thêm mới thành công';
