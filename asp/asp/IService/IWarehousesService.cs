@@ -14,5 +14,6 @@ namespace asp.IService
         Task<IEnumerable<InsertResult>> WAREHOUSE_INSERT(WAREHOUSE input);
         Task<IEnumerable<UpdateResult>> WAREHOUSE_UPDATE(WAREHOUSE input);
         Task<IEnumerable<DeleteResult>> WAREHOUSE_DELETE(string id);
+        Task<IEnumerable<WAREHOUSE>> WAREHOUSE_BYID(string id);
     }
 }

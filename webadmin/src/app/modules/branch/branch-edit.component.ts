@@ -1,5 +1,6 @@
+
 import { Component, Injectable, Injector, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { BRANCH } from 'src/app/core/models/BRANCH';
 import { AreaService } from 'src/app/core/services/area.service';
 import { BranchService } from 'src/app/core/services/branch.service';
@@ -42,11 +43,11 @@ export class BranchEditComponent extends ComponentBase implements OnInit{
     private branchService: BranchService
     ) {
     super(injector);
-    this.inputModel!.areA_ID = this.getRouteParam('area');
+    this.inputModel!.brancH_ID = this.getRouteParam('branch');
     this.editPageState = this.getRouteData('editPageState');
   }
   byid(){
-    let id: string = this.getRouteParam('area');
+    let id: string = this.getRouteParam('branch');
     this.branchService.Branch_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
       this.reloadView();

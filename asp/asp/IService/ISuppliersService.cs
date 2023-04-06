@@ -14,5 +14,6 @@ namespace asp.IService
         Task<IEnumerable<InsertResult>> SUPPLIER_INSERT(SUPPLIER input);
         Task<IEnumerable<UpdateResult>> SUPPLIER_UPDATE(SUPPLIER input);
         Task<IEnumerable<DeleteResult>> SUPPLIER_DELETE(string id);
+        Task<IEnumerable<SUPPLIER>> SUPPLIER_BYID(string id);
     }
 }

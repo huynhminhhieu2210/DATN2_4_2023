@@ -39,10 +39,15 @@ namespace asp.Controllers
         {
             return await _branchsService.BRANCH_UPDATE(input);
         }
-        [HttpPost]
+        [HttpDelete("{id}")]
         public async Task<IEnumerable<DeleteResult>> BRANCH_DELETE(string id)
         {
             return await _branchsService.BRANCH_DELETE(id);
+        }
+        [HttpGet("{id}")]
+        public async Task<IEnumerable<BRANCH>> BRANCH_BYID(string id)
+        {
+            return await _branchsService.BRANCH_BYID(id);
         }
     }
 }

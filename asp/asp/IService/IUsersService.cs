@@ -14,5 +14,6 @@ namespace asp.IService
         Task<IEnumerable<InsertResult>> USER_INSERT(USER input);
         Task<IEnumerable<UpdateResult>> USER_UPDATE(USER input);
         Task<IEnumerable<DeleteResult>> USER_DELETE(string id);
+        Task<IEnumerable<USER>> USER_BYID(string id);
     }
 }

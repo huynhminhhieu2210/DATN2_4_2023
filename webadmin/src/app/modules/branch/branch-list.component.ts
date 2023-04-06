@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { AREA } from 'src/app/core/models/AREA';
 import { BRANCH } from 'src/app/core/models/BRANCH';
 import { AreaService } from 'src/app/core/services/area.service';
@@ -13,17 +13,17 @@ export class BranchListComponent extends ComponentBase implements OnInit{
     private branchService: BranchService) {
     super(injector);
   }
-  listArea?: BRANCH[];
+  listbranch?: BRANCH[];
   tilte_info_delete?: string;
   id?: string;
   ngOnInit(): void {
     this.search();
   }
   onEdit(item: any){
-    this.navigatePassParam('/branch-edit', { area: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/branch-edit', { branch: item }, { filterInput: JSON.stringify(undefined) });
   }
   onView(item: any){
-    this.navigatePassParam('/branch-view', { area: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/branch-view', { branch: item }, { filterInput: JSON.stringify(undefined) });
   }
   onDel(){
     this.branchService.Branch_delete(this.id!).subscribe((response: any)=>{
@@ -34,7 +34,7 @@ export class BranchListComponent extends ComponentBase implements OnInit{
   search(){
     var filtera = new BRANCH();
     this.branchService.Branch_search(filtera).subscribe((response: any)=>{
-      this.listArea = response;
+      this.listbranch = response;
       this.reloadView();
     });
   }

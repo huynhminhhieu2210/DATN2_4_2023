@@ -39,8 +39,13 @@ namespace asp.Service
         public async Task<IEnumerable<DeleteResult>> BRANCH_DELETE(string id)
         {
             var store = "EXEC BRANCH_DELETE " + id;
-            return await _context.DeleteResult.FromSqlRaw(store).ToListAsync();;
+            return await _context.DeleteResult.FromSqlRaw(store).ToListAsync();
         }
-        
+        public async Task<IEnumerable<BRANCH>> BRANCH_BYID(string id)
+        {
+            var store = "EXEC BRANCH_BYID " + id;
+            return await _context.BRANCH.FromSqlRaw(store).ToListAsync();
+        }
+
     }
 }

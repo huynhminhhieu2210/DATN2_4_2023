@@ -41,6 +41,11 @@ namespace asp.Service
             var store = "EXEC SUPPLIER_DELETE " + id;
             return await _context.DeleteResult.FromSqlRaw(store).ToListAsync();;
         }
-        
+        public async Task<IEnumerable<SUPPLIER>> SUPPLIER_BYID(string id)
+        {
+            var store = "EXEC SUPPLIER_BYID " + id;
+            return await _context.SUPPLIER.FromSqlRaw(store).ToListAsync();
+        }
+
     }
 }

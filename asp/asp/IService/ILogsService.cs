@@ -14,5 +14,6 @@ namespace asp.IService
         Task<IEnumerable<InsertResult>> LOG_INSERT(LOG input);
         Task<IEnumerable<UpdateResult>> LOG_UPDATE(LOG input);
         Task<IEnumerable<DeleteResult>> LOG_DELETE(string id);
+        Task<IEnumerable<LOG>> LOG_BYID(string id);
     }
 }

@@ -14,5 +14,6 @@ namespace asp.IService
         Task<IEnumerable<InsertResult>> BRANCH_INSERT(BRANCH input);
         Task<IEnumerable<UpdateResult>> BRANCH_UPDATE(BRANCH input);
         Task<IEnumerable<DeleteResult>> BRANCH_DELETE(string id);
+        Task<IEnumerable<BRANCH>> BRANCH_BYID(string id);
     }
 }

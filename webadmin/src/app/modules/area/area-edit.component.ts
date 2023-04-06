@@ -1,5 +1,5 @@
-import { Component, Injectable, Injector, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { Component, Injectable, OnInit, Injector } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AREA } from 'src/app/core/models/AREA';
 import { AreaService } from 'src/app/core/services/area.service';
 import { ComponentBase } from 'src/app/shared/components/component-base';
