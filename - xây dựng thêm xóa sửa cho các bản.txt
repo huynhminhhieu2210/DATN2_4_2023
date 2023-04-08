@@ -1,0 +1,5 @@
+- xây dựng thêm xóa sửa cho các bảng product, warehouse, role_user
+- xây dựng trang xem thông tin hóa đơn
+- xây dựng giao diện trang profile admin, logout admin
+- validate cho thêm sửa user, branch, area, supplier, warehouse, role_user, product
+t2 10/4

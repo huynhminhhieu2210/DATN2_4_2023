@@ -8,7 +8,7 @@ import { USER } from '../models/USER';
 export class UserService {
     private heroes: USER[] = [];
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:44377/api/Users/';
+    private url: string ='https://localhost:5001/api/Users/';
 
     User_search(filter :USER): Observable<Object>{
         return this.http.post(this.url + "USER_SEARCH", filter);

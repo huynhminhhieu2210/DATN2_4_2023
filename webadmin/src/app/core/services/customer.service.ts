@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class CustomerService {
     private heroes: CUSTOMER[] = [];
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:44377/api/Customers/';
+    private url: string ='https://localhost:5001/api/Customers/';
 
     Customer_search(filter :CUSTOMER): Observable<Object>{
         return this.http.post(this.url + "CUSTOMER_SEARCH", filter);

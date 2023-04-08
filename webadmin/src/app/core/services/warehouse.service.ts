@@ -8,7 +8,7 @@ import { WAREHOUSE } from '../models/WAREHOUSE';
 export class WarehouseService {
     private heroes: WAREHOUSE[] = [];
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:44377/api/Warehouses/';
+    private url: string ='https://localhost:5001/api/Warehouses/';
  
     Warehouse_search(filter :WAREHOUSE): Observable<Object>{
         return this.http.post(this.url + "WAREHOUSE_SEARCH", filter);

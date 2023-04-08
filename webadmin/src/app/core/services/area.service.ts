@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class AreaService {
     private heroes: AREA[] = [];
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:44377/api/Areas/';
+    private url: string ='https://localhost:5001/api/Areas/';
 
     Area_search(filter :AREA): Observable<Object>{
         return this.http.post(this.url + "AREA_SEARCH", filter);

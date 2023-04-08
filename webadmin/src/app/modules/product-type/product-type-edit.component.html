@@ -2,7 +2,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Danh mục</h4>
+                <!-- <h4 class="page-title">Danh mục</h4> -->
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -38,7 +38,7 @@
                                 color: white;
                                 border-radius: 4px;
                                 padding: 5px;">{{titleinfo}}</p>
-                                <div class="card-title">{{title}}</div>
+                                <!-- <div class="card-title">{{title}}</div> -->
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -58,8 +58,8 @@
                                             <input disabled="{{disabledInput}}" id="producT_TYPE_NAME" name="producT_TYPE_NAME" [(ngModel)]="inputModel!.producT_TYPE_NAME" type="text" class="form-control form-control" placeholder="Tên loại">
                                         </div>
                                         <div class="form-group">
-                                            <label for="crearE_DATE">Ngày tạo</label>
-                                            <input disabled="{{disabledInput}}" id="crearE_DATE" name="crearE_DATE" [(ngModel)]="inputModel!.creatE_DATE" type="date" class="form-control form-control" placeholder="Ngày tạo">
+                                            <label for="creatE_DATE">Ngày tạo</label>
+                                            <input disabled="{{disabledInput}}" id="creatE_DATE" name="creatE_DATE" [(ngModel)]="inputModel!.creatE_DATE" type="datetime-local" class="form-control form-control" placeholder="Ngày tạo">
                                         </div>
                                     </div>
                                 </div>

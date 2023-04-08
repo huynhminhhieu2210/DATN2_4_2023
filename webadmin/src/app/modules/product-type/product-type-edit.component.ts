@@ -19,7 +19,7 @@ export class ProductTypeEditComponent extends ComponentBase implements OnInit{
   title?:string; 
   titleinfo?: string;
   get disabledInput(): boolean{
-    return this.editPageState == EditPageState.viewDetail;
+    return this.editPageState == EditPageState.view;
   }
   ngOnInit(): void {
     switch (this.editPageState) {
@@ -30,7 +30,7 @@ export class ProductTypeEditComponent extends ComponentBase implements OnInit{
         this.title = 'Chỉnh sửa loại sản phẩm';
         this.byid();
         break;
-      case EditPageState.viewDetail:
+      case EditPageState.view:
         this.title = 'Xem chi tiết loại sản phẩm';
         this.byid();
         break;

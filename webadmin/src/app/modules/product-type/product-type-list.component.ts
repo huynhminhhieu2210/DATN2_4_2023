@@ -18,10 +18,10 @@ export class ProductTypeListComponent extends ComponentBase implements OnInit{
     this.search();
   }
   onEdit(item: any){
-    this.navigatePassParam('/product-type-edit', { producttype: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/product-type-edit', { producttype: item }, { filterInput: JSON.stringify(undefined) });
   }
   onView(item: any){
-    this.navigatePassParam('/product-type-view', { producttype: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/product-type-view', { producttype: item }, { filterInput: JSON.stringify(undefined) });
   }
   onDel(){
     this.productTypeService.Product_Type_delete(this.id!).subscribe((response: any)=>{

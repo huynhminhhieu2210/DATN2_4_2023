@@ -21,7 +21,7 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
   title?:string; 
   titleinfo?: string;
   get disabledInput(): boolean{
-    return this.editPageState == EditPageState.viewDetail;
+    return this.editPageState == EditPageState.view;
   }
   ngOnInit(): void {
     this.initCombobox();
@@ -33,7 +33,7 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
         this.title = 'Chỉnh sửa tài khoản';
         this.byid();
         break;
-      case EditPageState.viewDetail:
+      case EditPageState.view:
         this.title = 'Xem chi tiết tài khoản';
         this.byid();
         break;
