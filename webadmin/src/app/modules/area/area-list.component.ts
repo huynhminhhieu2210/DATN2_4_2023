@@ -18,10 +18,10 @@ export class AreaListComponent extends ComponentBase implements OnInit{
     this.search();
   }
   onEdit(item: any){
-    this.navigatePassParam('/area-edit', { area: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/area-edit', { area: item }, { filterInput: JSON.stringify(undefined) });
   }
   onView(item: any){
-    this.navigatePassParam('/area-view', { area: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/area-view', { area: item }, { filterInput: JSON.stringify(undefined) });
   }
   onDel(){
     this.areaService.Area_delete(this.id!).subscribe((response: any)=>{

@@ -28,12 +28,12 @@ namespace asp.Service
         }
         public async Task<IEnumerable<InsertResult>> USER_INSERT(USER input)
         {
-            var store = "EXEC USER_INSERT " + _setSqlParameter.setParamUser(input); ;
+            var store = "EXEC USER_INSERT " + _setSqlParameter.setParamUser(input);
             return await _context.InsertResult.FromSqlRaw(store).ToListAsync();;
         }
         public async Task<IEnumerable<UpdateResult>> USER_UPDATE(USER input)
         {
-            var store = "EXEC USER_UPDATE " + _setSqlParameter.setParamUser(input); ;
+            var store = "EXEC USER_UPDATE " + _setSqlParameter.setParamUser(input);
             return await _context.UpdateResult.FromSqlRaw(store).ToListAsync();;
         }
         public async Task<IEnumerable<DeleteResult>> USER_DELETE(string id)
@@ -44,6 +44,11 @@ namespace asp.Service
         public async Task<IEnumerable<USER>> USER_BYID(string id)
         {
             var store = "EXEC USER_BYID " + id;
+            return await _context.USER.FromSqlRaw(store).ToListAsync();
+        }
+        public async Task<IEnumerable<USER>> USER_GET_INFO_LOGIN(LOGIN user)
+        {
+            var store = "EXEC USER_GET_INFO_LOGIN " + _setSqlParameter.setParamLogin(user);
             return await _context.USER.FromSqlRaw(store).ToListAsync();
         }
 

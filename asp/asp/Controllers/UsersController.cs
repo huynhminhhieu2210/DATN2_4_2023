@@ -49,5 +49,10 @@ namespace asp.Controllers
         {
             return await _userService.USER_BYID(id);
         }
+        [HttpPost]
+        public async Task<IEnumerable<USER>> USER_GET_INFO_LOGIN(LOGIN input)
+        {
+            return await _userService.USER_GET_INFO_LOGIN(input);
+        }
     }
 }

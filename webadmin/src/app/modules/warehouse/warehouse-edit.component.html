@@ -2,7 +2,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <!-- <h4 class="page-title">Quản lý hệ thống</h4> -->
+                <h4 class="page-title">{{title}}</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -13,13 +13,13 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        Khách hàng
+                        Danh mục
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a routerLink="/app/customer" routerLinkActive="active" ariaCurrentWhenActive="page">Quản lý tài khoản</a>
+                        <a routerLink="/app/warehouse" routerLinkActive="active" ariaCurrentWhenActive="page">Kho</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -44,41 +44,43 @@
                                 <div class="row">
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <label for="useR_CODE">Mã khách hàng</label>
-                                            <input disabled="{{disabledInput}}" id="useR_CODE" name="useR_CODE" [(ngModel)]="inputModel!.useR_CODE" type="text" class="form-control form-control" placeholder="Mã khách hàng">
+                                            <label for="warehousE_CODE">Mã kho</label>
+                                            <input disabled="{{disabledInput}}" id="warehousE_CODE" name="warehousE_CODE" [(ngModel)]="inputModel!.warehousE_CODE" type="text" class="form-control form-control" placeholder="Mã kho">
                                         </div>
                                         <div class="form-group">
-                                            <label for="phone">Số điện thoại</label>
-                                            <input disabled="{{disabledInput}}" id="phone" name="phone" [(ngModel)]="inputModel!.phone" type="text" class="form-control form-control" placeholder="Số điện thoại">
+                                            <label for="brancH_ID">Chi nhánh</label>
+                                            <select class="form-control" [(ngModel)]="inputModel!.brancH_ID" id="brancH_ID" name="brancH_ID">
+                                                <option *ngFor="let item of listBranch" value="{{item.brancH_ID}}">{{item.brancH_NAME}}</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <label for="useR_NAME">Tên đăng nhập</label>
-                                            <input disabled="{{disabledInput}}" id="useR_NAME" name="useR_NAME" [(ngModel)]="inputModel!.useR_NAME" type="text" class="form-control form-control" placeholder="Tên đăng nhập">
+                                            <label for="warehousE_NAME">Tên kho</label>
+                                            <input disabled="{{disabledInput}}" id="warehousE_NAME" name="warehousE_NAME" [(ngModel)]="inputModel!.warehousE_NAME" type="text" class="form-control form-control" placeholder="Tên kho">
                                         </div>
                                         <div class="form-group">
-                                            <label for="address">Địa chỉ</label>
-                                            <textarea disabled="{{disabledInput}}" id="address" name="address" [(ngModel)]="inputModel!.address" type="date" class="form-control form-control" placeholder="Địa chỉ">
-                                                </textarea>
+                                            <label for="creatE_ID">Người tạo</label>
+                                            <input disabled="{{disabledInput}}" id="creatE_ID" name="creatE_ID" [(ngModel)]="inputModel!.creatE_ID" type="text" class="form-control form-control" placeholder="Người tạo">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <label for="useR_FULLNAME">Họ tên khách hàng</label>
-                                            <input disabled="{{disabledInput}}" id="useR_FULLNAME" name="useR_FULLNAME" [(ngModel)]="inputModel!.useR_FULLNAME" type="text" class="form-control form-control" placeholder="Họ tên khách hàng">
+                                            <label for="warehousE_ADDRESS">Địa chỉ</label>
+                                            <input disabled="{{disabledInput}}" id="warehousE_ADDRESS" name="warehousE_ADDRESS" [(ngModel)]="inputModel!.warehousE_ADDRESS" type="text" class="form-control form-control" placeholder="Tên kho">
                                         </div>
                                         <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input disabled="{{disabledInput}}" id="email" name="email" [(ngModel)]="inputModel!.email" type="email" class="form-control form-control" placeholder="Email">
+                                            <label for="creatE_DATE">Ngày tạo</label>
+                                            <input disabled="{{disabledInput}}" id="creatE_DATE" name="creatE_DATE" [(ngModel)]="inputModel!.creatE_DATE" type="date" class="form-control form-control" placeholder="Ngày tạo">
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="card-action">
                                 <button *ngIf="disabledInput" class="btn btn-success" style="margin-right: 10px;" disabled>Lưu</button>
                                 <button *ngIf="!disabledInput" class="btn btn-success" style="margin-right: 10px;">Lưu</button>
-                                <button routerLink="/app/customer" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-danger">Trở về</button>
+                                <button routerLink="/app/warehouse" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-danger">Trở về</button>
                             </div>
                         </div>
                     </div>

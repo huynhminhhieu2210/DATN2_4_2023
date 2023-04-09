@@ -61,7 +61,6 @@ namespace asp
             });
             services.AddTransient<IAreasService, AreasService>();
             services.AddTransient<IBranchsService, BranchsService>();
-            services.AddTransient<ICustomersService, CustomersService>();
             services.AddTransient<ILogsService, LogsService>();
             services.AddTransient<IProductTypesService, ProductTypesService>();
             services.AddTransient<ISuppliersService, SuppliersService>();

@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit, Injector } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BRANCH } from 'src/app/core/models/BRANCH';
-import { CUSTOMER } from 'src/app/core/models/CUSTOMER';
+import { USER } from 'src/app/core/models/USER';
 import { BranchService } from 'src/app/core/services/branch.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { ComponentBase } from 'src/app/shared/components/component-base';
@@ -15,7 +15,7 @@ import { EditPageState } from 'src/app/shared/enum/edit-page-state';
 })
 export class CustomerEditComponent extends ComponentBase implements OnInit{
   invalidLogin: boolean | undefined;
-  inputModel?: CUSTOMER = new CUSTOMER();
+  inputModel?: USER = new USER();
   EditPageState = EditPageState;
   editPageState?: EditPageState;
   title?:string; 
@@ -44,7 +44,7 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
     private customerService: CustomerService,
     ) {
     super(injector);
-    this.inputModel!.customeR_ID = this.getRouteParam('customer');
+    this.inputModel!.useR_ID = this.getRouteParam('customer');
     this.editPageState = this.getRouteData('editPageState');
   }
   byid(){
@@ -58,7 +58,7 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
 
   }
   onSave(){
-    if(!this.inputModel?.customeR_ID){
+    if(!this.inputModel?.useR_ID){
       this.customerService.Customer_insert(this.inputModel!).subscribe((response: any)=>{
         console.log(response);
         this.titleinfo = 'Thêm mới thành công';

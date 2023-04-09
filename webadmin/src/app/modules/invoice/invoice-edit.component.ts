@@ -1,21 +1,19 @@
-
-import { Component, Injectable, Injector, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, Injector } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { BRANCH } from 'src/app/core/models/BRANCH';
-import { AreaService } from 'src/app/core/services/area.service';
-import { BranchService } from 'src/app/core/services/branch.service';
+import { PRODUCT_TYPE } from 'src/app/core/models/PRODUCT_TYPE';
+import { ProductTypeService } from 'src/app/core/services/product-type.service';
 import { ComponentBase } from 'src/app/shared/components/component-base';
 import { EditPageState } from 'src/app/shared/enum/edit-page-state';
 
 @Component({
-  templateUrl: './branch-edit.component.html',
+  templateUrl: './invoice-edit.component.html',
 })
 @Injectable({
   providedIn: 'root'
 })
-export class BranchEditComponent extends ComponentBase implements OnInit{
+export class InvoiceEditComponent extends ComponentBase implements OnInit{
   invalidLogin: boolean | undefined;
-  inputModel?: BRANCH = new BRANCH();
+  inputModel?: PRODUCT_TYPE = new PRODUCT_TYPE();
   EditPageState = EditPageState;
   editPageState?: EditPageState;
   title?:string; 
@@ -26,29 +24,29 @@ export class BranchEditComponent extends ComponentBase implements OnInit{
   ngOnInit(): void {
     switch (this.editPageState) {
       case EditPageState.add:
-        this.title = 'Thêm mới chi nhánh';
+        this.title = 'Thêm mới loại sản phẩm';
         break;
       case EditPageState.edit:
-        this.title = 'Chỉnh sửa chi nhánh';
+        this.title = 'Chỉnh sửa loại sản phẩm';
         this.byid();
         break;
       case EditPageState.view:
-        this.title = 'Xem chi tiết chi nhánh';
+        this.title = 'Xem chi tiết loại sản phẩm';
         this.byid();
         break;
   }
   }
   constructor(
     injector: Injector,
-    private branchService: BranchService
+    private productTypeService: ProductTypeService
     ) {
     super(injector);
-    this.inputModel!.brancH_ID = this.getRouteParam('branch');
+    this.inputModel!.producT_TYPE_ID = this.getRouteParam('producttype');
     this.editPageState = this.getRouteData('editPageState');
   }
   byid(){
-    let id: string = this.getRouteParam('branch');
-    this.branchService.Branch_byid(id).subscribe((response: any)=>{
+    let id: string = this.getRouteParam('producttype');
+    this.productTypeService.Product_Type_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
       this.reloadView();
     });
@@ -70,9 +68,8 @@ export class BranchEditComponent extends ComponentBase implements OnInit{
     //     })
   }
   onSave(){
-    this.inputModel!.creatE_ID = localStorage.getItem('userid')?.toString();
-    if(!this.inputModel?.brancH_ID){
-      this.branchService.Branch_insert(this.inputModel!).subscribe((response: any)=>{
+    if(!this.inputModel?.producT_TYPE_ID){
+      this.productTypeService.Product_Type_insert(this.inputModel!).subscribe((response: any)=>{
         console.log(response);
         this.titleinfo = 'Thêm mới thành công';
         setTimeout(() => {
@@ -80,7 +77,7 @@ export class BranchEditComponent extends ComponentBase implements OnInit{
         }, 5000);
       });
     }else{
-      this.branchService.Branch_update(this.inputModel!).subscribe((response: any)=>{
+      this.productTypeService.Product_Type_update(this.inputModel!).subscribe((response: any)=>{
         console.log(response);
         this.titleinfo = 'Cập nhật thành công';
         setTimeout(() => {

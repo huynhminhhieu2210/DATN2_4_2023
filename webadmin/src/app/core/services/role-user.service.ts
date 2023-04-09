@@ -20,7 +20,7 @@ export class RoleUserService {
         return this.http.post(this.url + "ROLE_USER_UPDATE", filter);
     }
     Role_User_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "ROLE_USER_DELETE", id);
+        return this.http.delete(this.url + "ROLE_USER_DELETE/" + id);
     }
     Role_User_byid(id: string): Observable<Object>{
         return this.http.get(this.url + "ROLE_USER_BYID/"+ id);

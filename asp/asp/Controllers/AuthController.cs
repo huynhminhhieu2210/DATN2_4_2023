@@ -39,7 +39,7 @@ namespace asp.Controllers
                     issuer: "https://localhost:5001",
                     audience: "https://localhost:5001",
                     claims: new List<Claim>(),
-                    expires: DateTime.Now.AddMinutes(5),
+                    expires: DateTime.Now.AddDays(1),
                     signingCredentials: signingCredentials
                 );
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);

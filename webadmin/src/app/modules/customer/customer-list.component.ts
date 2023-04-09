@@ -1,5 +1,5 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { CUSTOMER } from 'src/app/core/models/CUSTOMER';
+import { USER } from 'src/app/core/models/USER';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { ComponentBase } from 'src/app/shared/components/component-base';
 @Component({
@@ -11,17 +11,17 @@ export class CustomerListComponent extends ComponentBase implements OnInit{
     private customerService: CustomerService) {
     super(injector);
   }
-  listCustomer?: CUSTOMER[];
+  listCustomer?: USER[];
   tilte_info_delete?: string;
   id?: string;
   ngOnInit(): void {
     this.search();
   }
   onEdit(item: any){
-    this.navigatePassParam('/customer-edit', { customer: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/customer-edit', { customer: item }, { filterInput: JSON.stringify(undefined) });
   }
   onView(item: any){
-    this.navigatePassParam('/customer-view', { customer: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/customer-view', { customer: item }, { filterInput: JSON.stringify(undefined) });
   }
   onDel(){
     this.customerService.Customer_delete(this.id!).subscribe((response: any)=>{
@@ -30,7 +30,7 @@ export class CustomerListComponent extends ComponentBase implements OnInit{
     });
   }
   search(){
-    var filtera = new CUSTOMER();
+    var filtera = new USER();
     this.customerService.Customer_search(filtera).subscribe((response: any)=>{
       this.listCustomer = response;
       this.reloadView();

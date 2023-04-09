@@ -1,28 +1,28 @@
 import { HttpClient,HttpClientModule,HttpParams,HttpHeaders } from '@angular/common/http';
-import { CUSTOMER } from "../models/CUSTOMER";
+import { USER } from "../models/USER";
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root',
   })
 export class CustomerService {
-    private heroes: CUSTOMER[] = [];
+    private heroes: USER[] = [];
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:5001/api/Customers/';
+    private url: string ='https://localhost:5001/api/Users/';
 
-    Customer_search(filter :CUSTOMER): Observable<Object>{
-        return this.http.post(this.url + "CUSTOMER_SEARCH", filter);
+    Customer_search(filter :USER): Observable<Object>{
+        return this.http.post(this.url + "USER_SEARCH", filter);
     }
-    Customer_insert(filter :CUSTOMER): Observable<Object>{
-        return this.http.post(this.url + "CUSTOMER_INSERT", filter);
+    Customer_insert(filter :USER): Observable<Object>{
+        return this.http.post(this.url + "USER_INSERT", filter);
     }
-    Customer_update(filter :CUSTOMER): Observable<Object>{
-        return this.http.post(this.url + "CUSTOMER_UPDATE", filter);
+    Customer_update(filter :USER): Observable<Object>{
+        return this.http.post(this.url + "USER_UPDATE", filter);
     }
     Customer_delete(id: string): Observable<Object>{
-        return this.http.delete(this.url + "CUSTOMER_DELETE/" + id);
+        return this.http.delete(this.url + "USER_DELETE/" + id);
     }
     Customer_byid(id: string): Observable<Object>{
-        return this.http.get(this.url + "CUSTOMER_BYID/"+ id);
+        return this.http.get(this.url + "USER_BYID/"+ id);
     }
 }

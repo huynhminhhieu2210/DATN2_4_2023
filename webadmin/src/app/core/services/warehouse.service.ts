@@ -20,6 +20,9 @@ export class WarehouseService {
         return this.http.post(this.url + "WAREHOUSE_UPDATE", filter);
     }
     Warehouse_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "WAREHOUSE_DELETE", id);
+        return this.http.delete(this.url + "WAREHOUSE_DELETE/" + id);
+    }
+    Warehouse_byid(id: string): Observable<Object>{
+        return this.http.get(this.url + "WAREHOUSE_BYID/"+ id);
     }
 }

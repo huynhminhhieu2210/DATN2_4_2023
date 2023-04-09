@@ -29,9 +29,13 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <!-- <h4 class="card-title">Add Row</h4> -->
-                                <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
-                                    Thêm mới khu vực
+                                    Thêm mới
+                                </button>
+                                <button style="margin-left: 10px;" class="btn btn-primary" (click)="search()">
+                                    <i class="fa fa-search"></i>
+                                    Tìm kiếm
                                 </button>
                             </div>
                         </div>
@@ -42,46 +46,53 @@
                                     <div class="modal-content">
                                         <div class="modal-header no-bd">
                                             <h5 class="modal-title">
-                                                <span class="fw-mediumbold">Thêm khu vực </span>
+                                                <span class="fw-mediumbold">Thêm quyền </span>
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p class="small">Vui lòng nhập đầy đủ thông tin bên dưới để thêm khu vực</p>
-                                            <form>
+                                            <p class="small">Vui lòng nhập đầy đủ thông tin bên dưới để thêm</p>
+                                            <form #addForm="ngForm" class="form-add" (ngSubmit)="onSave(addForm)">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Mã khu vực</label>
-                                                            <input id="addName" type="text" class="form-control" placeholder="fill name">
+                                                        <div class="form-group">
+                                                            <label for="rolE_USER_CODE">Mã quyền</label>
+                                                            <input ngModel id="rolE_USER_CODE" name="rolE_USER_CODE" type="text" class="form-control" placeholder="Mã quyền" required/>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Tên khu vực</label>
-                                                            <input id="addCode" type="text" class="form-control" placeholder="fill code">
+                                                        <div class="form-group">
+                                                            <label for="rolE_USER_NAME">Tên quyền</label>
+                                                            <input ngModel id="rolE_USER_NAME" name="rolE_USER_NAME" type="text" class="form-control" placeholder="Tên quyền" required/>
                                                         </div>
                                                     </div>
-                                                    <!-- <div class="col-md-6 pr-0">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Mã khu vực</label>
-                                                            <input id="addPosition" type="text" class="form-control" placeholder="fill position">
-                                                        </div>
-                                                    </div> -->
-                                                    <!-- <div class="col-md-6">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Office</label>
-                                                            <input id="addOffice" type="text" class="form-control" placeholder="fill office">
-                                                        </div>
-                                                    </div> -->
+                                                </div>
+                                                <div class="modal-footer no-bd">
+                                                    <button class="close" data-dismiss="modal" aria-label="Close" type="submit" id="addForm" (click)="onSave(addForm)" class="btn btn-primary">Thêm</button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
                                                 </div>
                                             </form>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="deleteRowModal" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 200px;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header no-bd">
+                                            <h5 class="modal-title">
+                                                <span class="fw-mediumbold">Xác nhận xoá</span>
+                                            </h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="small" style="text-align: center;">{{tilte_info_delete}}</p>
+                                        </div>
                                         <div class="modal-footer no-bd">
-                                            <button type="button" id="addRowButton" class="btn btn-primary">Thêm</button>
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                            <button class="close" data-dismiss="modal" aria-label="Close" (click)="onDel()" type="button" style="margin-right: 17px;" class="btn btn-primary">Xác nhận</button>
+                                            <button class="close" data-dismiss="modal" aria-label="Close" type="button" style="margin-right: 130px;" id="addRowButton" class="btn btn-danger">Đóng</button>
                                         </div>
                                     </div>
                                 </div>
@@ -91,25 +102,28 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Mã khu vực</th>
-                                            <th>Tên khu vực</th>
+                                            <th>Mã quyền</th>
+                                            <th>Tên quyền</th>
                                             <th>Ngày tạo</th>
                                             <th>Người tạo</th>
                                             <th style="width: 10%">Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Khu vực HCM</td>
-                                            <td>22/10/2021</td>
-                                            <td>Huỳnh Minh Hiếu</td>
+                                        <tr *ngFor="let item of lstRoleUser">
+                                            <td>{{item.rolE_USER_CODE}}</td>
+                                            <td>{{item.rolE_USER_NAME}}</td>
+                                            <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
+                                            <td>{{item.creatE_ID}}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Chỉnh sửa">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    <!-- <button (click)="onView(item.producT_TYPE_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xem chi tiết">
+                                                        <i class="fa fa-info"></i>
+                                                    </button> -->
+                                                    <button (click)="onConfirm(item.rolE_USER_NAME!,item.rolE_USER_CODE!,item.rolE_USER_ID!)" data-toggle="modal" data-target="#deleteRowModal" type="button" title="" class="btn btn-link btn-danger" data-original-title="Xoá">
                                                         <i class="fa fa-times"></i>
                                                     </button>
                                                 </div>

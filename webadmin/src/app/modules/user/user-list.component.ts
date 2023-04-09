@@ -18,10 +18,10 @@ export class UserListComponent extends ComponentBase implements OnInit{
     this.search();
   }
   onEdit(item: any){
-    this.navigatePassParam('/user-edit', { user: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/user-edit', { user: item }, { filterInput: JSON.stringify(undefined) });
   }
   onView(item: any){
-    this.navigatePassParam('/user-view', { user: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/user-view', { user: item }, { filterInput: JSON.stringify(undefined) });
   }
   onDel(){
     this.userService.User_delete(this.id!).subscribe((response: any)=>{

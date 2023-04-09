@@ -2,12 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AreaListComponent } from './modules/area/area-list.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
-import { ColorComponent } from './modules/color/color.component';
 import { DocImpProductComponent } from './modules/doc-imp-product/doc-imp-product.component';
-import { InvoiceComponent } from './modules/invoice/invoice.component';
 import { ProductsComponent } from './modules/products/products.component';
 import { RoleUserComponent } from './modules/role-user/role-user.component';
-import { WarehouseComponent } from './modules/warehouse/warehouse.component';
 import { AreaEditComponent } from './modules/area/area-edit.component';
 import { EditPageState } from './shared/enum/edit-page-state';
 import { BranchEditComponent } from './modules/branch/branch-edit.component';
@@ -22,6 +19,10 @@ import { SupplierListComponent } from './modules/supplier/supplier-list.componen
 import { SupplierEditComponent } from './modules/supplier/supplier-edit.component';
 import { AuthGuard } from './core/guards/auth-guards.service';
 import { AppComponent } from './app.component';
+import { WarehouseListComponent } from './modules/warehouse/warehouse-list.component';
+import { WarehouseEditComponent } from './modules/warehouse/warehouse-edit.component';
+import { InvoiceListComponent } from './modules/invoice/invoice-list.component';
+import { InvoiceEditComponent } from './modules/invoice/invoice-edit.component';
 
 @NgModule({
   imports: [
@@ -44,10 +45,8 @@ import { AppComponent } from './app.component';
             { path: 'branch-add', component: BranchEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
             { path: 'branch-edit', component: BranchEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
             { path: 'branch-view', component: BranchEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
-            
-            { path: 'color', component: ColorComponent,canActivate: [AuthGuard]},
+
             { path: 'doc-imp-product', component: DocImpProductComponent,canActivate: [AuthGuard]},
-            { path: 'invoice', component: InvoiceComponent,canActivate: [AuthGuard]},
             { path: 'products', component: ProductsComponent,canActivate: [AuthGuard]},
             { path: 'role-user', component: RoleUserComponent,canActivate: [AuthGuard]},
           
@@ -71,7 +70,16 @@ import { AppComponent } from './app.component';
             { path: 'product-type-edit', component: ProductTypeEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
             { path: 'product-type-view', component: ProductTypeEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
           
-            { path: 'warehouse', component: WarehouseComponent,canActivate: [AuthGuard]},
+            { path: 'warehouse', component: WarehouseListComponent,canActivate: [AuthGuard]},
+            { path: 'warehouse-add', component: WarehouseEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
+            { path: 'warehouse-edit', component: WarehouseEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
+            { path: 'warehouse-view', component: WarehouseEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
+
+            { path: 'invoice', component: InvoiceListComponent,canActivate: [AuthGuard]},
+            { path: 'invoice-add', component: InvoiceEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
+            { path: 'invoice-edit', component: InvoiceEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
+            { path: 'invoice-view', component: InvoiceEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
+
           ]}
           ]
       }

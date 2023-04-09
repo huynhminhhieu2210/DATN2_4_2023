@@ -4,13 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AreaListComponent } from './modules/area/area-list.component';
-import { ColorComponent } from './modules/color/color.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { DocImpProductComponent } from './modules/doc-imp-product/doc-imp-product.component';
-import { InvoiceComponent } from './modules/invoice/invoice.component';
 import { ProductsComponent } from './modules/products/products.component';
 import { RoleUserComponent } from './modules/role-user/role-user.component';
-import { WarehouseComponent } from './modules/warehouse/warehouse.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SideBarComponent } from './shared/header/sidebar.component';
 import { NavBarComponent } from './shared/header/navbar.component';
@@ -32,6 +29,10 @@ import { SupplierListComponent } from './modules/supplier/supplier-list.componen
 import { AuthGuard } from './core/guards/auth-guards.service';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
+import { WarehouseEditComponent } from './modules/warehouse/warehouse-edit.component';
+import { WarehouseListComponent } from './modules/warehouse/warehouse-list.component';
+import { InvoiceListComponent } from './modules/invoice/invoice-list.component';
+import { InvoiceEditComponent } from './modules/invoice/invoice-edit.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -56,9 +57,10 @@ export function tokenGetter(){
     BranchEditComponent,
     AreaListComponent,
     AreaEditComponent,
-    ColorComponent,
-    WarehouseComponent,
-    InvoiceComponent,
+    WarehouseListComponent,
+    WarehouseEditComponent,
+    InvoiceListComponent,
+    InvoiceEditComponent,
     HeaderComponent,
     SideBarComponent,
     NavBarComponent,

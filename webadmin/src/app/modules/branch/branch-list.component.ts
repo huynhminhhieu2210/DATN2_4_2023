@@ -20,10 +20,10 @@ export class BranchListComponent extends ComponentBase implements OnInit{
     this.search();
   }
   onEdit(item: any){
-    this.navigatePassParam('/branch-edit', { branch: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/branch-edit', { branch: item }, { filterInput: JSON.stringify(undefined) });
   }
   onView(item: any){
-    this.navigatePassParam('/branch-view', { branch: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/branch-view', { branch: item }, { filterInput: JSON.stringify(undefined) });
   }
   onDel(){
     this.branchService.Branch_delete(this.id!).subscribe((response: any)=>{
