@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit, Injector } from '@angular/core';
+import { Component, Injectable, OnInit, Injector, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BRANCH } from 'src/app/core/models/BRANCH';
 import { ROLE_USER } from 'src/app/core/models/ROLE_USER';
@@ -24,6 +24,9 @@ export class UserEditComponent extends ComponentBase implements OnInit{
   titleinfo?: string;
   listBranch?: BRANCH[];
   listRole?: ROLE_USER[];
+  isShowError = false;
+
+  @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
   }
@@ -73,6 +76,11 @@ export class UserEditComponent extends ComponentBase implements OnInit{
     });
   }
   onSave(){
+    if ((this.editForm as any).form.invalid) {
+      this.isShowError = true;
+      this.reloadView();
+      return;
+  }
     if(!this.inputModel?.useR_ID){
       this.userService.User_insert(this.inputModel!).subscribe((response: any)=>{
         console.log(response);

@@ -1,5 +1,5 @@
 
-import { Component, Injectable, Injector, OnInit } from '@angular/core';
+import { Component, ElementRef, Injectable, Injector, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SUPPLIER } from 'src/app/core/models/SUPPLIER';
 import { AreaService } from 'src/app/core/services/area.service';
@@ -21,6 +21,9 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
   editPageState?: EditPageState;
   title?:string; 
   titleinfo?: string;
+  isShowError = false;
+
+  @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
   }
@@ -71,6 +74,11 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
     //     })
   }
   onSave(){
+    if ((this.editForm as any).form.invalid) {
+      this.isShowError = true;
+      this.reloadView();
+      return;
+  }
     if(!this.inputModel?.supplieR_ID){
       this.supplierService.Supplier_insert(this.inputModel!).subscribe((response: any)=>{
         console.log(response);

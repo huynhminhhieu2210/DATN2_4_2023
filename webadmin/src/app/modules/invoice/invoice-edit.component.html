@@ -2,7 +2,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <!-- <h4 class="page-title">Danh mục</h4> -->
+                <h4 class="page-title">{{title}}</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -19,7 +19,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a routerLink="/app/product-type" routerLinkActive="active" ariaCurrentWhenActive="page">Loại sản phẩm</a>
+                        <a routerLink="/app/product-type" routerLinkActive="active" ariaCurrentWhenActive="page">Hoá đơn</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -29,7 +29,7 @@
                     </li>
                 </ul>
             </div>
-            <form #loginForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
+            <form #loginForm="ngForm" class="form-signin">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -44,30 +44,78 @@
                                 <div class="row">
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <label for="producT_TYPE_CODE">Mã loại</label>
-                                            <input disabled="{{disabledInput}}" id="producT_TYPE_CODE" name="producT_TYPE_CODE" [(ngModel)]="inputModel!.producT_TYPE_CODE" type="text" class="form-control form-control" placeholder="Mã loại">
+                                            <label for="invoicE_CODE">Mã hoá đơn</label>
+                                            <input disabled="{{disabledInput}}" id="invoicE_CODE" name="invoicE_CODE" [(ngModel)]="inputModel!.invoicE_CODE" 
+                                            type="text" class="form-control form-control" placeholder="Mã hoá đơn">
                                         </div>
                                         <div class="form-group">
-                                            <label for="creatE_ID">Người tạo</label>
-                                            <input disabled="{{disabledInput}}" id="creatE_ID" name="creatE_ID" [(ngModel)]="inputModel!.creatE_ID" type="text" class="form-control form-control" placeholder="Người tạo">
+                                            <label for="receiveR_ADDRESS">Địa chỉ nhận</label>
+                                            <input disabled="{{disabledInput}}" id="receiveR_ADDRESS" name="receiveR_ADDRESS" [(ngModel)]="inputModel!.receiveR_ADDRESS" type="text" 
+                                            class="form-control form-control" placeholder="Địa chỉ nhận">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="creatE_DATE">Ngày tạo</label>
+                                            <input disabled="{{disabledInput}}" id="creatE_DATE" name="creatE_DATE" [(ngModel)]="inputModel!.creatE_DATE" 
+                                            type="datetime-local" class="form-control form-control" placeholder="Ngày tạo">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <label for="producT_TYPE_NAME">Tên loại</label>
-                                            <input disabled="{{disabledInput}}" id="producT_TYPE_NAME" name="producT_TYPE_NAME" [(ngModel)]="inputModel!.producT_TYPE_NAME" type="text" class="form-control form-control" placeholder="Tên loại">
+                                            <label for="useR_ID">Người mua</label>
+                                            <input disabled="{{disabledInput}}" id="useR_ID" name="useR_ID" [(ngModel)]="inputModel!.useR_ID" type="text" 
+                                            class="form-control form-control" placeholder="Người mua">
                                         </div>
                                         <div class="form-group">
-                                            <label for="creatE_DATE">Ngày tạo</label>
+                                            <label for="receiveR_PHONE">Số điện thoại người nhận</label>
+                                            <input disabled="{{disabledInput}}" id="receiveR_PHONE" name="receiveR_PHONE" 
+                                            [(ngModel)]="inputModel!.receiveR_PHONE" type="text" class="form-control form-control" placeholder="Số điện thoại người nhận">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="creatE_DATE">Ngày bắt đầu giao</label>
+                                            <input disabled="{{disabledInput}}" id="creatE_DATE" name="creatE_DATE" 
+                                            [(ngModel)]="inputModel!.creatE_DATE" type="datetime-local" class="form-control form-control" placeholder="Ngày bắt đầu giao">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="form-group">
+                                            <label for="receiver">Người nhận</label>
+                                            <input disabled="{{disabledInput}}" id="receiver" name="receiver" [(ngModel)]="inputModel!.receiver" 
+                                            type="text" class="form-control form-control" placeholder="Người nhận">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="total">Tổng tiền</label>
+                                            <input disabled="{{disabledInput}}" id="total" name="total" 
+                                            [(ngModel)]="inputModel!.total" type="text" 
+                                            class="form-control form-control" placeholder="Tổng tiền">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="creatE_DATE">Ngày nhận</label>
                                             <input disabled="{{disabledInput}}" id="creatE_DATE" name="creatE_DATE" [(ngModel)]="inputModel!.creatE_DATE" type="datetime-local" class="form-control form-control" placeholder="Ngày tạo">
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        
                             <div class="card-action">
-                                <button *ngIf="disabledInput" class="btn btn-success" style="margin-right: 10px;" disabled>Lưu</button>
-                                <button *ngIf="!disabledInput" class="btn btn-success" style="margin-right: 10px;">Lưu</button>
-                                <button routerLink="/app/product-type" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-danger">Trở về</button>
+                                <strong style="font-size: 20px;">Danh sách sản phẩm</strong>
+                                <div class="table-responsive">
+                                    <table id="add-row" class="display table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Sản phẩm</th>
+                                                <th>Số lượng</th>
+                                                <th>Giá bán</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of listInvoiceDt">
+                                                <td>{{item.producT_ID}}</td>
+                                                <td>{{item.quantity}}</td>
+                                                <td>{{item.price}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

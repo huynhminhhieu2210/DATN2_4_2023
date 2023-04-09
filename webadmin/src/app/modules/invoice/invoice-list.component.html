@@ -2,7 +2,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Danh sách loại sản phẩm</h4>
+                <h4 class="page-title">Danh sách hoá đơn</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -19,7 +19,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Loại sản phẩm</a>
+                        <a href="#">Hoá đơn</a>
                     </li>
                 </ul>
             </div>
@@ -29,10 +29,10 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <!-- <h4 class="card-title">Add Row</h4> -->
-                                <button class="btn btn-primary" routerLink="/app/product-type-add" routerLinkActive="active" ariaCurrentWhenActive="page">
+                                <!-- <button class="btn btn-primary" routerLink="/app/invoice-add" routerLinkActive="active" ariaCurrentWhenActive="page">
                                     <i class="fa fa-plus"></i>
                                     Thêm mới
-                                </button>
+                                </button> -->
                                 <button style="margin-left: 10px;" class="btn btn-primary" (click)="search()">
                                     <i class="fa fa-search"></i>
                                     Tìm kiếm
@@ -64,28 +64,36 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Mã loại</th>
-                                            <th>Tên loại</th>
+                                            <th>Mã hoá đơn</th>
+                                            <th>Người mua</th>
+                                            <th>Người nhận</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Số tiền đã trả</th>
+                                            <th>Trạng thái</th>
                                             <th>Ngày tạo</th>
                                             <th>Người tạo</th>
                                             <th style="width: 10%">Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let item of listProductType">
-                                            <td>{{item.producT_TYPE_CODE}}</td>
-                                            <td>{{item.producT_TYPE_NAME}}</td>
+                                        <tr *ngFor="let item of listInvoice">
+                                            <td>{{item.invoicE_CODE}}</td>
+                                            <td>{{item.useR_ID}}</td>
+                                            <td>{{item.receiver}}</td>
+                                            <td>{{item.total}}</td>
+                                            <td>{{item.moneY_PAYED}}</td>
+                                            <td>{{item.status}}</td>
                                             <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
                                             <td>{{item.creatE_ID}}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <button (click)="onEdit(item.producT_TYPE_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Chỉnh sửa">
+                                                    <!-- <button (click)="onEdit(item.invoicE_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Chỉnh sửa">
                                                         <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <!-- <button (click)="onView(item.producT_TYPE_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xem chi tiết">
-                                                        <i class="fa fa-info"></i>
                                                     </button> -->
-                                                    <button (click)="onConfirm(item.producT_TYPE_NAME!,item.producT_TYPE_CODE!,item.producT_TYPE_ID!)" data-toggle="modal" data-target="#addRowModal" type="button" title="" class="btn btn-link btn-danger" data-original-title="Xoá">
+                                                    <button (click)="onView(item.invoicE_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Xem chi tiết">
+                                                        <i class="fa fa-info"></i>
+                                                    </button>
+                                                    <button (click)="onConfirm(item.invoicE_CODE!,item.invoicE_ID!)" data-toggle="modal" data-target="#addRowModal" type="button" title="" class="btn btn-link btn-danger" data-original-title="Xoá">
                                                         <i class="fa fa-times"></i>
                                                     </button>
                                                 </div>

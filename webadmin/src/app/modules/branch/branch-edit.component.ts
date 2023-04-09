@@ -1,5 +1,5 @@
 
-import { Component, Injectable, Injector, OnInit } from '@angular/core';
+import { Component, ElementRef, Injectable, Injector, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BRANCH } from 'src/app/core/models/BRANCH';
 import { AreaService } from 'src/app/core/services/area.service';
@@ -20,6 +20,9 @@ export class BranchEditComponent extends ComponentBase implements OnInit{
   editPageState?: EditPageState;
   title?:string; 
   titleinfo?: string;
+  isShowError = false;
+
+  @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
   }
@@ -70,6 +73,11 @@ export class BranchEditComponent extends ComponentBase implements OnInit{
     //     })
   }
   onSave(){
+    if ((this.editForm as any).form.invalid) {
+      this.isShowError = true;
+      this.reloadView();
+      return;
+  }
     this.inputModel!.creatE_ID = localStorage.getItem('userid')?.toString();
     if(!this.inputModel?.brancH_ID){
       this.branchService.Branch_insert(this.inputModel!).subscribe((response: any)=>{

@@ -29,7 +29,7 @@
                     </li>
                 </ul>
             </div>
-            <form #loginForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
+            <form #editForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -45,44 +45,68 @@
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="useR_CODE">Mã nhân viên</label>
-                                            <input disabled="{{disabledInput}}" id="useR_CODE" name="useR_CODE" [(ngModel)]="inputModel!.useR_CODE" type="text" class="form-control form-control" placeholder="Mã nhân viên">
+                                            <input required #useR_CODE="ngModel" disabled="{{disabledInput}}" id="useR_CODE" name="useR_CODE" [(ngModel)]="inputModel!.useR_CODE" type="text" class="form-control form-control" placeholder="Mã nhân viên">
+                                            <div class="error-message" *ngIf="useR_CODE.invalid && isShowError">
+                                                <span>Mã nhân viên không được để trống</span>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="brancH_ID">Chi nhánh</label>
-                                            <select class="form-control" [(ngModel)]="inputModel!.brancH_ID" id="brancH_ID" name="brancH_ID">
+                                            <select required #brancH_ID="ngModel" class="form-control" [(ngModel)]="inputModel!.brancH_ID" id="brancH_ID" name="brancH_ID">
                                                 <option *ngFor="let item of listBranch" value="{{item.brancH_ID}}">{{item.brancH_NAME}}</option>
                                             </select>
+                                            <div class="error-message" *ngIf="brancH_ID.invalid && isShowError">
+                                                <span>Chi nhánh không được để trống</span>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="phone">Số điện thoại</label>
-                                            <input disabled="{{disabledInput}}" id="phone" name="phone" [(ngModel)]="inputModel!.phone" type="text" class="form-control form-control" placeholder="Số điện thoại">
+                                            <input required #phone="ngModel" disabled="{{disabledInput}}" id="phone" name="phone" [(ngModel)]="inputModel!.phone" type="text" class="form-control form-control" placeholder="Số điện thoại">
+                                            <div class="error-message" *ngIf="phone.invalid && isShowError">
+                                                <span>Số điện thoại không được để trống</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="useR_NAME">Tên đăng nhập</label>
-                                            <input disabled="{{disabledInput}}" id="useR_NAME" name="useR_NAME" [(ngModel)]="inputModel!.useR_NAME" type="text" class="form-control form-control" placeholder="Tên đăng nhập">
+                                            <input required #useR_NAME="ngModel" disabled="{{disabledInput}}" id="useR_NAME" name="useR_NAME" [(ngModel)]="inputModel!.useR_NAME" type="text" class="form-control form-control" placeholder="Tên đăng nhập">
+                                            <div class="error-message" *ngIf="useR_NAME.invalid && isShowError">
+                                                <span>Tên đăng nhập không được để trống</span>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="rolE_USER_ID">Quyền</label>
-                                            <select class="form-control" [(ngModel)]="inputModel!.rolE_USER_ID" id="rolE_USER_ID" name="rolE_USER_ID">
+                                            <select required #rolE_USER_ID="ngModel" class="form-control" [(ngModel)]="inputModel!.rolE_USER_ID" id="rolE_USER_ID" name="rolE_USER_ID">
                                                 <option *ngFor="let item of listRole" value="{{item.rolE_USER_ID}}">{{item.rolE_USER_NAME}}</option>
                                             </select>
+                                            <div class="error-message" *ngIf="rolE_USER_ID.invalid && isShowError">
+                                                <span>Quyền không được để trống</span>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="address">Địa chỉ</label>
-                                            <textarea disabled="{{disabledInput}}" id="address" name="address" [(ngModel)]="inputModel!.address" type="date" class="form-control form-control" placeholder="Địa chỉ">
+                                            <textarea required #address="ngModel" disabled="{{disabledInput}}" id="address" name="address" [(ngModel)]="inputModel!.address" type="date" class="form-control form-control" placeholder="Địa chỉ">
                                                 </textarea>
+                                            <div class="error-message" *ngIf="address.invalid && isShowError">
+                                                <span>Địa chỉ không được để trống</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="useR_FULLNAME">Họ tên nhân viên</label>
-                                            <input disabled="{{disabledInput}}" id="useR_FULLNAME" name="useR_FULLNAME" [(ngModel)]="inputModel!.useR_FULLNAME" type="text" class="form-control form-control" placeholder="Tên nhân viên">
+                                            <input required #useR_FULLNAME="ngModel" disabled="{{disabledInput}}" id="useR_FULLNAME" name="useR_FULLNAME" [(ngModel)]="inputModel!.useR_FULLNAME" type="text" class="form-control form-control" placeholder="Tên nhân viên">
+                                            <div class="error-message" *ngIf="useR_FULLNAME.invalid && isShowError">
+                                                <span>Họ tên nhân viên không được để trống</span>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input disabled="{{disabledInput}}" id="email" name="email" [(ngModel)]="inputModel!.email" type="email" class="form-control form-control" placeholder="Email">
+                                            <input required #email="ngModel" disabled="{{disabledInput}}" id="email" name="email" [(ngModel)]="inputModel!.email" type="email" class="form-control form-control" placeholder="Email">
+                                            <div class="error-message" *ngIf="email.invalid && isShowError">
+                                                <span>Email không được để trống</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

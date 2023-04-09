@@ -11,7 +11,7 @@ namespace asp.Models
         [Key]
         public string INVOICE_ID { get; set; }
         public string INVOICE_CODE { get; set; }
-        public string CUSTOMER_ID { get; set; }
+        public string USER_ID { get; set; }
         public string RECEIVER { get; set; }
         public string RECEIVER_ADDRESS { get; set; }
         public string RECEIVER_PHONE { get; set; }

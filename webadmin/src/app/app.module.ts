@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { AreaListComponent } from './modules/area/area-list.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { DocImpProductComponent } from './modules/doc-imp-product/doc-imp-product.component';
-import { ProductsComponent } from './modules/products/products.component';
 import { RoleUserComponent } from './modules/role-user/role-user.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SideBarComponent } from './shared/header/sidebar.component';
@@ -33,6 +32,8 @@ import { WarehouseEditComponent } from './modules/warehouse/warehouse-edit.compo
 import { WarehouseListComponent } from './modules/warehouse/warehouse-list.component';
 import { InvoiceListComponent } from './modules/invoice/invoice-list.component';
 import { InvoiceEditComponent } from './modules/invoice/invoice-edit.component';
+import { ProductEditComponent } from './modules/products/product-edit.component';
+import { ProductListComponent } from './modules/products/product-list.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -42,7 +43,6 @@ export function tokenGetter(){
   declarations: [
     AppComponent,
     DashboardComponent,
-    ProductsComponent,
     ProductTypeListComponent,
     ProductTypeEditComponent,
     SupplierEditComponent,
@@ -66,6 +66,8 @@ export function tokenGetter(){
     NavBarComponent,
     FooterComponent,
     DateFormatPipe,
+    ProductEditComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

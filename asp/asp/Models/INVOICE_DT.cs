@@ -12,7 +12,7 @@ namespace asp.Models
         public string INVOICE_DT_ID { get; set; }
         public string INVOICE_ID { get; set; }
         public string PRODUCT_ID { get; set; }
-        public decimal QUANTITY { get; set; }
+        public int QUANTITY { get; set; }
         public decimal PRICE { get; set; }
     }
 }
