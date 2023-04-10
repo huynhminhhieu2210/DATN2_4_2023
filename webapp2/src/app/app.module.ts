@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { NavBarComponent } from './shared/header/navbar.component';
+import { SideBarComponent } from './shared/header/sidebar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
@@ -12,9 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './core/guards/auth-guards.service';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
-import { HomeComponent } from './modules/dashboard/home.component';
-import { CarouselCategoriesComponent } from './shared/header/carousel-categories.component';
-import { IndexComponent } from './shared/header/index.component';
+import { HomeComponent } from './modules/home/home.component';
+import { CategoriesComponent } from './shared/header/categories.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -24,12 +23,11 @@ export function tokenGetter(){
   declarations: [
     AppComponent,
     HeaderComponent,
-    CarouselCategoriesComponent,
-    NavBarComponent,
+    SideBarComponent,
+    CategoriesComponent,
     FooterComponent,
     DateFormatPipe,
-    HomeComponent,
-    IndexComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,

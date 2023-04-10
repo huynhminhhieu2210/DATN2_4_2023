@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditPageState } from './shared/enum/edit-page-state';
 import { AuthGuard } from './core/guards/auth-guards.service';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './modules/dashboard/home.component';
-
+import { HomeComponent } from './modules/home/home.component';
 @NgModule({
   imports: [
     RouterModule.forChild([
