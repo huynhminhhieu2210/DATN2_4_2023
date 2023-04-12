@@ -29,7 +29,7 @@
                     </li>
                 </ul>
             </div>
-            <form #loginForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
+            <form #editForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -43,9 +43,16 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6 col-lg-4">
-                                        <div class="form-group">
+                                        <div class="form-group required">
                                             <label for="areA_CODE">Mã khu vực</label>
-                                            <input disabled="{{disabledInput}}" id="areA_CODE" name="areA_CODE" [(ngModel)]="inputModel!.areA_CODE" type="text" class="form-control form-control" placeholder="Mã khu vực">
+                                            <input required disabled="{{disabledInput}}" id="areA_CODE" 
+                                            #areA_CODE="ngModel"
+                                            name="areA_CODE" [(ngModel)]="inputModel!.areA_CODE" type="text" 
+                                            class="form-control form-control" placeholder="Mã khu vực">
+                                        </div>
+                                        <div class="error-message" *ngIf="areA_CODE.invalid && isShowError">
+                                            <span *ngIf="areA_CODE?.errors.required">DocCount
+                                                ValidationRequired</span>
                                         </div>
                                         <div class="form-group">
                                             <label for="creatE_ID">Người tạo</label>

@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit, Injector } from '@angular/core';
+import { Component, Injectable, OnInit, Injector, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AREA } from 'src/app/core/models/AREA';
 import { AreaService } from 'src/app/core/services/area.service';
@@ -18,6 +18,8 @@ export class AreaEditComponent extends ComponentBase implements OnInit{
   editPageState?: EditPageState;
   title?:string; 
   titleinfo?: string;
+
+  @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
   }
@@ -68,6 +70,10 @@ export class AreaEditComponent extends ComponentBase implements OnInit{
     //     })
   }
   onSave(){
+    if ((this.editForm as any).form.invalid) {
+      console.log('whereeeeee')
+      return;
+  }
     if(!this.inputModel?.areA_ID){
       this.areaService.Area_insert(this.inputModel!).subscribe((response: any)=>{
         console.log(response);
