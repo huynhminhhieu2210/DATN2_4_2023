@@ -1,5 +1,5 @@
 
-import { Component, Injectable, Injector, OnInit } from '@angular/core';
+import { Component, ElementRef, Injectable, Injector, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BRANCH } from 'src/app/core/models/BRANCH';
 import { WAREHOUSE } from 'src/app/core/models/WAREHOUSE';
@@ -24,6 +24,9 @@ export class WarehouseEditComponent extends ComponentBase implements OnInit{
   title?:string; 
   titleinfo?: string;
   listBranch?: BRANCH[];
+  isShowError = false;
+
+  @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
   }
@@ -83,6 +86,11 @@ export class WarehouseEditComponent extends ComponentBase implements OnInit{
     //     })
   }
   onSave(){
+    if ((this.editForm as any).form.invalid) {
+      this.isShowError = true;
+      this.reloadView();
+      return;
+  }
     this.inputModel!.creatE_ID = localStorage.getItem('userid')?.toString();
     if(!this.inputModel?.warehousE_ID){
       this.warehouseService.Warehouse_insert(this.inputModel!).subscribe((response: any)=>{

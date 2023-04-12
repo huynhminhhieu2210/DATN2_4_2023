@@ -20,9 +20,12 @@ export class AreaEditComponent extends ComponentBase implements OnInit{
   titleinfo?: string;
 
   @ViewChild('editForm') editForm?: ElementRef;
+  isShowError = false;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
   }
+
+  @ViewChild('editForm') editForm?: ElementRef;
   ngOnInit(): void {
     switch (this.editPageState) {
       case EditPageState.add:
@@ -71,7 +74,8 @@ export class AreaEditComponent extends ComponentBase implements OnInit{
   }
   onSave(){
     if ((this.editForm as any).form.invalid) {
-      console.log('whereeeeee')
+      this.isShowError = true;
+      this.reloadView();
       return;
   }
     if(!this.inputModel?.areA_ID){

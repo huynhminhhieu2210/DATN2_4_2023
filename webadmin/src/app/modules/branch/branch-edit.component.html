@@ -29,7 +29,7 @@
                     </li>
                 </ul>
             </div>
-            <form #loginForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
+            <form #editForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -45,22 +45,28 @@
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="brancH_CODE">Mã chi nhánh</label>
-                                            <input disabled="{{disabledInput}}" id="brancH_CODE" name="brancH_CODE" [(ngModel)]="inputModel!.brancH_CODE" type="text" class="form-control form-control" placeholder="Mã Chi nhánh">
+                                            <input required #brancH_CODE="ngModel" disabled="{{disabledInput}}" id="brancH_CODE" name="brancH_CODE" [(ngModel)]="inputModel!.brancH_CODE" type="text" class="form-control form-control" placeholder="Mã Chi nhánh">
+                                            <div class="error-message" *ngIf="brancH_CODE.invalid && isShowError">
+                                                <span>Tên chi nhánh không được để trống</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="creatE_ID">Người tạo</label>
                                             <input disabled="{{disabledInput}}" id="creatE_ID" name="creatE_ID" [(ngModel)]="inputModel!.creatE_ID" type="text" class="form-control form-control" placeholder="Người tạo">
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="brancH_NAME">Tên chi nhánh</label>
-                                            <input disabled="{{disabledInput}}" id="brancH_NAME" name="brancH_NAME" [(ngModel)]="inputModel!.brancH_NAME" type="text" class="form-control form-control" placeholder="Tên Chi nhánh">
+                                            <input required #brancH_NAME="ngModel" disabled="{{disabledInput}}" id="brancH_NAME" name="brancH_NAME" [(ngModel)]="inputModel!.brancH_NAME" type="text" class="form-control form-control" placeholder="Tên Chi nhánh">
+                                            <div class="error-message" *ngIf="brancH_NAME.invalid && isShowError">
+                                                <span>Tên chi nhánh không được để trống</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="creatE_DATE">Ngày tạo</label>
                                             <input disabled="{{disabledInput}}" id="creatE_DATE" name="creatE_DATE" [(ngModel)]="inputModel!.creatE_DATE" type="date" class="form-control form-control" placeholder="Ngày tạo">
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>

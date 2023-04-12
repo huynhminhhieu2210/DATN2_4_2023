@@ -67,6 +67,8 @@ namespace asp
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IWarehousesService, WarehousesService>();
             services.AddTransient<IRoleUsersService, RoleUsersService>();
+            services.AddTransient<IInvoicesService, InvoicesService>();
+            services.AddTransient<IInvoiceDetailsService, InvoiceDetailsService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

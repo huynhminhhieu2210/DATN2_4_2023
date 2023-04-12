@@ -43,7 +43,7 @@
                             "src/assets/js/jquery.slicknav.js",
                             "src/assets/js/mixitup.min.js",
                             "src/assets/js/owl.carousel.min.js",
-                            "src/assets/js/main_webapp.js"
+                            "src/assets/js/main.js"
                         ]
                     },
                     "configurations": {

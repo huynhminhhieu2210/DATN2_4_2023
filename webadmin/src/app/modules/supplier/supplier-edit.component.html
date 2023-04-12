@@ -2,7 +2,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Danh mục</h4>
+                <h4 class="page-title">{{title}}</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -29,7 +29,7 @@
                     </li>
                 </ul>
             </div>
-            <form #loginForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
+            <form #editForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -38,37 +38,49 @@
                                 color: white;
                                 border-radius: 4px;
                                 padding: 5px;">{{titleinfo}}</p>
-                                <div class="card-title">{{title}}</div>
+                                <!-- <div class="card-title">{{title}}</div> -->
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="supplieR_CODE">Mã nhà cung cấp</label>
-                                            <input disabled="{{disabledInput}}" id="supplieR_CODE" name="supplieR_CODE" [(ngModel)]="inputModel!.supplieR_CODE" type="text" class="form-control form-control" placeholder="Mã Chi nhánh">
+                                            <input required #supplieR_CODE="ngModel" disabled="{{disabledInput}}" id="supplieR_CODE" name="supplieR_CODE" [(ngModel)]="inputModel!.supplieR_CODE" type="text" class="form-control form-control" placeholder="Mã Chi nhánh">
+                                            <div class="error-message" *ngIf="supplieR_CODE.invalid && isShowError">
+                                                <span>Mã nhà cung cấp không được để trống</span>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="supplieR_PHONE">Số điện thoại</label>
-                                            <input disabled="{{disabledInput}}" id="supplieR_PHONE" name="supplieR_PHONE" [(ngModel)]="inputModel!.supplieR_PHONE" type="text" class="form-control form-control" placeholder="Người tạo">
+                                            <input required #supplieR_PHONE="ngModel" disabled="{{disabledInput}}" id="supplieR_PHONE" name="supplieR_PHONE" [(ngModel)]="inputModel!.supplieR_PHONE" type="text" class="form-control form-control" placeholder="Người tạo">
+                                            <div class="error-message" *ngIf="supplieR_PHONE.invalid && isShowError">
+                                                <span>Số điện thoại không được để trống</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="creatE_ID">Người tạo</label>
                                             <input disabled="{{disabledInput}}" id="creatE_ID" name="creatE_ID" [(ngModel)]="inputModel!.creatE_ID" type="text" class="form-control form-control" placeholder="Người tạo">
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="supplieR_NAME">Tên nhà cung cấp</label>
-                                            <input disabled="{{disabledInput}}" id="supplieR_NAME" name="supplieR_NAME" [(ngModel)]="inputModel!.supplieR_NAME" type="text" class="form-control form-control" placeholder="Tên Chi nhánh">
+                                            <input required #supplieR_NAME="ngModel" disabled="{{disabledInput}}" id="supplieR_NAME" name="supplieR_NAME" [(ngModel)]="inputModel!.supplieR_NAME" type="text" class="form-control form-control" placeholder="Tên Chi nhánh">
+                                            <div class="error-message" *ngIf="supplieR_NAME.invalid && isShowError">
+                                                <span>Tên nhà cung cấp không được để trống</span>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="supplieR_ADDRESS">Địa chỉ</label>
-                                            <input disabled="{{disabledInput}}" id="supplieR_ADDRESS" name="supplieR_ADDRESS" [(ngModel)]="inputModel!.supplieR_ADDRESS" type="text" class="form-control form-control" placeholder="Người tạo">
+                                            <input required #supplieR_ADDRESS="ngModel" disabled="{{disabledInput}}" id="supplieR_ADDRESS" name="supplieR_ADDRESS" [(ngModel)]="inputModel!.supplieR_ADDRESS" type="text" class="form-control form-control" placeholder="Người tạo">
+                                            <div class="error-message" *ngIf="supplieR_ADDRESS.invalid && isShowError">
+                                                <span>Địa chỉ không được để trống</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="creatE_DATE">Ngày tạo</label>
                                             <input disabled="{{disabledInput}}" id="creatE_DATE" name="creatE_DATE" [(ngModel)]="inputModel!.creatE_DATE" type="date" class="form-control form-control" placeholder="Ngày tạo">
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>

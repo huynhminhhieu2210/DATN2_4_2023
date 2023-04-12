@@ -68,7 +68,7 @@ namespace asp.Models.common
         {
             string result = $@"@INVOICE_ID       = N'{input.INVOICE_ID}',
                                @INVOICE_CODE     = N'{input.INVOICE_CODE}',
-                               @CUSTOMER_ID      = N'{input.CUSTOMER_ID}',
+                               @USER_ID          = N'{input.USER_ID}',
                                @RECEIVER         = N'{input.RECEIVER}',
                                @RECEIVER_ADDRESS = N'{input.RECEIVER_ADDRESS}',
                                @RECEIVER_PHONE   = N'{input.RECEIVER_PHONE}',

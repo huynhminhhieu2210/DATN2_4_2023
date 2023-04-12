@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AreaListComponent } from './modules/area/area-list.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { DocImpProductComponent } from './modules/doc-imp-product/doc-imp-product.component';
-import { ProductsComponent } from './modules/products/products.component';
 import { RoleUserComponent } from './modules/role-user/role-user.component';
 import { AreaEditComponent } from './modules/area/area-edit.component';
 import { EditPageState } from './shared/enum/edit-page-state';
@@ -23,6 +22,8 @@ import { WarehouseListComponent } from './modules/warehouse/warehouse-list.compo
 import { WarehouseEditComponent } from './modules/warehouse/warehouse-edit.component';
 import { InvoiceListComponent } from './modules/invoice/invoice-list.component';
 import { InvoiceEditComponent } from './modules/invoice/invoice-edit.component';
+import { ProductListComponent } from './modules/products/product-list.component';
+import { ProductEditComponent } from './modules/products/product-edit.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,6 @@ import { InvoiceEditComponent } from './modules/invoice/invoice-edit.component';
             { path: 'branch-view', component: BranchEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
 
             { path: 'doc-imp-product', component: DocImpProductComponent,canActivate: [AuthGuard]},
-            { path: 'products', component: ProductsComponent,canActivate: [AuthGuard]},
             { path: 'role-user', component: RoleUserComponent,canActivate: [AuthGuard]},
           
             { path: 'customer', component: CustomerListComponent,canActivate: [AuthGuard]},
@@ -79,6 +79,11 @@ import { InvoiceEditComponent } from './modules/invoice/invoice-edit.component';
             { path: 'invoice-add', component: InvoiceEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
             { path: 'invoice-edit', component: InvoiceEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
             { path: 'invoice-view', component: InvoiceEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
+
+            { path: 'products', component: ProductListComponent,canActivate: [AuthGuard]},
+            { path: 'products-add', component: ProductEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
+            { path: 'products-edit', component: ProductEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
+            { path: 'products-view', component: ProductEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
 
           ]}
           ]

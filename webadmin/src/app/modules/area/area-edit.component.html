@@ -45,6 +45,7 @@
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group required">
                                             <label for="areA_CODE">Mã khu vực</label>
+<<<<<<< HEAD
                                             <input required disabled="{{disabledInput}}" id="areA_CODE" 
                                             #areA_CODE="ngModel"
                                             name="areA_CODE" [(ngModel)]="inputModel!.areA_CODE" type="text" 
@@ -53,21 +54,30 @@
                                         <div class="error-message" *ngIf="areA_CODE.invalid && isShowError">
                                             <span *ngIf="areA_CODE?.errors.required">DocCount
                                                 ValidationRequired</span>
+=======
+                                            <input required #areA_CODE="ngModel" disabled="{{disabledInput}}" id="areA_CODE" name="areA_CODE" [(ngModel)]="inputModel!.areA_CODE" type="text" class="form-control form-control" placeholder="Mã khu vực">
+                                            <div class="error-message" *ngIf="areA_CODE.invalid && isShowError">
+                                                <span>Mã khu vực không được để trống</span>
+                                            </div>
+>>>>>>> 243e2f5b5906cbb56aef8faccc36fab2d55c49f0
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="creatE_ID">Người tạo</label>
                                             <input disabled="{{disabledInput}}" id="creatE_ID" name="creatE_ID" [(ngModel)]="inputModel!.creatE_ID" type="text" class="form-control form-control" placeholder="Người tạo">
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="areA_NAME">Tên khu vực</label>
-                                            <input disabled="{{disabledInput}}" id="areA_NAME" name="areA_NAME" [(ngModel)]="inputModel!.areA_NAME" type="text" class="form-control form-control" placeholder="Tên khu vực">
+                                            <input required #areA_NAME="ngModel" disabled="{{disabledInput}}" id="areA_NAME" name="areA_NAME" [(ngModel)]="inputModel!.areA_NAME" type="text" class="form-control form-control" placeholder="Tên khu vực">
+                                            <div class="error-message" *ngIf="areA_NAME.invalid && isShowError">
+                                                <span>Tên khu vực không được để trống</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="crearE_DATE">Ngày tạo</label>
                                             <input disabled="{{disabledInput}}" id="crearE_DATE" name="crearE_DATE" [(ngModel)]="inputModel!.creatE_DATE" type="date" class="form-control form-control" placeholder="Ngày tạo">
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
