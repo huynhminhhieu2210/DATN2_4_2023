@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace asp.IService
 {
-    public interface IAreasService : IApplicationService
+    public interface IRoleUsersService : IApplicationService
     {
-        Task<IEnumerable<AREA>> AREA_SEARCH(AREA input);
-        Task<IEnumerable<InsertResult>> AREA_INSERT(AREA input);
-        Task<IEnumerable<UpdateResult>> AREA_UPDATE(AREA input);
-        Task<IEnumerable<DeleteResult>> AREA_DELETE(string id);
-        Task<IEnumerable<AREA>> AREA_BYID(string id);
+        Task<IEnumerable<ROLE_USER>> ROLE_USER_SEARCH(ROLE_USER input);
+        Task<IEnumerable<InsertResult>> ROLE_USER_INSERT(ROLE_USER input);
+        Task<IEnumerable<UpdateResult>> ROLE_USER_UPDATE(ROLE_USER input);
+        Task<IEnumerable<DeleteResult>> ROLE_USER_DELETE(string id);
+        Task<IEnumerable<ROLE_USER>> ROLE_USER_BYID(string id);
     }
 }

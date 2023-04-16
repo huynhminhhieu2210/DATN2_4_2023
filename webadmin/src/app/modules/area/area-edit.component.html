@@ -45,21 +45,14 @@
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group required">
                                             <label for="areA_CODE">Mã khu vực</label>
-<<<<<<< HEAD
                                             <input required disabled="{{disabledInput}}" id="areA_CODE" 
                                             #areA_CODE="ngModel"
                                             name="areA_CODE" [(ngModel)]="inputModel!.areA_CODE" type="text" 
                                             class="form-control form-control" placeholder="Mã khu vực">
                                         </div>
                                         <div class="error-message" *ngIf="areA_CODE.invalid && isShowError">
-                                            <span *ngIf="areA_CODE?.errors.required">DocCount
+                                            <span>DocCount
                                                 ValidationRequired</span>
-=======
-                                            <input required #areA_CODE="ngModel" disabled="{{disabledInput}}" id="areA_CODE" name="areA_CODE" [(ngModel)]="inputModel!.areA_CODE" type="text" class="form-control form-control" placeholder="Mã khu vực">
-                                            <div class="error-message" *ngIf="areA_CODE.invalid && isShowError">
-                                                <span>Mã khu vực không được để trống</span>
-                                            </div>
->>>>>>> 243e2f5b5906cbb56aef8faccc36fab2d55c49f0
                                         </div>
                                         <!-- <div class="form-group">
                                             <label for="creatE_ID">Người tạo</label>

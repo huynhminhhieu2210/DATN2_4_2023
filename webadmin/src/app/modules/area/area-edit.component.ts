@@ -24,8 +24,6 @@ export class AreaEditComponent extends ComponentBase implements OnInit{
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
   }
-
-  @ViewChild('editForm') editForm?: ElementRef;
   ngOnInit(): void {
     switch (this.editPageState) {
       case EditPageState.add:

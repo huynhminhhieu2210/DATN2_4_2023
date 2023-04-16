@@ -11,9 +11,7 @@ import { InvoiceDtailsService } from 'src/app/core/services/invoice-dt.service';
 @Component({
   templateUrl: './invoice-edit.component.html',
 })
-@Injectable({
-  providedIn: 'root'
-})
+
 export class InvoiceEditComponent extends ComponentBase implements OnInit{
   invalidLogin: boolean | undefined;
   inputModel?: INVOICE = new INVOICE();
