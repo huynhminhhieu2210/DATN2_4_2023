@@ -1381,3 +1381,4 @@ H:\DATN2_4_2023\asp\asp\obj\Debug\net5.0\asp.dll
 H:\DATN2_4_2023\asp\asp\obj\Debug\net5.0\ref\asp.dll
 H:\DATN2_4_2023\asp\asp\obj\Debug\net5.0\asp.pdb
 H:\DATN2_4_2023\asp\asp\obj\Debug\net5.0\asp.genruntimeconfig.cache
+C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\BCrypt.Net-Next.dll

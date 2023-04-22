@@ -5,4 +5,5 @@ export class INVOICE_DT {
   producT_ID: string | undefined;
   quantity: number | undefined;
   price: number | undefined;
+  producT_NAME: string | undefined;
 }

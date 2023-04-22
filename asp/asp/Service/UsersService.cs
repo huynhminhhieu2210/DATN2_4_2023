@@ -3,12 +3,15 @@ using asp.IService;
 using asp.Models;
 using asp.Models.common;
 using Dapper;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace asp.Service
@@ -17,6 +20,7 @@ namespace asp.Service
     {
         private readonly aspContext _context;
         static readonly SetSqlParameter _setSqlParameter = new SetSqlParameter();
+        private readonly RandomNumberGenerator _rng;
         public UsersService(aspContext context)
         {
             _context = context;
@@ -28,6 +32,7 @@ namespace asp.Service
         }
         public async Task<IEnumerable<InsertResult>> USER_INSERT(USER input)
         {
+            input.PASSWORD = BCrypt.Net.BCrypt.HashPassword(input.PASSWORD);
             var store = "EXEC USER_INSERT " + _setSqlParameter.setParamUser(input);
             return await _context.InsertResult.FromSqlRaw(store).ToListAsync();;
         }
@@ -51,6 +56,5 @@ namespace asp.Service
             var store = "EXEC USER_GET_INFO_LOGIN " + _setSqlParameter.setParamLogin(user);
             return await _context.USER.FromSqlRaw(store).ToListAsync();
         }
-
     }
 }

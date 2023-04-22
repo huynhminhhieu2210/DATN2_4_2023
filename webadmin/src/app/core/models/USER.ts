@@ -13,4 +13,5 @@ export class USER {
   status: string | undefined;
   creatE_ID: string | undefined;
   creatE_DATE: moment.Moment | undefined;
+  password: string | undefined;
 }

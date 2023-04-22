@@ -20,7 +20,8 @@ namespace asp.Models.common
                               @ADDRESS          = N'{input.ADDRESS}',
                               @STATUS           = N'{input.STATUS}',
                               @CREATE_ID        = N'{input.CREATE_ID}',
-                              @CREATE_DATE      = N'{input.CREATE_DATE}'";
+                              @CREATE_DATE      = N'{input.CREATE_DATE}',
+                              @PASSWORD         = N'{input.PASSWORD}'";
             return result;
         }
         public string setParamArea(AREA input)

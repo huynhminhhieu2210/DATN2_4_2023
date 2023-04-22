@@ -14,5 +14,6 @@ namespace asp.Models
         public string PRODUCT_ID { get; set; }
         public int QUANTITY { get; set; }
         public decimal PRICE { get; set; }
+        public string PRODUCT_NAME { get; set; }
     }
 }

@@ -4,11 +4,11 @@ import { ProductService } from 'src/app/core/services/product.service';
 import { ComponentBase } from 'src/app/shared/components/component-base';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.css']
 })
-export class ProductsComponent extends ComponentBase implements OnInit {
+export class CartComponent extends ComponentBase implements OnInit {
   listProduct?: PRODUCT[];
   page: number = 1;
   count: number = 0;

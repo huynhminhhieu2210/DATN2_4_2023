@@ -112,15 +112,16 @@
                     <div *ngFor="let item of listProduct | paginate: {itemsPerPage: tableSize,currentPage: page,totalItems: count};let i = index"  class="col">
                         <div class="card">
                             <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
-                              <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid"/>
-                              <a href="#!">
+                              <img src="{{item.imG_URL}}" class="img-fluid"/>
+                              <a href="">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                               </a>
                             </div>
                             <div class="card-body">
-                              <h5 class="card-title">{{item.producT_NAME}}</h5>
-                              <p class="card-text">{{item.price}}</p>
-                              <a href="#!" class="btn btn-danger">Đặt hàng</a>
+                              <h6 style="height: 60px;" class="card-title">{{item.producT_NAME}}</h6>
+                              <div><del style="color: #888;line-height: 180%;font-size: 12px;">15.000.000đ</del></div>
+                              <div><span style="color: red;font-size: 15px;">{{formatCurrency(item.price)}}</span></div>
+                              <button (click)="onview(item.producT_ID)" class="btn btn-danger">Đặt hàng</button>
                             </div>
                           </div>
                     </div>
@@ -158,8 +159,9 @@
                               </a>
                             </div>
                             <div class="card-body">
-                              <h5 class="card-title">{{item.producT_NAME}}</h5>
-                              <p class="card-text">{{item.price}}</p>
+                              <h6 style="height: 60px;" class="card-title">{{item.producT_NAME}}</h6>
+                              <div><del style="color: #888;line-height: 180%;font-size: 12px;">15.000.000đ</del></div>
+                              <div><span style="color: red;font-size: 15px;">{{formatCurrency(item.price)}}</span></div>
                               <a href="#!" class="btn btn-danger">Đặt hàng</a>
                             </div>
                           </div>

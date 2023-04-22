@@ -1,0 +1,11 @@
+DUY
+- admin hoàn thiện chức năng thêm sản phẩm(ẢNH)
+- khachhang trang giỏ hàng
+- admin trang profile
+HIEU
+* Khách hàng
+- xây dựng layout trang sản phẩm, trang profile
+- Xây dựng login, logout, login mạng xã hội
+- hashpassword khi thêm user
+t6 21/4
+

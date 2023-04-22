@@ -27,12 +27,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './modules/login/login.component';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { SlideshowComponent } from './shared/slideshow/slideshow.component';
 import { ProductDetailComponent } from './modules/product-detail/product-detail.component';
 import { ProductsComponent } from './modules/products/products.component';
+import { CartComponent } from './modules/cart/cart.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -46,7 +47,8 @@ export function tokenGetter(){
     HeaderComponent,
     SlideshowComponent,
     ProductDetailComponent,
-    ProductsComponent
+    ProductsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +71,7 @@ export function tokenGetter(){
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    FormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

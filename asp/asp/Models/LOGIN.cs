@@ -11,5 +11,6 @@ namespace asp.Models
         [Key]
         public string USER_NAME { get; set; }
         public string PASSWORD { get; set; }
+        public string TYPE { get; set; }
     }
 }

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "5kOkIqq5eV3Xwwmj2Tnfe55hxscVqhYHM8i1VzIyMBruPEOnvUVRjPXRZmHLW86j94Ug6t4gsLNlmuhrQWZCHw==",
+  "dgSpecHash": "B85OgJUt5fZFHjtSW8jCVNn/lkwBzdurjt2uUfdNlM5PcxjV072/iXgVGIJ2CIwL91mT7Fot17bnOTK/mfIpbQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\huynh\\Desktop\\DATN2_4_2023\\asp\\asp\\asp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\huynh\\.nuget\\packages\\abp\\8.1.0\\abp.8.1.0.nupkg.sha512",
     "C:\\Users\\huynh\\.nuget\\packages\\abp.aspnetcore\\6.6.2\\abp.aspnetcore.6.6.2.nupkg.sha512",
     "C:\\Users\\huynh\\.nuget\\packages\\abp.web.common\\6.6.2\\abp.web.common.6.6.2.nupkg.sha512",
+    "C:\\Users\\huynh\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\huynh\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\huynh\\.nuget\\packages\\castle.core.asyncinterceptor\\2.1.0\\castle.core.asyncinterceptor.2.1.0.nupkg.sha512",
     "C:\\Users\\huynh\\.nuget\\packages\\castle.loggingfacility\\5.1.2\\castle.loggingfacility.5.1.2.nupkg.sha512",

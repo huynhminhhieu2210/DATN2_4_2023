@@ -15,9 +15,9 @@
                         <div id="lg1" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="#" method="post">
-                                        <input type="text" name="user-name" placeholder="Tên đăng nhập">
-                                        <input type="password" name="user-password" placeholder="Mật khẩu">
+                                    <form #loginForm="ngForm" class="form-signin" (ngSubmit)="login(loginForm)">
+                                        <input type="text" id="username" name="username" ngModel placeholder="Tên đăng nhập">
+                                        <input type="password" id="password" name="password" ngModel placeholder="Mật khẩu">
                                         <div class="button-box">
                                             <div class="login-toggle-btn">
                                                 <input type="checkbox">

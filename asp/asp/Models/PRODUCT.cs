@@ -21,5 +21,19 @@ namespace asp.Models
         public DateTime? CREATE_DATE { get; set; }
         public string IMG_URL { get; set; }
         public decimal PRICE { get; set; }
+        public string CPU { get; set; }
+        public string RAM { get; set; }
+        public string DISK { get; set; }
+        public string VGA { get; set; }
+        public string MONITOR { get; set; }
+        public string PORT { get; set; }
+        public string OS { get; set; }
+        public string WEIGHT { get; set; }
+        public string SIZE { get; set; }
+        public string COLOR { get; set; }
+        public string BATTERY { get; set; }
+        public string LED_KEYBOARD { get; set; }
+        public string BLUETOOTH { get; set; }
+        public string WEBCAM { get; set; }
     }
 }

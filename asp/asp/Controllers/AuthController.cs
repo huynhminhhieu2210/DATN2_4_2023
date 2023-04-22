@@ -29,8 +29,12 @@ namespace asp.Controllers
             {
                 return BadRequest("Invalid client request");
             }
-            var checkuser = _context.USER.Where(us => us.USER_NAME == user.USER_NAME && us.PASSWORD == user.PASSWORD).FirstOrDefault();
-            if(checkuser != null)
+            var checkuser = _context.USER.Where(us => us.USER_NAME == user.USER_NAME && us.ROLE_USER_ID == "ROL000000000001").FirstOrDefault();
+            if (user.TYPE == "customer")
+            {
+                checkuser = _context.USER.Where(us => us.USER_NAME == user.USER_NAME && us.ROLE_USER_ID == "ROL000000000002").FirstOrDefault();
+            }
+            if(checkuser != null && BCrypt.Net.BCrypt.Verify(user.PASSWORD, checkuser.PASSWORD))
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
