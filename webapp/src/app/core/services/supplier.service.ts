@@ -8,7 +8,7 @@ import { SUPPLIER } from '../models/SUPPLIER';
 export class SupplierService {
     private heroes: SUPPLIER[] = [];
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:44377/api/Suppliers/';
+    private url: string ='https://localhost:5001/api/Suppliers/';
 
     Supplier_search(filter :SUPPLIER): Observable<Object>{
         return this.http.post(this.url + "SUPPLIER_SEARCH", filter);
@@ -20,6 +20,9 @@ export class SupplierService {
         return this.http.post(this.url + "SUPPLIER_UPDATE", filter);
     }
     Supplier_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "SUPPLIER_DELETE", id);
+        return this.http.delete(this.url + "SUPPLIER_DELETE/" + id);
+    }
+    Supplier_byid(id: string): Observable<Object>{
+        return this.http.get(this.url + "SUPPLIER_BYID/"+ id);
     }
 }

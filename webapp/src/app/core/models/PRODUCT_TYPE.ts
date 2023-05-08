@@ -4,5 +4,5 @@ export class PRODUCT_TYPE {
   producT_TYPE_CODE: string | undefined;
   producT_TYPE_NAME: string | undefined;
   creatE_ID: string | undefined;
-  creatE_DATE: moment.Moment | undefined;
+  creatE_DATE?: moment.Moment;
 }

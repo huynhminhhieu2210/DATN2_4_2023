@@ -1,0 +1,229 @@
+<div style="padding-top: 30px;" class="product-categories-area pt-60 pb-0">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-3">
+                      {{fullName}} | <button (click)="logout()" style="background-color: white;border: none;color: blue;"> Đăng xuất</button>
+                    </div>
+                    <mdb-tabs [vertical]="true">
+                      <mdb-tab title="Thông tin cá nhân và địa chỉ">
+                        <h4 class="title">Thông tin tài khoản</h4>
+                        <div class="thongtincanhan">
+                          <span>Thông tin cá nhân</span> <br>
+                          <span>{{fullName}} - {{phone}}</span>
+                          <a data-toggle="modal" data-target="#UpdateModal" class="chinhsuataikhoan" href=""> <i class="fa fa-edit"></i> Sửa</a>
+                          <a data-toggle="modal" data-target="#addRowModal" class="chinhsuataikhoan" href=""> <i class="fa fa-key"></i> Đổi mật khẩu</a>
+                        </div>
+                        <div class="diachinhanhang">
+                          <span>Địa chỉ nhận hàng</span> <br>
+                          <div *ngFor="let item of lstAddressReceive" class="container dongdiachi">
+                            <div class="row">
+                          <div class="col-md-9">{{item.addresS_RECEIVE_NAME}}</div>
+                          <div class="col-md-3">
+                            <button (click)="onClickEditAddress(item.addresS_RECEIVE_ID,item.addresS_RECEIVE_NAME)" data-toggle="modal" data-target="#UpdateAddressModal" style="background-color: #edf0f5;border: none;color: blue;" href=""> <i class="fa fa-edit"></i> Sửa</button>
+                            <button (click)="onDeleteAddress(item.addresS_RECEIVE_ID)" style="background-color: #edf0f5;border: none;color: blue;" href=""> <i class="fa fa-remove"></i> Xóa</button>
+                          </div>
+                          </div>
+                          </div>
+                             <button data-toggle="modal" data-target="#AddAddressModal" style="background-color: #edf0f5;border: none;color: blue;"  href=""><i class="fa fa-add" style="margin-right: 5px;"></i>Thêm địa chỉ nhận hàng</button> 
+                        </div>
+                    </mdb-tab>
+                      <mdb-tab title="Đơn hàng đã mua">
+                          <h4 class="title">Đơn hàng đã mua</h4>
+                          <div *ngFor="let item of lstInvoice" class="donhang">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-md-10">
+                                  <span>Đơn hàng: #{{item.invoicE_CODE}}</span>
+                               </div>
+                                <div class="col-md-2" style="    padding: 0px;">
+                                   <span *ngIf="item.status != 'CANCEL'" style="color: chartreuse;">{{item.invoicE_STATUS_NAME}}</span>
+                                   <span *ngIf="item.status == 'CANCEL'" style="color: red;">{{item.invoicE_STATUS_NAME}}</span>
+                                </div>
+                              </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-9">
+                                  <span><img style="    display: block;
+                                    max-height: 60px;
+                                    width: 60px;" src="https://www.thegioididong.com/lich-su-mua-hang/images/no-image.jpg" alt=""></span>
+                                </div>
+                                <div class="col-md-3">
+                                  <span>Tổng tiền: {{formatCurrency(item.total)}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-10">
+                              </div>
+                              <div class="col-md-2">
+                                <span><button (click)="onViewInvoice(item.invoicE_ID)" class="btn btn-danger">Chi tiết</button></span>
+                              </div>
+                            </div>
+                            </div>
+                          </div>
+                      </mdb-tab>
+                    </mdb-tabs>
+                    </div>
+                    </div>
+              </div>
+              <div class="col-md-1"></div>
+        </div>
+        </div>
+</div>
+<div class="card-body">
+  <!-- Modal -->
+  <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header no-bd">
+                  <h5 class="modal-title">
+                      <span class="fw-mediumbold">Đổi mật khẩu</span>
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form #addForm="ngForm" class="form-add" (ngSubmit)="onChangePass(addForm)">
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <div class="form-group">
+                                  <label for="passOld">Mật khẩu cũ</label>
+                                  <input ngModel id="passOld" name="passOld" type="password" class="form-control" placeholder="Mật khẩu cũ" required/>
+                              </div>
+                          </div>
+                          <div class="col-sm-12">
+                              <div class="form-group">
+                                  <label for="passNew">Mật khẩu mới</label>
+                                  <input ngModel id="passNew" name="passNew" type="password" class="form-control" placeholder="Mật khẩu mới" required/>
+                              </div>
+                          </div>
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="passNewCheck">Nhập lại mật khẩu mới</label>
+                                <input (change)="onchangePassNewCheck(addForm)" ngModel id="passNewCheck" name="passNewCheck" type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" required/>
+                                <div style="color: red;">{{warning}}</div>
+                              </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer no-bd">
+                          <button disabled="{{warning}}" class="close" data-dismiss="modal" aria-label="Close" type="submit" id="addForm" (click)="onChangePass(addForm)" class="btn btn-primary">Lưu</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="modal fade" id="UpdateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header no-bd">
+                <h5 class="modal-title">
+                    <span class="fw-mediumbold">Đổi thông tin cá nhân</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #editForm="ngForm" class="form-add" (ngSubmit)="onSave(editForm)">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="fullName">Họ và tên</label>
+                                <input ngModel [(ngModel)]="fullName" id="fullName" name="fullName" type="text" class="form-control" placeholder="Họ và tên" required/>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại</label>
+                                <input ngModel  [(ngModel)]="phone"  id="phone" name="phone" type="text" class="form-control" placeholder="Số điện thoại" required/>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                              <label for="address">Địa chỉ</label>
+                              <input ngModel [(ngModel)]="address" id="address" name="address" type="text" class="form-control" placeholder="Địa chỉ" required/>
+                            </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input ngModel [(ngModel)]="email" id="email" name="email" type="email" class="form-control" placeholder="Email" required/>
+                          </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer no-bd">
+                        <button disabled="{{warning}}" class="close" data-dismiss="modal" aria-label="Close" type="submit" id="editForm" (click)="onSave(editForm)" class="btn btn-primary">Lưu</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="UpdateAddressModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header no-bd">
+              <h5 class="modal-title">
+                  <span class="fw-mediumbold">Chỉnh sửa địa chỉ nhận hàng</span>
+              </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form #editForm="ngForm" class="form-add" (ngSubmit)="onEditAddress(editForm)">
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <div class="form-group">
+                              <label for="editAddress">Địa chỉ</label>
+                              <input ngModel [(ngModel)]="editAddress" id="editAddress" name="editAddress" type="text" class="form-control" placeholder="Địa chỉ" required/>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer no-bd">
+                      <button class="close" data-dismiss="modal" aria-label="Close" type="submit" id="editForm" (click)="onEditAddress(editForm)" class="btn btn-primary">Lưu</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="modal fade" id="AddAddressModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header no-bd">
+              <h5 class="modal-title">
+                  <span class="fw-mediumbold">Thêm địa chỉ nhận hàng</span>
+              </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form #addForm="ngForm" class="form-add" (ngSubmit)="onSaveAddress()">
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <div class="form-group">
+                              <label for="addresS_RECEIVE_NAME">Địa chỉ</label>
+                              <input ngModel [(ngModel)]="addresS_RECEIVE_NAME" id="addresS_RECEIVE_NAME" name="addresS_RECEIVE_NAME" type="text" class="form-control" placeholder="Địa chỉ" required/>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer no-bd">
+                      <button class="close" data-dismiss="modal" aria-label="Close" type="submit" id="addForm" (click)="onSaveAddress()" class="btn btn-primary">Lưu</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+</div>

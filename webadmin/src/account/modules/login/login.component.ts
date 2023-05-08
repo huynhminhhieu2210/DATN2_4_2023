@@ -30,9 +30,10 @@ export class LoginComponent {
             localStorage.setItem('usercode',response[0].useR_CODE)
             localStorage.setItem('username',response[0].useR_NAME)
             localStorage.setItem('userfullname',response[0].useR_FULLNAME)
-            localStorage.setItem('email',response[0].email)
-            localStorage.setItem('phone',response[0].phone)
-            localStorage.setItem('address',response[0].address)
+            localStorage.setItem('email',response[0].useR_EMAIL)
+            localStorage.setItem('phone',response[0].useR_PHONE)
+            localStorage.setItem('address',response[0].useR_ADDRESS)
+            localStorage.setItem('branchname',response[0].brancH_NAME)
           })
           this.router.navigate(["/app/dashboard"]);
         }, (err: any) => {

@@ -29,7 +29,7 @@
                     </li>
                 </ul>
             </div>
-            <form #editForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
+            <form #editForm="ngForm" class="form-signin" (ngSubmit)="onSave()"  enctype="multipart/form-data" method="post">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -167,6 +167,14 @@
                                             <div class="error-message" *ngIf="webcam.invalid && isShowError">
                                                 <span>Webcam không được để trống</span>
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="imG_URL">Hình ảnh</label>
+                                            <input required #imG_URL="ngModel" accept=".png, .jpg, .jpeg" (change)="onSelectFile($event)" disabled="{{disabledInput}}" id="imG_URL" name="imG_URL" [(ngModel)]="inputModel!.imG_URL"
+                                             type="file" class="form-control form-control" placeholder="Hình ảnh">
+                                            <!-- <div class="error-message" *ngIf="imG_URL.invalid && isShowError">
+                                                <span>Hình ảnh không được để trống</span>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">

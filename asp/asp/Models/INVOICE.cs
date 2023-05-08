@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,5 +21,11 @@ namespace asp.Models
         public decimal MONEY_PAYED { get; set; }
         public string CREATE_ID { get; set; }
         public DateTime? CREATE_DATE { get; set; }
+        [NotMapped]
+        public List<INVOICE_DT> LST_INVOICE_DT { get; set; }
+        [NotMapped]
+        public string XML_INVOICE_DT { get; set; }
+        public string INVOICE_STATUS_NAME { get; set; }
+        public string METHOD_PAY { get; set; }
     }
 }

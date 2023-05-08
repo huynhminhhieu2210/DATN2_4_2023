@@ -16,14 +16,14 @@ namespace asp.Models
         public string USER_CODE { get; set; }
         public string USER_NAME { get; set; }
         public string USER_FULLNAME { get; set; }
-        public string EMAIL { get; set; }
-        public string PHONE { get; set; }
-        public string ADDRESS { get; set; }
-        public string STATUS { get; set; }
+        public string USER_EMAIL { get; set; }
+        public string USER_PHONE { get; set; }
+        public string USER_ADDRESS { get; set; }
+        public string USER_STATUS { get; set; }
         public string CREATE_ID { get; set; }
         public DateTime? CREATE_DATE { get; set; }
-        [NotMapped]
         public string ROLE_USER_NAME { get; set; }
-        public string PASSWORD { get; set; }
+        public string USER_PASSWORD { get; set; }
+        public string BRANCH_NAME { get; set; }
     }
 }

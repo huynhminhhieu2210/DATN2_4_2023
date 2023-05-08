@@ -15,13 +15,13 @@ namespace asp.Models.common
                               @USER_CODE        = N'{input.USER_CODE}',
                               @USER_NAME        = N'{input.USER_NAME}',
                               @USER_FULLNAME    = N'{input.USER_FULLNAME}',
-                              @EMAIL            = N'{input.EMAIL}',
-                              @PHONE            = N'{input.PHONE}',
-                              @ADDRESS          = N'{input.ADDRESS}',
-                              @STATUS           = N'{input.STATUS}',
+                              @USER_EMAIL       = N'{input.USER_EMAIL}',
+                              @USER_PHONE       = N'{input.USER_PHONE}',
+                              @USER_ADDRESS     = N'{input.USER_ADDRESS}',
+                              @USER_STATUS      = N'{input.USER_STATUS}',
                               @CREATE_ID        = N'{input.CREATE_ID}',
                               @CREATE_DATE      = N'{input.CREATE_DATE}',
-                              @PASSWORD         = N'{input.PASSWORD}'";
+                              @USER_PASSWORD    = N'{input.USER_PASSWORD}'";
             return result;
         }
         public string setParamArea(AREA input)
@@ -116,7 +116,23 @@ namespace asp.Models.common
                                @DESCRIPTION     = N'{input.DESCRIPTION}',
                                @NOTE            = N'{input.NOTE}',
                                @CREATE_ID       = N'{input.CREATE_ID}',
-                               @CREATE_DATE     = N'{input.CREATE_DATE}'";
+                               @CREATE_DATE     = N'{input.CREATE_DATE}',
+                               @IMG_URL         = N'{input.IMG_URL}',
+                               @PRICE           = N'{input.PRICE}',
+                               @CPU             = N'{input.CPU}',
+                               @RAM             = N'{input.RAM}',
+                               @DISK            = N'{input.DISK}',
+                               @VGA             = N'{input.VGA}',
+                               @MONITOR         = N'{input.MONITOR}',
+                               @PORT            = N'{input.PORT}',
+                               @OS              = N'{input.OS}',
+                               @WEIGHT          = N'{input.WEIGHT}',
+                               @SIZE            = N'{input.SIZE}',
+                               @COLOR           = N'{input.COLOR}',
+                               @BATTERY         = N'{input.BATTERY}',
+                               @LED_KEYBOARD    = N'{input.LED_KEYBOARD}',
+                               @BLUETOOTH       = N'{input.BLUETOOTH}',
+                               @WEBCAM          = N'{input.WEBCAM}'";
             return result;
         }
         public string setParamProductType(PRODUCT_TYPE input)

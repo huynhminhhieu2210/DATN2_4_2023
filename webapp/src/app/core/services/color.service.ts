@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ColorService {
     private heroes: COLOR[] = [];
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:44377/api/Colors/';
+    private url: string ='https://localhost:5001/api/Colors/';
 
     Color_search(filter :COLOR): Observable<Object>{
         return this.http.post(this.url + "COLOR_SEARCH", filter);

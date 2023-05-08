@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class AreaService {
     private heroes: AREA[] = [];
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:44377/api/Areas/';
+    private url: string ='https://localhost:5001/api/Areas/';
 
     Area_search(filter :AREA): Observable<Object>{
         return this.http.post(this.url + "AREA_SEARCH", filter);
@@ -20,6 +20,9 @@ export class AreaService {
         return this.http.post(this.url + "AREA_UPDATE", filter);
     }
     Area_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "AREA_DELETE", id);
+        return this.http.delete(this.url + "AREA_DELETE/" + id);
+    }
+    Area_byid(id: string): Observable<Object>{
+        return this.http.get(this.url + "AREA_BYID/"+ id);
     }
 }

@@ -24,6 +24,7 @@ import { InvoiceListComponent } from './modules/invoice/invoice-list.component';
 import { InvoiceEditComponent } from './modules/invoice/invoice-edit.component';
 import { ProductListComponent } from './modules/products/product-list.component';
 import { ProductEditComponent } from './modules/products/product-edit.component';
+import { ProfileComponent } from './modules/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -84,6 +85,8 @@ import { ProductEditComponent } from './modules/products/product-edit.component'
             { path: 'products-add', component: ProductEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
             { path: 'products-edit', component: ProductEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
             { path: 'products-view', component: ProductEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
+
+            { path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},
 
           ]}
           ]

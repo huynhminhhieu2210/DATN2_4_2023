@@ -32,5 +32,6 @@ namespace asp.Data
         public DbSet<InsertResult> InsertResult { get; set; }
         public DbSet<UpdateResult> UpdateResult { get; set; }
         public DbSet<DeleteResult> DeleteResult { get; set; }
+        public DbSet<ADDRESS_RECEIVE> ADDRESS_RECEIVE { get; set; }
     }
 }

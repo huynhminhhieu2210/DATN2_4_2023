@@ -1,0 +1,12 @@
+customer
+- Hoàn thiện chức năng giỏ hàng(thêm sản phẩm vào giỏ hàng, load giỏ hàng của user login, cập nhật giỏ hàng)
+- Checkout sản phẩm(Cho nhập các thông tin về giao hàng để tạo hóa đơn)
+- Hoàn thiện chức năng thay đổi thông tin user login, thay đổi password
+- Xem lịch sử các đơn hàng đã mua
+- Tìm kiếm sản phẩm
+- Thanh toán oni-line
+admin
+- Load các hóa đơn bán để xử lý thay đổi trạng thái của hóa đơn
+- Hoàn thiện chức năng thay đổi thông tin user login, thay đổi password
+- Thêm filter để lọc danh sách (sản phẩm, user, hóa đơn, nhà cung cấp)
+- Xây dựng layout trang dashboard

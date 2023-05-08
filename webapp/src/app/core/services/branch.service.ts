@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class BranchService {
     private heroes: BRANCH[] = [];
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:44377/api/Branchs/';
+    private url: string ='https://localhost:5001/api/Branchs/';
 
     Branch_search(filter :BRANCH): Observable<Object>{
         return this.http.post(this.url + "BRANCH_SEARCH", filter);
@@ -20,6 +20,9 @@ export class BranchService {
         return this.http.post(this.url + "BRANCH_UPDATE", filter);
     }
     Branch_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "BRANCH_DELETE", id);
+        return this.http.delete(this.url + "BRANCH_DELETE/" + id);
+    }
+    Branch_byid(id: string): Observable<Object>{
+        return this.http.get(this.url + "BRANCH_BYID/"+ id);
     }
 }

@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-export class warehousE {
+export class WAREHOUSE {
   warehousE_ID: string | undefined;
   brancH_ID: string | undefined;
   areA_ID: string | undefined;

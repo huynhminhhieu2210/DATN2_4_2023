@@ -2,6 +2,7 @@
 using asp.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -29,12 +30,10 @@ namespace asp.Controllers
             {
                 return BadRequest("Invalid client request");
             }
-            var checkuser = _context.USER.Where(us => us.USER_NAME == user.USER_NAME && us.ROLE_USER_ID == "ROL000000000001").FirstOrDefault();
-            if (user.TYPE == "customer")
-            {
-                checkuser = _context.USER.Where(us => us.USER_NAME == user.USER_NAME && us.ROLE_USER_ID == "ROL000000000002").FirstOrDefault();
-            }
-            if(checkuser != null && BCrypt.Net.BCrypt.Verify(user.PASSWORD, checkuser.PASSWORD))
+            var store = "EXEC LOGIN_WEB @USER_NAME = '" + user.USER_NAME + "', @TYPE = '" + user.TYPE + "'";
+            var checkuser =  _context.USER.FromSqlRaw(store).ToListAsync();
+
+            if(checkuser != null && BCrypt.Net.BCrypt.Verify(user.PASSWORD, checkuser.Result[0].USER_PASSWORD))
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);

@@ -54,5 +54,35 @@ namespace asp.Controllers
         {
             return await _userService.USER_GET_INFO_LOGIN(input);
         }
+        [HttpPost]
+        public async Task<IEnumerable<UpdateResult>> USER_UPDATE_INFO([FromBody] USER input)
+        {
+            return await _userService.USER_UPDATE_INFO(input);
+        }
+        [HttpGet("{userlogin}")]
+        public async Task<IEnumerable<ADDRESS_RECEIVE>> USER_LOAD_ADDRESS_RECEIVE(string userlogin)
+        {
+            return await _userService.USER_LOAD_ADDRESS_RECEIVE(userlogin);
+        }
+        [HttpPost]
+        public async Task<IEnumerable<UpdateResult>> USER_UPDATE_ADDRESS_RECEIVE([FromBody] ADDRESS_RECEIVE input)
+        {
+            return await _userService.USER_UPDATE_ADDRESS_RECEIVE(input);
+        }
+        [HttpDelete("{id}")]
+        public async Task<IEnumerable<DeleteResult>> USER_DELETE_ADDRESS_RECEIVE(string id)
+        {
+            return await _userService.USER_DELETE_ADDRESS_RECEIVE(id);
+        }
+        [HttpPost]
+        public async Task<IEnumerable<InsertResult>> USER_INSERT_ADDRESS_RECEIVE([FromBody] ADDRESS_RECEIVE input)
+        {
+            return await _userService.USER_INSERT_ADDRESS_RECEIVE(input);
+        }
+        [HttpPost]
+        public async Task<IEnumerable<UpdateResult>> USER_CHANGE_PASSWORD([FromBody] INPUTCHANGEPASS input)
+        {
+            return await _userService.USER_CHANGE_PASSWORD(input);
+        }
     }
 }

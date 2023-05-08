@@ -34,6 +34,7 @@ import { InvoiceListComponent } from './modules/invoice/invoice-list.component';
 import { InvoiceEditComponent } from './modules/invoice/invoice-edit.component';
 import { ProductEditComponent } from './modules/products/product-edit.component';
 import { ProductListComponent } from './modules/products/product-list.component';
+import { ProfileComponent } from './modules/profile/profile.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -67,7 +68,8 @@ export function tokenGetter(){
     FooterComponent,
     DateFormatPipe,
     ProductEditComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

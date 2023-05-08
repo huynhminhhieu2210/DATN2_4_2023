@@ -2,6 +2,7 @@ import { HttpClient,HttpClientModule,HttpParams,HttpHeaders } from '@angular/com
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { USER } from '../models/USER';
+import { INPUTCHANGEPASS } from '../models/INPUTCHANGEPASS';
 @Injectable({
     providedIn: 'root',
   })
@@ -24,5 +25,11 @@ export class UserService {
     }
     User_byid(id: string): Observable<Object>{
         return this.http.get(this.url + "USER_BYID/"+ id);
+    }
+    User_update_info(input :USER): Observable<Object>{
+        return this.http.post(this.url + "USER_UPDATE_INFO", input);
+    }
+    User_change_pass(filter :INPUTCHANGEPASS): Observable<Object>{
+        return this.http.post(this.url + "USER_CHANGE_PASSWORD", filter);
     }
 }

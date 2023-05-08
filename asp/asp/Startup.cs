@@ -70,6 +70,8 @@ namespace asp
             services.AddTransient<IInvoicesService, InvoicesService>();
             services.AddTransient<IInvoiceDetailsService, InvoiceDetailsService>();
             services.AddTransient<IProductsService, ProductsService>();
+            services.AddTransient<IUploadFilesService, UploadFilesService>();
+            services.AddTransient<ICartsService, CartsService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -90,6 +92,7 @@ namespace asp
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseCors("EnableCORS");
             app.UseRouting();
             app.UseAuthentication();

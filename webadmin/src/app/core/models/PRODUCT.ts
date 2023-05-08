@@ -26,4 +26,5 @@ export class PRODUCT {
   leD_KEYBOARD: string | undefined;
   bluetooth: string | undefined;
   webcam: string | undefined;
+  imG_URL: string | undefined;
 }
