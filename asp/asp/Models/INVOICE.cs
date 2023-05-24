@@ -18,7 +18,6 @@ namespace asp.Models
         public string RECEIVER_PHONE { get; set; }
         public decimal TOTAL { get; set; }
         public string STATUS { get; set; }
-        public decimal MONEY_PAYED { get; set; }
         public string CREATE_ID { get; set; }
         public DateTime? CREATE_DATE { get; set; }
         [NotMapped]
@@ -27,5 +26,7 @@ namespace asp.Models
         public string XML_INVOICE_DT { get; set; }
         public string INVOICE_STATUS_NAME { get; set; }
         public string METHOD_PAY { get; set; }
+        public string CREATE_NAME { get; set; }
+        public string USER_NAME { get; set; }
     }
 }

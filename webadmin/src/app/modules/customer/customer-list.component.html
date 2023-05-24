@@ -1,44 +1,37 @@
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
-            <div class="page-header">
-                <h4 class="page-title">Danh sách tài khoản khách hàng</h4>
-                <ul class="breadcrumbs">
-                    <li class="nav-home">
-                        <a href="#">
-                            <i class="flaticon-home"></i>
-                        </a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Khách hàng</a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Quản lý tài khoản</a>
-                    </li>
-                </ul>
-            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="" style="position: fixed;top:60px;background-color: #f9fbfd;height: 39px;width: 100%;z-index: 1;"></div>
+                        <div class="" style="position: fixed;top:70px;background-color: #1572e8;height: 39px;width: 100%;z-index: 1;">
                             <div class="d-flex align-items-center">
                                 <!-- <h4 class="card-title">Add Row</h4> -->
-                                <button class="btn btn-primary" routerLink="/app/customer-add" routerLinkActive="active" ariaCurrentWhenActive="page">
-                                    <i class="fa fa-plus"></i>
+                                <button style="padding: 8px;margin-bottom: 4px;" 
+                                class="btn btn-primary" routerLink="/app/user-add" routerLinkActive="active" ariaCurrentWhenActive="page">
+                                    <i style="margin: 2px;" class="fa fa-plus"></i>
                                     Thêm mới
                                 </button>
-                                <button style="margin-left: 10px;" class="btn btn-primary" (click)="search()">
-                                    <i class="fa fa-search"></i>
+                                <button style="margin-left: 10px;padding: 8px;margin-bottom: 4px;" class="btn btn-primary" (click)="search()">
+                                    <i style="margin: 2px;" class="fa fa-search"></i>
                                     Tìm kiếm
                                 </button>
                             </div>
                         </div>
+                        <div class="page-header" style="   padding-top: 19px;">
+                            <ul class="breadcrumbs">
+                                <li class="" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                    <a style="margin-right: 5px;margin-left: 5px;" href="#">
+                                        <i class="flaticon-home"></i>
+                                        Trang chủ
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">Danh sách tài khoản</a>
+                                </li>
+                            </ul>
+                        </div> 
                         <div class="card-body">
                             <!-- Modal -->
                             <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 200px;">
@@ -59,7 +52,44 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="useR_NAME">Tên đăng nhập</label>
+                                        <input required #useR_NAME="ngModel" id="useR_NAME" name="useR_NAME" [(ngModel)]="filterInput!.useR_NAME" 
+                                        type="text" class="form-control form-control" placeholder="Tên đăng nhập">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="useR_CODE">Mã nhân viên</label>
+                                        <input required #useR_CODE="ngModel" id="useR_CODE" name="useR_CODE" [(ngModel)]="filterInput!.useR_CODE" 
+                                        type="text" class="form-control form-control" placeholder="Mã nhân viên">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="useR_FULLNAME">Họ tên nhân viên</label>
+                                        <input required #useR_FULLNAME="ngModel" id="useR_FULLNAME" name="useR_FULLNAME" [(ngModel)]="filterInput!.useR_FULLNAME" 
+                                        type="text" class="form-control form-control" placeholder="Họ tên nhân viên">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="useR_EMAIL">Email</label>
+                                        <input required #useR_EMAIL="ngModel" id="useR_EMAIL" name="useR_EMAIL" [(ngModel)]="filterInput!.useR_EMAIL" 
+                                        type="text" class="form-control form-control" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="useR_PHONE">Số điện thoại</label>
+                                        <input required #useR_PHONE="ngModel" id="useR_PHONE" name="useR_PHONE" [(ngModel)]="filterInput!.useR_PHONE" 
+                                        type="text" class="form-control form-control" placeholder="Số điện thoại">
+                                    </div>
+                                </div>
+                            </div>
+                        <hr>
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
@@ -82,7 +112,7 @@
                                             <td>{{item.useR_EMAIL}}</td>
                                             <td>{{item.useR_PHONE}}</td>
                                             <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
-                                            <td>{{item.creatE_ID}}</td>
+                                            <td>{{item.creatE_NAME}}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <button (click)="onEdit(item.useR_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Chỉnh sửa">

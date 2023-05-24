@@ -7,4 +7,5 @@ export class SUPPLIER {
   supplieR_ADDRESS: string | undefined;
   creatE_ID: string | undefined;
   creatE_DATE: moment.Moment | undefined;
+  creatE_NAME: string | undefined;
 }

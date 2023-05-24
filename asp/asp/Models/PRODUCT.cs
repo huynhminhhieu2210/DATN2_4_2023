@@ -35,5 +35,10 @@ namespace asp.Models
         public string LED_KEYBOARD { get; set; }
         public string BLUETOOTH { get; set; }
         public string WEBCAM { get; set; }
+        public string PRODUCT_TYPE_NAME { get; set; }
+        public string SUPPLIER_NAME { get; set; }
+        public string WAREHOUSE_ID { get; set; }
+        public string WAREHOUSE_NAME { get; set; }
+        public decimal STOCK { get; set; }
     }
 }

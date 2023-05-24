@@ -1,5 +1,6 @@
 import { Component, Injectable, OnInit, Injector } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import * as moment from 'moment';
 import { BRANCH } from 'src/app/core/models/BRANCH';
 import { USER } from 'src/app/core/models/USER';
 import { BranchService } from 'src/app/core/services/branch.service';
@@ -20,6 +21,7 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
   editPageState?: EditPageState;
   title?:string; 
   titleinfo?: string;
+  date?: string;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
   }
@@ -28,6 +30,9 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
     switch (this.editPageState) {
       case EditPageState.add:
         this.title = 'Thêm mới tài khoản';
+        this.inputModel!.creatE_ID = sessionStorage.getItem('username')?.toString();
+        this.inputModel!.creatE_NAME = sessionStorage.getItem('userfullname')?.toString();
+        this.date = moment().format('yyyy-MM-DD');
         break;
       case EditPageState.edit:
         this.title = 'Chỉnh sửa tài khoản';
@@ -51,6 +56,7 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
     let id: string = this.getRouteParam('customer');
     this.customerService.Customer_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
+      this.date = moment(response[0].creatE_DATE).format('yyyy-MM-DD');
       this.reloadView();
     });
   }
@@ -58,6 +64,7 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
 
   }
   onSave(){
+    this.inputModel!.creatE_DATE = moment(this.date);
     if(!this.inputModel?.useR_ID){
       this.customerService.Customer_insert(this.inputModel!).subscribe((response: any)=>{
         console.log(response);

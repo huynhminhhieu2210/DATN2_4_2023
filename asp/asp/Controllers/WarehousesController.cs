@@ -44,5 +44,10 @@ namespace asp.Controllers
         {
             return await _warehousesService.WAREHOUSE_DELETE(id);
         }
+        [HttpGet("{id}")]
+        public async Task<IEnumerable<WAREHOUSE>> WAREHOUSE_BYID(string id)
+        {
+            return await _warehousesService.WAREHOUSE_BYID(id);
+        }
     }
 }

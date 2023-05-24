@@ -49,6 +49,10 @@ namespace asp.Controllers
         {
             return await _invoicesService.INVOICE_BYID(id);
         }
-
+        [HttpPost]
+        public async Task<IEnumerable<UpdateResult>> INVOICE_CHANGE_STATUS([FromBody] INVOICE input)
+        {
+            return await _invoicesService.INVOICE_CHANGE_STATUS(input);
+        }
     }
 }

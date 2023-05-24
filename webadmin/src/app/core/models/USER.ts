@@ -17,4 +17,5 @@ export class USER {
   brancH_NAME: string | undefined;
   useR_PASSWORDNEW: string | undefined;
   useR_PASSWORDNEWCHECK: string | undefined;
+  creatE_NAME: string | undefined;
 }

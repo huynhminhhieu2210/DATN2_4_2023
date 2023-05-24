@@ -24,16 +24,16 @@ namespace asp.Controllers
             _context = context;
         }
         [HttpPost, Route("Login")]
-        public IActionResult Login([FromBody] LOGIN user)
+        public async Task<IActionResult> LoginAsync([FromBody] LOGIN user)
         {
             if(user == null)
             {
                 return BadRequest("Invalid client request");
             }
             var store = "EXEC LOGIN_WEB @USER_NAME = '" + user.USER_NAME + "', @TYPE = '" + user.TYPE + "'";
-            var checkuser =  _context.USER.FromSqlRaw(store).ToListAsync();
+            var checkuser =  await _context.USER.FromSqlRaw(store).ToListAsync();
 
-            if(checkuser != null && BCrypt.Net.BCrypt.Verify(user.PASSWORD, checkuser.Result[0].USER_PASSWORD))
+            if(checkuser != null && BCrypt.Net.BCrypt.Verify(user.PASSWORD, checkuser[0].USER_PASSWORD))
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);

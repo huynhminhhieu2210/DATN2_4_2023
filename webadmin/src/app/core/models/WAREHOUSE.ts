@@ -8,4 +8,7 @@ export class WAREHOUSE {
   warehousE_ADDRESS: string | undefined;
   creatE_ID: string | undefined;
   creatE_DATE: moment.Moment | undefined;
+  creatE_NAME: string | undefined;
+  brancH_NAME: string | undefined;
+  areA_NAME: string | undefined;
 }

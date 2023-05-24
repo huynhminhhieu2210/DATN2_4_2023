@@ -11,7 +11,7 @@ import { DashboardComponent } from './app/modules/dashboard/dashboard.component'
 import { AppModule } from './app/app.module';
 import { AccountModule } from './account/account.module';
 export function tokenGetter(){
-  return localStorage.getItem("jwt");
+  return sessionStorage.getItem("jwt");
 }
 
 @NgModule({

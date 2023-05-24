@@ -1,5 +1,6 @@
 import { Component, Injectable, OnInit, Injector, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import * as moment from 'moment';
 import { BRANCH } from 'src/app/core/models/BRANCH';
 import { ROLE_USER } from 'src/app/core/models/ROLE_USER';
 import { USER } from 'src/app/core/models/USER';
@@ -25,7 +26,7 @@ export class UserEditComponent extends ComponentBase implements OnInit{
   listBranch?: BRANCH[];
   listRole?: ROLE_USER[];
   isShowError = false;
-
+  date?: string;
   @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
@@ -35,6 +36,9 @@ export class UserEditComponent extends ComponentBase implements OnInit{
     switch (this.editPageState) {
       case EditPageState.add:
         this.title = 'Thêm mới tài khoản';
+        this.inputModel!.creatE_ID = sessionStorage.getItem('username')?.toString();
+        this.inputModel!.creatE_NAME = sessionStorage.getItem('userfullname')?.toString();
+        this.date = moment().format('yyyy-MM-DD');
         break;
       case EditPageState.edit:
         this.title = 'Chỉnh sửa tài khoản';
@@ -60,6 +64,7 @@ export class UserEditComponent extends ComponentBase implements OnInit{
     let id: string = this.getRouteParam('user');
     this.userService.User_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
+      this.date = moment(response[0].creatE_DATE).format('yyyy-MM-DD');
       this.reloadView();
     });
   }
@@ -76,6 +81,7 @@ export class UserEditComponent extends ComponentBase implements OnInit{
     });
   }
   onSave(){
+    this.inputModel!.creatE_DATE = moment(this.date);
     if ((this.editForm as any).form.invalid) {
       this.isShowError = true;
       this.reloadView();

@@ -35,9 +35,10 @@ import { InvoiceEditComponent } from './modules/invoice/invoice-edit.component';
 import { ProductEditComponent } from './modules/products/product-edit.component';
 import { ProductListComponent } from './modules/products/product-list.component';
 import { ProfileComponent } from './modules/profile/profile.component';
-
+import { NgChartsModule } from 'ng2-charts';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 export function tokenGetter(){
-  return localStorage.getItem("jwt");
+  return sessionStorage.getItem("jwt");
 }
 
 @NgModule({
@@ -69,13 +70,15 @@ export function tokenGetter(){
     DateFormatPipe,
     ProductEditComponent,
     ProductListComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgChartsModule,
+    MatDatepickerModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

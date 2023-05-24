@@ -27,4 +27,7 @@ export class PRODUCT {
   bluetooth: string | undefined;
   webcam: string | undefined;
   imG_URL: string | undefined;
+  producT_TYPE_NAME: string | undefined;
+  supplieR_NAME: string | undefined;
+  warehousE_NAME: string | undefined;
 }

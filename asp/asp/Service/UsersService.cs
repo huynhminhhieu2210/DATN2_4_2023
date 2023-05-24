@@ -59,7 +59,7 @@ namespace asp.Service
         public async Task<IEnumerable<UpdateResult>> USER_UPDATE_INFO(USER input)
         {
             var store = "EXEC USER_UPDATE_INFO " + _setSqlParameter.setParamUser(input);
-            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync(); ;
+            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync();
         }
         public async Task<IEnumerable<ADDRESS_RECEIVE>> USER_LOAD_ADDRESS_RECEIVE(string userlogin)
         {
@@ -85,9 +85,9 @@ namespace asp.Service
         public async Task<IEnumerable<UpdateResult>> USER_CHANGE_PASSWORD(INPUTCHANGEPASS input)
         {
             var store = "EXEC LOGIN_WEB @USER_NAME = '" + input.USER_NAME + "', @TYPE = '" + input.TYPE + "'";
-            var checkuser = _context.USER.FromSqlRaw(store).ToListAsync();
+            var checkuser = await _context.USER.FromSqlRaw(store).ToListAsync();
             var check = '0';
-            if (checkuser != null && BCrypt.Net.BCrypt.Verify(input.USER_PASSWORD, checkuser.Result[0].USER_PASSWORD))
+            if (checkuser != null && BCrypt.Net.BCrypt.Verify(input.USER_PASSWORD, checkuser[0].USER_PASSWORD))
             {
                 check = '1';
             }

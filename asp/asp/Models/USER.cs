@@ -25,5 +25,6 @@ namespace asp.Models
         public string ROLE_USER_NAME { get; set; }
         public string USER_PASSWORD { get; set; }
         public string BRANCH_NAME { get; set; }
+        public string CREATE_NAME { get; set; }
     }
 }

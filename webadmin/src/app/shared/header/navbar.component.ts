@@ -11,11 +11,11 @@ export class NavBarComponent implements OnInit{
   userfullname?: string;
   email?: string;
   ngOnInit(): void {
-    this.userfullname = localStorage.getItem('userfullname')?.toString();
-    this.email = localStorage.getItem('email')?.toString();
+    this.userfullname = sessionStorage.getItem('userfullname')?.toString();
+    this.email = sessionStorage.getItem('email')?.toString();
   }
   isUserAuthenticated(){
-    const token: string | null= localStorage.getItem("jwt");
+    const token: string | null= sessionStorage.getItem("jwt");
     if(token && !this.jwtHelper.isTokenExpired(token)){
       return true;
     }
@@ -24,7 +24,7 @@ export class NavBarComponent implements OnInit{
     }
   }
   logout(){
-    localStorage.removeItem("jwt");
+    sessionStorage.removeItem("jwt");
     this.router.navigate(["/account/login"]);
   }
 }

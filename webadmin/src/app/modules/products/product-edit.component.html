@@ -1,39 +1,40 @@
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
-            <div class="page-header">
-                <h4 class="page-title">{{title}}</h4>
-                <ul class="breadcrumbs">
-                    <li class="nav-home">
-                        <a href="#">
-                            <i class="flaticon-home"></i>
-                        </a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        Quản lý sản phẩm
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a routerLink="/app/products" routerLinkActive="active" ariaCurrentWhenActive="page">Thông tin sản phẩm</a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">{{title}}</a>
-                    </li>
-                </ul>
-            </div>
             <form #editForm="ngForm" class="form-signin" (ngSubmit)="onSave()"  enctype="multipart/form-data" method="post">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="" style="position: fixed;top:60px;background-color: #f9fbfd;height: 39px;width: 100%;z-index: 1;"></div>
+                            <div class="" style="position: fixed;top:70px;background-color: #1572e8;height: 39px;width: 100%;z-index: 1;">
+                                <div class="d-flex align-items-center">
+                                    <button *ngIf="disabledInput"  style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" disabled>
+                                        <i style="margin: 2px;" class="fa fa-save"></i>
+                                        Lưu
+                                    </button>
+                                    <button *ngIf="!disabledInput" style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" >
+                                        <i style="margin: 2px;" class="fa fa-save"></i>
+                                        Lưu
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="page-header" style="padding-top: 19px;">
+                                <ul class="breadcrumbs">
+                                    <li class="" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                        <a style="margin-right: 5px;margin-left: 5px;" href="#">
+                                            <i class="flaticon-home"></i>
+                                            Trang chủ
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                        <a routerLink="/app/products" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-right: 5px;" href="#">Sản phẩm</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">{{title}}</a>
+                                    </li>
+                                </ul>
+                            </div> 
+                            <div>
                                 <p *ngIf="titleinfo" style="    background-color: #00ce49;
                                 color: white;
                                 border-radius: 4px;
@@ -237,11 +238,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-action">
-                                <button *ngIf="disabledInput" class="btn btn-success" style="margin-right: 10px;" disabled>Lưu</button>
-                                <button *ngIf="!disabledInput" class="btn btn-success" style="margin-right: 10px;">Lưu</button>
-                                <button routerLink="/app/products" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-danger">Trở về</button>
                             </div>
                         </div>
                     </div>

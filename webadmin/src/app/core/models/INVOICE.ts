@@ -8,7 +8,9 @@ export class INVOICE {
   receiveR_PHONE: string | undefined;
   total: number | undefined;
   status: string | undefined;
-  moneY_PAYED: number | undefined;
   creatE_ID: string | undefined;
   creatE_DATE: moment.Moment | undefined;
+  invoicE_STATUS_NAME: string | undefined;
+  creatE_NAME: string | undefined;
+  useR_NAME: string | undefined;
 }

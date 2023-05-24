@@ -1,44 +1,31 @@
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
-            <div class="page-header">
-                <h4 class="page-title">Danh sách hoá đơn</h4>
-                <ul class="breadcrumbs">
-                    <li class="nav-home">
-                        <a href="#">
-                            <i class="flaticon-home"></i>
-                        </a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Danh mục</a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Hoá đơn</a>
-                    </li>
-                </ul>
-            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="" style="position: fixed;top:60px;background-color: #f9fbfd;height: 39px;width: 100%;z-index: 1;"></div>
+                        <div class="" style="position: fixed;top:70px;background-color: #1572e8;height: 39px;width: 100%;z-index: 1;">
                             <div class="d-flex align-items-center">
-                                <!-- <h4 class="card-title">Add Row</h4> -->
-                                <!-- <button class="btn btn-primary" routerLink="/app/invoice-add" routerLinkActive="active" ariaCurrentWhenActive="page">
-                                    <i class="fa fa-plus"></i>
-                                    Thêm mới
-                                </button> -->
-                                <button style="margin-left: 10px;" class="btn btn-primary" (click)="search()">
-                                    <i class="fa fa-search"></i>
+                                <button style="margin-left: 10px;padding: 8px;margin-bottom: 4px;" class="btn btn-primary" (click)="search()">
+                                    <i style="margin: 2px;" class="fa fa-search"></i>
                                     Tìm kiếm
                                 </button>
                             </div>
                         </div>
+                        <div class="page-header" style="   padding-top: 19px;">
+                            <ul class="breadcrumbs">
+                                <li class="" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                    <a style="margin-right: 5px;margin-left: 5px;" href="#">
+                                        <i class="flaticon-home"></i>
+                                        Trang chủ
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">Hóa đơn bán</a>
+                                </li>
+                            </ul>
+                        </div> 
                         <div class="card-body">
                             <!-- Modal -->
                             <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 200px;">
@@ -59,32 +46,87 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <!-- Modal -->
+                            <div class="modal fade" id="changeStatusRowModal" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 200px;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header no-bd">
+                                            <h5 class="modal-title">
+                                                <span class="fw-mediumbold">Xác nhận đổi trạng thái</span>
+                                            </h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="small" style="text-align: center;">{{tilte_info_delete}}</p>
+                                        </div>
+                                        <div class="modal-footer no-bd">
+                                            <button class="close" data-dismiss="modal" aria-label="Close" (click)="onChangeStatus()" type="button" style="margin-right: 17px;" class="btn btn-primary">Xác nhận</button>
+                                            <button class="close" data-dismiss="modal" aria-label="Close" type="button" style="margin-right: 130px;" id="addRowButton" class="btn btn-danger">Đóng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="invoicE_CODE">Mã hóa đơn</label>
+                                        <input required #invoicE_CODE="ngModel" id="invoicE_CODE" name="invoicE_CODE" [(ngModel)]="filterInput!.invoicE_CODE" 
+                                        type="text" class="form-control form-control" placeholder="Mã hóa đơn">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="receiver">Người nhận</label>
+                                        <input required #receiver="ngModel" id="receiver" name="receiver" [(ngModel)]="filterInput!.receiver" 
+                                        type="text" class="form-control form-control" placeholder="Người nhận">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="useR_ID">Người mua</label>
+                                        <input required #useR_ID="ngModel" id="useR_ID" name="useR_ID" [(ngModel)]="filterInput!.creatE_NAME" 
+                                        type="text" class="form-control form-control" placeholder="Người mua">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="status">Trạng thái</label>
+                                        <select #status="ngModel" class="form-control" [(ngModel)]="filterInput!.status" id="status" name="status">
+                                            <option *ngFor="let item of listStatus" value="{{item.statuS_ID}}">{{item.statuS_NAME}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        <hr>
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th>Mã hoá đơn</th>
-                                            <th>Người mua</th>
                                             <th>Người nhận</th>
                                             <th>Tổng tiền</th>
-                                            <th>Số tiền đã trả</th>
+                                            <th>Ngày mua</th>
+                                            <th>Người mua</th>
                                             <th>Trạng thái</th>
-                                            <th>Ngày tạo</th>
-                                            <th>Người tạo</th>
                                             <th style="width: 10%">Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let item of listInvoice">
                                             <td>{{item.invoicE_CODE}}</td>
-                                            <td>{{item.useR_ID}}</td>
                                             <td>{{item.receiver}}</td>
-                                            <td>{{item.total}}</td>
-                                            <td>{{item.moneY_PAYED}}</td>
-                                            <td>{{item.status}}</td>
+                                            <td>{{formatCurrency(item.total)}}</td>
                                             <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
-                                            <td>{{item.creatE_ID}}</td>
+                                            <td>{{item.creatE_NAME}}</td>
+                                            <td>
+                                                <button *ngIf="item.status != 'DONE'" (click)="onConfirmChange(item.invoicE_CODE!,item.invoicE_ID!)" data-toggle="modal" 
+                                                data-target="#changeStatusRowModal" type="button" title="" class="btn btn-danger">
+                                                    {{item.invoicE_STATUS_NAME}}
+                                                </button>
+                                                <button *ngIf="item.status == 'DONE'" (click)="onConfirmChange(item.invoicE_CODE!,item.invoicE_ID!)" data-toggle="modal" 
+                                                data-target="#changeStatusRowModal" type="button" title="" class="btn btn-success">
+                                                    {{item.invoicE_STATUS_NAME}}
+                                                </button>
+                                            </td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <!-- <button (click)="onEdit(item.invoicE_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Chỉnh sửa">

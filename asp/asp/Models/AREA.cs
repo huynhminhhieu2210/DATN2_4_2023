@@ -14,5 +14,6 @@ namespace asp.Models
         public string AREA_NAME { get; set; }
         public string CREATE_ID { get; set; }
         public DateTime? CREATE_DATE { get; set; }
+        public string CREATE_NAME { get; set; }
     }
 }

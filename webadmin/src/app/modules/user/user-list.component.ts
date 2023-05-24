@@ -12,6 +12,7 @@ export class UserListComponent extends ComponentBase implements OnInit{
     super(injector);
   }
   listUser?: USER[];
+  filterInput: USER = new USER();
   tilte_info_delete?: string;
   id?: string;
   ngOnInit(): void {
@@ -30,8 +31,8 @@ export class UserListComponent extends ComponentBase implements OnInit{
     });
   }
   search(){
-    var filtera = new USER();
-    this.userService.User_search(filtera).subscribe((response: any)=>{
+    this.filterInput.rolE_USER_ID = 'ROL000000000001';
+    this.userService.User_search(this.filterInput).subscribe((response: any)=>{
       this.listUser = response;
       this.reloadView();
     });

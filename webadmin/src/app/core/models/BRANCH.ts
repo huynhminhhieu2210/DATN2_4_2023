@@ -6,4 +6,6 @@ export class BRANCH {
   brancH_NAME: string | undefined;
   creatE_ID: string | undefined;
   creatE_DATE: moment.Moment | undefined;
+  creatE_NAME: string | undefined;
+  brancH_ADDRESS: string | undefined;
 }

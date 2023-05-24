@@ -5,4 +5,5 @@ export class AREA {
   areA_NAME: string | undefined;
   creatE_ID: string | undefined;
   creatE_DATE?: moment.Moment;
+  creatE_NAME: string | undefined;
 }

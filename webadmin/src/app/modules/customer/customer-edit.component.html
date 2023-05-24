@@ -1,39 +1,40 @@
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
-            <div class="page-header">
-                <!-- <h4 class="page-title">Quản lý hệ thống</h4> -->
-                <ul class="breadcrumbs">
-                    <li class="nav-home">
-                        <a href="#">
-                            <i class="flaticon-home"></i>
-                        </a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        Khách hàng
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a routerLink="/app/customer" routerLinkActive="active" ariaCurrentWhenActive="page">Quản lý tài khoản</a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">{{title}}</a>
-                    </li>
-                </ul>
-            </div>
             <form #loginForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="" style="position: fixed;top:60px;background-color: #f9fbfd;height: 39px;width: 100%;z-index: 1;"></div>
+                            <div class="" style="position: fixed;top:70px;background-color: #1572e8;height: 39px;width: 100%;z-index: 1;">
+                                <div class="d-flex align-items-center">
+                                    <button *ngIf="disabledInput"  style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" disabled>
+                                        <i style="margin: 2px;" class="fa fa-save"></i>
+                                        Lưu
+                                    </button>
+                                    <button *ngIf="!disabledInput" style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" >
+                                        <i style="margin: 2px;" class="fa fa-save"></i>
+                                        Lưu
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="page-header" style="padding-top: 19px;">
+                                <ul class="breadcrumbs">
+                                    <li class="" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                        <a style="margin-right: 5px;margin-left: 5px;" href="#">
+                                            <i class="flaticon-home"></i>
+                                            Trang chủ
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                        <a routerLink="/app/customer" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-right: 5px;" href="#">Danh sách tài khoản</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">{{title}}</a>
+                                    </li>
+                                </ul>
+                            </div> 
+                            <div>
                                 <p *ngIf="titleinfo" style="    background-color: #00ce49;
                                 color: white;
                                 border-radius: 4px;
@@ -51,6 +52,12 @@
                                             <label for="phone">Số điện thoại</label>
                                             <input disabled="{{disabledInput}}" id="phone" name="phone" [(ngModel)]="inputModel!.useR_PHONE" type="text" class="form-control form-control" placeholder="Số điện thoại">
                                         </div>
+                                        <div class="form-group">
+                                            <label for="address">Địa chỉ</label>
+                                            <textarea disabled="{{disabledInput}}" id="address" name="address" [(ngModel)]="inputModel!.useR_ADDRESS" type="date" class="form-control form-control" placeholder="Địa chỉ">
+                                                </textarea>
+                                        </div>
+                                        
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
@@ -58,9 +65,13 @@
                                             <input disabled="{{disabledInput}}" id="useR_NAME" name="useR_NAME" [(ngModel)]="inputModel!.useR_NAME" type="text" class="form-control form-control" placeholder="Tên đăng nhập">
                                         </div>
                                         <div class="form-group">
-                                            <label for="address">Địa chỉ</label>
-                                            <textarea disabled="{{disabledInput}}" id="address" name="address" [(ngModel)]="inputModel!.useR_ADDRESS" type="date" class="form-control form-control" placeholder="Địa chỉ">
-                                                </textarea>
+                                            <label for="password">Mật khẩu</label>
+                                            <input #password="ngModel" disabled="{{disabledInput}}" id="password" name="password" [(ngModel)]="inputModel!.useR_PASSWORD" type="password" class="form-control form-control" placeholder="Mật khẩu">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="creatE_NAME">Người tạo</label>
+                                            <input style="color:black; font-weight: bold;" disabled="true" id="creatE_NAME" name="creatE_NAME" 
+                                            [(ngModel)]="inputModel!.creatE_NAME" type="text" class="form-control form-control" placeholder="Người tạo">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
@@ -72,13 +83,13 @@
                                             <label for="email">Email</label>
                                             <input disabled="{{disabledInput}}" id="email" name="email" [(ngModel)]="inputModel!.useR_EMAIL" type="email" class="form-control form-control" placeholder="Email">
                                         </div>
+                                        <div class="form-group">
+                                            <label for="creatE_DATE">Ngày tạo</label>
+                                            <input style="color:black; font-weight: bold;" disabled="true" id="creatE_DATE" name="creatE_DATE" 
+                                            [(ngModel)]="date" type="date" class="form-control form-control" placeholder="Ngày tạo">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-action">
-                                <button *ngIf="disabledInput" class="btn btn-success" style="margin-right: 10px;" disabled>Lưu</button>
-                                <button *ngIf="!disabledInput" class="btn btn-success" style="margin-right: 10px;">Lưu</button>
-                                <button routerLink="/app/customer" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-danger">Trở về</button>
                             </div>
                         </div>
                     </div>

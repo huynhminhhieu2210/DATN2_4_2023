@@ -33,6 +33,14 @@ namespace asp.Models.common
                                @CREATE_DATE = N'{input.CREATE_DATE}'";
             return result;
         }
+        public string setParamStatus(STATUS input)
+        {
+            string result = $@"@STATUS_ID     = N'{input.STATUS_ID}',
+                               @STATUS_NAME   = N'{input.STATUS_NAME}',
+                               @TABLE_NAME   = N'{input.TABLE_NAME}',
+                               @PARENT_ID   = N'{input.PARENT_ID}'";
+            return result;
+        }
         public string setParamBranch(BRANCH input)
         {
             string result = $@"@BRANCH_ID   = N'{input.BRANCH_ID}',
@@ -40,7 +48,8 @@ namespace asp.Models.common
                                @BRANCH_CODE = N'{input.BRANCH_CODE}',
                                @BRANCH_NAME = N'{input.BRANCH_NAME}',
                                @CREATE_ID   = N'{input.CREATE_ID}',
-                               @CREATE_DATE = N'{input.CREATE_DATE}'";
+                               @CREATE_DATE = N'{input.CREATE_DATE}',
+                               @BRANCH_ADDRESS = N'{input.BRANCH_ADDRESS}'";
             return result;
         }
         public string setParamDocImpProduct(DOC_IMP_PRODUCT input)
@@ -75,9 +84,23 @@ namespace asp.Models.common
                                @RECEIVER_PHONE   = N'{input.RECEIVER_PHONE}',
                                @TOTAL            = N'{input.TOTAL}',
                                @STATUS           = N'{input.STATUS}',
-                               @MONEY_PAYED      = N'{input.MONEY_PAYED}',
                                @CREATE_ID        = N'{input.CREATE_ID}',
                                @CREATE_DATE      = N'{input.CREATE_DATE}'";
+            return result;
+        }
+        public string setParamInvoiceSearch(INVOICE input)
+        {
+            string result = $@"@INVOICE_ID       = N'{input.INVOICE_ID}',
+                               @INVOICE_CODE     = N'{input.INVOICE_CODE}',
+                               @USER_ID          = N'{input.USER_ID}',
+                               @RECEIVER         = N'{input.RECEIVER}',
+                               @RECEIVER_ADDRESS = N'{input.RECEIVER_ADDRESS}',
+                               @RECEIVER_PHONE   = N'{input.RECEIVER_PHONE}',
+                               @TOTAL            = N'{input.TOTAL}',
+                               @STATUS           = N'{input.STATUS}',
+                               @CREATE_ID        = N'{input.CREATE_ID}',
+                               @CREATE_DATE      = N'{input.CREATE_DATE}',
+                               @CREATE_NAME        = N'{input.CREATE_NAME}'";
             return result;
         }
         public string setParamInvoiceDetail(INVOICE_DT input)
@@ -111,6 +134,7 @@ namespace asp.Models.common
             string result = $@"@PRODUCT_ID      = N'{input.PRODUCT_ID}',
                                @PRODUCT_TYPE_ID = N'{input.PRODUCT_TYPE_ID}',
                                @SUPPLIER_ID     = N'{input.SUPPLIER_ID}',
+                               @WAREHOUSE_ID     = N'{input.WAREHOUSE_ID}',
                                @PRODUCT_CODE    = N'{input.PRODUCT_CODE}',
                                @PRODUCT_NAME    = N'{input.PRODUCT_NAME}',
                                @DESCRIPTION     = N'{input.DESCRIPTION}',

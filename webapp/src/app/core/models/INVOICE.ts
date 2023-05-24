@@ -10,7 +10,6 @@ export class INVOICE {
   total: number | undefined;
   status: string | undefined;
   notes: string | undefined;
-  moneY_PAYED: number | undefined;
   creatE_ID: string | undefined;
   creatE_DATE: moment.Moment | undefined;
   LST_INVOICE_DT: INVOICE_DT[];

@@ -15,5 +15,7 @@ namespace asp.Models
         public string BRANCH_NAME { get; set; }
         public string CREATE_ID { get; set; }
         public DateTime? CREATE_DATE { get; set; }
+        public string CREATE_NAME { get; set; }
+        public string BRANCH_ADDRESS { get; set; }
     }
 }

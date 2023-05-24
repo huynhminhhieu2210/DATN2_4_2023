@@ -23,7 +23,7 @@ namespace asp.Service
         }
         public async Task<IEnumerable<INVOICE>> INVOICE_SEARCH(INVOICE input)
         {
-            var store = "EXEC INVOICE_SEARCH " + _setSqlParameter.setParamInvoice(input);
+            var store = "EXEC INVOICE_SEARCH " + _setSqlParameter.setParamInvoiceSearch(input);
             return await _context.INVOICE.FromSqlRaw(store).ToListAsync();
         }
         public async Task<IEnumerable<InsertResult>> INVOICE_INSERT(INVOICE input)
@@ -45,6 +45,11 @@ namespace asp.Service
         {
             var store = "EXEC INVOICE_BYID " + id;
             return await _context.INVOICE.FromSqlRaw(store).ToListAsync();
+        }
+        public async Task<IEnumerable<UpdateResult>> INVOICE_CHANGE_STATUS(INVOICE input)
+        {
+            var store = "EXEC INVOICE_CHANGE_STATUS " + _setSqlParameter.setParamInvoice(input);
+            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync(); ;
         }
 
     }

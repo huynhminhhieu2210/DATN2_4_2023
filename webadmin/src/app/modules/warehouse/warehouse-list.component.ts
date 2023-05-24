@@ -23,10 +23,10 @@ export class WarehouseListComponent extends ComponentBase implements OnInit{
     this.search();
   }
   onEdit(item: any){
-    this.navigatePassParam('/app/warehouse-edit', { supplier: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/warehouse-edit', { warehouse: item }, { filterInput: JSON.stringify(undefined) });
   }
   onView(item: any){
-    this.navigatePassParam('/app/warehouse-view', { supplier: item }, { filterInput: JSON.stringify(undefined) });
+    this.navigatePassParam('/app/warehouse-view', { warehouse: item }, { filterInput: JSON.stringify(undefined) });
   }
   onDel(){
     this.warehouseService.Warehouse_delete(this.id!).subscribe((response: any)=>{

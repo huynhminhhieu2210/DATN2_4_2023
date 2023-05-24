@@ -22,15 +22,15 @@ export class ProfileComponent extends ComponentBase implements OnInit{
   address?: string;
   branchname?: string;
   ngOnInit(): void {
-    this.inputModel!.useR_FULLNAME = this.userfullname = localStorage.getItem('userfullname')?.toString();
-    this.inputModel!.useR_EMAIL = this.email = localStorage.getItem('email')?.toString();
-    this.branchid = localStorage.getItem('branchid')?.toString();
-    this.roleusername = localStorage.getItem('roleusername')?.toString();
-    this.usercode = localStorage.getItem('usercode')?.toString();
-    this.username = localStorage.getItem('username')?.toString();
-    this.inputModel!.useR_PHONE = this.phone = localStorage.getItem('phone')?.toString();
-    this.inputModel!.useR_ADDRESS = this.address = localStorage.getItem('address')?.toString();
-    this.branchname = localStorage.getItem('branchname')?.toString();
+    this.inputModel!.useR_FULLNAME = this.userfullname = sessionStorage.getItem('userfullname')?.toString();
+    this.inputModel!.useR_EMAIL = this.email = sessionStorage.getItem('email')?.toString();
+    this.branchid = sessionStorage.getItem('branchid')?.toString();
+    this.roleusername = sessionStorage.getItem('roleusername')?.toString();
+    this.usercode = sessionStorage.getItem('usercode')?.toString();
+    this.username = sessionStorage.getItem('username')?.toString();
+    this.inputModel!.useR_PHONE = this.phone = sessionStorage.getItem('phone')?.toString();
+    this.inputModel!.useR_ADDRESS = this.address = sessionStorage.getItem('address')?.toString();
+    this.branchname = sessionStorage.getItem('branchname')?.toString();
   }
   @ViewChild('editForm') editForm?: ElementRef;
   @ViewChild('changePassForm') changePassForm?: ElementRef;
@@ -58,8 +58,8 @@ export class ProfileComponent extends ComponentBase implements OnInit{
       this.isShowError = true;
       return;
     }
-    this.inputModelChangePass!.useR_NAME = localStorage.getItem('username')?.toString();
-    this.inputModelChangePass!.type = 'customer';
+    this.inputModelChangePass!.useR_NAME = sessionStorage.getItem('username')?.toString();
+    this.inputModelChangePass!.type = 'admin';
     this.userService.User_change_pass(this.inputModelChangePass!).subscribe((response: any)=>{
       if(response[0].result == '1'){
         this.indenerror_success = false;
@@ -85,29 +85,29 @@ export class ProfileComponent extends ComponentBase implements OnInit{
   }
   onEditInfoUserLogin(){
     var input = new USER();
-    input.useR_NAME = localStorage.getItem('username')?.toString();
+    input.useR_NAME = sessionStorage.getItem('username')?.toString();
     input.useR_FULLNAME = this.inputModel?.useR_FULLNAME;
     input.useR_PHONE = this.inputModel?.useR_PHONE;
     input.useR_ADDRESS = this.inputModel?.useR_ADDRESS;
     input.useR_EMAIL = this.inputModel?.useR_EMAIL;
     this.userService.User_update_info(input).subscribe((response: any)=>{
       const credentials = {
-        'useR_NAME' : localStorage.getItem('username')?.toString(),
+        'useR_NAME' : sessionStorage.getItem('username')?.toString(),
         'password' : '',
         'type': 'admin'
       }
       this.http.post("https://localhost:5001/api/Users/USER_GET_INFO_LOGIN", credentials)
           .subscribe((response: any) => {
-            localStorage.setItem('userid',response[0].useR_ID)
-            localStorage.setItem('branchid',response[0].brancH_ID)
-            localStorage.setItem('roleuserid',response[0].rolE_USER_ID)
-            localStorage.setItem('roleusername',response[0].rolE_USER_NAME)
-            localStorage.setItem('usercode',response[0].useR_CODE)
-            localStorage.setItem('username',response[0].useR_NAME)
-            localStorage.setItem('userfullname',response[0].useR_FULLNAME)
-            localStorage.setItem('email',response[0].useR_EMAIL)
-            localStorage.setItem('phone',response[0].useR_PHONE)
-            localStorage.setItem('address',response[0].useR_ADDRESS)
+            sessionStorage.setItem('userid',response[0].useR_ID)
+            sessionStorage.setItem('branchid',response[0].brancH_ID)
+            sessionStorage.setItem('roleuserid',response[0].rolE_USER_ID)
+            sessionStorage.setItem('roleusername',response[0].rolE_USER_NAME)
+            sessionStorage.setItem('usercode',response[0].useR_CODE)
+            sessionStorage.setItem('username',response[0].useR_NAME)
+            sessionStorage.setItem('userfullname',response[0].useR_FULLNAME)
+            sessionStorage.setItem('email',response[0].useR_EMAIL)
+            sessionStorage.setItem('phone',response[0].useR_PHONE)
+            sessionStorage.setItem('address',response[0].useR_ADDRESS)
             this.ngOnInit();
             this.indenerror_success = false;
             this.error = 'Cập nhật thông tin thành công';

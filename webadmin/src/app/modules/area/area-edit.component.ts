@@ -1,5 +1,6 @@
 import { Component, Injectable, OnInit, Injector, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import * as moment from 'moment';
 import { AREA } from 'src/app/core/models/AREA';
 import { AreaService } from 'src/app/core/services/area.service';
 import { ComponentBase } from 'src/app/shared/components/component-base';
@@ -18,7 +19,7 @@ export class AreaEditComponent extends ComponentBase implements OnInit{
   editPageState?: EditPageState;
   title?:string; 
   titleinfo?: string;
-
+  date?: string;
   @ViewChild('editForm') editForm?: ElementRef;
   isShowError = false;
   get disabledInput(): boolean{
@@ -28,6 +29,9 @@ export class AreaEditComponent extends ComponentBase implements OnInit{
     switch (this.editPageState) {
       case EditPageState.add:
         this.title = 'Thêm mới khu vực';
+        this.inputModel!.creatE_ID = sessionStorage.getItem('username')?.toString();
+        this.inputModel!.creatE_NAME = sessionStorage.getItem('userfullname')?.toString();
+        this.date = moment().format('yyyy-MM-DD');
         break;
       case EditPageState.edit:
         this.title = 'Chỉnh sửa khu vực';
@@ -51,6 +55,7 @@ export class AreaEditComponent extends ComponentBase implements OnInit{
     let id: string = this.getRouteParam('area');
     this.areaService.Area_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
+      this.date = moment(response[0].creatE_DATE).format('yyyy-MM-DD');
       this.reloadView();
     });
   }
@@ -63,7 +68,7 @@ export class AreaEditComponent extends ComponentBase implements OnInit{
     //  this.http.post("https://localhost:5001/api/auth/login", credentials)
     //     .subscribe((response: any) => {
     //       const token = (<any>response).token;
-    //       localStorage.setItem("jwt", token);
+    //       sessionStorage.setItem("jwt", token);
     //       this.invalidLogin = false;
     //       this.router.navigate(["/"]);
     //     }, (err: any) => {
@@ -71,6 +76,7 @@ export class AreaEditComponent extends ComponentBase implements OnInit{
     //     })
   }
   onSave(){
+    this.inputModel!.creatE_DATE = moment(this.date);
     if ((this.editForm as any).form.invalid) {
       this.isShowError = true;
       this.reloadView();

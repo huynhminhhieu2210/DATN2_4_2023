@@ -1,6 +1,7 @@
 
 import { Component, ElementRef, Injectable, Injector, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import * as moment from 'moment';
 import { BRANCH } from 'src/app/core/models/BRANCH';
 import { AreaService } from 'src/app/core/services/area.service';
 import { BranchService } from 'src/app/core/services/branch.service';
@@ -20,6 +21,7 @@ export class BranchEditComponent extends ComponentBase implements OnInit{
   editPageState?: EditPageState;
   title?:string; 
   titleinfo?: string;
+  date?: string;
   isShowError = false;
 
   @ViewChild('editForm') editForm?: ElementRef;
@@ -30,6 +32,9 @@ export class BranchEditComponent extends ComponentBase implements OnInit{
     switch (this.editPageState) {
       case EditPageState.add:
         this.title = 'Thêm mới chi nhánh';
+        this.inputModel!.creatE_ID = sessionStorage.getItem('username')?.toString();
+        this.inputModel!.creatE_NAME = sessionStorage.getItem('userfullname')?.toString();
+        this.date = moment().format('yyyy-MM-DD');
         break;
       case EditPageState.edit:
         this.title = 'Chỉnh sửa chi nhánh';
@@ -53,32 +58,18 @@ export class BranchEditComponent extends ComponentBase implements OnInit{
     let id: string = this.getRouteParam('branch');
     this.branchService.Branch_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
+      this.date = moment(response[0].creatE_DATE).format('yyyy-MM-DD');
       this.reloadView();
     });
   }
-  login(form: NgForm){
-    console.log(this.inputModel);
-    // const credentials = {
-    //   'username' : form.value.username,
-    //   'password' : form.value.password
-    // }
-    //  this.http.post("https://localhost:5001/api/auth/login", credentials)
-    //     .subscribe((response: any) => {
-    //       const token = (<any>response).token;
-    //       localStorage.setItem("jwt", token);
-    //       this.invalidLogin = false;
-    //       this.router.navigate(["/"]);
-    //     }, (err: any) => {
-    //       this.invalidLogin = true;
-    //     })
-  }
   onSave(){
+    this.inputModel!.creatE_DATE = moment(this.date);
     if ((this.editForm as any).form.invalid) {
       this.isShowError = true;
       this.reloadView();
       return;
   }
-    this.inputModel!.creatE_ID = localStorage.getItem('userid')?.toString();
+    this.inputModel!.creatE_ID = sessionStorage.getItem('userid')?.toString();
     if(!this.inputModel?.brancH_ID){
       this.branchService.Branch_insert(this.inputModel!).subscribe((response: any)=>{
         console.log(response);

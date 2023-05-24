@@ -15,6 +15,7 @@ export class SupplierListComponent extends ComponentBase implements OnInit{
     super(injector);
   }
   listSupplier?: SUPPLIER[];
+  filterInput: SUPPLIER = new SUPPLIER();
   tilte_info_delete?: string;
   id?: string;
   ngOnInit(): void {
@@ -33,8 +34,7 @@ export class SupplierListComponent extends ComponentBase implements OnInit{
     });
   }
   search(){
-    var filtera = new SUPPLIER();
-    this.supplierService.Supplier_search(filtera).subscribe((response: any)=>{
+    this.supplierService.Supplier_search(this.filterInput).subscribe((response: any)=>{
       this.listSupplier = response;
       this.reloadView();
     });

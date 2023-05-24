@@ -1,6 +1,7 @@
 
 import { Component, ElementRef, Injectable, Injector, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import * as moment from 'moment';
 import { SUPPLIER } from 'src/app/core/models/SUPPLIER';
 import { AreaService } from 'src/app/core/services/area.service';
 import { BranchService } from 'src/app/core/services/branch.service';
@@ -21,6 +22,7 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
   editPageState?: EditPageState;
   title?:string; 
   titleinfo?: string;
+  date?: string;
   isShowError = false;
 
   @ViewChild('editForm') editForm?: ElementRef;
@@ -31,6 +33,9 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
     switch (this.editPageState) {
       case EditPageState.add:
         this.title = 'Thêm mới nhà cung cấp';
+        this.inputModel!.creatE_ID = sessionStorage.getItem('username')?.toString();
+        this.inputModel!.creatE_NAME = sessionStorage.getItem('userfullname')?.toString();
+        this.date = moment().format('yyyy-MM-DD');
         break;
       case EditPageState.edit:
         this.title = 'Chỉnh sửa nhà cung cấp';
@@ -54,6 +59,7 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
     let id: string = this.getRouteParam('supplier');
     this.supplierService.Supplier_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
+      this.date = moment(response[0].creatE_DATE).format('yyyy-MM-DD');
       this.reloadView();
     });
   }
@@ -66,7 +72,7 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
     //  this.http.post("https://localhost:5001/api/auth/login", credentials)
     //     .subscribe((response: any) => {
     //       const token = (<any>response).token;
-    //       localStorage.setItem("jwt", token);
+    //       sessionStorage.setItem("jwt", token);
     //       this.invalidLogin = false;
     //       this.router.navigate(["/"]);
     //     }, (err: any) => {
@@ -74,6 +80,7 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
     //     })
   }
   onSave(){
+    this.inputModel!.creatE_DATE = moment(this.date);
     if ((this.editForm as any).form.invalid) {
       this.isShowError = true;
       this.reloadView();

@@ -18,22 +18,22 @@ export class LoginComponent {
      this.http.post("https://localhost:5001/api/auth/login", credentials)
         .subscribe((response: any) => {
           const token = (<any>response).token;
-          localStorage.setItem("jwt", token);
+          sessionStorage.setItem("jwt", token);
           this.invalidLogin = false;
 
           this.http.post("https://localhost:5001/api/Users/USER_GET_INFO_LOGIN", credentials)
           .subscribe((response: any) => {
-            localStorage.setItem('userid',response[0].useR_ID)
-            localStorage.setItem('branchid',response[0].brancH_ID)
-            localStorage.setItem('roleuserid',response[0].rolE_USER_ID)
-            localStorage.setItem('roleusername',response[0].rolE_USER_NAME)
-            localStorage.setItem('usercode',response[0].useR_CODE)
-            localStorage.setItem('username',response[0].useR_NAME)
-            localStorage.setItem('userfullname',response[0].useR_FULLNAME)
-            localStorage.setItem('email',response[0].useR_EMAIL)
-            localStorage.setItem('phone',response[0].useR_PHONE)
-            localStorage.setItem('address',response[0].useR_ADDRESS)
-            localStorage.setItem('branchname',response[0].brancH_NAME)
+            sessionStorage.setItem('userid',response[0].useR_ID)
+            sessionStorage.setItem('branchid',response[0].brancH_ID)
+            sessionStorage.setItem('roleuserid',response[0].rolE_USER_ID)
+            sessionStorage.setItem('roleusername',response[0].rolE_USER_NAME)
+            sessionStorage.setItem('usercode',response[0].useR_CODE)
+            sessionStorage.setItem('username',response[0].useR_NAME)
+            sessionStorage.setItem('userfullname',response[0].useR_FULLNAME)
+            sessionStorage.setItem('email',response[0].useR_EMAIL)
+            sessionStorage.setItem('phone',response[0].useR_PHONE)
+            sessionStorage.setItem('address',response[0].useR_ADDRESS)
+            sessionStorage.setItem('branchname',response[0].brancH_NAME)
           })
           this.router.navigate(["/app/dashboard"]);
         }, (err: any) => {
