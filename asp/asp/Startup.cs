@@ -74,6 +74,8 @@ namespace asp
             services.AddTransient<ICartsService, CartsService>();
             services.AddTransient<IStatussService, StatussService>();
             services.AddTransient<IDashBoardsService, DashBoardsService>();
+            services.AddTransient<IDocImpProductsDetailsService, DocImpProductsDetailsService>();
+            services.AddTransient<IDocImpProductsService, DocImpProductsService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

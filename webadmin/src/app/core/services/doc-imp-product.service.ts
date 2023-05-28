@@ -1,14 +1,13 @@
 import { HttpClient,HttpClientModule,HttpParams,HttpHeaders } from '@angular/common/http';
-import { DOC_IMP_PRODUCT } from "../models/DOC_IMP_PRODUCT";
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DOC_IMP_PRODUCT } from '../models/DOC_IMP_PRODUCT';
 @Injectable({
     providedIn: 'root',
   })
 export class DocImpProductService {
-    private heroes: DOC_IMP_PRODUCT[] = [];
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:5001/api/Doc_Imp_products/';
+    private url: string ='https://localhost:5001/api/DocImpProducts/';
 
     Doc_Imp_Product_search(filter :DOC_IMP_PRODUCT): Observable<Object>{
         return this.http.post(this.url + "DOC_IMP_PRODUCT_SEARCH", filter);
@@ -21,5 +20,8 @@ export class DocImpProductService {
     }
     Doc_Imp_Product_delete(id: string): Observable<Object>{
         return this.http.post(this.url + "DOC_IMP_PRODUCT_DELETE", id);
+    }
+    Doc_Imp_Product_byid(id: string): Observable<Object>{
+        return this.http.get(this.url + "DOC_IMP_PRODUCT_BYID/"+ id);
     }
 }

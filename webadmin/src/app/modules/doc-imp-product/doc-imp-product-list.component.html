@@ -1,0 +1,149 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="" style="position: fixed;top:60px;background-color: #f9fbfd;height: 39px;width: 100%;z-index: 1;"></div>
+                        <div class="" style="position: fixed;top:70px;background-color: #1572e8;height: 39px;width: 100%;z-index: 1;">
+                            <div class="d-flex align-items-center">
+                                <button style="padding: 8px;margin-bottom: 4px;" 
+                                class="btn btn-primary" routerLink="/app/doc-imp-product-add" routerLinkActive="active" ariaCurrentWhenActive="page">
+                                    <i style="margin: 2px;" class="fa fa-plus"></i>
+                                    Thêm mới
+                                </button>
+                                <button style="margin-left: 10px;padding: 8px;margin-bottom: 4px;" class="btn btn-primary" (click)="search()">
+                                    <i style="margin: 2px;" class="fa fa-search"></i>
+                                    Tìm kiếm
+                                </button>
+                            </div>
+                        </div>
+                        <div class="page-header" style="   padding-top: 19px;">
+                            <ul class="breadcrumbs">
+                                <li class="" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                    <a style="margin-right: 5px;margin-left: 5px;" href="#">
+                                        <i class="flaticon-home"></i>
+                                        Trang chủ
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">Hóa đơn nhập</a>
+                                </li>
+                            </ul>
+                        </div> 
+                        <div class="card-body">
+                            <!-- Modal -->
+                            <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 200px;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header no-bd">
+                                            <h5 class="modal-title">
+                                                <span class="fw-mediumbold">Xác nhận xoá</span>
+                                            </h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="small" style="text-align: center;">{{tilte_info_delete}}</p>
+                                        </div>
+                                        <div class="modal-footer no-bd">
+                                            <button class="close" data-dismiss="modal" aria-label="Close" (click)="onDel()" type="button" style="margin-right: 17px;" class="btn btn-primary">Xác nhận</button>
+                                            <button class="close" data-dismiss="modal" aria-label="Close" type="button" style="margin-right: 130px;" id="addRowButton" class="btn btn-danger">Đóng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="changeStatusRowModal" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 200px;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header no-bd">
+                                            <h5 class="modal-title">
+                                                <span class="fw-mediumbold">Xác nhận đổi trạng thái</span>
+                                            </h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="small" style="text-align: center;">{{tilte_info_delete}}</p>
+                                        </div>
+                                        <div class="modal-footer no-bd">
+                                            <button class="close" data-dismiss="modal" aria-label="Close" (click)="onChangeStatus()" type="button" style="margin-right: 17px;" class="btn btn-primary">Xác nhận</button>
+                                            <button class="close" data-dismiss="modal" aria-label="Close" type="button" style="margin-right: 130px;" id="addRowButton" class="btn btn-danger">Đóng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="invoicE_CODE">Mã hóa đơn</label>
+                                        <input required #invoicE_CODE="ngModel" id="invoicE_CODE" name="invoicE_CODE" [(ngModel)]="filterInput!.doC_IMP_PRODUCT_CODE" 
+                                        type="text" class="form-control form-control" placeholder="Mã hóa đơn">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="receiver">Người nhận</label>
+                                        <input required #receiver="ngModel" id="receiver" name="receiver" [(ngModel)]="filterInput!.receiver" 
+                                        type="text" class="form-control form-control" placeholder="Người nhận">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="useR_ID">Người giao</label>
+                                        <input required #useR_ID="ngModel" id="useR_ID" name="useR_ID" [(ngModel)]="filterInput!.receiveR_NAME" 
+                                        type="text" class="form-control form-control" placeholder="Người giao">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="status">Trạng thái</label>
+                                        <select #status="ngModel" class="form-control" [(ngModel)]="filterInput!.status" id="status" name="status">
+                                            <option *ngFor="let item of listStatus" value="{{item.statuS_ID}}">{{item.statuS_NAME}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        <hr>
+                            <div class="table-responsive">
+                                <table id="add-row" class="display table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã hoá đơn</th>
+                                            <th>Người giao</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Ngày nhận</th>
+                                            <th>Người nhận</th>
+                                            <th>Trạng thái</th>
+                                            <th style="width: 10%">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of listDocImpProduct">
+                                            <td>{{item.doC_IMP_PRODUCT_ID}}</td>
+                                            <td>{{item.deliver}}</td>
+                                            <td>{{formatCurrency(item.total)}}</td>
+                                            <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
+                                            <td>{{item.receiveR_NAME}}</td>
+                                            <td>{{item.creatE_ID}}</td>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <!-- <button (click)="onEdit(item.invoicE_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Chỉnh sửa">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button> -->
+                                                    <button (click)="onView(item.doC_IMP_PRODUCT_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Xem chi tiết">
+                                                        <i class="fa fa-info"></i>
+                                                    </button>
+                                                    <button (click)="onConfirm(item.doC_IMP_PRODUCT_CODE!,item.doC_IMP_PRODUCT_ID!)" data-toggle="modal" data-target="#addRowModal" type="button" title="" class="btn btn-link btn-danger" data-original-title="Xoá">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

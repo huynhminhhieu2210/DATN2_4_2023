@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AreaListComponent } from './modules/area/area-list.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
-import { DocImpProductComponent } from './modules/doc-imp-product/doc-imp-product.component';
 import { RoleUserComponent } from './modules/role-user/role-user.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SideBarComponent } from './shared/header/sidebar.component';
@@ -37,6 +36,8 @@ import { ProductListComponent } from './modules/products/product-list.component'
 import { ProfileComponent } from './modules/profile/profile.component';
 import { NgChartsModule } from 'ng2-charts';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { DocImportListComponent } from './modules/doc-imp-product/doc-imp-product-list.component';
+import { DocImportEditComponent } from './modules/doc-imp-product/doc-imp-product-edit.component';
 export function tokenGetter(){
   return sessionStorage.getItem("jwt");
 }
@@ -54,7 +55,6 @@ export function tokenGetter(){
     CustomerEditComponent,
     CustomerListComponent,
     RoleUserComponent,
-    DocImpProductComponent,
     BranchListComponent,
     BranchEditComponent,
     AreaListComponent,
@@ -71,6 +71,8 @@ export function tokenGetter(){
     ProductEditComponent,
     ProductListComponent,
     ProfileComponent,
+    DocImportListComponent,
+    DocImportEditComponent
   ],
   imports: [
     BrowserModule,

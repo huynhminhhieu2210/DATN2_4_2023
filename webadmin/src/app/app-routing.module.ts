@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AreaListComponent } from './modules/area/area-list.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
-import { DocImpProductComponent } from './modules/doc-imp-product/doc-imp-product.component';
 import { RoleUserComponent } from './modules/role-user/role-user.component';
 import { AreaEditComponent } from './modules/area/area-edit.component';
 import { EditPageState } from './shared/enum/edit-page-state';
@@ -25,6 +24,8 @@ import { InvoiceEditComponent } from './modules/invoice/invoice-edit.component';
 import { ProductListComponent } from './modules/products/product-list.component';
 import { ProductEditComponent } from './modules/products/product-edit.component';
 import { ProfileComponent } from './modules/profile/profile.component';
+import { DocImportListComponent } from './modules/doc-imp-product/doc-imp-product-list.component';
+import { DocImportEditComponent } from './modules/doc-imp-product/doc-imp-product-edit.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,11 @@ import { ProfileComponent } from './modules/profile/profile.component';
             { path: 'branch-edit', component: BranchEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
             { path: 'branch-view', component: BranchEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
 
-            { path: 'doc-imp-product', component: DocImpProductComponent,canActivate: [AuthGuard]},
+            { path: 'doc-imp-product', component: DocImportListComponent,canActivate: [AuthGuard]},
+            { path: 'doc-imp-product-add', component: DocImportEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
+            { path: 'doc-imp-product-edit', component: DocImportEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
+            { path: 'doc-imp-product-view', component: DocImportEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
+
             { path: 'role-user', component: RoleUserComponent,canActivate: [AuthGuard]},
           
             { path: 'customer', component: CustomerListComponent,canActivate: [AuthGuard]},

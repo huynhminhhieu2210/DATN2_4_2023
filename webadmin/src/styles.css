@@ -3,3 +3,7 @@
 .error-message {
     color: red;
 }
+.required:after {
+    content:" *";
+    color: red;
+}
