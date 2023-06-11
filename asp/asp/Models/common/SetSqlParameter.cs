@@ -62,7 +62,8 @@ namespace asp.Models.common
                                @TOTAL                = N'{input.TOTAL}',
                                @STATUS               = N'{input.STATUS}',
                                @CREATE_ID            = N'{input.CREATE_ID}',
-                               @CREATE_DATE          = N'{input.CREATE_DATE}'";
+                               @CREATE_DATE          = N'{input.CREATE_DATE}',
+                               @WAREHOUSE_ID         = N'{input.WAREHOUSE_ID}'";
             return result;
         }
         public string setParamDocImpProductDetail(DOC_IMP_PRODUCT_DT input)
@@ -198,6 +199,13 @@ namespace asp.Models.common
                                @WAREHOUSE_ADDRESS = N'{input.WAREHOUSE_ADDRESS}',
                                @CREATE_ID         = N'{input.CREATE_ID}',
                                @CREATE_DATE       = N'{input.CREATE_DATE}'";
+            return result;
+        }
+        public string setParamApprove(Approve input)
+        {
+            string result = $@"@REF_ID      = N'{input.REF_ID}',
+                               @CHECKER     = N'{input.CHECKER}', 
+                               @CONTENT     = N'{input.CONTENT}'";
             return result;
         }
     }

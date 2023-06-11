@@ -15,5 +15,6 @@ namespace asp.IService
         Task<IEnumerable<UpdateResult>> DOC_IMP_PRODUCT_UPDATE(DOC_IMP_PRODUCT input);
         Task<IEnumerable<DeleteResult>> DOC_IMP_PRODUCT_DELETE(string id);
         Task<IEnumerable<DOC_IMP_PRODUCT>> DOC_IMP_PRODUCT_BYID(string id);
+        Task<IEnumerable<UpdateResult>> DOC_IMP_PRODUCT_ACCESS(Approve input);
     }
 }

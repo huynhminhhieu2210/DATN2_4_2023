@@ -7,7 +7,7 @@ import { DOC_IMP_PRODUCT_DT } from '../models/DOC_IMP_PRODUCT_DT';
   })
 export class DocImpProductDetailsService {
     constructor(private http:HttpClient  ) { }
-    private url: string ='https://localhost:5001/api/DOC_IMP_PRODUCT_DELETE/';
+    private url: string ='https://localhost:5001/api/DocImpProductsDetails/';
 
     Doc_Imp_Product_Dt_search(filter :DOC_IMP_PRODUCT_DT): Observable<Object>{
         return this.http.post(this.url + "DOC_IMP_PRODUCT_DT_SEARCH", filter);

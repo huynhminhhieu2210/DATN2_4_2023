@@ -24,11 +24,12 @@
     <div *ngFor="let item of listInvoiceDt;let i = index" style="margin-top: 10px;" class="container">
       <div class="row">
         <div class="col-md-2">
-          <img style="width: 70px;
-          height: 66px;" src="{{item.imG_URL}}" alt="">
+          <a href="http://localhost:4953/product-detail;productid={{item.producT_ID}}"> <img style="width: 70px;
+            height: 66px;" src="{{item.imG_URL}}" alt=""></a>
+
         </div>
         <div  style="margin-top: 6px;" class="col-md-8">
-           <span>{{item.producT_NAME}}</span> <br>
+          <a href="http://localhost:4953/product-detail;productid={{item.producT_ID}}">  <span>{{item.producT_NAME}}</span> <br></a>
            <span>Số lượng: {{item.quantity}}</span>
         </div>
         <div  style="margin-top: 6px;text-align: right;"  class="col-md-2">

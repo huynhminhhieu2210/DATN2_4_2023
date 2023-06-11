@@ -2,6 +2,7 @@ import { HttpClient,HttpClientModule,HttpParams,HttpHeaders } from '@angular/com
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DOC_IMP_PRODUCT } from '../models/DOC_IMP_PRODUCT';
+import { APPROVE } from '../models/APPROVE';
 @Injectable({
     providedIn: 'root',
   })
@@ -19,9 +20,12 @@ export class DocImpProductService {
         return this.http.post(this.url + "DOC_IMP_PRODUCT_UPDATE", filter);
     }
     Doc_Imp_Product_delete(id: string): Observable<Object>{
-        return this.http.post(this.url + "DOC_IMP_PRODUCT_DELETE", id);
+        return this.http.delete(this.url + "DOC_IMP_PRODUCT_DELETE/" + id);
     }
     Doc_Imp_Product_byid(id: string): Observable<Object>{
         return this.http.get(this.url + "DOC_IMP_PRODUCT_BYID/"+ id);
+    }
+    Doc_Imp_Product_Access(filter :APPROVE): Observable<Object>{
+        return this.http.post(this.url + "DOC_IMP_PRODUCT_ACCESS", filter);
     }
 }

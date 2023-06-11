@@ -26,6 +26,8 @@ import { ProductEditComponent } from './modules/products/product-edit.component'
 import { ProfileComponent } from './modules/profile/profile.component';
 import { DocImportListComponent } from './modules/doc-imp-product/doc-imp-product-list.component';
 import { DocImportEditComponent } from './modules/doc-imp-product/doc-imp-product-edit.component';
+import { ImportProductListComponent } from './modules/import-products/import-product-list.component';
+import { ImportProductEditComponent } from './modules/import-products/import-product-edit.component';
 
 @NgModule({
   imports: [
@@ -90,6 +92,11 @@ import { DocImportEditComponent } from './modules/doc-imp-product/doc-imp-produc
             { path: 'products-add', component: ProductEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
             { path: 'products-edit', component: ProductEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
             { path: 'products-view', component: ProductEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
+
+            { path: 'import-products', component: ImportProductListComponent,canActivate: [AuthGuard]},
+            { path: 'import-products-add', component: ImportProductEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
+            { path: 'import-products-edit', component: ImportProductEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
+            { path: 'import-products-view', component: ImportProductEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
 
             { path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},
 

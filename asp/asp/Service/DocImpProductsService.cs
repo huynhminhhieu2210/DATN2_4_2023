@@ -61,5 +61,10 @@ namespace asp.Service
             }
             return xmlString;
         }
+        public async Task<IEnumerable<UpdateResult>> DOC_IMP_PRODUCT_ACCESS(Approve input)
+        {
+            var store = "EXEC DOC_IMP_PRODUCT_ACCESS " + _setSqlParameter.setParamApprove(input);
+            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync(); ;
+        }
     }
 }

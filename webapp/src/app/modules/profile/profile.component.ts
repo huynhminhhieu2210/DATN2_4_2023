@@ -37,7 +37,12 @@ export class ProfileComponent extends ComponentBase implements OnInit {
   editAddress: string;
   editAddressId: string;
   lstAddressReceive: ADDRESS_RECEIVE[];
-  lstInvoice: INVOICE[];
+  lstInvoiceCXN: INVOICE[];
+  lstInvoiceCLH: INVOICE[];
+  lstInvoiceDG: INVOICE[];
+  lstInvoiceDG1: INVOICE[];
+  lstInvoiceDN: INVOICE[];
+  lstInvoiceDH: INVOICE[];
   addresS_RECEIVE_NAME: string;
   constructor(
     injector: Injector,
@@ -141,8 +146,39 @@ export class ProfileComponent extends ComponentBase implements OnInit {
   onLoadInvoice(){
     var input = new INVOICE();
     input.creatE_ID = localStorage.getItem('username')?.toString();
+    input.status = 'NEW';
     this.invoiceService.Invoice_search(input).subscribe((response: any)=>{
-      this.lstInvoice = response;
+      this.lstInvoiceCXN = response;
+    });
+    var input1 = new INVOICE();
+    input1.creatE_ID = localStorage.getItem('username')?.toString();
+    input1.status = 'WAIT_GOOD';
+    this.invoiceService.Invoice_search(input1).subscribe((response: any)=>{
+      this.lstInvoiceCLH = response;
+    });
+    var input2 = new INVOICE();
+    input2.creatE_ID = localStorage.getItem('username')?.toString();
+    input2.status = 'SHIP';
+    this.invoiceService.Invoice_search(input2).subscribe((response: any)=>{
+      this.lstInvoiceDG = response;
+    });
+    var input3 = new INVOICE();
+    input3.creatE_ID = localStorage.getItem('username')?.toString();
+    input3.status = 'SHIP_DONE';
+    this.invoiceService.Invoice_search(input3).subscribe((response: any)=>{
+      this.lstInvoiceDG1 = response;
+    });
+    var input4 = new INVOICE();
+    input4.creatE_ID = localStorage.getItem('username')?.toString();
+    input4.status = 'DONE';
+    this.invoiceService.Invoice_search(input4).subscribe((response: any)=>{
+      this.lstInvoiceDN = response;
+    });
+    var input5 = new INVOICE();
+    input5.creatE_ID = localStorage.getItem('username')?.toString();
+    input5.status = 'CANCEL';
+    this.invoiceService.Invoice_search(input5).subscribe((response: any)=>{
+      this.lstInvoiceDH = response;
     });
   }
   onSave(form: NgForm){

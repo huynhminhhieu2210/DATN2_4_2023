@@ -38,6 +38,9 @@ import { NgChartsModule } from 'ng2-charts';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DocImportListComponent } from './modules/doc-imp-product/doc-imp-product-list.component';
 import { DocImportEditComponent } from './modules/doc-imp-product/doc-imp-product-edit.component';
+import { DataTablesModule } from 'angular-datatables';
+import { ImportProductEditComponent } from './modules/import-products/import-product-edit.component';
+import { ImportProductListComponent } from './modules/import-products/import-product-list.component';
 export function tokenGetter(){
   return sessionStorage.getItem("jwt");
 }
@@ -72,7 +75,9 @@ export function tokenGetter(){
     ProductListComponent,
     ProfileComponent,
     DocImportListComponent,
-    DocImportEditComponent
+    DocImportEditComponent,
+    ImportProductEditComponent,
+    ImportProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +86,7 @@ export function tokenGetter(){
     FormsModule,
     NgChartsModule,
     MatDatepickerModule,
+    DataTablesModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

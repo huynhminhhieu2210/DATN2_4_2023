@@ -12,7 +12,7 @@ export class HomeComponent extends ComponentBase implements OnInit {
   listProduct?: PRODUCT[];
   page: number = 1;
   count: number = 0;
-  tableSize: number = 5;
+  tableSize: number = 4;
   tableSizes: any = [3, 6, 9, 12];
   constructor(
     injector: Injector,

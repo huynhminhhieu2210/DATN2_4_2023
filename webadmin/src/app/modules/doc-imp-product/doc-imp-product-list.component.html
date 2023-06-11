@@ -102,16 +102,16 @@
                                 </div>
                             </div>
                         <hr>
-                            <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover">
+                            <div class="table-responsive" style="max-height: 300px;overflow: scroll;">
+                                <table id="" class="table" style="overflow:hidden">
                                     <thead>
                                         <tr>
-                                            <th>Mã hoá đơn</th>
-                                            <th>Người giao</th>
-                                            <th>Tổng tiền</th>
-                                            <th>Ngày nhận</th>
-                                            <th>Người nhận</th>
-                                            <th>Trạng thái</th>
+                                            <th><span style="width: 1000px;"> Mã hoá đơn</span></th>
+                                            <th><span>Người giao</span></th>
+                                            <th><span>Tổng tiền</span></th>
+                                            <th><span>Ngày nhận</span></th>
+                                            <th><span>Người nhận</span></th>
+                                            <th><span>Trạng thái</span></th>
                                             <th style="width: 10%">Thao tác</th>
                                         </tr>
                                     </thead>
@@ -122,7 +122,8 @@
                                             <td>{{formatCurrency(item.total)}}</td>
                                             <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
                                             <td>{{item.receiveR_NAME}}</td>
-                                            <td>{{item.creatE_ID}}</td>
+                                            <td *ngIf="item.status == 'APPROVE'">Đã xác nhận</td>
+                                            <td *ngIf="item.status != 'APPROVE'">Chờ xác nhận</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <!-- <button (click)="onEdit(item.invoicE_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Chỉnh sửa">

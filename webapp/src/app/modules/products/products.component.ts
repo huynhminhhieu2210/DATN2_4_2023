@@ -14,6 +14,8 @@ export class ProductsComponent extends ComponentBase implements OnInit {
   count: number = 0;
   tableSize: number = 10;
   tableSizes: any = [3, 6, 9, 12];
+  producT_TYPE_ID: string ='TC';
+  title: string;
   constructor(
     injector: Injector,
     private productService: ProductService
@@ -22,9 +24,11 @@ export class ProductsComponent extends ComponentBase implements OnInit {
   }
   ngOnInit(): void {
     this.search();
+    this.title = this.getRouteParam('type') == undefined || this.getRouteParam('type') == '' || this.getRouteParam('type') == null ? '' : ' >> '+ this.getRouteParam('type');
   }
   search(){
     var filtera = new PRODUCT();
+    filtera.producT_TYPE_ID = this.getRouteParam('type');
     this.productService.Product__search(filtera).subscribe((response: any)=>{
       this.listProduct = response;
     });

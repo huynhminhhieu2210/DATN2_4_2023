@@ -13,6 +13,9 @@ import { DOC_IMP_PRODUCT } from 'src/app/core/models/DOC_IMP_PRODUCT';
 import * as moment from 'moment';
 import { DocImpProductService } from 'src/app/core/services/doc-imp-product.service';
 import { DocImpProductDetailsService } from 'src/app/core/services/doc-imp-product-detail.service';
+import { WAREHOUSE } from 'src/app/core/models/WAREHOUSE';
+import { WarehouseService } from 'src/app/core/services/warehouse.service';
+import { APPROVE } from 'src/app/core/models/APPROVE';
 @Component({
   templateUrl: './doc-imp-product-edit.component.html',
 })
@@ -27,6 +30,7 @@ export class DocImportEditComponent extends ComponentBase implements OnInit{
   titleerorr?: string;
   listInvoiceDt?: DOC_IMP_PRODUCT_DT[] = [];
   dateTime: string | undefined;
+  lstWarehouse?: WAREHOUSE[];
   isShowError = false;
   @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
@@ -50,16 +54,24 @@ export class DocImportEditComponent extends ComponentBase implements OnInit{
         this.title = 'Xem chi tiết hoá đơn';
         this.byid();
         break;
-  }
+    }
+    this.initCombobox();
   }
   constructor(
     injector: Injector,
     private docImpProductService: DocImpProductService,
-    private docImpProductDetailsService: DocImpProductDetailsService
+    private docImpProductDetailsService: DocImpProductDetailsService,
+    private warehouseService: WarehouseService
     ) {
     super(injector);
     this.inputModel!.doC_IMP_PRODUCT_ID = this.getRouteParam('docimpproduct');
     this.editPageState = this.getRouteData('editPageState');
+  }
+  initCombobox(){
+    var filtera = new WAREHOUSE();
+    this.warehouseService.Warehouse_search(filtera).subscribe((response: any)=>{
+      this.lstWarehouse = response;
+    });
   }
   byid(){
     let id: string = this.getRouteParam('docimpproduct');
@@ -88,11 +100,19 @@ export class DocImportEditComponent extends ComponentBase implements OnInit{
       var tongtien = 0;
       this.ExcelData.forEach((element: any) => {
         var item = new DOC_IMP_PRODUCT_DT();
-        item.producT_CODE = element['Tên sản phẩm'];
-        item.producT_NAME = element['Mã sản phẩm'];
+        item.producT_CODE = element['Mã sản phẩm'];
+        item.producT_NAME = element['Tên sản phẩm'];
         item.quantity = element['Số lượng'];
         item.price = element['Đơn giá'];
         tongtien = tongtien + element['Số lượng'] * element['Đơn giá'];
+        if(this.listInvoiceDt!.filter(x=>x.producT_CODE == item.producT_CODE).length > 0){
+          this.listInvoiceDt = [];
+          this.titleerorr = 'Mã sản phẩm không được trùng. Vui lòng kiểm tra lại!';
+          setTimeout(() => {
+            this.titleerorr = '';
+          }, 5000);
+          return;
+        }
         this.listInvoiceDt?.push(item);
       });
       this.inputModel!.total = tongtien;
@@ -134,13 +154,13 @@ export class DocImportEditComponent extends ComponentBase implements OnInit{
       this.docImpProductService.Doc_Imp_Product_insert(this.inputModel!).subscribe((response: any)=>{
         console.log(response);
         if(response[0].result != '0'){
-          this.titleerorr = response[0].errordesc;
+          this.titleerorr = response[0].errorDesc;
           setTimeout(() => {
             this.titleerorr = '';
           }, 5000);
         }
         else{
-          this.titleinfo = response[0].errordesc;
+          this.titleinfo = response[0].errorDesc;
           setTimeout(() => {
             this.titleinfo = '';
           }, 5000);
@@ -151,18 +171,38 @@ export class DocImportEditComponent extends ComponentBase implements OnInit{
       this.docImpProductService.Doc_Imp_Product_update(this.inputModel!).subscribe((response: any)=>{
         console.log(response);
         if(response[0].result != '0'){
-          this.titleerorr = response[0].errordesc;
+          this.titleerorr = response[0].errorDesc;
           setTimeout(() => {
             this.titleerorr = '';
           }, 5000);
         }
         else{
-          this.titleinfo = response[0].errordesc;
+          this.titleinfo = response[0].errorDesc;
           setTimeout(() => {
             this.titleinfo = '';
           }, 5000);
         }
       });
     }
+  }
+  onAccess(){
+    var inputApprove = new APPROVE();
+    inputApprove.reF_ID = this.inputModel?.doC_IMP_PRODUCT_ID;
+    inputApprove.checker = sessionStorage.getItem('username')?.toString();;
+    inputApprove.content = 'Duyệt';
+    this.docImpProductService.Doc_Imp_Product_Access(inputApprove).subscribe((response: any)=>{
+      if(response[0].result != '0'){
+        this.titleerorr = response[0].errorDesc;
+        setTimeout(() => {
+          this.titleerorr = '';
+        }, 5000);
+      }
+      else{
+        this.titleinfo = response[0].errorDesc;
+        setTimeout(() => {
+          this.titleinfo = '';
+        }, 5000);
+      }
+    });
   }
 }

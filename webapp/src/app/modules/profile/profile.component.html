@@ -1,8 +1,8 @@
 <div style="padding-top: 30px;" class="product-categories-area pt-60 pb-0">
         <div class="container">
             <div class="row">
-              <div class="col-md-1"></div>
-              <div class="col-md-10">
+              <!-- <div class="col-md-1"></div> -->
+              <div class="col-md-12">
                 <div class="container">
                   <div class="row">
                     <div class="col-md-3">
@@ -32,44 +32,213 @@
                         </div>
                     </mdb-tab>
                       <mdb-tab title="Đơn hàng đã mua">
-                          <h4 class="title">Đơn hàng đã mua</h4>
-                          <div *ngFor="let item of lstInvoice" class="donhang">
-                            <div class="container">
-                              <div class="row">
-                                <div class="col-md-10">
-                                  <span>Đơn hàng: #{{item.invoicE_CODE}}</span>
-                               </div>
-                                <div class="col-md-2" style="    padding: 0px;">
-                                   <span *ngIf="item.status != 'CANCEL'" style="color: chartreuse;">{{item.invoicE_STATUS_NAME}}</span>
-                                   <span *ngIf="item.status == 'CANCEL'" style="color: red;">{{item.invoicE_STATUS_NAME}}</span>
-                                </div>
-                              </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-9">
-                                  <span><img style="    display: block;
-                                    max-height: 60px;
-                                    width: 60px;" src="https://www.thegioididong.com/lich-su-mua-hang/images/no-image.jpg" alt=""></span>
-                                </div>
-                                <div class="col-md-3">
-                                  <span>Tổng tiền: {{formatCurrency(item.total)}}</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-10">
-                              </div>
-                              <div class="col-md-2">
-                                <span><button (click)="onViewInvoice(item.invoicE_ID)" class="btn btn-danger">Chi tiết</button></span>
-                              </div>
-                            </div>
-                            </div>
-                          </div>
+                          <mdb-tabs [justified]="true">
+                            <mdb-tab title="Chờ xác nhận">
+                                <div *ngFor="let item of lstInvoiceCXN" class="donhang">
+                                    <div class="container">
+                                      <div class="row">
+                                        <div class="col-md-9">
+                                          <span>Đơn hàng: #{{item.invoicE_CODE}}</span>
+                                       </div>
+                                        <!-- <div class="col-md-3" style="    padding: 0px;">
+                                           <span *ngIf="item.status != 'CANCEL'" style="color: chartreuse;">{{item.invoicE_STATUS_NAME}}</span>
+                                           <span *ngIf="item.status == 'CANCEL'" style="color: red;">{{item.invoicE_STATUS_NAME}}</span>
+                                        </div> -->
+                                      </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                          <span><img style="    display: block;
+                                            max-height: 60px;
+                                            width: 60px;" src="https://www.thegioididong.com/lich-su-mua-hang/images/no-image.jpg" alt=""></span>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <span>Tổng tiền: {{formatCurrency(item.total)}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-10">
+                                      </div>
+                                      <div class="col-md-2">
+                                        <span><button (click)="onViewInvoice(item.invoicE_ID)" class="btn btn-danger">Chi tiết</button></span>
+                                      </div>
+                                    </div>
+                                    </div>
+                                  </div>
+                            </mdb-tab>
+                            <mdb-tab title="Chờ lấy hàng">
+                                <div *ngFor="let item of lstInvoiceCLH" class="donhang">
+                                    <div class="container">
+                                      <div class="row">
+                                        <div class="col-md-9">
+                                          <span>Đơn hàng: #{{item.invoicE_CODE}}</span>
+                                       </div>
+                                        <!-- <div class="col-md-3" style="    padding: 0px;">
+                                           <span *ngIf="item.status != 'CANCEL'" style="color: chartreuse;">{{item.invoicE_STATUS_NAME}}</span>
+                                           <span *ngIf="item.status == 'CANCEL'" style="color: red;">{{item.invoicE_STATUS_NAME}}</span>
+                                        </div> -->
+                                      </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                          <span><img style="    display: block;
+                                            max-height: 60px;
+                                            width: 60px;" src="https://www.thegioididong.com/lich-su-mua-hang/images/no-image.jpg" alt=""></span>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <span>Tổng tiền: {{formatCurrency(item.total)}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-10">
+                                      </div>
+                                      <div class="col-md-2">
+                                        <span><button (click)="onViewInvoice(item.invoicE_ID)" class="btn btn-danger">Chi tiết</button></span>
+                                      </div>
+                                    </div>
+                                    </div>
+                                  </div>
+                            </mdb-tab>
+                            <mdb-tab title="Đang giao">
+                                <div *ngFor="let item of lstInvoiceDG" class="donhang">
+                                    <div class="container">
+                                      <div class="row">
+                                        <div class="col-md-9">
+                                          <span>Đơn hàng: #{{item.invoicE_CODE}}</span>
+                                       </div>
+                                        <!-- <div class="col-md-3" style="    padding: 0px;">
+                                           <span *ngIf="item.status != 'CANCEL'" style="color: chartreuse;">{{item.invoicE_STATUS_NAME}}</span>
+                                           <span *ngIf="item.status == 'CANCEL'" style="color: red;">{{item.invoicE_STATUS_NAME}}</span>
+                                        </div> -->
+                                      </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                          <span><img style="    display: block;
+                                            max-height: 60px;
+                                            width: 60px;" src="https://www.thegioididong.com/lich-su-mua-hang/images/no-image.jpg" alt=""></span>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <span>Tổng tiền: {{formatCurrency(item.total)}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-10">
+                                      </div>
+                                      <div class="col-md-2">
+                                        <span><button (click)="onViewInvoice(item.invoicE_ID)" class="btn btn-danger">Chi tiết</button></span>
+                                      </div>
+                                    </div>
+                                    </div>
+                                  </div>
+                            </mdb-tab>
+                            <mdb-tab title="Đã giao">
+                                <div *ngFor="let item of lstInvoiceDG1" class="donhang">
+                                    <div class="container">
+                                      <div class="row">
+                                        <div class="col-md-9">
+                                          <span>Đơn hàng: #{{item.invoicE_CODE}}</span>
+                                       </div>
+                                        <!-- <div class="col-md-3" style="    padding: 0px;">
+                                           <span *ngIf="item.status != 'CANCEL'" style="color: chartreuse;">{{item.invoicE_STATUS_NAME}}</span>
+                                           <span *ngIf="item.status == 'CANCEL'" style="color: red;">{{item.invoicE_STATUS_NAME}}</span>
+                                        </div> -->
+                                      </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                          <span><img style="    display: block;
+                                            max-height: 60px;
+                                            width: 60px;" src="https://www.thegioididong.com/lich-su-mua-hang/images/no-image.jpg" alt=""></span>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <span>Tổng tiền: {{formatCurrency(item.total)}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-10">
+                                      </div>
+                                      <div class="col-md-2">
+                                        <span><button (click)="onViewInvoice(item.invoicE_ID)" class="btn btn-danger">Chi tiết</button></span>
+                                      </div>
+                                    </div>
+                                    </div>
+                                  </div>
+                            </mdb-tab>
+                            <mdb-tab title="Đã nhận">
+                                <div *ngFor="let item of lstInvoiceDN" class="donhang">
+                                    <div class="container">
+                                      <div class="row">
+                                        <div class="col-md-9">
+                                          <span>Đơn hàng: #{{item.invoicE_CODE}}</span>
+                                       </div>
+                                        <!-- <div class="col-md-3" style="    padding: 0px;">
+                                           <span *ngIf="item.status != 'CANCEL'" style="color: chartreuse;">{{item.invoicE_STATUS_NAME}}</span>
+                                           <span *ngIf="item.status == 'CANCEL'" style="color: red;">{{item.invoicE_STATUS_NAME}}</span>
+                                        </div> -->
+                                      </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                          <span><img style="    display: block;
+                                            max-height: 60px;
+                                            width: 60px;" src="https://www.thegioididong.com/lich-su-mua-hang/images/no-image.jpg" alt=""></span>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <span>Tổng tiền: {{formatCurrency(item.total)}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-10">
+                                      </div>
+                                      <div class="col-md-2">
+                                        <span><button (click)="onViewInvoice(item.invoicE_ID)" class="btn btn-danger">Chi tiết</button></span>
+                                      </div>
+                                    </div>
+                                    </div>
+                                  </div>
+                            </mdb-tab>
+                            <mdb-tab title="Đã hủy">
+                                <div *ngFor="let item of lstInvoiceDH" class="donhang">
+                                    <div class="container">
+                                      <div class="row">
+                                        <div class="col-md-9">
+                                          <span>Đơn hàng: #{{item.invoicE_CODE}}</span>
+                                       </div>
+                                        <!-- <div class="col-md-3" style="    padding: 0px;">
+                                           <span *ngIf="item.status != 'CANCEL'" style="color: chartreuse;">{{item.invoicE_STATUS_NAME}}</span>
+                                           <span *ngIf="item.status == 'CANCEL'" style="color: red;">{{item.invoicE_STATUS_NAME}}</span>
+                                        </div> -->
+                                      </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                          <span><img style="    display: block;
+                                            max-height: 60px;
+                                            width: 60px;" src="https://www.thegioididong.com/lich-su-mua-hang/images/no-image.jpg" alt=""></span>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <span>Tổng tiền: {{formatCurrency(item.total)}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-10">
+                                      </div>
+                                      <div class="col-md-2">
+                                        <span><button (click)="onViewInvoice(item.invoicE_ID)" class="btn btn-danger">Chi tiết</button></span>
+                                      </div>
+                                    </div>
+                                    </div>
+                                  </div>
+                            </mdb-tab>
+                          </mdb-tabs>
+                         
                       </mdb-tab>
                     </mdb-tabs>
                     </div>
                     </div>
               </div>
-              <div class="col-md-1"></div>
+              <!-- <div class="col-md-1"></div> -->
         </div>
         </div>
 </div>

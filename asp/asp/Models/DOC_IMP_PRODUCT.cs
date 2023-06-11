@@ -23,5 +23,6 @@ namespace asp.Models
         public List<DOC_IMP_PRODUCT_DT> LST_DOC_IMP_PRODUCT_DT { get; set; }
         [NotMapped]
         public string XML_DOC_IMP_PRODUCT_DT { get; set; }
+        public string WAREHOUSE_ID { get; set; }
     }
 }

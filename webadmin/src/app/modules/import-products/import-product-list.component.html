@@ -1,0 +1,147 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="" style="position: fixed;top:60px;background-color: #f9fbfd;height: 39px;width: 100%;z-index: 1;"></div>
+                        <div class="" style="position: fixed;top:70px;background-color: #1572e8;height: 39px;width: 100%;z-index: 1;">
+                            <div class="d-flex align-items-center">
+                                <!-- <h4 class="card-title">Add Row</h4> -->
+                                <button style="padding: 8px;margin-bottom: 4px;" 
+                                class="btn btn-primary" routerLink="/app/import-products-add" routerLinkActive="active" ariaCurrentWhenActive="page">
+                                    <i style="margin: 2px;" class="fa fa-plus"></i>
+                                    Thêm mới
+                                </button>
+                                <button style="margin-left: 10px;padding: 8px;margin-bottom: 4px;" class="btn btn-primary" (click)="search()">
+                                    <i style="margin: 2px;" class="fa fa-search"></i>
+                                    Tìm kiếm
+                                </button>
+                            </div>
+                        </div>
+                        <div class="page-header" style="   padding-top: 19px;">
+                            <ul class="breadcrumbs">
+                                <li class="" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                    <a style="margin-right: 5px;margin-left: 5px;" href="#">
+                                        <i class="flaticon-home"></i>
+                                        Trang chủ
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a>Import sản phẩm</a>
+                                </li>
+                            </ul>
+                        </div> 
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="producT_NAME">Tên sản phẩm</label>
+                                        <input required #producT_NAME="ngModel" id="producT_NAME" name="producT_NAME" [(ngModel)]="filterInput!.producT_NAME" 
+                                        type="text" class="form-control form-control" placeholder="Tên sản phẩm">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="producT_CODE">Mã sản phẩm</label>
+                                        <input required #producT_CODE="ngModel" id="producT_CODE" name="producT_CODE" [(ngModel)]="filterInput!.producT_CODE" 
+                                        type="text" class="form-control form-control" placeholder="Mã sản phẩm">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="producT_TYPE_ID">Loại sản phẩm</label>
+                                        <select #producT_TYPE_ID="ngModel" class="form-control" [(ngModel)]="filterInput!.producT_TYPE_ID" id="producT_TYPE_ID" name="producT_TYPE_ID">
+                                            <option *ngFor="let item of listProductType" value="{{item.producT_TYPE_ID}}">{{item.producT_TYPE_NAME}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="warehousE_ID">Kho</label>
+                                        <select #warehousE_ID="ngModel" class="form-control" [(ngModel)]="filterInput!.warehousE_ID" id="warehousE_ID" name="warehousE_ID">
+                                            <option *ngFor="let item of listWareHouse" value="{{item.warehousE_ID}}">{{item.warehousE_NAME }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="supplieR_ID">Nhà cung cấp</label>
+                                        <select #supplieR_ID="ngModel" class="form-control" [(ngModel)]="filterInput!.supplieR_ID" id="supplieR_ID" name="supplieR_ID">
+                                            <option *ngFor="let item of listSupplier" value="{{item.supplieR_ID}}">{{item.supplieR_NAME}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        <hr>
+                        <div class="card-body">
+                            <!-- Modal -->
+                            <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 200px;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header no-bd">
+                                            <h5 class="modal-title">
+                                                <span class="fw-mediumbold">Xác nhận xoá</span>
+                                            </h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="small" style="text-align: center;">{{tilte_info_delete}}</p>
+                                        </div>
+                                        <div class="modal-footer no-bd">
+                                            <button class="close" data-dismiss="modal" aria-label="Close" (click)="onDel()" type="button" style="margin-right: 17px;" class="btn btn-primary">Xác nhận</button>
+                                            <button class="close" data-dismiss="modal" aria-label="Close" type="button" style="margin-right: 130px;" id="addRowButton" class="btn btn-danger">Đóng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="add-row" class="display table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã sản phẩm</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Loại sản phẩm</th>
+                                            <th>Kho</th>
+                                            <th>Nhà cung cấp</th>
+                                            <th>Tồn kho</th>
+                                            <th>Giá</th>
+                                            <!-- <th>Ngày tạo</th>
+                                            <th>Người tạo</th> -->
+                                            <th style="width: 10%">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of listProduct">
+                                            <td>{{item.producT_CODE}}</td>
+                                            <td>{{item.producT_NAME}}</td>
+                                            <td>{{item.producT_TYPE_NAME}}</td>
+                                            <td>{{item.warehousE_NAME}}</td>
+                                            <td>{{item.supplieR_NAME}}</td>
+                                            <td>{{item.stock}}</td>
+                                            <td>{{formatCurrency(item.price)}}</td>
+                                            <!-- <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
+                                            <td>{{item.creatE_ID}}</td> -->
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <button (click)="onEdit(item.producT_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Chỉnh sửa">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <!-- <button (click)="onView(item.useR_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xem chi tiết">
+                                                        <i class="fa fa-info"></i>
+                                                    </button> -->
+                                                    <button (click)="onConfirm(item.producT_NAME!,item.producT_CODE!,item.producT_ID!)" data-toggle="modal" data-target="#addRowModal" type="button" title="" class="btn btn-link btn-danger" data-original-title="Xoá">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -49,5 +49,10 @@ namespace asp.Controllers
         {
             return await _docImpProductsService.DOC_IMP_PRODUCT_BYID(id);
         }
+        [HttpPost]
+        public async Task<IEnumerable<UpdateResult>> DOC_IMP_PRODUCT_ACCESS([FromBody] Approve input)
+        {
+            return await _docImpProductsService.DOC_IMP_PRODUCT_ACCESS(input);
+        }
     }
 }
