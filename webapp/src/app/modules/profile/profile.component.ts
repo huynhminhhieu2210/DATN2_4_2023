@@ -31,11 +31,16 @@ export class ProfileComponent extends ComponentBase implements OnInit {
   usercode?: string;
   username?: string;
   phone?: string;
+  fullNameView?: string;
+  phoneView?: string;
   address?: string;
   branchname?: string;
   warning: string;
   editAddress: string;
   editAddressId: string;
+  passNewCheck: string;
+  passNew: string;
+  passOld: string;
   lstAddressReceive: ADDRESS_RECEIVE[];
   lstInvoiceCXN: INVOICE[];
   lstInvoiceCLH: INVOICE[];
@@ -44,6 +49,7 @@ export class ProfileComponent extends ComponentBase implements OnInit {
   lstInvoiceDN: INVOICE[];
   lstInvoiceDH: INVOICE[];
   addresS_RECEIVE_NAME: string;
+ editFormChangePass: NgForm;
   constructor(
     injector: Injector,
     private http: HttpClient, 
@@ -55,18 +61,19 @@ export class ProfileComponent extends ComponentBase implements OnInit {
     super(injector);
   }
   ngOnInit(): void {
-    this.fullName = localStorage.getItem("userfullname");
+    this.fullNameView = this.fullName = localStorage.getItem("userfullname");
     this.email = localStorage.getItem('email')?.toString();
     this.branchid = localStorage.getItem('branchid')?.toString();
     this.roleusername = localStorage.getItem('roleusername')?.toString();
     this.usercode = localStorage.getItem('usercode')?.toString();
     this.username = localStorage.getItem('username')?.toString();
-    this.phone = localStorage.getItem('phone')?.toString();
+    this.phoneView = this.phone = localStorage.getItem('phone')?.toString();
     this.address = localStorage.getItem('address')?.toString();
     this.branchname = localStorage.getItem('branchname')?.toString();
-    this.phone = this.phone != undefined ? '' : this.phone;
-    this.address = this.address != undefined ? '' : this.address;
-    this.email = this.email != undefined ? '' : this.email;
+    this.phone = this.phone == undefined ? '' : this.phone;
+    this.phoneView = this.phoneView == undefined ? '' : this.phoneView;
+    this.address = this.address == undefined ? '' : this.address;
+    this.email = this.email == undefined ? '' : this.email;
     this.search();
     this.onLoadAddressReceive();
     this.onLoadInvoice();
@@ -206,6 +213,8 @@ export class ProfileComponent extends ComponentBase implements OnInit {
             localStorage.setItem('email',response[0].useR_EMAIL)
             localStorage.setItem('phone',response[0].useR_PHONE)
             localStorage.setItem('address',response[0].useR_ADDRESS)
+            this.fullNameView = response[0].useR_FULLNAME;
+            this.phoneView = response[0].useR_PHONE;
           })
     });
   }
@@ -233,5 +242,19 @@ export class ProfileComponent extends ComponentBase implements OnInit {
     this.userService.User_delete_address_receive(id).subscribe((response: any)=>{
       this.onLoadAddressReceive();
     });
+  }
+  onChangPassClick(){
+    this.passOld = undefined;
+    this.passNew = undefined;
+    this.passNewCheck = undefined;
+  }
+  onChangInfoClick(){
+    this.fullName = localStorage.getItem("userfullname");
+    this.email = localStorage.getItem('email')?.toString();
+    this.phone = localStorage.getItem('phone')?.toString();
+    this.address = localStorage.getItem('address')?.toString();
+    this.phone = this.phone == undefined ? '' : this.phone;
+    this.address = this.address == undefined ? '' : this.address;
+    this.email = this.email == undefined ? '' : this.email;
   }
 }

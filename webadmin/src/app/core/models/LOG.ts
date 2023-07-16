@@ -7,4 +7,5 @@ export class LOG {
   loG_DESC: string | undefined;
   creatE_ID: string | undefined;
   creatE_DATE: moment.Moment | undefined;
+  top: number | undefined;
 }

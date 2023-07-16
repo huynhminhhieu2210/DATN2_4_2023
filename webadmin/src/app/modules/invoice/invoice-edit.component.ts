@@ -51,13 +51,11 @@ export class InvoiceEditComponent extends ComponentBase implements OnInit{
     let id: string = this.getRouteParam('invoice');
     this.invoiceService.Invoice_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
-      this.reloadView();
     });
     var filter = new INVOICE_DT();
     filter.invoicE_ID = id;
     this.invoiceDtailsService.Invoice_detail_search(filter).subscribe((response: any)=>{
       this.listInvoiceDt = response;
-      this.reloadView();
     });
   }
 }

@@ -35,5 +35,6 @@ namespace asp.Data
         public DbSet<ADDRESS_RECEIVE> ADDRESS_RECEIVE { get; set; }
         public DbSet<STATUS> STATUS { get; set; }
         public DbSet<BARCHART> BARCHART { get; set; }
+        public DbSet<TOP_RESULT> TOP_RESULT { get; set; }
     }
 }

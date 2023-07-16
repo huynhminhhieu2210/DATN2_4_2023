@@ -24,7 +24,8 @@ namespace asp.Service
         public async Task<IEnumerable<PRODUCT>> PRODUCT_SEARCH(PRODUCT input)
         {
             var store = "EXEC PRODUCT_SEARCH " + _setSqlParameter.setParamProduct(input);
-            return await _context.PRODUCT.FromSqlRaw(store).ToListAsync();
+            var Result = await _context.PRODUCT.FromSqlRaw(store).ToListAsync();
+            return Result;
         }
         public async Task<IEnumerable<InsertResult>> PRODUCT_INSERT(PRODUCT input)
         {
@@ -45,6 +46,11 @@ namespace asp.Service
         {
             var store = "EXEC PRODUCT_BYID " + id;
             return await _context.PRODUCT.FromSqlRaw(store).ToListAsync();
+        }
+        public async Task<IEnumerable<UpdateResult>> PRODUCT_CHANGE_STATUS(PRODUCT input)
+        {
+            var store = "EXEC PRODUCT_CHANGE_STATUS " + input.PRODUCT_ID;
+            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync();
         }
 
     }

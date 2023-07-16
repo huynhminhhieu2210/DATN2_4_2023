@@ -30,4 +30,8 @@ export class PRODUCT {
   producT_TYPE_NAME: string | undefined;
   supplieR_NAME: string | undefined;
   warehousE_NAME: string | undefined;
+  checkbox: boolean | undefined;
+  iS_ACTIVE: boolean | undefined;
+  stt: string | undefined;
+  top: number | undefined;
 }

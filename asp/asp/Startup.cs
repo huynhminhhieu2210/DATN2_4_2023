@@ -1,6 +1,7 @@
-
+﻿
 using asp.Data;
 using asp.IService;
+using asp.Models;
 using asp.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -76,6 +77,7 @@ namespace asp
             services.AddTransient<IDashBoardsService, DashBoardsService>();
             services.AddTransient<IDocImpProductsDetailsService, DocImpProductsDetailsService>();
             services.AddTransient<IDocImpProductsService, DocImpProductsService>();
+            services.AddTransient<ITopResultsService, TopResultsService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

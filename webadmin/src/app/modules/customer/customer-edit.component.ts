@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit, Injector } from '@angular/core';
+import { Component, Injectable, OnInit, Injector, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
 import { BRANCH } from 'src/app/core/models/BRANCH';
@@ -22,6 +22,8 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
   title?:string; 
   titleinfo?: string;
   date?: string;
+  isShowError = false;
+  @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
   }
@@ -57,7 +59,6 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
     this.customerService.Customer_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
       this.date = moment(response[0].creatE_DATE).format('yyyy-MM-DD');
-      this.reloadView();
     });
   }
   initCombobox(){
@@ -65,6 +66,10 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
   }
   onSave(){
     this.inputModel!.creatE_DATE = moment(this.date);
+    if ((this.editForm as any).form.invalid) {
+      this.isShowError = true;
+      return;
+    }
     if(!this.inputModel?.useR_ID){
       this.customerService.Customer_insert(this.inputModel!).subscribe((response: any)=>{
         console.log(response);
@@ -82,6 +87,5 @@ export class CustomerEditComponent extends ComponentBase implements OnInit{
         }, 5000);
       });
     }
-    this.reloadView();
   }
 }

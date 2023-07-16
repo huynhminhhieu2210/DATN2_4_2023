@@ -16,14 +16,14 @@
                                         <i style="margin: 2px;" class="fa fa-save"></i>
                                         Lưu
                                     </button>
-                                    <button (click)="onAccess()" *ngIf="inputModel?.status == 'APPROVE'" style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" disabled>
+                                    <!-- <button (click)="onAccess()" *ngIf="inputModel?.status == 'APPROVE' && editPageState == EditPageState.add" style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" disabled>
                                         <i style="margin: 2px;" class="fa fa-check"></i>
                                         Xác nhận
                                     </button>
-                                    <button (click)="onAccess()" *ngIf="inputModel?.status != 'APPROVE'" style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" >
+                                    <button (click)="onAccess()" *ngIf="inputModel?.status != 'APPROVE' && editPageState != EditPageState.add" style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" >
                                         <i style="margin: 2px;" class="fa fa-check"></i>
                                         Xác nhận
-                                    </button>
+                                    </button> -->
                                 </div>
                             </div>
                             <div class="page-header" style="padding-top: 19px;">
@@ -38,7 +38,7 @@
                                         <a routerLink="/app/doc-imp-product" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-right: 5px;" href="#">Hóa đơn nhập</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">{{title}}</a>
+                                        <a>{{title}}</a>
                                     </li>
                                 </ul>
                             </div> 
@@ -55,15 +55,17 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6 col-lg-4">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="doC_IMP_PRODUCT_CODE">Mã hoá đơn</label>
                                             <input style="color:black; font-weight: bold;"  disabled="{{true}}" id="doC_IMP_PRODUCT_CODE" name="doC_IMP_PRODUCT_CODE" [(ngModel)]="inputModel!.doC_IMP_PRODUCT_CODE" 
                                             type="text" class="form-control form-control" placeholder="Mã hoá đơn">
                                         </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="deliver" class="required">Người giao</label>
-                                            <input disabled="{{disabledInput}}" required
+                                            <input style="color:black; font-weight: bold;" disabled="{{disabledInput}}" required
                                             #deliver="ngModel"
                                             id="deliver" name="deliver" [(ngModel)]="inputModel!.deliver" type="text" 
                                             class="form-control form-control" placeholder="Người giao">
@@ -71,16 +73,11 @@
                                                 <span>Người giao không được để trống</span>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="creatE_DATE">Ngày tạo</label>
-                                            <input style="color:black; font-weight: bold;" disabled="{{true}}" id="creatE_DATE" name="creatE_DATE" [(ngModel)]="dateTime" 
-                                            type="datetime-local" class="form-control form-control" placeholder="Ngày tạo">
-                                        </div>
                                     </div>
-                                    <div class="col-md-6 col-lg-4">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="warehousE_ID">Kho</label>
-                                            <select required #warehousE_ID="ngModel" class="form-control" [(ngModel)]="inputModel!.warehousE_ID" 
+                                            <label for="warehousE_ID" class="required">Kho</label>
+                                            <select style="color:black; font-weight: bold;" disabled="{{disabledInput}}" required #warehousE_ID="ngModel" class="form-control" [(ngModel)]="inputModel!.warehousE_ID" 
                                             id="warehousE_ID" name="warehousE_ID">
                                                 <option *ngFor="let item of lstWarehouse" value="{{item.warehousE_ID}}">{{item.warehousE_NAME}}</option>
                                             </select>
@@ -88,38 +85,57 @@
                                                 <span>Kho không được để trống</span>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="creatE_DATE">Ngày tạo</label>
+                                            <input style="color:black; font-weight: bold;" disabled="{{true}}" id="creatE_DATE" name="creatE_DATE" [(ngModel)]="dateTime" 
+                                            type="datetime-local" class="form-control form-control" placeholder="Ngày tạo">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="receiveR_NAME">Người nhận</label>
                                             <input style="color:black; font-weight: bold;" disabled="{{true}}" id="receiveR_NAME" name="receiveR_NAME" [(ngModel)]="inputModel!.receiveR_NAME" 
                                             type="text" class="form-control form-control" placeholder="Người nhận">
                                         </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="total">Tổng tiền</label>
                                             <input style="color:black; font-weight: bold;" disabled="{{true}}" id="total" name="total" 
-                                            [(ngModel)]="inputModel!.total" type="text" 
+                                            [(ngModel)]="total" type="text" 
                                             class="form-control form-control" placeholder="Tổng tiền">
                                         </div>
+                                    </div>
                                         <!-- <div class="form-group">
                                             <label for="creatE_DATE">Ngày giao</label>
                                             <input disabled="{{disabledInput}}" id="creatE_DATE" name="creatE_DATE" 
                                             [(ngModel)]="inputModel!.creatE_DATE" type="datetime-local" class="form-control form-control" placeholder="Ngày bắt đầu giao">
                                         </div> -->
-                                    </div>
-                                    <div class="col-md-6 col-lg-4">
-
-                                    </div>
                                 </div>
                             </div>
                         
                             <div class="card-action">
-                                <div>
-                                    <strong style="font-size: 20px;">Danh sách sản phẩm</strong>
-                                    <button *ngIf="!disabledInput" style="margin-left: 780px;" class="btn btn-primary"><input  type="file" (change)="ImportExcel($event)"></button>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong style="font-size: 20px;">Danh sách sản phẩm</strong>
+                                    </div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-2">
+                                        <button (click)="searchModal()" data-toggle="modal" data-target="#addRowModal" *ngIf="!disabledInput" style="font-size: 17px;margin-right: 3px;" class="btn btn-primary" >
+                                           +
+                                        </button>
+                                        <button (click)="onDeleteRowCheck()" *ngIf="!disabledInput" style="font-size: 17px;margin-right: 3px;" class="btn btn-danger" >
+                                            x
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="table-responsive">
                                     <table id="add-row" class="display table table-striped table-hover">
                                         <thead>
                                             <tr>
+                                                <th><input disabled="{{disabledInput}}" type="checkbox" (change)="onChangeCheckboxAll()" [checked]="checkAll"></th>
                                                 <th>Mã sản phẩm</th>
                                                 <th>Tên sản phẩm</th>
                                                 <th>Số lượng</th>
@@ -127,14 +143,41 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of listInvoiceDt">
+                                            <tr *ngFor="let item of listInvoiceDt;let in = index">
+                                                <td>
+                                                    <input disabled="{{disabledInput}}" type="checkbox" (change)="onChangeCheckbox(in)" [checked]="item.checkbox">
+                                                </td>
                                                 <td>{{item.producT_CODE}}</td>
-                                                <td>{{item.producT_NAME}}</td>
-                                                <td>{{item.quantity}}</td>
-                                                <td>{{formatCurrency(item.price)}}</td>
+                                                <td>
+                                                    <input *ngIf="!disabledInput" style="height: 45px !important;" [(ngModel)] ="item.producT_NAME" name="producT_NAME{{in}}" 
+                                                    type="text" class="form-control" placeholder="Tên sản phẩm"/>
+                                                    <span *ngIf="disabledInput">{{item.producT_NAME}}</span>
+                                                </td>
+                                                <td>
+                                                    <input *ngIf="!disabledInput" style="height: 45px !important;" [(ngModel)] ="item.quantity" name="quantity{{in}}" 
+                                                    (change)="onChangeQuantity(in, item.quantity)"
+                                                    type="number" class="form-control" placeholder="Số lượng"/>
+                                                    <span *ngIf="disabledInput">{{item.quantity}}</span>
+                                                </td>
+                                                <td>
+                                                    <input *ngIf="!disabledInput" style="height: 45px !important;" [(ngModel)] ="item.price" name="price{{in}}" 
+                                                    (change)="onChangePrice(in, item.price)"
+                                                    type="number" class="form-control" placeholder="Đơn giá"/>
+                                                    <span *ngIf="disabledInput">{{formatCurrency(item.price)}}</span>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-8"></div>
+                                    <div class="col-md-4">
+                                        <input *ngIf="!disabledInput" class="custom-file-input-hmh btn btn-primary" style="margin-left: 15px;width: 114px;margin-right: 3px;" type="file" (change)="ImportExcel($event)">
+                                        <button (click)="onDownloadFileImport()" *ngIf="!disabledInput" style="font-size: 17px;" class="btn btn-primary" >
+                                            Tải file mẫu import
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -169,4 +212,75 @@
             </div>
         </div>
     </footer> -->
+</div>
+<!-- Modal -->
+<div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="left: -350px;width: 250%;">
+            <div class="modal-header no-bd">
+                <h5 class="modal-title">
+                    <span class="fw-mediumbold">Tìm kiếm thông tin sản phẩm</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <p class="small">Vui lòng nhập đầy đủ thông tin bên dưới để thêm</p> -->
+                <form #addForm="ngForm" class="form-add">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="producT_CODE">Mã sản phẩm</label>
+                                <input [(ngModel)] ="filterInput.producT_CODE" id="producT_CODE" name="producT_CODE" type="text" class="form-control" placeholder="Mã sản phẩm" required/>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="producT_NAME">Tên sản phẩm</label>
+                                <input [(ngModel)] ="filterInput.producT_NAME" id="producT_NAME" name="producT_NAME" type="text" class="form-control" placeholder="Tên sản phẩm" required/>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="producT_TYPE_ID">Loại sản phẩm</label>
+                                <input [(ngModel)] ="filterInput.producT_TYPE_ID" id="producT_TYPE_ID" name="producT_TYPE_ID" type="text" class="form-control" placeholder="Loại sản phẩm" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <strong style="font-size: 20px;">Danh sách sản phẩm</strong>
+                    <div class="table-responsive">
+                        <table id="add-row" class="display table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" (change)="onChangeCheckboxAllModal()" [checked]="checkAllModal"></th>
+                                    <th>Mã sản phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Loại sản phẩm</th>
+                                    <th>Nhà cung cấp</th>
+                                    <th>Đơn giá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of listProducts;let in = index">
+                                    <td><input type="checkbox" (change)="onChangeCheckboxModal(in)" [checked]="item.checkbox"></td>
+                                    <td>{{item.producT_CODE}}</td>
+                                    <td>{{item.producT_NAME}}</td>
+                                    <td>{{item.producT_TYPE_NAME}}</td>
+                                    <td>{{item.supplieR_NAME}}</td>
+                                    <td>{{formatCurrency(item.price)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer no-bd">
+                        <button (click)="searchModal()" class="btn btn-primary">Tìm kiếm</button>
+                        <button class="close" data-dismiss="modal" aria-label="Close" type="submit" id="addForm" (click)="onSubmitModal()" class="btn btn-primary">Thêm</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

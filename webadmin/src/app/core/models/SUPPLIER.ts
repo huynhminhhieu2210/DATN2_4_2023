@@ -8,4 +8,5 @@ export class SUPPLIER {
   creatE_ID: string | undefined;
   creatE_DATE: moment.Moment | undefined;
   creatE_NAME: string | undefined;
+  top: number | undefined;
 }

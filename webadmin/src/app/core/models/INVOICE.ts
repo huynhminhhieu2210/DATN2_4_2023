@@ -13,4 +13,5 @@ export class INVOICE {
   invoicE_STATUS_NAME: string | undefined;
   creatE_NAME: string | undefined;
   useR_NAME: string | undefined;
+  top: number | undefined;
 }

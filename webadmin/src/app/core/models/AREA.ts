@@ -6,4 +6,5 @@ export class AREA {
   creatE_ID: string | undefined;
   creatE_DATE?: moment.Moment;
   creatE_NAME: string | undefined;
+  top: number | undefined;
 }

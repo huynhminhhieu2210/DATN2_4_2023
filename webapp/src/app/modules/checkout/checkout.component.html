@@ -19,13 +19,13 @@
           </div>
         <div class="form-group">
             <label for="receiveR_ADDRESS">Địa chỉ</label>
-            <input #receiveR_ADDRESS="ngModel" [(ngModel)]="inputModel.receiveR_ADDRESS" id="receiveR_ADDRESS" name="receiveR_ADDRESS" type="text" class="form-control" placeholder="Địa chỉ" list="lstAddress" required/>
+            <input list="lstAddress"  #receiveR_ADDRESS="ngModel" [(ngModel)]="inputModel.receiveR_ADDRESS" id="receiveR_ADDRESSA" name="receiveR_ADDRESSA" class="form-control" required/>
+            <datalist id="lstAddress">
+              <option *ngFor="let item of lstAddressReceive" value="{{item.addresS_RECEIVE_NAME}}"> 
+            </datalist> 
             <div class="error-message-input" *ngIf="receiveR_ADDRESS.invalid && isShowError">
               <span>Địa chỉ không được để trống</span>
           </div>
-            <datalist id="lstAddress">
-              <option *ngFor="let item of lstAddressReceive" value="{{item.addresS_RECEIVE_NAME}}">
-            </datalist> 
           </div>
         <div class="form-group">
             <label for="notes">Ghi chú</label>
@@ -35,9 +35,9 @@
         <input (change)="changRadioBtn('T')"  id="payment-method-4" style="width: 19px; position: absolute;" class="input-radio" type="radio" checked name="payment_method"/>
         <label style="margin-left: 29px;
         margin-top: 9px;" for="payment-method-4">Thanh toán khi nhận hàng</label> <br>
-        <input (change)="changRadioBtn('D')"  id="payment-method-4" style="width: 19px; position: absolute;" class="input-radio" type="radio" name="payment_method"/>
+        <!-- <input (change)="changRadioBtn('D')"  id="payment-method-4" style="width: 19px; position: absolute;" class="input-radio" type="radio" name="payment_method"/>
         <label style="margin-left: 29px;
-        margin-top: 9px;" for="payment-method-4">MOMO</label>
+        margin-top: 9px;" for="payment-method-4">MOMO</label> -->
           <div style="text-align:center;margin:20px">
             <button type="submit" class="btn btn-primary">Hoàn tất đơn hàng</button>
         </div>

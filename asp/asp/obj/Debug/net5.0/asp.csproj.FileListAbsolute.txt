@@ -645,7 +645,6 @@ C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.dll
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Drawing.dll
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Drawing.Primitives.dll
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Dynamic.Runtime.dll
-C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Formats.Asn1.dll
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Globalization.Calendars.dll
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Globalization.dll
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Globalization.Extensions.dll
@@ -729,7 +728,6 @@ C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Securit
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Security.SecureString.dll
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.ServiceModel.Web.dll
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.ServiceProcess.dll
-C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Text.Encoding.CodePages.dll
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Text.Encoding.dll
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Text.Encoding.Extensions.dll
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\refs\System.Text.Encodings.Web.dll
@@ -1382,3 +1380,9 @@ H:\DATN2_4_2023\asp\asp\obj\Debug\net5.0\ref\asp.dll
 H:\DATN2_4_2023\asp\asp\obj\Debug\net5.0\asp.pdb
 H:\DATN2_4_2023\asp\asp\obj\Debug\net5.0\asp.genruntimeconfig.cache
 C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\BCrypt.Net-Next.dll
+C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\BouncyCastle.Cryptography.dll
+C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\MailKit.dll
+C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\MimeKit.dll
+C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\System.Formats.Asn1.dll
+C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\huynh\Desktop\DATN2_4_2023\asp\asp\bin\Debug\net5.0\System.Text.Encoding.CodePages.dll

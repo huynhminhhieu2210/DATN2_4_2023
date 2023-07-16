@@ -36,7 +36,8 @@ namespace asp.Service
         }
         public async Task<IEnumerable<UpdateResult>> DOC_IMP_PRODUCT_UPDATE(DOC_IMP_PRODUCT input)
         {
-            var store = "EXEC DOC_IMP_PRODUCT_UPDATE " + _setSqlParameter.setParamDocImpProduct(input);
+            input.XML_DOC_IMP_PRODUCT_DT = ConvertObjectToXMLString(input.LST_DOC_IMP_PRODUCT_DT);
+            var store = "EXEC DOC_IMP_PRODUCT_UPDATE " + _setSqlParameter.setParamDocImpProduct(input) + ", @XML_DOC_IMP_PRODUCT_DT = N'" + input.XML_DOC_IMP_PRODUCT_DT + "'";
             return await _context.UpdateResult.FromSqlRaw(store).ToListAsync();;
         }
         public async Task<IEnumerable<DeleteResult>> DOC_IMP_PRODUCT_DELETE(string id)

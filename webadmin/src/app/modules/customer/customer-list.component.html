@@ -9,7 +9,7 @@
                             <div class="d-flex align-items-center">
                                 <!-- <h4 class="card-title">Add Row</h4> -->
                                 <button style="padding: 8px;margin-bottom: 4px;" 
-                                class="btn btn-primary" routerLink="/app/user-add" routerLinkActive="active" ariaCurrentWhenActive="page">
+                                class="btn btn-primary" routerLink="/app/customer-add" routerLinkActive="active" ariaCurrentWhenActive="page">
                                     <i style="margin: 2px;" class="fa fa-plus"></i>
                                     Thêm mới
                                 </button>
@@ -28,7 +28,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#">Danh sách tài khoản</a>
+                                    <a>Danh sách tài khoản</a>
                                 </li>
                             </ul>
                         </div> 
@@ -62,16 +62,16 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="useR_CODE">Mã nhân viên</label>
+                                        <label for="useR_CODE">Mã khách hàng</label>
                                         <input required #useR_CODE="ngModel" id="useR_CODE" name="useR_CODE" [(ngModel)]="filterInput!.useR_CODE" 
-                                        type="text" class="form-control form-control" placeholder="Mã nhân viên">
+                                        type="text" class="form-control form-control" placeholder="Mã khách hàng">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="useR_FULLNAME">Họ tên nhân viên</label>
+                                        <label for="useR_FULLNAME">Họ tên khách hàng</label>
                                         <input required #useR_FULLNAME="ngModel" id="useR_FULLNAME" name="useR_FULLNAME" [(ngModel)]="filterInput!.useR_FULLNAME" 
-                                        type="text" class="form-control form-control" placeholder="Họ tên nhân viên">
+                                        type="text" class="form-control form-control" placeholder="Họ tên khách hàng">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -90,13 +90,13 @@
                                 </div>
                             </div>
                         <hr>
-                            <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover">
-                                    <thead>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table table-striped table-bordered">
+                                <thead style="border: 1px solid #ebedf2;">
                                         <tr>
                                             <th>Tên đăng nhập</th>
                                             <th>Mã khách hàng</th>
-                                            <th>Tên khách hàng</th>
+                                            <th style="width: 500px">Tên khách hàng</th>
                                             <th>Email</th>
                                             <th>SDT</th>
                                             <th>Ngày tạo</th>
@@ -104,8 +104,8 @@
                                             <th style="width: 10%">Thao tác</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr *ngFor="let item of listCustomer">
+                                    <tbody style="border: 1px solid #ebedf2;">
+                                        <tr *ngFor="let item of listCustomer! | paginate: {itemsPerPage: tableSize,currentPage: page,totalItems: count};">
                                             <td>{{item.useR_NAME}}</td>
                                             <td>{{item.useR_CODE}}</td>
                                             <td>{{item.useR_FULLNAME}}</td>
@@ -129,6 +129,18 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <span style="margin: 20px;position: absolute;">Tổng số dòng: {{total}}</span>
+                            <div style="margin: 20px;" class="d-flex justify-content-right">
+                                <pagination-controls
+                                  previousLabel=""
+                                  nextLabel=""
+                                  (pageChange)="onTableDataChange($event)"
+                                >
+                                </pagination-controls>
+                                <select (change)="onTableSizeChange()" style="height: 26px;width: 56px;border-radius: 5px;" #top="ngModel" [(ngModel)]="filterInput!.top" id="top" name="top">
+                                    <option *ngFor="let item of tableSizes" value="{{item.toP_RESULT_VALUE}}">{{item.toP_RESULT_VALUE}}</option>
+                                </select>
                             </div>
                         </div>
                     </div>

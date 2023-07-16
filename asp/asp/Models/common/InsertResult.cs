@@ -9,8 +9,8 @@ namespace asp.Models.common
     public class InsertResult
     {
         [Key]
+        public string Result { get; set; }
+        public string ErrorDesc { get; set; }
         public string ID { get; set; }
-        public string RESULT { get; set; }
-        public string ERRORDESC { get; set; }
     }
 }

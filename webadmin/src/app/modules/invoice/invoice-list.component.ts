@@ -1,10 +1,12 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { INVOICE } from 'src/app/core/models/INVOICE';
 import { STATUS } from 'src/app/core/models/STATUS';
+import { TOP_RESULT } from 'src/app/core/models/TOP_RESULT';
 import { InvoiceDtailsService } from 'src/app/core/services/invoice-dt.service';
 import { InvoiceService } from 'src/app/core/services/invoice.service';
 import { ProductTypeService } from 'src/app/core/services/product-type.service';
 import { StatusService } from 'src/app/core/services/status.service';
+import { TopResultService } from 'src/app/core/services/top-result.service';
 import { ComponentBase } from 'src/app/shared/components/component-base';
 @Component({
   templateUrl: './invoice-list.component.html'
@@ -14,17 +16,38 @@ export class InvoiceListComponent extends ComponentBase implements OnInit{
   constructor(injector: Injector,
     private invoiceService: InvoiceService,
     private invoiceDtailsService: InvoiceDtailsService,
-    private statusService: StatusService,) {
+    private statusService: StatusService,
+    private topResultService: TopResultService) {
     super(injector);
   }
   listInvoice?: INVOICE[];
   tilte_info_delete?: string;
   filterInput: INVOICE = new INVOICE();
   listStatus?: STATUS[] = [];
+  total?: number;
   id?: string;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes: any = [3, 6, 9, 12];
   ngOnInit(): void {
+    this.filterInput!.top = 5;
     this.initCombobox();
+    this.loadTopResult();
     this.search();
+  }
+  loadTopResult(){
+    var filtertr = new TOP_RESULT();
+    this.topResultService.Top_result_search(filtertr).subscribe((response: any)=>{
+      this.tableSizes = response;
+    });
+  }
+  onTableDataChange(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange(): void {
+    this.tableSize = this.filterInput.top!;
+    this.page = 1;
   }
   initCombobox(){
     var filtera = new STATUS();
@@ -52,6 +75,7 @@ export class InvoiceListComponent extends ComponentBase implements OnInit{
   search(){
     this.invoiceService.Invoice_search(this.filterInput).subscribe((response: any)=>{
       this.listInvoice = response;
+      this.total = this.listInvoice!.length;
     });
   }
   onConfirm(code: string,id: string){

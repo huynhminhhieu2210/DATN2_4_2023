@@ -1,4 +1,5 @@
 ﻿using Abp.AspNetCore.Mvc.Controllers;
+using Abp.Net.Mail;
 using asp.IService;
 using asp.Models;
 using asp.Models.common;
@@ -9,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

@@ -40,8 +40,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { CheckoutComponent } from './modules/checkout/checkout.component';
 import { InvoiceDetailComponent } from './modules/invoice-detail/invoice-detail.component';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
-import { DateTimeFormatPipe } from './shared/pipes/dateTIME-format.pipe';
-
+import { DateTimeFormatPipe } from './shared/pipes/datetime-format.pipe';
 export function tokenGetter(){
   return localStorage.getItem("jwt");
 }
@@ -104,10 +103,10 @@ export function tokenGetter(){
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider('234924422420993'),
           },
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('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'),
-          },
+          // {
+          //   id: GoogleLoginProvider.PROVIDER_ID,
+          //   provider: new GoogleLoginProvider('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'),
+          // },
         ],
       } as SocialAuthServiceConfig,
     },

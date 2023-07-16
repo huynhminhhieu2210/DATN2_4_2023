@@ -7,3 +7,16 @@
     content:" *";
     color: red;
 }
+.custom-file-input-hmh::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input-hmh::before {
+  content: 'Import file';
+  cursor: pointer;
+}
+.custom-file-input-hmh:hover::before {
+  border-color: black;
+}
+.custom-file-input-hmh:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}

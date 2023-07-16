@@ -10,6 +10,7 @@ namespace asp.Models
     public class PRODUCT
     {
         [Key]
+        public string STT { get; set; }
         public string PRODUCT_ID { get; set; }
         public string PRODUCT_TYPE_ID { get; set; }
         public string SUPPLIER_ID { get; set; }
@@ -40,5 +41,8 @@ namespace asp.Models
         public string WAREHOUSE_ID { get; set; }
         public string WAREHOUSE_NAME { get; set; }
         public decimal STOCK { get; set; }
+        public bool IS_ACTIVE { get; set; }
+        [NotMapped]
+        public int TOP { get; set; }
     }
 }

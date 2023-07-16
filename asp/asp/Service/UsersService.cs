@@ -100,5 +100,11 @@ namespace asp.Service
                 "', @CHECK = '" + check + "'";
             return await _context.UpdateResult.FromSqlRaw(store2).ToListAsync(); ;
         }
+        public async Task<IEnumerable<InsertResult>> USER_REGISTER(REGISTER input)
+        {
+            input.PASSWORD = BCrypt.Net.BCrypt.HashPassword(input.PASSWORD);
+            var store = "EXEC USER_INSERT @PASSWORD = '" + input.PASSWORD + "', @USER_NAME = '" + input.USER_NAME + "', @EMAIL = '" + input.EMAIL + "'";
+            return await _context.InsertResult.FromSqlRaw(store).ToListAsync();
+        }
     }
 }

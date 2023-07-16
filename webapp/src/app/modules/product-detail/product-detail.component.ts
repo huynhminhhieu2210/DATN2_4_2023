@@ -1,4 +1,4 @@
-import { Component, Injectable, Injector, OnInit } from '@angular/core';
+import { Component, ElementRef, Injectable, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PRODUCT } from 'src/app/core/models/PRODUCT';
 import { CartService } from 'src/app/core/services/cart.service';
@@ -15,6 +15,7 @@ import { ComponentBase } from 'src/app/shared/components/component-base';
 })
 export class ProductDetailComponent extends ComponentBase implements OnInit {
   productInfo?: PRODUCT;
+  ref: ElementRef;
   ngOnInit(): void {
     this.byid();
     $("body, html").animate({scrollTop:0},0);
@@ -30,6 +31,7 @@ export class ProductDetailComponent extends ComponentBase implements OnInit {
     let id: string = this.getRouteParam('productid');
     this.productService.Product__byid(id).subscribe((response: any)=>{
       this.productInfo = response[0];
+      //document.getElementById("descriptionContent").innerHTML = 'this.productInfo.description';
     });
   }
   addCart(){

@@ -18,4 +18,5 @@ export class USER {
   useR_PASSWORDNEW: string | undefined;
   useR_PASSWORDNEWCHECK: string | undefined;
   creatE_NAME: string | undefined;
+  top: number | undefined;
 }

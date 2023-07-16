@@ -33,7 +33,7 @@ namespace asp.Controllers
             var store = "EXEC LOGIN_WEB @USER_NAME = '" + user.USER_NAME + "', @TYPE = '" + user.TYPE + "'";
             var checkuser =  await _context.USER.FromSqlRaw(store).ToListAsync();
 
-            if(checkuser != null && BCrypt.Net.BCrypt.Verify(user.PASSWORD, checkuser[0].USER_PASSWORD))
+            if(checkuser != null && checkuser.Count() > 0 && BCrypt.Net.BCrypt.Verify(user.PASSWORD, checkuser[0].USER_PASSWORD))
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);

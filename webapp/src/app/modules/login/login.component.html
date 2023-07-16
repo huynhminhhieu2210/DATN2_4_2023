@@ -16,12 +16,15 @@
                             <div class="login-form-container">
                                 <div class="login-register-form">
                                     <form #loginForm="ngForm" class="form-signin" (ngSubmit)="login(loginForm)">
-                                        <input type="text" id="username" name="username" ngModel placeholder="Tên đăng nhập">
-                                        <input type="password" id="password" name="password" ngModel placeholder="Mật khẩu">
+                                        <div style="margin-bottom: 30px;">
+                                            <input (change)="loginFaild = false" style="margin: 0px;" type="text" id="username" name="username" ngModel placeholder="Tên đăng nhập">
+                                        </div>
+                                        <div style="margin-bottom: 30px;">
+                                            <input (change)="loginFaild = false" style="margin: 0px;" type="password" id="password" name="password" ngModel placeholder="Mật khẩu">
+                                        </div>
+                                        <span *ngIf="loginFaild" style="color: red;">Tài khoản hoặc mật khẩu bạn nhập không đúng</span>
                                         <div class="button-box">
                                             <div class="login-toggle-btn">
-                                                <input type="checkbox">
-                                                <label>Nhớ tôi</label>
                                                 <a href="#">Quên mật khẩu?</a>
                                             </div>
                                             <button type="submit">Đăng nhập</button>
@@ -29,7 +32,7 @@
                                     </form>                                    
                                         <!-- <button type="button" (click)="loginWithGoogle()" class="btn btn-primary btn-block">Signin with Google</button>
                                         <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button> -->
-                                        <div id="g_id_onload"
+                                        <!-- <div id="g_id_onload"
                                         data-client_id="495108843930-t55or69v0kofi2v88qsibnup9nf8gdgo.apps.googleusercontent.com"
                                         data-context="signin"
                                         data-ux_mode="popup"
@@ -44,7 +47,7 @@
                                         data-text="signin_with"
                                         data-size="large"
                                         data-logo_alignment="left">
-                                   </div>
+                                   </div> -->
                                    <button type="button" style="width: 47%;margin-left: 284px;" (click)="loginWithFacebook()" class="btn btn-primary btn-block">Đăng nhập facebook</button>
 
                                 </div>

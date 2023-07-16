@@ -15,5 +15,6 @@ namespace asp.IService
         Task<IEnumerable<UpdateResult>> PRODUCT_UPDATE(PRODUCT input);
         Task<IEnumerable<DeleteResult>> PRODUCT_DELETE(string id);
         Task<IEnumerable<PRODUCT>> PRODUCT_BYID(string id);
+        Task<IEnumerable<UpdateResult>> PRODUCT_CHANGE_STATUS(PRODUCT input);
     }
 }

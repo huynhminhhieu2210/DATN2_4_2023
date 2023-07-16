@@ -11,4 +11,5 @@ export class WAREHOUSE {
   creatE_NAME: string | undefined;
   brancH_NAME: string | undefined;
   areA_NAME: string | undefined;
+  top: number | undefined;
 }

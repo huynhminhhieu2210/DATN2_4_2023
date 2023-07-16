@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit, Injector } from '@angular/core';
+import { Component, Injectable, OnInit, Injector, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
 import { PRODUCT_TYPE } from 'src/app/core/models/PRODUCT_TYPE';
@@ -19,7 +19,10 @@ export class ProductTypeEditComponent extends ComponentBase implements OnInit{
   editPageState?: EditPageState;
   title?:string; 
   titleinfo?: string;
+  titleerorr?: string;
   date?: string;
+  isShowError = false;
+  @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
   }
@@ -54,10 +57,17 @@ export class ProductTypeEditComponent extends ComponentBase implements OnInit{
     this.productTypeService.Product_Type_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
       this.date = moment(response[0].creatE_DATE).format('yyyy-MM-DD');
-      this.reloadView();
     });
   }
   onSave(){
+    this.titleinfo = '';
+    this.titleerorr = '';
+    if ((this.editForm as any).form.invalid) {
+      this.isShowError = true;
+      $("body, html").animate({scrollTop:0},0);
+      this.titleerorr = 'Dữ liệu không hợp lệ';
+      return;
+    }
     this.inputModel!.creatE_DATE = moment(this.date);
     if(!this.inputModel?.producT_TYPE_ID){
       this.productTypeService.Product_Type_insert(this.inputModel!).subscribe((response: any)=>{
@@ -76,6 +86,5 @@ export class ProductTypeEditComponent extends ComponentBase implements OnInit{
         }, 5000);
       });
     }
-    this.reloadView();
   }
 }

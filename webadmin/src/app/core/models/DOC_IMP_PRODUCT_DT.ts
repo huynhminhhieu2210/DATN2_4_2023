@@ -8,4 +8,5 @@ export class DOC_IMP_PRODUCT_DT {
  price: number | undefined;
  status: string | undefined;
  doC_IMP_PRODUCT_ID: string | undefined;
+ checkbox: boolean | undefined;
 }

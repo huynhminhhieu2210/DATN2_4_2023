@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AreaListComponent } from './modules/area/area-list.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { RoleUserComponent } from './modules/role-user/role-user.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -12,10 +11,7 @@ import { NavBarComponent } from './shared/header/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
-import { AreaEditComponent } from './modules/area/area-edit.component';
 import { FormsModule } from '@angular/forms';
-import { BranchEditComponent } from './modules/branch/branch-edit.component';
-import { BranchListComponent } from './modules/branch/branch-list.component';
 import { UserEditComponent } from './modules/user/user-edit.component';
 import { UserListComponent } from './modules/user/user-list.component';
 import { CustomerEditComponent } from './modules/customer/customer-edit.component';
@@ -39,8 +35,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DocImportListComponent } from './modules/doc-imp-product/doc-imp-product-list.component';
 import { DocImportEditComponent } from './modules/doc-imp-product/doc-imp-product-edit.component';
 import { DataTablesModule } from 'angular-datatables';
-import { ImportProductEditComponent } from './modules/import-products/import-product-edit.component';
-import { ImportProductListComponent } from './modules/import-products/import-product-list.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 export function tokenGetter(){
   return sessionStorage.getItem("jwt");
 }
@@ -58,10 +55,6 @@ export function tokenGetter(){
     CustomerEditComponent,
     CustomerListComponent,
     RoleUserComponent,
-    BranchListComponent,
-    BranchEditComponent,
-    AreaListComponent,
-    AreaEditComponent,
     WarehouseListComponent,
     WarehouseEditComponent,
     InvoiceListComponent,
@@ -76,8 +69,6 @@ export function tokenGetter(){
     ProfileComponent,
     DocImportListComponent,
     DocImportEditComponent,
-    ImportProductEditComponent,
-    ImportProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +78,8 @@ export function tokenGetter(){
     NgChartsModule,
     MatDatepickerModule,
     DataTablesModule,
+    CKEditorModule,
+    NgxPaginationModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

@@ -49,5 +49,10 @@ namespace asp.Controllers
         {
             return await _productsService.PRODUCT_BYID(id);
         }
+        [HttpPost]
+        public async Task<IEnumerable<UpdateResult>> PRODUCT_CHANGE_STATUS([FromBody] PRODUCT input)
+        {
+            return await _productsService.PRODUCT_CHANGE_STATUS(input);
+        }
     }
 }

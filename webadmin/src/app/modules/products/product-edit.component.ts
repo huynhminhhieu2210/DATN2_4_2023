@@ -13,6 +13,7 @@ import { UploadFileService } from 'src/app/core/services/upload-file.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { ComponentBase } from 'src/app/shared/components/component-base';
 import { EditPageState } from 'src/app/shared/enum/edit-page-state';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   templateUrl: './product-edit.component.html',
@@ -22,6 +23,7 @@ import { EditPageState } from 'src/app/shared/enum/edit-page-state';
 })
 export class ProductEditComponent extends ComponentBase implements OnInit{
   invalidLogin: boolean | undefined;
+  public Editor = ClassicEditor;
   inputModel?: PRODUCT = new PRODUCT();
   EditPageState = EditPageState;
   editPageState?: EditPageState;
@@ -31,7 +33,9 @@ export class ProductEditComponent extends ComponentBase implements OnInit{
   listProductType?: PRODUCT_TYPE[];
   isShowError = false;
   selectedFile?: File;
+  imgCurennt?: string;
   private newBlogForm?: FormGroup;
+  titleerorr?: string;
   @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
@@ -72,49 +76,68 @@ export class ProductEditComponent extends ComponentBase implements OnInit{
 }
   byid(){
     let id: string = this.getRouteParam('product');
-    this.productService.Product__byid(id).subscribe((response: any)=>{
+    this.productService.Product_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
-      this.reloadView();
+      this.imgCurennt = this.inputModel?.imG_URL;
     });
   }
   initCombobox(){
     var filtera = new SUPPLIER();
     this.supplierService.Supplier_search(filtera).subscribe((response: any)=>{
       this.listSupplier = response;
-      this.reloadView();
     });
     var filterb = new PRODUCT_TYPE();
     this.productTypeService.Product_Type_search(filterb).subscribe((response: any)=>{
       this.listProductType = response;
-      this.reloadView();
     });
   }
   onSave(){
+    this.titleinfo = '';
+    this.titleerorr = '';
     if ((this.editForm as any).form.invalid) {
       this.isShowError = true;
-      this.reloadView();
+      $("body, html").animate({scrollTop:0},0);
+      this.titleerorr = 'Dữ liệu không hợp lệ';
       return;
   }
     if(!this.inputModel?.producT_ID){
-      this.productService.Product__insert(this.inputModel!).subscribe((response: any)=>{
-        this.uploadFile(this.inputModel?.producT_ID);
-        $("body, html").animate({scrollTop:0},0);
-        this.titleinfo = 'Thêm mới thành công';
-        setTimeout(() => {
-          this.titleinfo = '';
-        }, 5000);
+      this.productService.Product_insert(this.inputModel!).subscribe((response: any)=>{
+        this.inputModel!.producT_ID = response[0].id;
+        this.uploadFile( response[0].id);
+        if(response[0].result != '0'){
+          $("body, html").animate({scrollTop:0},0);
+          this.titleerorr = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleerorr = '';
+          }, 5000);
+        }
+        else{
+          $("body, html").animate({scrollTop:0},0);
+          this.titleinfo = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleinfo = '';
+          }, 5000);
+        }
       });
     }else{
-      this.productService.Product__update(this.inputModel!).subscribe((response: any)=>{
+      this.productService.Product_update(this.inputModel!).subscribe((response: any)=>{
         this.uploadFile(this.inputModel?.producT_ID);
-        $("body, html").animate({scrollTop:0},0);
-        this.titleinfo = 'Cập nhật thành công';
-        setTimeout(() => {
-          this.titleinfo = '';
-        }, 5000);
+        if(response[0].result != '0'){
+          $("body, html").animate({scrollTop:0},0);
+          this.titleerorr = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleerorr = '';
+          }, 5000);
+        }
+        else{
+          $("body, html").animate({scrollTop:0},0);
+          this.titleinfo = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleinfo = '';
+          }, 5000);
+        }
       });
     }
-    this.reloadView();
   }
   onSelectFile(fileInput: any) {
       this.selectedFile = <File>fileInput.target.files[0];

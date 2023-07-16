@@ -60,7 +60,6 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
     this.supplierService.Supplier_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
       this.date = moment(response[0].creatE_DATE).format('yyyy-MM-DD');
-      this.reloadView();
     });
   }
   login(form: NgForm){
@@ -83,7 +82,6 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
     this.inputModel!.creatE_DATE = moment(this.date);
     if ((this.editForm as any).form.invalid) {
       this.isShowError = true;
-      this.reloadView();
       return;
   }
     if(!this.inputModel?.supplieR_ID){
@@ -103,6 +101,5 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
         }, 5000);
       });
     }
-    this.reloadView();
   }
 }

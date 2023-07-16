@@ -28,7 +28,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#">Quyền tài khoản</a>
+                                    <a>Quyền tài khoản</a>
                                 </li>
                             </ul>
                         </div> 
@@ -90,10 +90,26 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover">
-                                    <thead>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="rolE_USER_CODE">Mã nhà quyền</label>
+                                        <input  #rolE_USER_CODE="ngModel" id="rolE_USER_CODE" name="rolE_USER_CODE" [(ngModel)]="filterInput!.rolE_USER_CODE"
+                                        type="text" class="form-control form-control" placeholder="Mã nhà quyền">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="rolE_USER_NAME">Tên nhà quyền</label>
+                                        <input  #rolE_USER_NAME="ngModel" id="rolE_USER_NAME" name="rolE_USER_NAME" [(ngModel)]="filterInput!.rolE_USER_NAME" 
+                                        type="text" class="form-control form-control" placeholder="Tên nhà quyền">
+                                    </div>
+                                </div>
+                            </div>
+                        <hr>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table table-striped table-bordered">
+                                <thead style="border: 1px solid #ebedf2;">
                                         <tr>
                                             <th>Mã quyền</th>
                                             <th>Tên quyền</th>
@@ -102,8 +118,8 @@
                                             <th style="width: 10%">Thao tác</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr *ngFor="let item of lstRoleUser">
+                                    <tbody style="border: 1px solid #ebedf2;">
+                                        <tr *ngFor="let item of lstRoleUser! | paginate: {itemsPerPage: tableSize,currentPage: page,totalItems: count};">
                                             <td>{{item.rolE_USER_CODE}}</td>
                                             <td>{{item.rolE_USER_NAME}}</td>
                                             <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
@@ -124,6 +140,18 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <span style="margin: 20px;position: absolute;">Tổng số dòng: {{total}}</span>
+                            <div style="margin: 20px;" class="d-flex justify-content-right">
+                                <pagination-controls
+                                  previousLabel=""
+                                  nextLabel=""
+                                  (pageChange)="onTableDataChange($event)"
+                                >
+                                </pagination-controls>
+                                <select (change)="onTableSizeChange()" style="height: 26px;width: 56px;border-radius: 5px;" #top="ngModel" [(ngModel)]="filterInput!.top" id="top" name="top">
+                                    <option *ngFor="let item of tableSizes" value="{{item.toP_RESULT_VALUE}}">{{item.toP_RESULT_VALUE}}</option>
+                                </select>
                             </div>
                         </div>
                     </div>

@@ -27,7 +27,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#">Kho</a>
+                                    <a>Kho</a>
                                 </li>
                             </ul>
                         </div> 
@@ -51,27 +51,39 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover">
-                                    <thead>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="warehousE_CODE">Mã kho</label>
+                                        <input #warehousE_CODE="ngModel" id="warehousE_CODE" name="warehousE_CODE" [(ngModel)]="filterInput!.warehousE_CODE"
+                                        type="text" class="form-control form-control" placeholder="Mã kho">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="warehousE_NAME">Tên kho</label>
+                                        <input #warehousE_NAME="ngModel" id="warehousE_NAME" name="warehousE_NAME" [(ngModel)]="filterInput!.warehousE_NAME" 
+                                        type="text" class="form-control form-control" placeholder="Tên kho">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="table-responsive text-nowrap">
+                                <table class="table table-striped table-bordered">
+                                    <thead style="border: 1px solid #ebedf2;">
                                         <tr>
                                             <th>Mã kho</th>
                                             <th>Tên kho</th>
-                                            <th>Khu vực</th>
-                                            <th>Chi nhánh</th>
                                             <th>Địa chỉ</th>
                                             <th>Ngày tạo</th>
                                             <th>Người tạo</th>
                                             <th style="width: 10%">Thao tác</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr *ngFor="let item of listWarehouse">
+                                    <tbody style="border: 1px solid #ebedf2;">
+                                        <tr *ngFor="let item of listWarehouse! | paginate: {itemsPerPage: tableSize,currentPage: page,totalItems: count};">
                                             <td>{{item.warehousE_CODE}}</td>
                                             <td>{{item.warehousE_NAME}}</td>
-                                            <td>{{item.areA_NAME}}</td>
-                                            <td>{{item.brancH_NAME}}</td>
                                             <td>{{item.warehousE_ADDRESS}}</td>
                                             <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
                                             <td>{{item.creatE_NAME}}</td>
@@ -91,6 +103,18 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <span style="margin: 20px;position: absolute;">Tổng số dòng: {{total}}</span>
+                            <div style="margin: 20px;" class="d-flex justify-content-right">
+                                <pagination-controls
+                                  previousLabel=""
+                                  nextLabel=""
+                                  (pageChange)="onTableDataChange($event)"
+                                >
+                                </pagination-controls>
+                                <select (change)="onTableSizeChange()" style="height: 26px;width: 56px;border-radius: 5px;" #top="ngModel" [(ngModel)]="filterInput!.top" id="top" name="top">
+                                    <option *ngFor="let item of tableSizes" value="{{item.toP_RESULT_VALUE}}">{{item.toP_RESULT_VALUE}}</option>
+                                </select>
                             </div>
                         </div>
                     </div>

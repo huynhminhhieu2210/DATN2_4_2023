@@ -1,7 +1,7 @@
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
-            <form #loginForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
+            <form #editForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -30,7 +30,7 @@
                                         <a routerLink="/app/product-type" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-right: 5px;" href="#">Loại sản phẩm</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">{{title}}</a>
+                                        <a>{{title}}</a>
                                     </li>
                                 </ul>
                             </div> 
@@ -39,24 +39,37 @@
                                 color: white;
                                 border-radius: 4px;
                                 padding: 5px;">{{titleinfo}}</p>
+                                <p *ngIf="titleerorr" style="    background-color: red;
+                                color: white;
+                                border-radius: 4px;
+                                padding: 5px;">{{titleerorr}}</p>
                                 <!-- <div class="card-title">{{title}}</div> -->
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <label for="producT_TYPE_CODE">Mã loại</label>
-                                            <input disabled="{{disabledInput}}" id="producT_TYPE_CODE" name="producT_TYPE_CODE" [(ngModel)]="inputModel!.producT_TYPE_CODE" type="text" class="form-control form-control" placeholder="Mã loại">
+                                            <label for="producT_TYPE_CODE" class="required">Mã loại</label>
+                                            <input required disabled="{{disabledInput}}" #producT_TYPE_CODE="ngModel" id="producT_TYPE_CODE" name="producT_TYPE_CODE" 
+                                            [(ngModel)]="inputModel!.producT_TYPE_CODE" type="text" class="form-control form-control" placeholder="Mã loại">
+                                            <div class="error-message" *ngIf="producT_TYPE_CODE.invalid && isShowError">
+                                                <span>Mã loại không được để trống</span>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="creatE_NAME">Người tạo</label>
-                                            <input style="color:black; font-weight: bold;" disabled="true" id="creatE_NAME" name="creatE_NAME" [(ngModel)]="inputModel!.creatE_NAME" type="text" class="form-control form-control" placeholder="Người tạo">
+                                            <input style="color:black; font-weight: bold;" #creatE_NAME="ngModel" disabled="true" id="creatE_NAME" name="creatE_NAME" 
+                                            [(ngModel)]="inputModel!.creatE_NAME" type="text" class="form-control form-control" placeholder="Người tạo">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <label for="producT_TYPE_NAME">Tên loại</label>
-                                            <input disabled="{{disabledInput}}" id="producT_TYPE_NAME" name="producT_TYPE_NAME" [(ngModel)]="inputModel!.producT_TYPE_NAME" type="text" class="form-control form-control" placeholder="Tên loại">
+                                            <label for="producT_TYPE_NAME" class="required">Tên loại</label>
+                                            <input  required disabled="{{disabledInput}}" #producT_TYPE_NAME="ngModel" id="producT_TYPE_NAME" name="producT_TYPE_NAME" 
+                                            [(ngModel)]="inputModel!.producT_TYPE_NAME" type="text" class="form-control form-control" placeholder="Tên loại">
+                                            <div class="error-message" *ngIf="producT_TYPE_NAME.invalid && isShowError">
+                                                <span>Tên loại không được để trống</span>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="creatE_DATE">Ngày tạo</label>

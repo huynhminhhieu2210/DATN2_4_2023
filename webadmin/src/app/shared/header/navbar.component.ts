@@ -9,8 +9,10 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class NavBarComponent implements OnInit{
   constructor(private router: Router,  private jwtHelper: JwtHelperService){}
   userfullname?: string;
+  username?: string;
   email?: string;
   ngOnInit(): void {
+    this.username = sessionStorage.getItem('username')?.toString();
     this.userfullname = sessionStorage.getItem('userfullname')?.toString();
     this.email = sessionStorage.getItem('email')?.toString();
   }

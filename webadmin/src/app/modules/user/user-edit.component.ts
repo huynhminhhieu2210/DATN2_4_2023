@@ -65,28 +65,25 @@ export class UserEditComponent extends ComponentBase implements OnInit{
     this.userService.User_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
       this.date = moment(response[0].creatE_DATE).format('yyyy-MM-DD');
-      this.reloadView();
     });
   }
   initCombobox(){
     var filtera = new BRANCH();
     this.branchService.Branch_search(filtera).subscribe((response: any)=>{
       this.listBranch = response;
-      this.reloadView();
     });
     var filterb = new ROLE_USER();
     this.roleUserService.Role_User_search(filterb).subscribe((response: any)=>{
       this.listRole = response;
-      this.reloadView();
     });
   }
   onSave(){
     this.inputModel!.creatE_DATE = moment(this.date);
+    this.inputModel!.rolE_USER_ID = 'ROL000000000001';
     if ((this.editForm as any).form.invalid) {
       this.isShowError = true;
-      this.reloadView();
       return;
-  }
+    }
     if(!this.inputModel?.useR_ID){
       this.userService.User_insert(this.inputModel!).subscribe((response: any)=>{
         console.log(response);
@@ -104,6 +101,5 @@ export class UserEditComponent extends ComponentBase implements OnInit{
         }, 5000);
       });
     }
-    this.reloadView();
   }
 }

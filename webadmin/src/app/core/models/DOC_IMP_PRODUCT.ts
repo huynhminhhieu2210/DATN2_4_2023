@@ -13,4 +13,5 @@ export class DOC_IMP_PRODUCT {
   creatE_DATE: moment.Moment | undefined;
   lsT_DOC_IMP_PRODUCT_DT: DOC_IMP_PRODUCT_DT[] | undefined;
   warehousE_ID: string | undefined;
+  top: number | undefined;
 }

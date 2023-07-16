@@ -30,7 +30,7 @@
                                         <a routerLink="/app/warehouse" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-right: 5px;" href="#">Danh sách tài khoản</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">{{title}}</a>
+                                        <a>{{title}}</a>
                                     </li>
                                 </ul>
                             </div> 
@@ -45,14 +45,14 @@
                                 <div class="row">
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <label for="warehousE_CODE">Mã kho</label>
+                                            <label for="warehousE_CODE" class="required">Mã kho</label>
                                             <input required #warehousE_CODE="ngModel" disabled="{{disabledInput}}" id="warehousE_CODE" name="warehousE_CODE" [(ngModel)]="inputModel!.warehousE_CODE" type="text" class="form-control form-control" placeholder="Mã kho">
                                             <div class="error-message" *ngIf="warehousE_CODE.invalid && isShowError">
                                                 <span>Mã kho không được để trống</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="warehousE_ADDRESS">Địa chỉ</label>
+                                            <label for="warehousE_ADDRESS" class="required">Địa chỉ</label>
                                             <textarea required #warehousE_ADDRESS="ngModel" disabled="{{disabledInput}}" id="warehousE_ADDRESS" name="warehousE_ADDRESS" 
                                             [(ngModel)]="inputModel!.warehousE_ADDRESS" class="form-control form-control" placeholder="Địa chỉ">
                                                 </textarea>
@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <label for="warehousE_NAME">Tên kho</label>
+                                            <label for="warehousE_NAME" class="required">Tên kho</label>
                                             <input required #warehousE_NAME="ngModel" disabled="{{disabledInput}}" id="warehousE_NAME" name="warehousE_NAME" [(ngModel)]="inputModel!.warehousE_NAME" type="text" class="form-control form-control" placeholder="Tên kho">
                                             <div class="error-message" *ngIf="warehousE_NAME.invalid && isShowError">
                                                 <span>Tên kho không được để trống</span>
@@ -76,15 +76,6 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
-                                        <div class="form-group">
-                                            <label for="brancH_ID">Chi nhánh</label>
-                                            <select required #brancH_ID="ngModel" class="form-control" [(ngModel)]="inputModel!.brancH_ID" id="brancH_ID" name="brancH_ID">
-                                                <option *ngFor="let item of listBranch" value="{{item.brancH_ID}}">{{item.brancH_NAME}}</option>
-                                            </select>
-                                            <div class="error-message" *ngIf="brancH_ID.invalid && isShowError">
-                                                <span>Chi nhánh không được để trống</span>
-                                            </div>
-                                        </div>
                                         <div class="form-group">
                                             <label for="creatE_DATE">Ngày tạo</label>
                                             <input style="color:black; font-weight: bold;" disabled="true" id="creatE_DATE" name="creatE_DATE" 

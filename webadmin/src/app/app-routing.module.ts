@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AreaListComponent } from './modules/area/area-list.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { RoleUserComponent } from './modules/role-user/role-user.component';
-import { AreaEditComponent } from './modules/area/area-edit.component';
 import { EditPageState } from './shared/enum/edit-page-state';
-import { BranchEditComponent } from './modules/branch/branch-edit.component';
-import { BranchListComponent } from './modules/branch/branch-list.component';
 import { UserEditComponent } from './modules/user/user-edit.component';
 import { UserListComponent } from './modules/user/user-list.component';
 import { CustomerListComponent } from './modules/customer/customer-list.component';
@@ -26,8 +22,6 @@ import { ProductEditComponent } from './modules/products/product-edit.component'
 import { ProfileComponent } from './modules/profile/profile.component';
 import { DocImportListComponent } from './modules/doc-imp-product/doc-imp-product-list.component';
 import { DocImportEditComponent } from './modules/doc-imp-product/doc-imp-product-edit.component';
-import { ImportProductListComponent } from './modules/import-products/import-product-list.component';
-import { ImportProductEditComponent } from './modules/import-products/import-product-edit.component';
 
 @NgModule({
   imports: [
@@ -40,16 +34,6 @@ import { ImportProductEditComponent } from './modules/import-products/import-pro
             children: [
             {path: '', component: DashboardComponent, canActivate: [AuthGuard]},
             {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-          
-            { path: 'area', component: AreaListComponent, canActivate: [AuthGuard]},
-            { path: 'area-add', component: AreaEditComponent, data: {editPageState: EditPageState.add}, canActivate: [AuthGuard]},
-            { path: 'area-edit', component: AreaEditComponent, data: {editPageState: EditPageState.edit}, canActivate: [AuthGuard]},
-            { path: 'area-view', component: AreaEditComponent, data: {editPageState: EditPageState.view}, canActivate: [AuthGuard]},
-            
-            { path: 'branch', component: BranchListComponent,canActivate: [AuthGuard]},
-            { path: 'branch-add', component: BranchEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
-            { path: 'branch-edit', component: BranchEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
-            { path: 'branch-view', component: BranchEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
 
             { path: 'doc-imp-product', component: DocImportListComponent,canActivate: [AuthGuard]},
             { path: 'doc-imp-product-add', component: DocImportEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
@@ -92,11 +76,6 @@ import { ImportProductEditComponent } from './modules/import-products/import-pro
             { path: 'products-add', component: ProductEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
             { path: 'products-edit', component: ProductEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
             { path: 'products-view', component: ProductEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
-
-            { path: 'import-products', component: ImportProductListComponent,canActivate: [AuthGuard]},
-            { path: 'import-products-add', component: ImportProductEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
-            { path: 'import-products-edit', component: ImportProductEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
-            { path: 'import-products-view', component: ImportProductEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
 
             { path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},
 

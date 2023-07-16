@@ -6,16 +6,18 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-md-3">
-                      {{fullName}} | <button (click)="logout()" style="background-color: white;border: none;color: blue;"> Đăng xuất</button>
+                      {{fullNameView}} | <button (click)="logout()" style="background-color: white;border: none;color: blue;"> Đăng xuất</button>
                     </div>
                     <mdb-tabs [vertical]="true">
                       <mdb-tab title="Thông tin cá nhân và địa chỉ">
                         <h4 class="title">Thông tin tài khoản</h4>
                         <div class="thongtincanhan">
                           <span>Thông tin cá nhân</span> <br>
-                          <span>{{fullName}} - {{phone}}</span>
+                          <span>{{fullNameView}} - {{phoneView}}</span>
+                          <button (click)="onChangInfoClick()" style="border: none;">
                           <a data-toggle="modal" data-target="#UpdateModal" class="chinhsuataikhoan" href=""> <i class="fa fa-edit"></i> Sửa</a>
-                          <a data-toggle="modal" data-target="#addRowModal" class="chinhsuataikhoan" href=""> <i class="fa fa-key"></i> Đổi mật khẩu</a>
+                        </button>
+                          <button (click)="onChangPassClick()" style="border: none;"><a data-toggle="modal" data-target="#addRowModal" class="chinhsuataikhoan" href=""> <i class="fa fa-key"></i> Đổi mật khẩu</a></button>
                         </div>
                         <div class="diachinhanhang">
                           <span>Địa chỉ nhận hàng</span> <br>
@@ -256,30 +258,30 @@
                   </button>
               </div>
               <div class="modal-body">
-                  <form #addForm="ngForm" class="form-add" (ngSubmit)="onChangePass(addForm)">
+                  <form #editFormChangePass ="ngForm" class="form-add" (ngSubmit)="onChangePass(editFormChangePass)">
                       <div class="row">
                           <div class="col-sm-12">
                               <div class="form-group">
                                   <label for="passOld">Mật khẩu cũ</label>
-                                  <input ngModel id="passOld" name="passOld" type="password" class="form-control" placeholder="Mật khẩu cũ" required/>
+                                  <input ngModel [(ngModel)]="passOld" id="passOld" name="passOld" type="password" class="form-control" placeholder="Mật khẩu cũ" required/>
                               </div>
                           </div>
                           <div class="col-sm-12">
                               <div class="form-group">
                                   <label for="passNew">Mật khẩu mới</label>
-                                  <input ngModel id="passNew" name="passNew" type="password" class="form-control" placeholder="Mật khẩu mới" required/>
+                                  <input ngModel [(ngModel)]="passNew" id="passNew" name="passNew" type="password" class="form-control" placeholder="Mật khẩu mới" required/>
                               </div>
                           </div>
                           <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="passNewCheck">Nhập lại mật khẩu mới</label>
-                                <input (change)="onchangePassNewCheck(addForm)" ngModel id="passNewCheck" name="passNewCheck" type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" required/>
+                                <input (change)="onchangePassNewCheck(editFormChangePass)" [(ngModel)]="passNewCheck" ngModel id="passNewCheck" name="passNewCheck" type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" required/>
                                 <div style="color: red;">{{warning}}</div>
                               </div>
                         </div>
                       </div>
                       <div class="modal-footer no-bd">
-                          <button disabled="{{warning}}" class="close" data-dismiss="modal" aria-label="Close" type="submit" id="addForm" (click)="onChangePass(addForm)" class="btn btn-primary">Lưu</button>
+                          <button disabled="{{warning}}" class="close" data-dismiss="modal" aria-label="Close" type="submit" id="addForm" (click)="onChangePass(editFormChangePass)" class="btn btn-primary">Lưu</button>
                           <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
                       </div>
                   </form>
@@ -327,7 +329,7 @@
                     </div>
                     </div>
                     <div class="modal-footer no-bd">
-                        <button disabled="{{warning}}" class="close" data-dismiss="modal" aria-label="Close" type="submit" id="editForm" (click)="onSave(editForm)" class="btn btn-primary">Lưu</button>
+                        <button class="close" data-dismiss="modal" aria-label="Close" type="submit" id="editForm" (click)="onSave(editForm)" class="btn btn-primary">Lưu</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
                     </div>
                 </form>

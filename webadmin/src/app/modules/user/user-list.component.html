@@ -50,7 +50,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#">Danh sách tài khoản</a>
+                                    <a>Danh sách tài khoản</a>
                                 </li>
                             </ul>
                         </div> 
@@ -113,9 +113,9 @@
                             </div>
                         <hr>
 
-                            <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover">
-                                    <thead>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table table-striped table-bordered">
+                                <thead style="border: 1px solid #ebedf2;">
                                         <tr>
                                             <th>Tên đăng nhập</th>
                                             <th>Mã nhân viên</th>
@@ -128,8 +128,8 @@
                                             <th style="width: 10%">Thao tác</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr *ngFor="let item of listUser">
+                                    <tbody style="border: 1px solid #ebedf2;">
+                                        <tr *ngFor="let item of listUser! | paginate: {itemsPerPage: tableSize,currentPage: page,totalItems: count};">
                                             <td>{{item.useR_NAME}}</td>
                                             <td>{{item.useR_CODE}}</td>
                                             <td>{{item.useR_FULLNAME}}</td>
@@ -154,6 +154,18 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <span style="margin: 20px;position: absolute;">Tổng số dòng: {{total}}</span>
+                            <div style="margin: 20px;" class="d-flex justify-content-right">
+                                <pagination-controls
+                                  previousLabel=""
+                                  nextLabel=""
+                                  (pageChange)="onTableDataChange($event)"
+                                >
+                                </pagination-controls>
+                                <select (change)="onTableSizeChange()" style="height: 26px;width: 56px;border-radius: 5px;" #top="ngModel" [(ngModel)]="filterInput!.top" id="top" name="top">
+                                    <option *ngFor="let item of tableSizes" value="{{item.toP_RESULT_VALUE}}">{{item.toP_RESULT_VALUE}}</option>
+                                </select>
                             </div>
                         </div>
                     </div>

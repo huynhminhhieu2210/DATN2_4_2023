@@ -18,9 +18,6 @@ export abstract class ComponentBase {
     loadHostSettings(): void {
         const self = this;
     }
-    reloadView(){
-        this.cdr?.detectChanges();
-    }
     getRouteData(key: string): any {
         return (this.activeRoute.data as any).value[key];
     }

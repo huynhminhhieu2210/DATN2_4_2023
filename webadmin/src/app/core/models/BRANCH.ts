@@ -8,4 +8,5 @@ export class BRANCH {
   creatE_DATE: moment.Moment | undefined;
   creatE_NAME: string | undefined;
   brancH_ADDRESS: string | undefined;
+  top: number | undefined;
 }

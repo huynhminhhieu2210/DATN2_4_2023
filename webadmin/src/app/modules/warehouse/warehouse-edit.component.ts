@@ -63,7 +63,6 @@ export class WarehouseEditComponent extends ComponentBase implements OnInit{
     var filtera = new BRANCH();
     this.branchService.Branch_search(filtera).subscribe((response: any)=>{
       this.listBranch = response;
-      this.reloadView();
     });
   }
   byid(){
@@ -71,7 +70,6 @@ export class WarehouseEditComponent extends ComponentBase implements OnInit{
     this.warehouseService.Warehouse_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
       this.date = moment(response[0].creatE_DATE).format('yyyy-MM-DD');
-      this.reloadView();
     });
   }
   login(form: NgForm){
@@ -94,7 +92,6 @@ export class WarehouseEditComponent extends ComponentBase implements OnInit{
     this.inputModel!.creatE_DATE = moment(this.date);
     if ((this.editForm as any).form.invalid) {
       this.isShowError = true;
-      this.reloadView();
       return;
   }
     this.inputModel!.creatE_ID = sessionStorage.getItem('userid')?.toString();
@@ -115,6 +112,5 @@ export class WarehouseEditComponent extends ComponentBase implements OnInit{
         }, 5000);
       });
     }
-    this.reloadView();
   }
 }

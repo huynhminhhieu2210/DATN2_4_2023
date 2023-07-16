@@ -33,6 +33,12 @@ namespace asp.Models.common
                                @CREATE_DATE = N'{input.CREATE_DATE}'";
             return result;
         }
+        public string setParamTopResult(TOP_RESULT input)
+        {
+            string result = $@"@TOP_RESULT_ID     = N'{input.TOP_RESULT_ID}',
+                               @TOP_RESULT_VALUE  = N'{input.TOP_RESULT_VALUE}'";
+            return result;
+        }
         public string setParamStatus(STATUS input)
         {
             string result = $@"@STATUS_ID     = N'{input.STATUS_ID}',

@@ -14,6 +14,7 @@ import { USER } from 'src/app/core/models/USER';
 })
 export class LoginComponent implements OnInit {
   invalidLogin: boolean | undefined;
+  loginFaild: boolean = false;
 
   constructor(private router: Router, private http: HttpClient,    
     private formBuilder: FormBuilder, private socialAuthService: SocialAuthService,
@@ -39,13 +40,14 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('usercode',response[0].useR_CODE)
             localStorage.setItem('username',response[0].useR_NAME)
             localStorage.setItem('userfullname',response[0].useR_FULLNAME)
-            localStorage.setItem('email',response[0].email)
-            localStorage.setItem('phone',response[0].phone)
-            localStorage.setItem('address',response[0].address)
+            localStorage.setItem('email',response[0].useR_EMAIL)
+            localStorage.setItem('phone',response[0].useR_PHONE)
+            localStorage.setItem('address',response[0].useR_ADDRESS)
           })
           this.router.navigate(["/home"]);
         }, (err: any) => {
           this.invalidLogin = true;
+          this.loginFaild = true;
         })
   }
   loginForm!: FormGroup;
@@ -85,7 +87,7 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
   signOut(): void {
     this.socialAuthService.signOut();

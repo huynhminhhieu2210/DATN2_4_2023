@@ -2,7 +2,7 @@
     <div class="container">
     <div class="row">
         <div class="col-md-5">
-            <img class="product-img" src="{{productInfo.imG_URL}}" alt="">
+            <img class="product-img" src="{{productInfo.imG_URL}}" alt="Hình ảnh sản phẩm">
         </div>
         <div class="col-md-7">
            <h4>{{productInfo.producT_NAME}}</h4>
@@ -89,6 +89,7 @@
        </table>
        <br>
        <h5>Mô tả sản phẩm:</h5>
+       <div id="descriptionContent" [innerHTML]="productInfo.description" class="descriptionContent"></div>
     </mdb-tab>
     <mdb-tab title="Thông tin nổi bật">Thông tin nổi bật</mdb-tab>
     <mdb-tab title="Thông tin bảo hành">Thông tin bảo hành</mdb-tab>

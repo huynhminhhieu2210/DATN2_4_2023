@@ -28,7 +28,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#">Loại sản phẩm</a>
+                                    <a>Loại sản phẩm</a>
                                 </li>
                             </ul>
                         </div> 
@@ -52,10 +52,26 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover">
-                                    <thead>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="producT_TYPE_CODE">Mã loại sản phẩm</label>
+                                        <input #producT_TYPE_CODE="ngModel" id="producT_TYPE_CODE" name="producT_TYPE_CODE" [(ngModel)]="filterInput!.producT_TYPE_CODE"
+                                        type="text" class="form-control form-control" placeholder="Mã loại sản phẩm">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="producT_TYPE_NAME">Tên loại sản phẩm</label>
+                                        <input #producT_TYPE_NAME="ngModel" id="producT_TYPE_NAME" name="producT_TYPE_NAME" [(ngModel)]="filterInput!.producT_TYPE_NAME" 
+                                        type="text" class="form-control form-control" placeholder="Tên loại sản phẩm">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="table-responsive text-nowrap">
+                                <table class="table table-striped table-bordered">
+                                    <thead style="border: 1px solid #ebedf2;">
                                         <tr>
                                             <th>Mã loại</th>
                                             <th>Tên loại</th>
@@ -64,8 +80,8 @@
                                             <th style="width: 10%">Thao tác</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr *ngFor="let item of listProductType">
+                                    <tbody  style="border: 1px solid #ebedf2;">
+                                        <tr *ngFor="let item of listProductType! | paginate: {itemsPerPage: tableSize,currentPage: page,totalItems: count};">
                                             <td>{{item.producT_TYPE_CODE}}</td>
                                             <td>{{item.producT_TYPE_NAME}}</td>
                                             <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
@@ -86,6 +102,18 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <span style="margin: 20px;position: absolute;">Tổng số dòng: {{total}}</span>
+                            <div style="margin: 20px;" class="d-flex justify-content-right">
+                                <pagination-controls
+                                  previousLabel=""
+                                  nextLabel=""
+                                  (pageChange)="onTableDataChange($event)"
+                                >
+                                </pagination-controls>
+                                <select (change)="onTableSizeChange()" style="height: 26px;width: 56px;border-radius: 5px;" #top="ngModel" [(ngModel)]="filterInput!.top" id="top" name="top">
+                                    <option *ngFor="let item of tableSizes" value="{{item.toP_RESULT_VALUE}}">{{item.toP_RESULT_VALUE}}</option>
+                                </select>
                             </div>
                         </div>
                     </div>
