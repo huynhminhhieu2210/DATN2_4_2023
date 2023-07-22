@@ -29,7 +29,7 @@ export class ProductDetailComponent extends ComponentBase implements OnInit {
   }
   byid(){
     let id: string = this.getRouteParam('productid');
-    this.productService.Product__byid(id).subscribe((response: any)=>{
+    this.productService.Product_byid(id).subscribe((response: any)=>{
       this.productInfo = response[0];
       //document.getElementById("descriptionContent").innerHTML = 'this.productInfo.description';
     });

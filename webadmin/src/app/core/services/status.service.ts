@@ -1,5 +1,4 @@
 import { HttpClient,HttpClientModule,HttpParams,HttpHeaders } from '@angular/common/http';
-import { AREA } from "../models/AREA";
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { STATUS } from '../models/STATUS';

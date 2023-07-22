@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
-import { RoleUserComponent } from './modules/role-user/role-user.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SideBarComponent } from './shared/header/sidebar.component';
 import { NavBarComponent } from './shared/header/navbar.component';
@@ -37,6 +36,7 @@ import { DocImportEditComponent } from './modules/doc-imp-product/doc-imp-produc
 import { DataTablesModule } from 'angular-datatables';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DateTimeFormatPipe } from './shared/pipes/datetime-format.pipe';
 
 export function tokenGetter(){
   return sessionStorage.getItem("jwt");
@@ -54,7 +54,6 @@ export function tokenGetter(){
     UserListComponent,
     CustomerEditComponent,
     CustomerListComponent,
-    RoleUserComponent,
     WarehouseListComponent,
     WarehouseEditComponent,
     InvoiceListComponent,
@@ -69,6 +68,7 @@ export function tokenGetter(){
     ProfileComponent,
     DocImportListComponent,
     DocImportEditComponent,
+    DateTimeFormatPipe,
   ],
   imports: [
     BrowserModule,

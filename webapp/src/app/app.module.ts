@@ -41,6 +41,8 @@ import { CheckoutComponent } from './modules/checkout/checkout.component';
 import { InvoiceDetailComponent } from './modules/invoice-detail/invoice-detail.component';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
 import { DateTimeFormatPipe } from './shared/pipes/datetime-format.pipe';
+import { SearchComponent } from './modules/search/search.component';
+import { ProductsNCCComponent } from './modules/products-ncc/products-ncc.component';
 export function tokenGetter(){
   return localStorage.getItem("jwt");
 }
@@ -59,7 +61,9 @@ export function tokenGetter(){
     CheckoutComponent,
     InvoiceDetailComponent,
     DateFormatPipe,
-    DateTimeFormatPipe
+    DateTimeFormatPipe,
+    SearchComponent,
+    ProductsNCCComponent
   ],
   imports: [
     BrowserModule,

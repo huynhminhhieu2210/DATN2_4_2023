@@ -135,7 +135,8 @@
                                     <table id="add-row" class="display table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th><input disabled="{{disabledInput}}" type="checkbox" (change)="onChangeCheckboxAll()" [checked]="checkAll"></th>
+                                                <th><input *ngIf="disabledInput" disabled type="checkbox" (change)="onChangeCheckboxAll()" [checked]="checkAll"></th>
+                                                <th><input *ngIf="!disabledInput" type="checkbox" (change)="onChangeCheckboxAll()" [checked]="checkAll"></th>
                                                 <th>Mã sản phẩm</th>
                                                 <th>Tên sản phẩm</th>
                                                 <th>Số lượng</th>
@@ -145,7 +146,10 @@
                                         <tbody>
                                             <tr *ngFor="let item of listInvoiceDt;let in = index">
                                                 <td>
-                                                    <input disabled="{{disabledInput}}" type="checkbox" (change)="onChangeCheckbox(in)" [checked]="item.checkbox">
+                                                    <input *ngIf="disabledInput" disabled type="checkbox" (change)="onChangeCheckbox(in)" [checked]="item.checkbox">
+                                                </td>
+                                                <td>
+                                                    <input *ngIf="!disabledInput" type="checkbox" (change)="onChangeCheckbox(in)" [checked]="item.checkbox">
                                                 </td>
                                                 <td>{{item.producT_CODE}}</td>
                                                 <td>
@@ -244,7 +248,9 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="producT_TYPE_ID">Loại sản phẩm</label>
-                                <input [(ngModel)] ="filterInput.producT_TYPE_ID" id="producT_TYPE_ID" name="producT_TYPE_ID" type="text" class="form-control" placeholder="Loại sản phẩm" required/>
+                                <select #producT_TYPE_ID="ngModel" class="form-control" [(ngModel)]="filterInput!.producT_TYPE_ID" id="producT_TYPE_ID" name="producT_TYPE_ID">
+                                    <option *ngFor="let item of listProductType" value="{{item.producT_TYPE_ID}}">{{item.producT_TYPE_NAME}}</option>
+                                </select>
                             </div>
                         </div>
                     </div>

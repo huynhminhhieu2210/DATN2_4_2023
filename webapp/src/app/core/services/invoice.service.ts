@@ -25,4 +25,10 @@ export class InvoiceService {
     Invoice_byid(id: string): Observable<Object>{
         return this.http.get(this.url + "INVOICE_BYID/"+ id);
     }
+    Invoice_cancel(filter :INVOICE): Observable<Object>{
+        return this.http.post(this.url + "INVOICE_CANCEL", filter);
+    }
+    Invoice_access(filter :INVOICE): Observable<Object>{
+        return this.http.post(this.url + "INVOICE_ACCESS", filter);
+    }
 }

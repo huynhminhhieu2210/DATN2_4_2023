@@ -10,10 +10,13 @@ import { ComponentBase } from 'src/app/shared/components/component-base';
 })
 export class HomeComponent extends ComponentBase implements OnInit {
   listProduct?: PRODUCT[];
+  listProductSell?: PRODUCT[];
   page: number = 1;
   count: number = 0;
   tableSize: number = 4;
-  tableSizes: any = [3, 6, 9, 12];
+  pageSell: number = 1;
+  countSell: number = 0;
+  tableSizeSell: number = 4;
   constructor(
     injector: Injector,
     private productService: ProductService
@@ -21,22 +24,24 @@ export class HomeComponent extends ComponentBase implements OnInit {
     super(injector);
   }
   ngOnInit(): void {
-    this.search();
-  }
-  search(){
     var filtera = new PRODUCT();
-    this.productService.Product__search(filtera).subscribe((response: any)=>{
+    filtera.iS_ACTIVE = '1';
+    this.productService.Product_customer_search(filtera).subscribe((response: any)=>{
       this.listProduct = response;
+    });
+    var filterb = new PRODUCT();
+    filterb.iS_ACTIVE = '1';
+    this.productService.Product_sell_search(filterb).subscribe((response: any)=>{
+      this.listProductSell = response;
     });
   }
   onTableDataChange(event: any) {
     this.page = event;
-    this.search();
-  }
-  onTableSizeChange(event: any): void {
-    this.tableSize = event.target.value;
-    this.page = 1;
-    this.search();
+    var filtera = new PRODUCT();
+    filtera.iS_ACTIVE = '1';
+    this.productService.Product_customer_search(filtera).subscribe((response: any)=>{
+      this.listProduct = response;
+    });
   }
   formatCurrency(num)
   {

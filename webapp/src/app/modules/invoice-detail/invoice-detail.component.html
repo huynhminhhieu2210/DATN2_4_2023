@@ -1,5 +1,16 @@
 <div style="margin-top: 10px;" class="container">
   <div class="row">
+    <div style="margin-bottom: 10px;">
+      <p *ngIf="titleinfo" style="    background-color: #00ce49;
+      color: white;
+      border-radius: 4px;
+      padding: 5px;">{{titleinfo}}</p>
+      <p *ngIf="titleerorr" style="    background-color: red;
+      color: white;
+      border-radius: 4px;
+      padding: 5px;">{{titleerorr}}</p>
+      <!-- <div class="card-title">{{title}}</div> -->
+  </div>
       <div class="col-md-1"></div>
     <div class="col-md-5">
       <h5>Chi tiết đơn hàng #{{inputModel.invoicE_CODE}}</h5><br>
@@ -8,12 +19,15 @@
         <span>Địa chỉ: {{inputModel.receiveR_ADDRESS}}</span><br>
         <span>Ghi chú: {{inputModel.notes}}</span>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-3">
       <span>Đặt lúc: {{inputModel.creatE_DATE| datetimeFormatPipe}}</span> <br><br>
       <h6>Hình thức thanh toán</h6>
       <span>{{inputModel.methoD_PAY}}</span>
     </div>
-    <div class="col-md-1"></div>
+    <div class="col-md-3">
+      <button *ngIf="inputModel.status == 'NEW'" (click)="cancelInvoice()" class="btn btn-danger">Hủy đơn hàng</button>
+      <button *ngIf="inputModel.status == 'SHIP_DONE'" (click)="accessInvoice()" class="btn btn-success">Xác nhận đã nhận hàng</button>
+    </div>
 </div>
 </div>
 <div style="margin-top: 10px;" class="container">

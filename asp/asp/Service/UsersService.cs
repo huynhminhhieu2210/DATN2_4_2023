@@ -33,11 +33,12 @@ namespace asp.Service
         public async Task<IEnumerable<InsertResult>> USER_INSERT(USER input)
         {
             input.USER_PASSWORD = BCrypt.Net.BCrypt.HashPassword(input.USER_PASSWORD);
-            var store = "EXEC USER_INSERT " + _setSqlParameter.setParamUser(input);
+            var store = "EXEC USER_INSERT " + _setSqlParameter.setParamUser(input) + ", @METHOD_LOGIN = '" + input.METHOD_LOGIN + "'";
             return await _context.InsertResult.FromSqlRaw(store).ToListAsync();;
         }
         public async Task<IEnumerable<UpdateResult>> USER_UPDATE(USER input)
         {
+            input.USER_PASSWORD = BCrypt.Net.BCrypt.HashPassword(input.USER_PASSWORD);
             var store = "EXEC USER_UPDATE " + _setSqlParameter.setParamUser(input);
             return await _context.UpdateResult.FromSqlRaw(store).ToListAsync();;
         }
@@ -103,7 +104,7 @@ namespace asp.Service
         public async Task<IEnumerable<InsertResult>> USER_REGISTER(REGISTER input)
         {
             input.PASSWORD = BCrypt.Net.BCrypt.HashPassword(input.PASSWORD);
-            var store = "EXEC USER_INSERT @PASSWORD = '" + input.PASSWORD + "', @USER_NAME = '" + input.USER_NAME + "', @EMAIL = '" + input.EMAIL + "'";
+            var store = "EXEC USER_REGISTER @PASSWORD = '" + input.PASSWORD + "', @USER_NAME = '" + input.USER_NAME + "', @EMAIL = '" + input.EMAIL + "'";
             return await _context.InsertResult.FromSqlRaw(store).ToListAsync();
         }
     }

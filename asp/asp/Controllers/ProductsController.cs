@@ -30,6 +30,26 @@ namespace asp.Controllers
             return await _productsService.PRODUCT_SEARCH(input);
         }
         [HttpPost]
+        public async Task<IEnumerable<PRODUCT>> PRODUCT_CUSTOMER_SEARCH([FromBody] PRODUCT input)
+        {
+            return await _productsService.PRODUCT_CUSTOMER_SEARCH(input);
+        }
+        [HttpPost]
+        public async Task<IEnumerable<PRODUCT>> PRODUCT_SELL_SEARCH([FromBody] PRODUCT input)
+        {
+            return await _productsService.PRODUCT_SELL_SEARCH(input);
+        }
+        [HttpPost]
+        public async Task<IEnumerable<PRODUCT>> PRODUCT_ADMIN_SELL_SEARCH([FromBody] PRODUCT input)
+        {
+            return await _productsService.PRODUCT_ADMIN_SELL_SEARCH(input);
+        }
+        [HttpPost]
+        public async Task<IEnumerable<PRODUCT>> PRODUCT_OUT_OF_STOCK_SEARCH([FromBody] PRODUCT input)
+        {
+            return await _productsService.PRODUCT_OUT_OF_STOCK_SEARCH(input);
+        }
+        [HttpPost]
         public async Task<IEnumerable<InsertResult>> PRODUCT_INSERT([FromBody] PRODUCT input)
         {
             return await _productsService.PRODUCT_INSERT(input);

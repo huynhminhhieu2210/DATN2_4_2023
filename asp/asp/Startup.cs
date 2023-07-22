@@ -60,14 +60,10 @@ namespace asp
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
                 };
             });
-            services.AddTransient<IAreasService, AreasService>();
-            services.AddTransient<IBranchsService, BranchsService>();
-            services.AddTransient<ILogsService, LogsService>();
             services.AddTransient<IProductTypesService, ProductTypesService>();
             services.AddTransient<ISuppliersService, SuppliersService>();
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IWarehousesService, WarehousesService>();
-            services.AddTransient<IRoleUsersService, RoleUsersService>();
             services.AddTransient<IInvoicesService, InvoicesService>();
             services.AddTransient<IInvoiceDetailsService, InvoiceDetailsService>();
             services.AddTransient<IProductsService, ProductsService>();

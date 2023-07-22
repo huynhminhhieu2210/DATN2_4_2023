@@ -24,8 +24,7 @@ export class LoginComponent {
           this.http.post("https://localhost:5001/api/Users/USER_GET_INFO_LOGIN", credentials)
           .subscribe((response: any) => {
             sessionStorage.setItem('userid',response[0].useR_ID)
-            sessionStorage.setItem('branchid',response[0].brancH_ID)
-            sessionStorage.setItem('roleuserid',response[0].rolE_USER_ID)
+            sessionStorage.setItem('roleuserid',response[0].rolE_USER)
             sessionStorage.setItem('roleusername',response[0].rolE_USER_NAME)
             sessionStorage.setItem('usercode',response[0].useR_CODE)
             sessionStorage.setItem('username',response[0].useR_NAME)
@@ -33,7 +32,6 @@ export class LoginComponent {
             sessionStorage.setItem('email',response[0].useR_EMAIL)
             sessionStorage.setItem('phone',response[0].useR_PHONE)
             sessionStorage.setItem('address',response[0].useR_ADDRESS)
-            sessionStorage.setItem('branchname',response[0].brancH_NAME)
           })
           this.router.navigate(["/app/dashboard"]);
         }, (err: any) => {

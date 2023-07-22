@@ -16,5 +16,7 @@ namespace asp.IService
         Task<IEnumerable<DeleteResult>> INVOICE_DELETE(string id);
         Task<IEnumerable<INVOICE>> INVOICE_BYID(string id);
         Task<IEnumerable<UpdateResult>> INVOICE_CHANGE_STATUS(INVOICE input);
+        Task<IEnumerable<UpdateResult>> INVOICE_CANCEL (INVOICE input);
+        Task<IEnumerable<UpdateResult>> INVOICE_ACCESS(INVOICE input);
     }
 }

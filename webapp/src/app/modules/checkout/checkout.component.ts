@@ -105,6 +105,8 @@ export class CheckoutComponent extends ComponentBase implements OnInit {
   onview(item: any){
     this.navigatePassParam('/product-detail', { productid: item }, { filterInput: JSON.stringify(undefined) });
   }
+  titleinfo?: string;
+  titleerorr?: string;
   onSaveInvoice(){
     if ((this.editForm as any).form.invalid) {
       this.isShowError = true;
@@ -117,7 +119,15 @@ export class CheckoutComponent extends ComponentBase implements OnInit {
     input.receiveR_PHONE  = this.inputModel.receiveR_PHONE;
     input.receiveR_ADDRESS  = this.inputModel.receiveR_ADDRESS;
     this.cartService.Cart_checkout(input).subscribe((response: any)=>{
-      this.navigatePassParam('/invoice-detail', { invoiceid: response[0].id }, { filterInput: JSON.stringify(undefined) });
+      if(response[0].result != '0'){
+        this.titleerorr = response[0].errorDesc;
+        setTimeout(() => {
+          this.titleerorr = '';
+        }, 5000);
+      }
+      else{
+        this.navigatePassParam('/invoice-detail', { invoiceid: response[0].id }, { filterInput: JSON.stringify(undefined) });
+      }
     });
   }
   changRadioBtn(fil: string){

@@ -82,6 +82,16 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="iS_ACTIVE">Trạng thái hoạt động</label>
+                                        <select #iS_ACTIVE="ngModel" class="form-control" [(ngModel)]="filterInput!.iS_ACTIVE" id="iS_ACTIVE" name="iS_ACTIVE">
+                                            <option value="">Tất cả</option>
+                                            <option value="1">Đang hoạt động</option>
+                                            <option value="0">Không hoạt động</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         <hr>
                         <div class="card-body">
@@ -137,11 +147,11 @@
                                             <td>{{item.stock}}</td>
                                             <td>{{formatCurrency(item.price)}}</td>
                                             <td>
-                                                <button *ngIf="item.iS_ACTIVE" (click)="onConfirmChange(item.producT_CODE!,item.producT_ID!)" data-toggle="modal" 
+                                                <button *ngIf="item.iS_ACTIVE == '1'" (click)="onConfirmChange(item.producT_CODE!,item.producT_ID!)" data-toggle="modal" 
                                                 data-target="#changeStatusRowModal" type="button" title="" class="btn btn-success">
                                                     Đang hoạt động
                                                 </button>
-                                                <button *ngIf="!item.iS_ACTIVE" (click)="onConfirmChange(item.producT_CODE!,item.producT_ID!)" data-toggle="modal" 
+                                                <button *ngIf="item.iS_ACTIVE == '0'" (click)="onConfirmChange(item.producT_CODE!,item.producT_ID!)" data-toggle="modal" 
                                                 data-target="#changeStatusRowModal" type="button" title="" class="btn btn-danger">
                                                     Không hoạt động
                                                 </button>

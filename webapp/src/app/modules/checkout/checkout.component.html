@@ -1,6 +1,7 @@
 <div style="margin-top: 10px;" class="container">
   <div class="row">
     <div class="col-md-6">
+
       <form #editForm="ngForm" class="form-add" (ngSubmit)="onSaveInvoice()">
         <h5>Thông tin khách hàng</h5>
         <div class="form-group">
@@ -12,7 +13,7 @@
         </div>
         <div class="form-group">
             <label for="receiveR_PHONE">Số điện thoại</label>
-            <input #receiveR_PHONE="ngModel" [(ngModel)]="inputModel.receiveR_PHONE" id="receiveR_PHONE" name="receiveR_PHONE" type="text" class="form-control" placeholder="Số điện thoại" required/>
+            <input #receiveR_PHONE="ngModel" [(ngModel)]="inputModel.receiveR_PHONE" id="receiveR_PHONE" name="receiveR_PHONE" type="tel" class="form-control" placeholder="Số điện thoại" required/>
             <div class="error-message-input" *ngIf="receiveR_PHONE.invalid && isShowError">
               <span>Số điện thoại không được để trống</span>
           </div>
@@ -38,6 +39,17 @@
         <!-- <input (change)="changRadioBtn('D')"  id="payment-method-4" style="width: 19px; position: absolute;" class="input-radio" type="radio" name="payment_method"/>
         <label style="margin-left: 29px;
         margin-top: 9px;" for="payment-method-4">MOMO</label> -->
+        <div style="margin-bottom: 10px;">
+          <p *ngIf="titleinfo" style="    background-color: #00ce49;
+          color: white;
+          border-radius: 4px;
+          padding: 5px;">{{titleinfo}}</p>
+          <p *ngIf="titleerorr" style="    background-color: red;
+          color: white;
+          border-radius: 4px;
+          padding: 5px;">{{titleerorr}}</p>
+          <!-- <div class="card-title">{{title}}</div> -->
+      </div>
           <div style="text-align:center;margin:20px">
             <button type="submit" class="btn btn-primary">Hoàn tất đơn hàng</button>
         </div>

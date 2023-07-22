@@ -53,7 +53,9 @@ export class UserListComponent extends ComponentBase implements OnInit{
     });
   }
   search(){
-    this.filterInput.rolE_USER_ID = 'ROL000000000001';
+    this.filterInput.rolE_USER = 'STAFF';
+    this.filterInput.methoD_LOGIN = 'NORMAL';
+    this.filterInput.creatE_ID = sessionStorage.getItem('username')?.toString();
     this.userService.User_search(this.filterInput).subscribe((response: any)=>{
       this.listUser = response;
       this.total = this.listUser!.length;

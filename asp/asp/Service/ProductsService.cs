@@ -23,18 +23,42 @@ namespace asp.Service
         }
         public async Task<IEnumerable<PRODUCT>> PRODUCT_SEARCH(PRODUCT input)
         {
-            var store = "EXEC PRODUCT_SEARCH " + _setSqlParameter.setParamProduct(input);
+            var store = "EXEC PRODUCT_SEARCH " + _setSqlParameter.setParamProduct(input) + ", @IS_ACTIVE = '" + input.IS_ACTIVE + "'";
+            var Result = await _context.PRODUCT.FromSqlRaw(store).ToListAsync();
+            return Result;
+        }
+        public async Task<IEnumerable<PRODUCT>> PRODUCT_CUSTOMER_SEARCH(PRODUCT input)
+        {
+            var store = "EXEC PRODUCT_CUSTOMER_SEARCH " + _setSqlParameter.setParamProduct(input) + ", @IS_ACTIVE = '" + input.IS_ACTIVE + "'";
+            var Result = await _context.PRODUCT.FromSqlRaw(store).ToListAsync();
+            return Result;
+        }
+        public async Task<IEnumerable<PRODUCT>> PRODUCT_SELL_SEARCH(PRODUCT input)
+        {
+            var store = "EXEC PRODUCT_SELL_SEARCH " + _setSqlParameter.setParamProduct(input) + ", @IS_ACTIVE = '" + input.IS_ACTIVE + "'";
+            var Result = await _context.PRODUCT.FromSqlRaw(store).ToListAsync();
+            return Result;
+        }
+        public async Task<IEnumerable<PRODUCT>> PRODUCT_ADMIN_SELL_SEARCH(PRODUCT input)
+        {
+            var store = "EXEC PRODUCT_ADMIN_SELL_SEARCH " + _setSqlParameter.setParamProduct(input) + ", @IS_ACTIVE = '" + input.IS_ACTIVE + "'";
+            var Result = await _context.PRODUCT.FromSqlRaw(store).ToListAsync();
+            return Result;
+        }
+        public async Task<IEnumerable<PRODUCT>> PRODUCT_OUT_OF_STOCK_SEARCH(PRODUCT input)
+        {
+            var store = "EXEC PRODUCT_OUT_OF_STOCK_SEARCH " + _setSqlParameter.setParamProduct(input) + ", @IS_ACTIVE = '" + input.IS_ACTIVE + "'";
             var Result = await _context.PRODUCT.FromSqlRaw(store).ToListAsync();
             return Result;
         }
         public async Task<IEnumerable<InsertResult>> PRODUCT_INSERT(PRODUCT input)
         {
-            var store = "EXEC PRODUCT_INSERT " + _setSqlParameter.setParamProduct(input);
+            var store = "EXEC PRODUCT_INSERT " + _setSqlParameter.setParamProduct(input) + ", @GUARANTEE = '" + input.GUARANTEE + "'";
             return await _context.InsertResult.FromSqlRaw(store).ToListAsync();
         }
         public async Task<IEnumerable<UpdateResult>> PRODUCT_UPDATE(PRODUCT input)
         {
-            var store = "EXEC PRODUCT_UPDATE " + _setSqlParameter.setParamProduct(input);
+            var store = "EXEC PRODUCT_UPDATE " + _setSqlParameter.setParamProduct(input) + ", @GUARANTEE = '" + input.GUARANTEE + "'";
             return await _context.UpdateResult.FromSqlRaw(store).ToListAsync();;
         }
         public async Task<IEnumerable<DeleteResult>> PRODUCT_DELETE(string id)

@@ -10,11 +10,12 @@ import { ComponentBase } from 'src/app/shared/components/component-base';
 })
 export class ProductsComponent extends ComponentBase implements OnInit {
   listProduct?: PRODUCT[];
+  listProductAll?: PRODUCT[];
   page: number = 1;
   count: number = 0;
   tableSize: number = 10;
   tableSizes: any = [3, 6, 9, 12];
-  producT_TYPE_ID: string ='TC';
+  sortProduct: string ='TC';
   title: string;
   constructor(
     injector: Injector,
@@ -24,13 +25,16 @@ export class ProductsComponent extends ComponentBase implements OnInit {
   }
   ngOnInit(): void {
     this.search();
-    this.title = this.getRouteParam('type') == undefined || this.getRouteParam('type') == '' || this.getRouteParam('type') == null ? '' : ' >> '+ this.getRouteParam('type');
+    this.title = this.getRouteParam('typename') == undefined || this.getRouteParam('typename') == '' || this.getRouteParam('typename') == null ? '' : ' >> '+ this.getRouteParam('typename');
   }
   search(){
     var filtera = new PRODUCT();
     filtera.producT_TYPE_ID = this.getRouteParam('type');
-    this.productService.Product__search(filtera).subscribe((response: any)=>{
+    filtera.iS_ACTIVE = '1';
+    this.productService.Product_customer_search(filtera).subscribe((response: any)=>{
       this.listProduct = response;
+      this.listProduct.sort((a, b) => a.price - b.price);
+      this.listProductAll = response;
     });
   }
   onTableDataChange(event: any) {
@@ -67,9 +71,40 @@ export class ProductsComponent extends ComponentBase implements OnInit {
     }
 
     return (((sign) ? '' : '-') + num + 'đ');
-}
-onview(item: any){
-  this.navigatePassParam('/product-detail', { productid: item }, { filterInput: JSON.stringify(undefined) });
-}
+  }
+  onview(item: any){
+    this.navigatePassParam('/product-detail', { productid: item }, { filterInput: JSON.stringify(undefined) });
+  }
+  changePrice1(){
+    this.listProduct = this.listProductAll.filter(x => x.price <= 10000000);
+  }
+  changePrice2(){
+    this.listProduct = this.listProductAll.filter(x => x.price > 10000000 && x.price <= 15000000);
+  }
+  changePrice3(){
+    this.listProduct = this.listProductAll.filter(x => x.price > 15000000 && x.price <= 20000000);
+  }
+  changePrice4(){
+    this.listProduct = this.listProductAll.filter(x => x.price > 20000000 && x.price <= 25000000);
+  }
+  changePrice5(){
+    this.listProduct = this.listProductAll.filter(x => x.price > 25000000 && x.price <= 30000000);
+  }
+  changePrice6(){
+    this.listProduct = this.listProductAll;
+  }
+  
+  onSortProduct(){
+    this.listProduct = this.listProductAll;
+    if(this.sortProduct == 'TC'){
+      this.listProduct.sort((a, b) => a.price - b.price);
+    }else if(this.sortProduct == 'CT'){
+     this.listProduct.sort((a, b) => b.price - a.price);
+    }else if(this.sortProduct == 'MN'){
+      this.listProduct.sort((a, b) => b.creatE_DATE_DECIMAL - a.creatE_DATE_DECIMAL);
+    }else if(this.sortProduct == 'PB'){
+      this.listProduct.sort((a, b) => b.quantitY_SELL - a.quantitY_SELL);
+    }
+  }
 
 }

@@ -1,9 +1,6 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { AREA } from 'src/app/core/models/AREA';
 import { SUPPLIER } from 'src/app/core/models/SUPPLIER';
 import { TOP_RESULT } from 'src/app/core/models/TOP_RESULT';
-import { AreaService } from 'src/app/core/services/area.service';
-import { BranchService } from 'src/app/core/services/branch.service';
 import { SupplierService } from 'src/app/core/services/supplier.service';
 import { TopResultService } from 'src/app/core/services/top-result.service';
 import { ComponentBase } from 'src/app/shared/components/component-base';

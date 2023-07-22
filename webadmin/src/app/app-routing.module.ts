@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
-import { RoleUserComponent } from './modules/role-user/role-user.component';
 import { EditPageState } from './shared/enum/edit-page-state';
 import { UserEditComponent } from './modules/user/user-edit.component';
 import { UserListComponent } from './modules/user/user-list.component';
@@ -39,12 +38,10 @@ import { DocImportEditComponent } from './modules/doc-imp-product/doc-imp-produc
             { path: 'doc-imp-product-add', component: DocImportEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
             { path: 'doc-imp-product-edit', component: DocImportEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
             { path: 'doc-imp-product-view', component: DocImportEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
-
-            { path: 'role-user', component: RoleUserComponent,canActivate: [AuthGuard]},
           
             { path: 'customer', component: CustomerListComponent,canActivate: [AuthGuard]},
-            { path: 'customer-add', component: CustomerEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
-            { path: 'customer-edit', component: CustomerEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
+            // { path: 'customer-add', component: CustomerEditComponent, data: {editPageState: EditPageState.add},canActivate: [AuthGuard]},
+            // { path: 'customer-edit', component: CustomerEditComponent, data: {editPageState: EditPageState.edit},canActivate: [AuthGuard]},
             { path: 'customer-view', component: CustomerEditComponent, data: {editPageState: EditPageState.view},canActivate: [AuthGuard]},
           
             { path: 'user', component: UserListComponent,canActivate: [AuthGuard]},

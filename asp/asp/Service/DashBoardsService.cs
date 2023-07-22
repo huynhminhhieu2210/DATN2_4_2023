@@ -26,6 +26,10 @@ namespace asp.Service
             var store = "EXEC CHART_BAR_LOAD @FROM_DATE = N'" + input.FROM_DATE + "', @TO_DATE = N'" + input.TO_DATE + "'";
             return await _context.BARCHART.FromSqlRaw(store).ToListAsync();
         }
-
+        public async Task<IEnumerable<BARCHART>> CHART_BAR2_LOAD(CHART_BAR_FILTER input)
+        {
+            var store = "EXEC CHART_BAR2_LOAD @FROM_DATE = N'" + input.FROM_DATE + "', @TO_DATE = N'" + input.TO_DATE + "'";
+            return await _context.BARCHART.FromSqlRaw(store).ToListAsync();
+        }
     }
 }

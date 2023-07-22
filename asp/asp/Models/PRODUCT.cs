@@ -21,28 +21,22 @@ namespace asp.Models
         public string CREATE_ID { get; set; }
         public DateTime? CREATE_DATE { get; set; }
         public string IMG_URL { get; set; }
-        public decimal PRICE { get; set; }
+        public decimal? PRICE { get; set; }
         public string CPU { get; set; }
         public string RAM { get; set; }
         public string DISK { get; set; }
         public string VGA { get; set; }
         public string MONITOR { get; set; }
-        public string PORT { get; set; }
-        public string OS { get; set; }
-        public string WEIGHT { get; set; }
-        public string SIZE { get; set; }
-        public string COLOR { get; set; }
-        public string BATTERY { get; set; }
-        public string LED_KEYBOARD { get; set; }
-        public string BLUETOOTH { get; set; }
-        public string WEBCAM { get; set; }
         public string PRODUCT_TYPE_NAME { get; set; }
         public string SUPPLIER_NAME { get; set; }
         public string WAREHOUSE_ID { get; set; }
         public string WAREHOUSE_NAME { get; set; }
-        public decimal STOCK { get; set; }
-        public bool IS_ACTIVE { get; set; }
+        public decimal? STOCK { get; set; }
+        public decimal? GUARANTEE { get; set; }
+        public string IS_ACTIVE { get; set; }
         [NotMapped]
-        public int TOP { get; set; }
+        public int? TOP { get; set; }
+        public decimal? CREATE_DATE_DECIMAL { get; set; }
+        public decimal? QUANTITY_SELL { get; set; }
     }
 }

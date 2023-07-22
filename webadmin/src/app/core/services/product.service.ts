@@ -13,6 +13,15 @@ export class ProductService {
     Product_search(filter :PRODUCT): Observable<Object>{
         return this.http.post(this.url + "PRODUCT_SEARCH", filter);
     }
+    Product_customer_search(filter :PRODUCT): Observable<Object>{
+        return this.http.post(this.url + "PRODUCT_CUSTOMER_SEARCH", filter);
+    }
+    Product_admin_sell_search(filter :PRODUCT): Observable<Object>{
+        return this.http.post(this.url + "PRODUCT_ADMIN_SELL_SEARCH", filter);
+    }
+    Product_out_of_stock_search(filter :PRODUCT): Observable<Object>{
+        return this.http.post(this.url + "PRODUCT_OUT_OF_STOCK_SEARCH", filter);
+    }
     Product_insert(filter :PRODUCT): Observable<Object>{
         return this.http.post(this.url + "PRODUCT_INSERT", filter);
     }

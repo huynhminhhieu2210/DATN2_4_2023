@@ -11,5 +11,6 @@ namespace asp.IService
     public interface IDashBoardsService : IApplicationService
     {
         Task<IEnumerable<BARCHART>> CHART_BAR_LOAD(CHART_BAR_FILTER input);
+        Task<IEnumerable<BARCHART>> CHART_BAR2_LOAD(CHART_BAR_FILTER input);
     }
 }

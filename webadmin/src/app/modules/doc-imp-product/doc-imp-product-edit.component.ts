@@ -18,6 +18,7 @@ import { WarehouseService } from 'src/app/core/services/warehouse.service';
 import { APPROVE } from 'src/app/core/models/APPROVE';
 import { PRODUCT } from 'src/app/core/models/PRODUCT';
 import { ProductService } from 'src/app/core/services/product.service';
+import { PRODUCT_TYPE } from 'src/app/core/models/PRODUCT_TYPE';
 @Component({
   templateUrl: './doc-imp-product-edit.component.html',
 })
@@ -39,6 +40,7 @@ export class DocImportEditComponent extends ComponentBase implements OnInit{
   total?: string;
   checkAll: boolean = false;
   checkAllModal: boolean = false;
+  listProductType?: PRODUCT_TYPE[];
   @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
@@ -70,6 +72,7 @@ export class DocImportEditComponent extends ComponentBase implements OnInit{
     private docImpProductDetailsService: DocImpProductDetailsService,
     private warehouseService: WarehouseService,
     private productService: ProductService,
+    private productTypeService: ProductTypeService,
     ) {
     super(injector);
     this.inputModel!.doC_IMP_PRODUCT_ID = this.getRouteParam('docimpproduct');
@@ -79,6 +82,16 @@ export class DocImportEditComponent extends ComponentBase implements OnInit{
     var filtera = new WAREHOUSE();
     this.warehouseService.Warehouse_search(filtera).subscribe((response: any)=>{
       this.lstWarehouse = response;
+    });
+    var filterb = new PRODUCT_TYPE();
+    this.productTypeService.Product_Type_search(filterb).subscribe((response: any)=>{
+      this.listProductType = response;
+      if(this.listProductType){
+        var type = new PRODUCT_TYPE();
+        type.producT_TYPE_NAME = '---- Tất cả ----';
+        this.listProductType?.unshift(type);
+        this.filterInput.producT_TYPE_ID = '';
+      }
     });
   }
   byid(){
@@ -205,6 +218,7 @@ export class DocImportEditComponent extends ComponentBase implements OnInit{
           this.titleinfo = response[0].errorDesc;
           this.inputModel!.doC_IMP_PRODUCT_ID = response[0].id; 
           this.inputModel!.doC_IMP_PRODUCT_CODE = response[0].id; 
+          this.editPageState = EditPageState.view;
           setTimeout(() => {
             this.titleinfo = '';
           }, 5000);
@@ -308,7 +322,7 @@ export class DocImportEditComponent extends ComponentBase implements OnInit{
     this.checkAll = false;
   }
   searchModal(){
-    this.productService.Product_search(this.filterInput).subscribe((response: any)=>{
+    this.productService.Product_customer_search(this.filterInput).subscribe((response: any)=>{
       this.listProducts = response;
     });
   }

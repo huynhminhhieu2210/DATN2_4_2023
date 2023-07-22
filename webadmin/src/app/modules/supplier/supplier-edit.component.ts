@@ -3,8 +3,6 @@ import { Component, ElementRef, Injectable, Injector, OnInit, ViewChild } from '
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
 import { SUPPLIER } from 'src/app/core/models/SUPPLIER';
-import { AreaService } from 'src/app/core/services/area.service';
-import { BranchService } from 'src/app/core/services/branch.service';
 import { SupplierService } from 'src/app/core/services/supplier.service';
 import { ComponentBase } from 'src/app/shared/components/component-base';
 import { EditPageState } from 'src/app/shared/enum/edit-page-state';
@@ -24,7 +22,7 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
   titleinfo?: string;
   date?: string;
   isShowError = false;
-
+  titleerorr?: string;
   @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
@@ -86,19 +84,37 @@ export class SupplierEditComponent extends ComponentBase implements OnInit{
   }
     if(!this.inputModel?.supplieR_ID){
       this.supplierService.Supplier_insert(this.inputModel!).subscribe((response: any)=>{
-        console.log(response);
-        this.titleinfo = 'Thêm mới thành công';
-        setTimeout(() => {
-          this.titleinfo = '';
-        }, 5000);
+        if(response[0].result != '0'){
+          $("body, html").animate({scrollTop:0},0);
+          this.titleerorr = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleerorr = '';
+          }, 5000);
+        }
+        else{
+          $("body, html").animate({scrollTop:0},0);
+          this.titleinfo = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleinfo = '';
+          }, 5000);
+        }
       });
     }else{
       this.supplierService.Supplier_update(this.inputModel!).subscribe((response: any)=>{
-        console.log(response);
-        this.titleinfo = 'Cập nhật thành công';
-        setTimeout(() => {
-          this.titleinfo = '';
-        }, 5000);
+        if(response[0].result != '0'){
+          $("body, html").animate({scrollTop:0},0);
+          this.titleerorr = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleerorr = '';
+          }, 5000);
+        }
+        else{
+          $("body, html").animate({scrollTop:0},0);
+          this.titleinfo = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleinfo = '';
+          }, 5000);
+        }
       });
     }
   }

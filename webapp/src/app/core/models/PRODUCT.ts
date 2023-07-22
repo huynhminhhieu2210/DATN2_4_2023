@@ -17,14 +17,9 @@ export class PRODUCT {
   disk: string | undefined;
   vga: string | undefined;
   monitor: string | undefined;
-  port: string | undefined;
-  os: string | undefined;
-  weight: string | undefined;
-  size: string | undefined;
-  color: string | undefined;
-  battery: string | undefined;
-  leD_KEYBOARD: string | undefined;
-  bluetooth: string | undefined;
-  webcam: string | undefined;
   imG_URL: string | undefined;
+  guarantee: number | undefined;
+  creatE_DATE_DECIMAL: number | undefined;
+  quantitY_SELL: number | undefined;
+  iS_ACTIVE: string | undefined;
 }

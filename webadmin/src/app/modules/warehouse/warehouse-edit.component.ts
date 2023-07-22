@@ -2,11 +2,7 @@
 import { Component, ElementRef, Injectable, Injector, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
-import { BRANCH } from 'src/app/core/models/BRANCH';
 import { WAREHOUSE } from 'src/app/core/models/WAREHOUSE';
-import { AreaService } from 'src/app/core/services/area.service';
-import { BranchService } from 'src/app/core/services/branch.service';
-import { SupplierService } from 'src/app/core/services/supplier.service';
 import { WarehouseService } from 'src/app/core/services/warehouse.service';
 import { ComponentBase } from 'src/app/shared/components/component-base';
 import { EditPageState } from 'src/app/shared/enum/edit-page-state';
@@ -24,15 +20,14 @@ export class WarehouseEditComponent extends ComponentBase implements OnInit{
   editPageState?: EditPageState;
   title?:string; 
   titleinfo?: string;
-  listBranch?: BRANCH[];
   isShowError = false;
   date?: string;
+  titleerorr?: string;
   @ViewChild('editForm') editForm?: ElementRef;
   get disabledInput(): boolean{
     return this.editPageState == EditPageState.view;
   }
   ngOnInit(): void {
-    this.initCombobox();
     switch (this.editPageState) {
       case EditPageState.add:
         this.title = 'Thêm mới kho';
@@ -53,17 +48,10 @@ export class WarehouseEditComponent extends ComponentBase implements OnInit{
   constructor(
     injector: Injector,
     private warehouseService: WarehouseService,
-    private branchService: BranchService,
     ) {
     super(injector);
     this.inputModel!.warehousE_ID = this.getRouteParam('warehouse');
     this.editPageState = this.getRouteData('editPageState');
-  }
-  initCombobox(){
-    var filtera = new BRANCH();
-    this.branchService.Branch_search(filtera).subscribe((response: any)=>{
-      this.listBranch = response;
-    });
   }
   byid(){
     let id: string = this.getRouteParam('warehouse');
@@ -94,22 +82,40 @@ export class WarehouseEditComponent extends ComponentBase implements OnInit{
       this.isShowError = true;
       return;
   }
-    this.inputModel!.creatE_ID = sessionStorage.getItem('userid')?.toString();
+    this.inputModel!.creatE_ID = sessionStorage.getItem('username')?.toString();
     if(!this.inputModel?.warehousE_ID){
       this.warehouseService.Warehouse_insert(this.inputModel!).subscribe((response: any)=>{
-        console.log(response);
-        this.titleinfo = 'Thêm mới thành công';
-        setTimeout(() => {
-          this.titleinfo = '';
-        }, 5000);
+        if(response[0].result != '0'){
+          $("body, html").animate({scrollTop:0},0);
+          this.titleerorr = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleerorr = '';
+          }, 5000);
+        }
+        else{
+          $("body, html").animate({scrollTop:0},0);
+          this.titleinfo = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleinfo = '';
+          }, 5000);
+        }
       });
     }else{
       this.warehouseService.Warehouse_update(this.inputModel!).subscribe((response: any)=>{
-        console.log(response);
-        this.titleinfo = 'Cập nhật thành công';
-        setTimeout(() => {
-          this.titleinfo = '';
-        }, 5000);
+        if(response[0].result != '0'){
+          $("body, html").animate({scrollTop:0},0);
+          this.titleerorr = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleerorr = '';
+          }, 5000);
+        }
+        else{
+          $("body, html").animate({scrollTop:0},0);
+          this.titleinfo = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleinfo = '';
+          }, 5000);
+        }
       });
     }
   }

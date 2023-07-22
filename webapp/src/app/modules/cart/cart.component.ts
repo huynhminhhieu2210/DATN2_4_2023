@@ -47,15 +47,54 @@ export class CartComponent extends ComponentBase implements OnInit {
     });
 
   }
+  titleinfo?: string;
+  titleerorr?: string;
   updateCart(){
+    this.titleinfo = '';
+    this.titleerorr = '';
     var userlogin = localStorage.getItem("username");
     var input = new INVOICE();
     input.creatE_ID = localStorage.getItem("username");
     input.LST_INVOICE_DT = this.listCart;
     this.cartService.Cart_update(input).subscribe((response: any)=>{
+      if(response[0].result != '0'){
+        $("body, html").animate({scrollTop:0},0);
+        this.titleerorr = response[0].errorDesc;
+        setTimeout(() => {
+          this.titleerorr = '';
+        }, 5000);
+      }
+      else{
+        $("body, html").animate({scrollTop:0},0);
+        this.titleinfo = response[0].errorDesc;
+        setTimeout(() => {
+          this.titleinfo = '';
+        }, 5000);
+      }
       this.loadCart();
     });
 
+  }
+  checkout(){
+    this.titleinfo = '';
+    this.titleerorr = '';
+    var userlogin = localStorage.getItem("username");
+    var input = new INVOICE();
+    input.creatE_ID = localStorage.getItem("username");
+    input.LST_INVOICE_DT = this.listCart;
+    this.cartService.Cart_update(input).subscribe((response: any)=>{
+      if(response[0].result != '0'){
+        $("body, html").animate({scrollTop:0},0);
+        this.titleerorr = response[0].errorDesc;
+        setTimeout(() => {
+          this.titleerorr = '';
+        }, 5000);
+      }
+      else{
+        this.router.navigate(["/checkout"]);
+      }
+      this.loadCart();
+    });
   }
   formatCurrency(num)
   {
@@ -82,8 +121,11 @@ export class CartComponent extends ComponentBase implements OnInit {
     }
 
     return (((sign) ? '' : '-') + num + 'đ');
-}
-onview(item: any){
-  this.navigatePassParam('/product-detail', { productid: item }, { filterInput: JSON.stringify(undefined) });
-}
+  }
+  onview(item: any){
+    this.navigatePassParam('/product-detail', { productid: item }, { filterInput: JSON.stringify(undefined) });
+  }
+  onClickBuy(){
+    this.router.navigate(["/products"]);
+  }
 }

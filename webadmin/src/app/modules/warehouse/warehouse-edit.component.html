@@ -27,7 +27,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
-                                        <a routerLink="/app/warehouse" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-right: 5px;" href="#">Danh sách tài khoản</a>
+                                        <a routerLink="/app/warehouse" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-right: 5px;" href="#">Danh sách kho</a>
                                     </li>
                                     <li class="nav-item">
                                         <a>{{title}}</a>
@@ -39,6 +39,10 @@
                                 color: white;
                                 border-radius: 4px;
                                 padding: 5px;">{{titleinfo}}</p>
+                                <p *ngIf="titleerorr" style="    background-color: red;
+                                color: white;
+                                border-radius: 4px;
+                                padding: 5px;">{{titleerorr}}</p>
                                 <!-- <div class="card-title">{{title}}</div> -->
                             </div>
                             <div class="card-body">
@@ -91,30 +95,4 @@
             </form>
         </div>
     </div>
-    <footer class="footer">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.themekita.com">
-                            ThemeKita
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Help
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Licenses
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright ml-auto">
-                2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
-            </div>
-        </div>
-    </footer>
 </div>

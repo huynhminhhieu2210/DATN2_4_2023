@@ -54,5 +54,15 @@ namespace asp.Controllers
         {
             return await _invoicesService.INVOICE_CHANGE_STATUS(input);
         }
+        [HttpPost]
+        public async Task<IEnumerable<UpdateResult>> INVOICE_CANCEL([FromBody] INVOICE input)
+        {
+            return await _invoicesService.INVOICE_CANCEL(input);
+        }
+        [HttpPost]
+        public async Task<IEnumerable<UpdateResult>> INVOICE_ACCESS([FromBody] INVOICE input)
+        {
+            return await _invoicesService.INVOICE_ACCESS(input);
+        }
     }
 }

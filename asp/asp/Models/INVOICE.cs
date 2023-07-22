@@ -28,5 +28,6 @@ namespace asp.Models
         public string METHOD_PAY { get; set; }
         public string CREATE_NAME { get; set; }
         public string USER_NAME { get; set; }
+        public string IMG_URL { get; set; }
     }
 }

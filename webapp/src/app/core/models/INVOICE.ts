@@ -15,4 +15,5 @@ export class INVOICE {
   LST_INVOICE_DT: INVOICE_DT[];
   invoicE_STATUS_NAME: string | undefined;
   methoD_PAY: string | undefined;
+  imG_URL: string | undefined;
 }

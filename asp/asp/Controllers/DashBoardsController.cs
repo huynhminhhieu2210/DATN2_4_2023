@@ -29,5 +29,10 @@ namespace asp.Controllers
         {
             return await _dashBoardsService.CHART_BAR_LOAD(input);
         }
+        [HttpPost]
+        public async Task<IEnumerable<BARCHART>> CHART_BAR2_LOAD([FromBody] CHART_BAR_FILTER input)
+        {
+            return await _dashBoardsService.CHART_BAR2_LOAD(input);
+        }
     }
 }

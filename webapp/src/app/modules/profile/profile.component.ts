@@ -35,6 +35,7 @@ export class ProfileComponent extends ComponentBase implements OnInit {
   phoneView?: string;
   address?: string;
   branchname?: string;
+  methodLogin?: string;
   warning: string;
   editAddress: string;
   editAddressId: string;
@@ -69,29 +70,13 @@ export class ProfileComponent extends ComponentBase implements OnInit {
     this.username = localStorage.getItem('username')?.toString();
     this.phoneView = this.phone = localStorage.getItem('phone')?.toString();
     this.address = localStorage.getItem('address')?.toString();
-    this.branchname = localStorage.getItem('branchname')?.toString();
-    this.phone = this.phone == undefined ? '' : this.phone;
-    this.phoneView = this.phoneView == undefined ? '' : this.phoneView;
-    this.address = this.address == undefined ? '' : this.address;
-    this.email = this.email == undefined ? '' : this.email;
-    this.search();
+    this.methodLogin = localStorage.getItem('methodLogin')?.toString();
+    this.phone = this.phone == 'undefined' ? '' : this.phone;
+    this.phoneView = this.phoneView == 'undefined' ? '' : this.phoneView;
+    this.address = this.address == 'undefined' ? '' : this.address;
+    this.email = this.email == 'undefined' ? '' : this.email;
     this.onLoadAddressReceive();
     this.onLoadInvoice();
-  }
-  search(){
-    var filtera = new PRODUCT();
-    this.productService.Product__search(filtera).subscribe((response: any)=>{
-      this.listProduct = response;
-    });
-  }
-  onTableDataChange(event: any) {
-    this.page = event;
-    this.search();
-  }
-  onTableSizeChange(event: any): void {
-    this.tableSize = event.target.value;
-    this.page = 1;
-    this.search();
   }
   formatCurrency(num)
   {
@@ -140,8 +125,24 @@ export class ProfileComponent extends ComponentBase implements OnInit {
       this.warning = '';
     }
   }
+  titleinfo?: string;
+  titleerorr?: string;
   onChangePass(form: NgForm){
-    this.userService.User_changepass(form.value.passOld,form.value.passNew).subscribe((response: any)=>{
+    this.titleerorr = '';
+    this.titleinfo = '';
+    this.userService.User_changepass(form.value.passOld,form.value.passNew,localStorage.getItem('username')?.toString()).subscribe((response: any)=>{
+      if(response[0].result != '1'){
+        this.titleerorr = 'Đổi mật khẩu thất bại.';
+        setTimeout(() => {
+          this.titleerorr = '';
+        }, 5000);
+      }
+      else{
+        this.titleinfo = 'Đổi mật khẩu thành công.';
+        setTimeout(() => {
+          this.titleinfo = '';
+        }, 5000);
+      }
     });
 
   }
@@ -189,6 +190,8 @@ export class ProfileComponent extends ComponentBase implements OnInit {
     });
   }
   onSave(form: NgForm){
+    this.titleerorr = '';
+    this.titleinfo = '';
     var input = new USER();
     input.useR_NAME = localStorage.getItem('username')?.toString();
     input.useR_FULLNAME = form.value.fullName;
@@ -215,15 +218,26 @@ export class ProfileComponent extends ComponentBase implements OnInit {
             localStorage.setItem('address',response[0].useR_ADDRESS)
             this.fullNameView = response[0].useR_FULLNAME;
             this.phoneView = response[0].useR_PHONE;
+              this.titleinfo = 'Cập nhật thông tin thành công.';
+              setTimeout(() => {
+                this.titleinfo = '';
+              }, 5000);
           })
     });
   }
   onEditAddress(form: NgForm){
+    this.titleerorr = '';
+    this.titleinfo = '';
     var input = new ADDRESS_RECEIVE();
     input.addresS_RECEIVE_ID = this.editAddressId;
     input.addresS_RECEIVE_NAME =   this.editAddress;
     this.userService.User_update_address_receive(input).subscribe((response: any)=>{
       this.onLoadAddressReceive();
+      this.phoneView = response[0].useR_PHONE;
+      this.titleinfo = 'Cập nhật địa chỉ thành công.';
+      setTimeout(() => {
+        this.titleinfo = '';
+      }, 5000);
     });
   }
   onClickEditAddress(id: string, name: string){
@@ -231,16 +245,29 @@ export class ProfileComponent extends ComponentBase implements OnInit {
     this.editAddress = name;
   }
   onSaveAddress(){
+    this.titleerorr = '';
+    this.titleinfo = '';
     var input = new ADDRESS_RECEIVE();
     input.useR_ID = localStorage.getItem('userid')?.toString()
     input.addresS_RECEIVE_NAME =   this.addresS_RECEIVE_NAME;
     this.userService.User_insert_address_receive(input).subscribe((response: any)=>{
       this.onLoadAddressReceive();
+      this.phoneView = response[0].useR_PHONE;
+      this.titleinfo = 'Thêm địa chỉ thành công.';
+      setTimeout(() => {
+        this.titleinfo = '';
+      }, 5000);
     });
   }
   onDeleteAddress(id: string){
+    this.titleerorr = '';
+    this.titleinfo = '';
     this.userService.User_delete_address_receive(id).subscribe((response: any)=>{
       this.onLoadAddressReceive();
+      this.titleinfo = 'Xóa địa chỉ thành công.';
+      setTimeout(() => {
+        this.titleinfo = '';
+      }, 5000);
     });
   }
   onChangPassClick(){
@@ -253,8 +280,8 @@ export class ProfileComponent extends ComponentBase implements OnInit {
     this.email = localStorage.getItem('email')?.toString();
     this.phone = localStorage.getItem('phone')?.toString();
     this.address = localStorage.getItem('address')?.toString();
-    this.phone = this.phone == undefined ? '' : this.phone;
-    this.address = this.address == undefined ? '' : this.address;
-    this.email = this.email == undefined ? '' : this.email;
+    this.phone = this.phone == 'undefined' ? '' : this.phone;
+    this.address = this.address == 'undefined' ? '' : this.address;
+    this.email = this.email == 'undefined' ? '' : this.email;
   }
 }

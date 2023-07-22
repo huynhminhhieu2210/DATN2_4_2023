@@ -31,7 +31,9 @@ export class PRODUCT {
   supplieR_NAME: string | undefined;
   warehousE_NAME: string | undefined;
   checkbox: boolean | undefined;
-  iS_ACTIVE: boolean | undefined;
+  iS_ACTIVE: string | undefined;
   stt: string | undefined;
   top: number | undefined;
+  quantitY_SELL: number | undefined;
+  guarantee: number | undefined;
 }

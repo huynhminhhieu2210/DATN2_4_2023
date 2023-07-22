@@ -71,19 +71,38 @@ export class ProductTypeEditComponent extends ComponentBase implements OnInit{
     this.inputModel!.creatE_DATE = moment(this.date);
     if(!this.inputModel?.producT_TYPE_ID){
       this.productTypeService.Product_Type_insert(this.inputModel!).subscribe((response: any)=>{
-        console.log(response);
-        this.titleinfo = 'Thêm mới thành công';
-        setTimeout(() => {
-          this.titleinfo = '';
-        }, 5000);
+        if(response[0].result != '0'){
+          $("body, html").animate({scrollTop:0},0);
+          this.titleerorr = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleerorr = '';
+          }, 5000);
+        }
+        else{
+          $("body, html").animate({scrollTop:0},0);
+          this.titleinfo = response[0].errorDesc;
+          this.inputModel!.producT_TYPE_ID = response[0].id;
+          setTimeout(() => {
+            this.titleinfo = '';
+          }, 5000);
+        }
       });
     }else{
       this.productTypeService.Product_Type_update(this.inputModel!).subscribe((response: any)=>{
-        console.log(response);
-        this.titleinfo = 'Cập nhật thành công';
-        setTimeout(() => {
-          this.titleinfo = '';
-        }, 5000);
+        if(response[0].result != '0'){
+          $("body, html").animate({scrollTop:0},0);
+          this.titleerorr = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleerorr = '';
+          }, 5000);
+        }
+        else{
+          $("body, html").animate({scrollTop:0},0);
+          this.titleinfo = response[0].errorDesc;
+          setTimeout(() => {
+            this.titleinfo = '';
+          }, 5000);
+        }
       });
     }
   }

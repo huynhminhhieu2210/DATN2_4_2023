@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { USER } from '../models/USER';
 import { ADDRESS_RECEIVE } from '../models/ADDRESS_RECEIVE';
+import { REGISTER } from '../models/REGISTER';
+import { INPUTCHANGEPASS } from '../models/INPUTCHANGEPASS';
 @Injectable({
     providedIn: 'root',
   })
@@ -26,8 +28,13 @@ export class UserService {
     User_byid(id: string): Observable<Object>{
         return this.http.get(this.url + "USER_BYID/"+ id);
     }
-    User_changepass(passOld: string, passNew: string): Observable<Object>{
-        return this.http.post(this.url + "USER_CHANGEPASS" ,{passOld, passNew});
+    User_changepass(passOld: string, passNew: string, username: string): Observable<Object>{
+        var input = new INPUTCHANGEPASS();
+        input.useR_PASSWORD = passOld;
+        input.useR_PASSWORDNEW = passNew;
+        input.useR_NAME = username;
+        input.type = 'CUSTOMER';
+        return this.http.post(this.url + "USER_CHANGE_PASSWORD" ,input);
     }
     User_update_info(input :USER): Observable<Object>{
         return this.http.post(this.url + "USER_UPDATE_INFO", input);
@@ -43,5 +50,8 @@ export class UserService {
     }
     User_insert_address_receive(input :ADDRESS_RECEIVE): Observable<Object>{
         return this.http.post(this.url + "USER_INSERT_ADDRESS_RECEIVE", input);
+    }
+    User_register(input :REGISTER): Observable<Object>{
+        return this.http.post(this.url + "USER_REGISTER", input);
     }
 }

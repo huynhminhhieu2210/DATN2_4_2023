@@ -10,8 +10,7 @@ namespace asp.Models.common
         public string setParamUser(USER input)
         {
             string result = $@"@USER_ID         = N'{input.USER_ID}',
-                              @BRANCH_ID        = N'{input.BRANCH_ID}',
-                              @ROLE_USER_ID     = N'{input.ROLE_USER_ID}',
+                               @ROLE_USER         = N'{input.ROLE_USER}',
                               @USER_CODE        = N'{input.USER_CODE}',
                               @USER_NAME        = N'{input.USER_NAME}',
                               @USER_FULLNAME    = N'{input.USER_FULLNAME}',
@@ -22,15 +21,6 @@ namespace asp.Models.common
                               @CREATE_ID        = N'{input.CREATE_ID}',
                               @CREATE_DATE      = N'{input.CREATE_DATE}',
                               @USER_PASSWORD    = N'{input.USER_PASSWORD}'";
-            return result;
-        }
-        public string setParamArea(AREA input)
-        {
-            string result = $@"@AREA_ID     = N'{input.AREA_ID}',
-                               @AREA_CODE   = N'{input.AREA_CODE}',
-                               @AREA_NAME   = N'{input.AREA_NAME}',
-                               @CREATE_ID   = N'{input.CREATE_ID}',
-                               @CREATE_DATE = N'{input.CREATE_DATE}'";
             return result;
         }
         public string setParamTopResult(TOP_RESULT input)
@@ -47,22 +37,10 @@ namespace asp.Models.common
                                @PARENT_ID   = N'{input.PARENT_ID}'";
             return result;
         }
-        public string setParamBranch(BRANCH input)
-        {
-            string result = $@"@BRANCH_ID   = N'{input.BRANCH_ID}',
-                               @AREA_ID     = N'{input.AREA_ID}',
-                               @BRANCH_CODE = N'{input.BRANCH_CODE}',
-                               @BRANCH_NAME = N'{input.BRANCH_NAME}',
-                               @CREATE_ID   = N'{input.CREATE_ID}',
-                               @CREATE_DATE = N'{input.CREATE_DATE}',
-                               @BRANCH_ADDRESS = N'{input.BRANCH_ADDRESS}'";
-            return result;
-        }
         public string setParamDocImpProduct(DOC_IMP_PRODUCT input)
         {
             string result = $@"@DOC_IMP_PRODUCT_ID   = N'{input.DOC_IMP_PRODUCT_ID}',
-                               @DOC_IMP_PRODUCT_CODE = N'{input.DOC_IMP_PRODUCT_CODE}', 
-                               @BRANCH_ID            = N'{input.BRANCH_ID}',
+                               @DOC_IMP_PRODUCT_CODE = N'{input.DOC_IMP_PRODUCT_CODE}',
                                @DELIVER              = N'{input.DELIVER}',
                                @RECEIVER             = N'{input.RECEIVER}',
                                @TOTAL                = N'{input.TOTAL}',
@@ -119,17 +97,6 @@ namespace asp.Models.common
                                @PRICE            = N'{input.PRICE}'";
             return result;
         }
-        public string setParamLog(LOG input)
-        {
-            string result = $@"@LOG_ID      = N'{input.LOG_ID}',
-                               @REF_ID      = N'{input.REF_ID}',
-                               @LOG_DATE    = N'{input.LOG_DATE}',
-                               @LOG_STEP    = N'{input.LOG_STEP}',
-                               @LOG_DESC    = N'{input.LOG_DESC}',
-                               @CREATE_ID   = N'{input.CREATE_ID}',
-                               @CREATE_DATE = N'{input.CREATE_DATE}'";
-            return result;
-        }
         public string setParamLogin(LOGIN input)
         {
             string result = $@"@USER_NAME = N'{input.USER_NAME}',
@@ -154,16 +121,7 @@ namespace asp.Models.common
                                @RAM             = N'{input.RAM}',
                                @DISK            = N'{input.DISK}',
                                @VGA             = N'{input.VGA}',
-                               @MONITOR         = N'{input.MONITOR}',
-                               @PORT            = N'{input.PORT}',
-                               @OS              = N'{input.OS}',
-                               @WEIGHT          = N'{input.WEIGHT}',
-                               @SIZE            = N'{input.SIZE}',
-                               @COLOR           = N'{input.COLOR}',
-                               @BATTERY         = N'{input.BATTERY}',
-                               @LED_KEYBOARD    = N'{input.LED_KEYBOARD}',
-                               @BLUETOOTH       = N'{input.BLUETOOTH}',
-                               @WEBCAM          = N'{input.WEBCAM}'";
+                               @MONITOR         = N'{input.MONITOR}'";
             return result;
         }
         public string setParamProductType(PRODUCT_TYPE input)
@@ -173,15 +131,6 @@ namespace asp.Models.common
                                @PRODUCT_TYPE_NAME = N'{input.PRODUCT_TYPE_NAME}',
                                @CREATE_ID         = N'{input.CREATE_ID}',
                                @CREATE_DATE       = N'{input.CREATE_DATE}'";
-            return result;
-        }
-        public string setParamRoleUser(ROLE_USER input)
-        {
-            string result = $@"@ROLE_USER_ID   = N'{input.ROLE_USER_ID}',
-                               @ROLE_USER_CODE = N'{input.ROLE_USER_CODE}',
-                               @ROLE_USER_NAME = N'{input.ROLE_USER_NAME}',
-                               @CREATE_ID      = N'{input.CREATE_ID}',
-                               @CREATE_DATE    = N'{input.CREATE_DATE}'";
             return result;
         }
         public string setParamSupplier(SUPPLIER input)
@@ -198,8 +147,6 @@ namespace asp.Models.common
         public string setParamWarehouse(WAREHOUSE input)
         {
             string result = $@"@WAREHOUSE_ID      = N'{input.WAREHOUSE_ID}',
-                               @BRANCH_ID         = N'{input.BRANCH_ID}',
-                               @AREA_ID           = N'{input.AREA_ID}',
                                @WAREHOUSE_CODE    = N'{input.WAREHOUSE_CODE}',
                                @WAREHOUSE_NAME    = N'{input.WAREHOUSE_NAME}',
                                @WAREHOUSE_ADDRESS = N'{input.WAREHOUSE_ADDRESS}',

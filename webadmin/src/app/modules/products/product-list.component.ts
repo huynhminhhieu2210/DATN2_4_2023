@@ -41,6 +41,7 @@ export class ProductListComponent extends ComponentBase implements OnInit{
   tableSizes: any = [3, 6, 9, 12];
   ngOnInit(): void {
     this.filterInput!.top = 5;
+    this.filterInput.iS_ACTIVE = '';
     this.search();
     this.loadTopResult();
     this.initCombobox();
@@ -105,6 +106,7 @@ export class ProductListComponent extends ComponentBase implements OnInit{
     this.listProduct = []
     this.productService.Product_search(this.filterInput).subscribe((response: any)=>{
       this.listProduct = response;
+      this.page = 1;
       this.total = this.listProduct!.length;
     });
   }

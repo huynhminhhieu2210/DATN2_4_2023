@@ -133,39 +133,6 @@
                                         </div>
                                         <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="os">Hệ điều hành</label>
-                                            <input #os="ngModel" disabled="{{disabledInput}}" 
-                                            id="os" name="os" [(ngModel)]="inputModel!.os" type="text" 
-                                            class="form-control form-control" placeholder="Hệ điều hành">
-                                            <!-- <div class="error-message" *ngIf="os.invalid && isShowError">
-                                                <span>Hệ điều hành không được để trống</span>
-                                            </div> -->
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="color">Màu sắc</label>
-                                            <input #color="ngModel" disabled="{{disabledInput}}" 
-                                            id="color" name="color" [(ngModel)]="inputModel!.color" 
-                                            type="text" class="form-control form-control" placeholder="Màu sắc">
-                                            <!-- <div class="error-message" *ngIf="color.invalid && isShowError">
-                                                <span>Màu sắc không được để trống</span>
-                                            </div> -->
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="bluetooth">Bluetooth</label>
-                                            <input #bluetooth="ngModel" disabled="{{disabledInput}}" 
-                                            id="bluetooth" name="bluetooth" [(ngModel)]="inputModel!.bluetooth" 
-                                            type="text" class="form-control form-control" placeholder="Bluetooth">
-                                            <!-- <div class="error-message" *ngIf="bluetooth.invalid && isShowError">
-                                                <span>Bluetooth không được để trống</span>
-                                            </div> -->
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <div class="form-group">
                                             <label for="cpu">CPU</label>
                                             <input #cpu="ngModel" disabled="{{disabledInput}}" 
                                             id="cpu" name="cpu" [(ngModel)]="inputModel!.cpu" type="text" 
@@ -189,54 +156,6 @@
                                         </div>
                                         <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="weight"> Khối lượng</label>
-                                            <input #weight="ngModel" 
-                                            disabled="{{disabledInput}}" id="weight" 
-                                            name="weight" [(ngModel)]="inputModel!.weight" 
-                                            type="text" class="form-control form-control" placeholder="Khối lượng">
-                                            <!-- <div class="error-message" *ngIf="weight.invalid && isShowError">
-                                                <span>Khối lượng không được để trống</span>
-                                            </div> -->
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="battery">Pin</label>
-                                            <input #battery="ngModel" disabled="{{disabledInput}}" 
-                                            id="battery" name="battery" 
-                                            [(ngModel)]="inputModel!.battery"
-                                             type="text" class="form-control form-control" placeholder="Pin">
-                                            <!-- <div class="error-message" *ngIf="battery.invalid && isShowError">
-                                                <span>Pin không được để trống</span>
-                                            </div> -->
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="webcam">Webcam</label>
-                                            <input #webcam="ngModel" 
-                                            disabled="{{disabledInput}}" id="webcam" name="webcam" 
-                                            [(ngModel)]="inputModel!.webcam"
-                                             type="text" class="form-control form-control" placeholder="Webcam">
-                                            <!-- <div class="error-message" *ngIf="webcam.invalid && isShowError">
-                                                <span>Webcam không được để trống</span>
-                                            </div> -->
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="note">Ghi chú</label>
-                                            <input #note="ngModel" disabled="{{disabledInput}}" 
-                                            id="note" name="note" 
-                                            [(ngModel)]="inputModel!.note" type="text" 
-                                            class="form-control form-control" placeholder="Ghi chú">
-                                            <!-- <div class="error-message" *ngIf="note.invalid && isShowError">
-                                                <span>Ghi chú không được để trống</span>
-                                            </div> -->
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <div class="form-group">
                                             <label for="disk">Ổ đĩa</label>
                                             <input #disk="ngModel" disabled="{{disabledInput}}" 
                                             id="disk" name="disk" 
@@ -248,41 +167,14 @@
                                         </div>
                                         </div>
                                         <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="port">Cổng</label>
-                                            <input #port="ngModel" disabled="{{disabledInput}}" 
-                                            id="port" name="port" [(ngModel)]="inputModel!.port" 
-                                            type="text" class="form-control form-control" placeholder="Cổng">
-                                            <!-- <div class="error-message" *ngIf="port.invalid && isShowError">
-                                                <span>Cổng không được để trống</span>
-                                            </div> -->
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="size">Kích thước</label>
-                                            <input #size="ngModel"
-                                             disabled="{{disabledInput}}" 
-                                             id="size" name="size" [(ngModel)]="inputModel!.size"
-                                             type="text" class="form-control form-control" placeholder="Kích thước">
-                                            <!-- <div class="error-message" *ngIf="size.invalid && isShowError">
-                                                <span>Kích thước không được để trống</span>
-                                            </div> -->
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="leD_KEYBOARD">Led-keyboard</label>
-                                            <input #leD_KEYBOARD="ngModel" 
-                                            disabled="{{disabledInput}}" id="leD_KEYBOARD" 
-                                            name="leD_KEYBOARD" [(ngModel)]="inputModel!.leD_KEYBOARD" 
-                                            type="text" class="form-control form-control" 
-                                            placeholder="Ledkeyboard">
-                                            <!-- <div class="error-message" *ngIf="leD_KEYBOARD.invalid && isShowError">
-                                                <span>Ledkeyboard không được để trống</span>
-                                            </div> -->
-                                        </div>
-                                        </div>
+                                            <div class="form-group">
+                                                <label for="guarantee">Số tháng bảo hành</label>
+                                                <input #guarantee="ngModel" disabled="{{disabledInput}}" 
+                                                id="guarantee" name="guarantee" 
+                                                [(ngModel)]="inputModel!.guarantee" type="text" 
+                                                class="form-control form-control" placeholder="Số tháng bảo hành">
+                                            </div>
+                                            </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="imG_URL">Hình ảnh</label>
@@ -302,9 +194,24 @@
                                                 <img style="width: 200px;" src="{{imgCurennt}}" alt="">
                                             </div>
                                         </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="note">Ghi chú sản phẩm</label>
+                                                <ckeditor [editor]="Editor" 
+                                                #note="ngModel"
+                                                id="note" name="note" 
+                                                [(ngModel)]="inputModel!.note"
+                                                (change)="inputModel!.note = inputModel!.note!.slice(0,1000)"
+                                                data="">
+                                                </ckeditor>
+                                                <!-- <div class="error-message" *ngIf="description.invalid && isShowError">
+                                                    <span>Mô tả không được để trống</span>
+                                                </div> -->
+                                            </div>
+                                        </div>
                                         <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="description">Mô tả</label>
+                                            <label for="description">Mô tả sản phẩm</label>
                                             <ckeditor [editor]="Editor" 
                                             #description="ngModel"
                                             id="description" name="description" 
@@ -324,30 +231,4 @@
             </form>
         </div>
     </div>
-    <footer class="footer">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.themekita.com">
-                            ThemeKita
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Help
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Licenses
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright ml-auto">
-                2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
-            </div>
-        </div>
-    </footer>
 </div>

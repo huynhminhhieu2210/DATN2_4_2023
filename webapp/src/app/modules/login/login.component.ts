@@ -2,9 +2,10 @@ import { UserService } from './../../core/services/user.service';
 
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { REGISTER } from 'src/app/core/models/REGISTER';
 import { USER } from 'src/app/core/models/USER';
 
 @Component({
@@ -20,6 +21,10 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder, private socialAuthService: SocialAuthService,
     private userService: UserService) {  console.log(this.isLoggedin); }
   login(form: NgForm){
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
     const credentials = {
       'useR_NAME' : form.value.username,
       'password' : form.value.password,
@@ -34,8 +39,7 @@ export class LoginComponent implements OnInit {
           this.http.post("https://localhost:5001/api/Users/USER_GET_INFO_LOGIN", credentials)
           .subscribe((response: any) => {
             localStorage.setItem('userid',response[0].useR_ID)
-            localStorage.setItem('branchid',response[0].brancH_ID)
-            localStorage.setItem('roleuserid',response[0].rolE_USER_ID)
+            localStorage.setItem('roleuserid',response[0].rolE_USER)
             localStorage.setItem('roleusername',response[0].rolE_USER_NAME)
             localStorage.setItem('usercode',response[0].useR_CODE)
             localStorage.setItem('username',response[0].useR_NAME)
@@ -43,6 +47,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('email',response[0].useR_EMAIL)
             localStorage.setItem('phone',response[0].useR_PHONE)
             localStorage.setItem('address',response[0].useR_ADDRESS)
+            localStorage.setItem('methodLogin',response[0].methoD_LOGIN)
           })
           this.router.navigate(["/home"]);
         }, (err: any) => {
@@ -53,6 +58,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   socialUser!: SocialUser;
   isLoggedin?: boolean = undefined;
+  @ViewChild('registerForm') registerForm?: ElementRef;
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -71,7 +77,8 @@ export class LoginComponent implements OnInit {
         input.useR_PASSWORD = this.socialUser.id;
         input.creatE_ID = 'admin';
         input.useR_STATUS = '1';
-        input.rolE_USER_ID='ROL000000000002';
+        input.rolE_USER = 'CUSTOMER';
+        input.methoD_LOGIN = 'FACEBOOK';
         this.userService.User_insert(input).subscribe((response: any)=>{
           this.loginUser(input.useR_NAME,input.useR_PASSWORD);
         });
@@ -107,19 +114,44 @@ export class LoginComponent implements OnInit {
           this.http.post("https://localhost:5001/api/Users/USER_GET_INFO_LOGIN", credentials)
           .subscribe((response: any) => {
             localStorage.setItem('userid',response[0].useR_ID)
-            localStorage.setItem('branchid',response[0].brancH_ID)
-            localStorage.setItem('roleuserid',response[0].rolE_USER_ID)
+            localStorage.setItem('roleuserid',response[0].rolE_USER)
             localStorage.setItem('roleusername',response[0].rolE_USER_NAME)
             localStorage.setItem('usercode',response[0].useR_CODE)
             localStorage.setItem('username',response[0].useR_NAME)
             localStorage.setItem('userfullname',response[0].useR_FULLNAME)
-            localStorage.setItem('email',response[0].email)
-            localStorage.setItem('phone',response[0].phone)
-            localStorage.setItem('address',response[0].address)
+            localStorage.setItem('email',response[0].useR_EMAIL)
+            localStorage.setItem('phone',response[0].useR_PHONE)
+            localStorage.setItem('address',response[0].useR_ADDRESS)
+            localStorage.setItem('methodLogin',response[0].methoD_LOGIN)
           })
           this.router.navigate(["/home"]);
         }, (err: any) => {
           this.invalidLogin = true;
         })
+  }
+  titleerorr: string;
+  titleinfo: string;
+  isShowError = false;
+  register(form: NgForm){
+    this.titleerorr = '';
+    this.titleinfo = '';
+    if ((this.registerForm as any).form.invalid) {
+      this.isShowError = true;
+      this.titleerorr = 'Vui lòng nhập đầy đủ thông tin.'
+      return;
+    }
+    var input = new REGISTER();
+    input.email = form.value.emailr;
+    input.password = form.value.passwordr;
+    input.useR_NAME = form.value.usernamer;
+
+    this.userService.User_register(input).subscribe((response: any)=>{
+      if(response[0].result != '0'){
+        this.titleerorr = response[0].errorDesc;
+      }
+      else{
+        this.titleinfo = response[0].errorDesc;
+      }
+    });
   }
 }

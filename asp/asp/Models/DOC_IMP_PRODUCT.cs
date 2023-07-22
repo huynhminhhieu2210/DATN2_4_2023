@@ -12,7 +12,6 @@ namespace asp.Models
         [Key]
         public string DOC_IMP_PRODUCT_ID { get; set; }
         public string DOC_IMP_PRODUCT_CODE { get; set; }
-        public string BRANCH_ID { get; set; }
         public string DELIVER { get; set; }
         public string RECEIVER { get; set; }
         public string RECEIVER_NAME { get; set; }

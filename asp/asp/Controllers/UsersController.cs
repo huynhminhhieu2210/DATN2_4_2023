@@ -87,5 +87,10 @@ namespace asp.Controllers
         {
             return await _userService.USER_CHANGE_PASSWORD(input);
         }
+        [HttpPost]
+        public async Task<IEnumerable<InsertResult>> USER_REGISTER([FromBody] REGISTER input)
+        {
+            return await _userService.USER_REGISTER(input);
+        }
     }
 }

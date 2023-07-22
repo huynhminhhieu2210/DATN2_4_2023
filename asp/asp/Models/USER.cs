@@ -11,8 +11,6 @@ namespace asp.Models
     {
         [Key]
         public string USER_ID { get; set; }
-        public string BRANCH_ID { get; set; }
-        public string ROLE_USER_ID { get; set; }
         public string USER_CODE { get; set; }
         public string USER_NAME { get; set; }
         public string USER_FULLNAME { get; set; }
@@ -24,7 +22,8 @@ namespace asp.Models
         public DateTime? CREATE_DATE { get; set; }
         public string ROLE_USER_NAME { get; set; }
         public string USER_PASSWORD { get; set; }
-        public string BRANCH_NAME { get; set; }
         public string CREATE_NAME { get; set; }
+        public string ROLE_USER { get; set; }
+        public string METHOD_LOGIN { get; set; }
     }
 }

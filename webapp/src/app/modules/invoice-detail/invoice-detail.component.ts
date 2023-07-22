@@ -45,6 +45,8 @@ export class InvoiceDetailComponent extends ComponentBase implements OnInit {
     });
   }
   byid(){
+    this.total = 0;
+    this.totaltmp = 0;
     let id: string = this.getRouteParam('invoiceid');
     this.invoiceService.Invoice_byid(id).subscribe((response: any)=>{
       this.inputModel = response[0];
@@ -61,6 +63,50 @@ export class InvoiceDetailComponent extends ComponentBase implements OnInit {
         });
       }
       this.reloadView();
+    });
+  }
+  titleinfo?: string;
+  titleerorr?: string;
+  cancelInvoice(){
+    this.titleinfo = '';
+    this.titleerorr = '';
+    var filter = new INVOICE();
+    filter.invoicE_ID = this.getRouteParam('invoiceid');
+    this.invoiceService.Invoice_cancel(filter).subscribe((response: any)=>{
+      if(response[0].result != '0'){
+        this.titleerorr = response[0].errorDesc;
+        setTimeout(() => {
+          this.titleerorr = '';
+        }, 5000);
+      }
+      else{
+        this.titleinfo = response[0].errorDesc;
+        this.byid();
+        setTimeout(() => {
+          this.titleinfo = '';
+        }, 5000);
+      }
+    });
+  }
+  accessInvoice(){
+    this.titleinfo = '';
+    this.titleerorr = '';
+    var filter = new INVOICE();
+    filter.invoicE_ID = this.getRouteParam('invoiceid');
+    this.invoiceService.Invoice_access(filter).subscribe((response: any)=>{
+      if(response[0].result != '0'){
+        this.titleerorr = response[0].errorDesc;
+        setTimeout(() => {
+          this.titleerorr = '';
+        }, 5000);
+      }
+      else{
+        this.titleinfo = response[0].errorDesc;
+        this.byid();
+        setTimeout(() => {
+          this.titleinfo = '';
+        }, 5000);
+      }
     });
   }
   removeCart(id: string){

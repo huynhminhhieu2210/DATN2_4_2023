@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
   <div class="textgiohang">Giỏ hàng</div>
-      <table border="1">
+  <span style="text-align:  center;margin-top: 40px;" *ngIf="listCart.length <= 0">Giỏ hàng của bạn đang trống</span>
+  <span style="text-align:  center;margin: 10px;" *ngIf="listCart.length <= 0">
+    <button (click)="onClickBuy()" class="btn btn-outline-primary" style="font-size: 20px;">Tiếp tục mua hàng</button>
+    </span>
+      <table *ngIf="listCart.length > 0" border="1">
           <tr>
               <th style="width: 211px"> Sản phẩm </th>
               <th style="width: 523px"> Tên sản phẩm </th>
@@ -10,8 +14,8 @@
               <th style="width: 180px"> Xoá </th>
           </tr>
               <tr *ngFor="let item of listCart;let i = index">
-                  <td><a class="imgproduct" href=""><img src="https://product.hstatic.net/1000026716/product/a1403-a1503_product-photo_silver_37d5482f72ad4527a05eef4a3895687b.jpg" alt="" /></a></td>
-                  <td><a class="nameproduct" href="">{{item.producT_NAME}}</a></td>
+                  <td><a class="imgproduct" href="http://localhost:4953/product-detail;productid={{item.producT_ID}}"><img src="{{item.imG_URL}}" alt="" /></a></td>
+                  <td><a class="nameproduct" href="http://localhost:4953/product-detail;productid={{item.producT_ID}}">{{item.producT_NAME}}</a></td>
                   <td>
                     <input type="number" name="quantity" [(ngModel)]="item.quantity" min="1" max="50">
                   </td>
@@ -23,8 +27,19 @@
               <td>{{formatCurrency(total)}}</td>
           </tr>
       </table>
-  <div style="text-align:center;margin:20px">
-      <a routerLink="/checkout" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-right: 10px;"><button type="button" class="btn btn-primary">Mua hàng</button></a>
+  <div *ngIf="listCart.length > 0" style="text-align:center;margin:20px">
+    <div style="margin-bottom: 10px;">
+        <p *ngIf="titleinfo" style="    background-color: #00ce49;
+        color: white;
+        border-radius: 4px;
+        padding: 5px;">{{titleinfo}}</p>
+        <p *ngIf="titleerorr" style="    background-color: red;
+        color: white;
+        border-radius: 4px;
+        padding: 5px;">{{titleerorr}}</p>
+        <!-- <div class="card-title">{{title}}</div> -->
+    </div>
+      <a (click)="checkout()" style="margin-right: 10px;"><button type="button" class="btn btn-primary">Mua hàng</button></a>
       <button (click)="updateCart()" class="btn btn-primary">Cập nhật</button>
   </div>
 </div>

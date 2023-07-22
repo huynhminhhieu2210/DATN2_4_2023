@@ -12,4 +12,7 @@ export class DashboardService {
     Chart_bar_load(filter :CHART_BAR_FILTER): Observable<Object>{
         return this.http.post(this.url + "CHART_BAR_LOAD", filter);
     }
+    Chart_bar2_load(filter :CHART_BAR_FILTER): Observable<Object>{
+        return this.http.post(this.url + "CHART_BAR2_LOAD", filter);
+    }
 }

@@ -1,8 +1,7 @@
 import * as moment from 'moment';
 export class USER {
   useR_ID: string | undefined;
-  brancH_ID: string | undefined;
-  rolE_USER_ID: string | undefined;
+  rolE_USER: string | undefined;
   rolE_USER_NAME: string | undefined;
   useR_CODE: string | undefined;
   useR_NAME: string | undefined;
@@ -19,4 +18,5 @@ export class USER {
   useR_PASSWORDNEWCHECK: string | undefined;
   creatE_NAME: string | undefined;
   top: number | undefined;
+  methoD_LOGIN: string | undefined;
 }

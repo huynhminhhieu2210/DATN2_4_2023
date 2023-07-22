@@ -8,11 +8,11 @@
                         <div class="" style="position: fixed;top:70px;background-color: #1572e8;height: 39px;width: 100%;z-index: 1;">
                             <div class="d-flex align-items-center">
                                 <!-- <h4 class="card-title">Add Row</h4> -->
-                                <button style="padding: 8px;margin-bottom: 4px;" 
+                                <!-- <button style="padding: 8px;margin-bottom: 4px;" 
                                 class="btn btn-primary" routerLink="/app/customer-add" routerLinkActive="active" ariaCurrentWhenActive="page">
                                     <i style="margin: 2px;" class="fa fa-plus"></i>
                                     Thêm mới
-                                </button>
+                                </button> -->
                                 <button style="margin-left: 10px;padding: 8px;margin-bottom: 4px;" class="btn btn-primary" (click)="search()">
                                     <i style="margin: 2px;" class="fa fa-search"></i>
                                     Tìm kiếm
@@ -100,7 +100,6 @@
                                             <th>Email</th>
                                             <th>SDT</th>
                                             <th>Ngày tạo</th>
-                                            <th>Người tạo</th>
                                             <th style="width: 10%">Thao tác</th>
                                         </tr>
                                     </thead>
@@ -112,15 +111,14 @@
                                             <td>{{item.useR_EMAIL}}</td>
                                             <td>{{item.useR_PHONE}}</td>
                                             <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
-                                            <td>{{item.creatE_NAME}}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <button (click)="onEdit(item.useR_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Chỉnh sửa">
+                                                    <!-- <button (click)="onEdit(item.useR_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Chỉnh sửa">
                                                         <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <!-- <button (click)="onView(item.useR_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xem chi tiết">
-                                                        <i class="fa fa-info"></i>
                                                     </button> -->
+                                                    <button (click)="onView(item.useR_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Xem chi tiết">
+                                                        <i class="fa fa-info"></i>
+                                                    </button>
                                                     <button (click)="onConfirm(item.useR_FULLNAME!,item.useR_CODE!,item.useR_ID!)" data-toggle="modal" data-target="#addRowModal" type="button" title="" class="btn btn-link btn-danger" data-original-title="Xoá">
                                                         <i class="fa fa-times"></i>
                                                     </button>

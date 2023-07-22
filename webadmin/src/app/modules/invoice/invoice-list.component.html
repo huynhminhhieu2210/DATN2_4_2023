@@ -115,14 +115,14 @@
                                             <td>{{item.invoicE_CODE}}</td>
                                             <td>{{item.receiver}}</td>
                                             <td>{{formatCurrency(item.total)}}</td>
-                                            <td>{{item.creatE_DATE! | dateFormatPipe}}</td>
+                                            <td>{{item.creatE_DATE! | dateTimeFormatPipe}}</td>
                                             <td>{{item.creatE_NAME}}</td>
                                             <td>
-                                                <button *ngIf="item.status != 'DONE'" (click)="onConfirmChange(item.invoicE_CODE!,item.invoicE_ID!)" data-toggle="modal" 
+                                                <button *ngIf="item.status != 'DONE' && item.status != 'SHIP_DONE'" (click)="onConfirmChange(item.invoicE_CODE!,item.invoicE_ID!)" data-toggle="modal" 
                                                 data-target="#changeStatusRowModal" type="button" title="" class="btn btn-danger">
                                                     {{item.invoicE_STATUS_NAME}}
                                                 </button>
-                                                <button *ngIf="item.status == 'DONE'" (click)="onConfirmChange(item.invoicE_CODE!,item.invoicE_ID!)" data-toggle="modal" 
+                                                <button *ngIf="item.status == 'DONE'|| item.status == 'SHIP_DONE'" (click)="onConfirmChange(item.invoicE_CODE!,item.invoicE_ID!)" data-toggle="modal" 
                                                 data-target="#changeStatusRowModal" type="button" title="" class="btn btn-success">
                                                     {{item.invoicE_STATUS_NAME}}
                                                 </button>
@@ -135,7 +135,7 @@
                                                     <button (click)="onView(item.invoicE_ID)" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Xem chi tiết">
                                                         <i class="fa fa-info"></i>
                                                     </button>
-                                                    <button (click)="onConfirm(item.invoicE_CODE!,item.invoicE_ID!)" data-toggle="modal" data-target="#addRowModal" type="button" title="" class="btn btn-link btn-danger" data-original-title="Xoá">
+                                                    <button *ngIf="item.status != 'SHIP' && item.status != 'DONE' && item.status != 'CANCEL'&& item.status != 'SHIP_DONE'&& item.status != 'S_CANCEL'" (click)="onConfirm(item.invoicE_CODE!,item.invoicE_ID!)" data-toggle="modal" data-target="#addRowModal" type="button" title="" class="btn btn-link btn-danger" data-original-title="Xoá">
                                                         <i class="fa fa-times"></i>
                                                     </button>
                                                 </div>

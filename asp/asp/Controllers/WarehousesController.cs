@@ -39,7 +39,7 @@ namespace asp.Controllers
         {
             return await _warehousesService.WAREHOUSE_UPDATE(input);
         }
-        [HttpPost]
+        [HttpDelete("{id}")]
         public async Task<IEnumerable<DeleteResult>> WAREHOUSE_DELETE(string id)
         {
             return await _warehousesService.WAREHOUSE_DELETE(id);

@@ -22,5 +22,6 @@ namespace asp.IService
         Task<IEnumerable<DeleteResult>> USER_DELETE_ADDRESS_RECEIVE(string id);
         Task<IEnumerable<InsertResult>> USER_INSERT_ADDRESS_RECEIVE(ADDRESS_RECEIVE input);
         Task<IEnumerable<UpdateResult>> USER_CHANGE_PASSWORD(INPUTCHANGEPASS input);
+        Task<IEnumerable<InsertResult>> USER_REGISTER(REGISTER input);
     }
 }

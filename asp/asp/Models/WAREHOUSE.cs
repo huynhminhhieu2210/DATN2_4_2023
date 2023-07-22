@@ -10,15 +10,11 @@ namespace asp.Models
     {
         [Key]
         public string WAREHOUSE_ID { get; set; }
-        public string BRANCH_ID { get; set; }
-        public string AREA_ID { get; set; }
         public string WAREHOUSE_CODE { get; set; }
         public string WAREHOUSE_NAME { get; set; }
         public string WAREHOUSE_ADDRESS { get; set; }
         public string CREATE_ID { get; set; }
         public DateTime? CREATE_DATE { get; set; }
         public string CREATE_NAME { get; set; }
-        public string BRANCH_NAME { get; set; }
-        public string AREA_NAME { get; set; }
     }
 }

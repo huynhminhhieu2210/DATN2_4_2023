@@ -8,6 +8,8 @@ import { DashboardService } from 'src/app/core/services/dashboard.service';
 import { CHART_BAR_FILTER } from 'src/app/core/models/CHART_BAR_FILTER';
 import { PRODUCT } from 'src/app/core/models/PRODUCT';
 import { ProductService } from 'src/app/core/services/product.service';
+import { TOP_RESULT } from 'src/app/core/models/TOP_RESULT';
+import { TopResultService } from 'src/app/core/services/top-result.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,13 +28,24 @@ export class DashboardComponent extends ComponentBase implements OnInit{
     this.LoadChart1();
     this.LoadChart2();
     this.loadProduct1();
+    this.loadProduct2();
+    this.loadTopResult();
+    this.filterInput1.top = 5;
+    this.filterInput2.top = 5;
   }
   constructor(
     injector: Injector,
     private dashboardService: DashboardService,
     private productService: ProductService,
+    private topResultService: TopResultService,
     ) {
     super(injector);
+  }
+  loadTopResult(){
+    var filtertr = new TOP_RESULT();
+    this.topResultService.Top_result_search(filtertr).subscribe((response: any)=>{
+      this.tableSizes = response;
+    });
   }
   fromdate1?: string;
   todate1?: string;
@@ -46,24 +59,8 @@ export class DashboardComponent extends ComponentBase implements OnInit{
   dataChart1?: number[] = [];
   chartData1 = [
     {
-      data: this.dataAcer,
-      label: 'ACER'
-    },
-    {
-      data: this.dataAsus,
-      label: 'ASUS'
-    },
-    {
-      data: this.dataDell,
-      label: 'DELL'
-    },
-    {
-      data: this.dataHp,
-      label: 'HP'
-    },
-    {
-      data: this.dataMsi,
-      label: 'MSI'
+      data: this.dataChart1,
+      label: 'Doanh thu'
     }
   ];
   chartOptions1 = {
@@ -86,7 +83,7 @@ export class DashboardComponent extends ComponentBase implements OnInit{
     var filterInput = new CHART_BAR_FILTER();
     filterInput.froM_DATE = moment(this.fromdate1).add(1, 'day');
     filterInput.tO_DATE = moment(this.todate1).add(1, 'day');
-    this.dashboardService.Chart_bar_load(filterInput).subscribe((response: any)=>{
+    this.dashboardService.Chart_bar2_load(filterInput).subscribe((response: any)=>{
       var year = moment(this.fromdate1).year();
       var month = moment(this.fromdate1).month() + 1;
       var monthto = moment(this.todate1).month() + 1;
@@ -102,6 +99,9 @@ export class DashboardComponent extends ComponentBase implements OnInit{
         var dataTmp = res_data.filter(x => parseInt(x.month!)  == month && parseInt(x.year!)  == year);
         if(dataTmp.length > 0){
           this.dataChart1?.push(dataTmp[0].data!);
+        }
+        else{
+          this.dataChart1?.push(0);
         }
       }
       this.chartData1 = [
@@ -235,25 +235,45 @@ export class DashboardComponent extends ComponentBase implements OnInit{
       ];
     });
   }
-  listProduct?: PRODUCT[];
-  page: number = 1;
-  count: number = 0;
-  tableSize: number = 5;
+  listProduct1?: PRODUCT[];
+  page1: number = 1;
+  count1: number = 0;
+  tableSize1: number = 5;
   tableSizes: any = [3, 6, 9, 12];
   filterInput1: PRODUCT  = new PRODUCT();
   totaltable1?: number;
   onTableDataChange(event: any) {
-    this.page = event;
+    this.page1 = event;
   }
   onTableSizeChange(): void {
-    this.tableSize = this.filterInput1.top!;
-    this.page = 1;
+    this.tableSize1 = this.filterInput1.top!;
+    this.page1 = 1;
   }
   loadProduct1(){
-    this.listProduct = []
-    this.productService.Product_search(this.filterInput1).subscribe((response: any)=>{
-      this.listProduct = response;
-      this.totaltable1 = this.listProduct!.length;
+    this.listProduct1= []
+    this.productService.Product_admin_sell_search(this.filterInput1).subscribe((response: any)=>{
+      this.listProduct1 = response;
+      this.totaltable1 = this.listProduct1!.length;
+    });
+  }
+  listProduct2?: PRODUCT[];
+  page2: number = 1;
+  count2: number = 0;
+  tableSize2: number = 5;
+  filterInput2: PRODUCT  = new PRODUCT();
+  totaltable2?: number;
+  onTableDataChange2(event: any) {
+    this.page2 = event;
+  }
+  onTableSizeChange2(): void {
+    this.tableSize2 = this.filterInput2.top!;
+    this.page2 = 1;
+  }
+  loadProduct2(){
+    this.listProduct2= []
+    this.productService.Product_out_of_stock_search(this.filterInput2).subscribe((response: any)=>{
+      this.listProduct2 = response;
+      this.totaltable2 = this.listProduct2!.length;
     });
   }
   formatCurrency(num: any)

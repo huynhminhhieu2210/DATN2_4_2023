@@ -53,7 +53,8 @@ export class CustomerListComponent extends ComponentBase implements OnInit{
     });
   }
   search(){
-    this.filterInput.rolE_USER_ID = 'ROL000000000002';
+    this.filterInput.rolE_USER = 'CUSTOMER';
+    this.filterInput.methoD_LOGIN = 'NORMAL';
     this.customerService.Customer_search(this.filterInput).subscribe((response: any)=>{
       this.listCustomer = response;
       this.total = this.listCustomer!.length;

@@ -51,6 +51,16 @@ namespace asp.Service
             var store = "EXEC INVOICE_CHANGE_STATUS " + _setSqlParameter.setParamInvoice(input);
             return await _context.UpdateResult.FromSqlRaw(store).ToListAsync(); ;
         }
+        public async Task<IEnumerable<UpdateResult>> INVOICE_CANCEL(INVOICE input)
+        {
+            var store = "EXEC INVOICE_CANCEL @INVOICE_ID = '" + input.INVOICE_ID + "'"; 
+            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync(); ;
+        }
+        public async Task<IEnumerable<UpdateResult>> INVOICE_ACCESS(INVOICE input)
+        {
+            var store = "EXEC INVOICE_ACCESS @INVOICE_ID = '" + input.INVOICE_ID + "'";
+            return await _context.UpdateResult.FromSqlRaw(store).ToListAsync(); ;
+        }
 
     }
 }

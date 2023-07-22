@@ -2,14 +2,14 @@
 <div class="container"  style="padding: 42px 42px 0px 42px;">
     <div class="elementor-widget-container" style="border: 12px solid red;">
         <h2 class="elementor-heading-title elementor-size-default">
-            HOTDEAL</h2>		
+            LAPTOP BÁN CHẠY</h2>		
         </div>
 </div>
-    <div class="product-categories-area pt-60 pb-0">
+    <div class="product-categories-area pt-60 pb-60">
         <div class="container">
             <div class="product-categories-slider-1 nav-style-3">
                 <div class="row row-cols-1 row-cols-md-4 g-2">
-    <ul style="display: grid;" class="products elementor-grid columns-4" *ngFor="let item of listProduct | paginate: {itemsPerPage: tableSize,currentPage: page,totalItems: count};let i = index">
+    <ul style="display: grid;" class="products elementor-grid columns-4" *ngFor="let item of listProductSell;let i = index">
         <li class="tm-has-options product type-product post-22641 status-publish first instock product_cat-strix-g product_cat-intel-13th-gen-rtx-40-series product_cat-laptop product_cat-laptop-asus product_cat-laptop-gaming-intel product_cat-rog-series product_cat-rog-series-2023 has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
            <a href="http://localhost:4953/product-detail;productid={{item.producT_ID}}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
               <div style="position:relative;padding-left: 13px;padding-top: 10px;padding-bottom: 10px;">
@@ -34,7 +34,7 @@
                <!-- <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>39,990,000&nbsp;
               <span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></del>  -->
               &nbsp; <ins><span class="woocommerce-Price-amount amount">
-               <bdi>{{formatCurrency(item.price)}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></ins></span>
+               <bdi>{{formatCurrency(item.price)}}&nbsp;<span class="woocommerce-Price-currencySymbol"></span></bdi></span></ins></span>
               <div itemprop="description">
                  <table class="hien_thi_cau_hinh">
                     <tbody>
@@ -43,36 +43,36 @@
                              <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-electronics-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-electronics-32.png" data-ll-status="loaded" class="entered lazyloaded">
                              <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-electronics-32.png" /></noscript>
                           </td>
-                          <td>i5 13450HX</td>
+                          <td>{{item.cpu.slice(0,10)}}</td>
                           <td>
                              <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-graphics-card-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-graphics-card-32.png" data-ll-status="loaded" class="entered lazyloaded">
                              <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-graphics-card-32.png" /></noscript>
                           </td>
-                          <td>RTX 4050</td>
+                          <td>{{item.vga.slice(0,10)}}</td>
                        </tr>
                        <tr>
                           <td>
                              <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ram-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-ram-32.png" data-ll-status="loaded" class="entered lazyloaded">
                              <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ram-32.png" /></noscript>
                           </td>
-                          <td>DDR5 8GB</td>
+                          <td>{{item.ram.slice(0,10)}}</td>
                           <td>
                              <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ssd-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-ssd-32.png" data-ll-status="loaded" class="entered lazyloaded">
                              <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ssd-32.png" /></noscript>
                           </td>
-                          <td>512GB</td>
+                          <td>{{item.disk.slice(0,10)}}</td>
                        </tr>
                        <tr>
                           <td>
                              <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-warranty-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-warranty-32.png" data-ll-status="loaded" class="entered lazyloaded">
                              <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-warranty-32.png" /></noscript>
                           </td>
-                          <td>24 tháng</td>
+                          <td>{{item.guarantee}} tháng</td>
                           <td>
                              <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-widescreen-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-widescreen-32.png" data-ll-status="loaded" class="entered lazyloaded">
                              <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-widescreen-32.png" /></noscript>
                           </td>
-                          <td>16" FHD+ 165Hz</td>
+                          <td>{{item.monitor.slice(0,10)}}</td>
                        </tr>
                     </tbody>
                  </table>
@@ -83,14 +83,6 @@
                   </div>
             </div>
   
-        </div>
-        <div style="    margin: 20px;" class="d-flex justify-content-center">
-          <pagination-controls
-            previousLabel=""
-            nextLabel=""
-            (pageChange)="onTableDataChange($event)"
-          >
-          </pagination-controls>
         </div>
     </div>
     <div class="product-categories-area pt-6 pb-0">
@@ -107,7 +99,7 @@
    data-widget_type="button.default">
    <div class="elementor-widget-container-3">
       <div class="elementor-button-wrapper">
-<a href="http://localhost:4953/products;type=ASUS" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" 
+<a href="http://localhost:4953/products-ncc;type=ASUS" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" 
 role="button">
          <span class="elementor-button-content-wrapper">
          <span class="elementor-button-text">ASUS</span>
@@ -120,7 +112,7 @@ role="button">
    data-widget_type="button.default">
    <div class="elementor-widget-container-3">
       <div class="elementor-button-wrapper">
-<a href="http://localhost:4953/products;type=ACER" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" 
+<a href="http://localhost:4953/products-ncc;type=ACER" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" 
 role="button">
          <span class="elementor-button-content-wrapper">
          <span class="elementor-button-text">ACER</span>
@@ -133,7 +125,7 @@ role="button">
    data-widget_type="button.default">
    <div class="elementor-widget-container-3">
       <div class="elementor-button-wrapper">
-<a href="http://localhost:4953/products;type=MSI" 
+<a href="http://localhost:4953/products-ncc;type=MSI" 
 class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" role="button">
          <span class="elementor-button-content-wrapper">
          <span class="elementor-button-text">MSI</span>
@@ -146,7 +138,7 @@ class="elementor-button-link elementor-button elementor-size-xs elementor-animat
    data-widget_type="button.default">
    <div class="elementor-widget-container-3">
       <div class="elementor-button-wrapper">
-<a href="http://localhost:4953/products;type=DELL" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink"
+<a href="http://localhost:4953/products-ncc;type=DELL" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink"
  role="button">
          <span class="elementor-button-content-wrapper">
          <span class="elementor-button-text">DELL</span>
@@ -159,7 +151,7 @@ class="elementor-button-link elementor-button elementor-size-xs elementor-animat
    data-widget_type="button.default">
    <div class="elementor-widget-container-3">
       <div class="elementor-button-wrapper">
-<a href="http://localhost:4953/products;type=HP" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" 
+<a href="http://localhost:4953/products-ncc;type=HP" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" 
 role="button">
          <span class="elementor-button-content-wrapper">
          <span class="elementor-button-text">HP</span>
@@ -172,7 +164,7 @@ role="button">
    data-widget_type="button.default">
    <div class="elementor-widget-container-3">
       <div class="elementor-button-wrapper">
-<a href="http://localhost:4953/products;type=GIGABYTE" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink"
+<a href="http://localhost:4953/products-ncc;type=GIGABYTE" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink"
  role="button">
          <span class="elementor-button-content-wrapper">
          <span class="elementor-button-text">GIGABYTE</span>
@@ -216,7 +208,7 @@ role="button">
                <bdi>39,990,000&nbsp;
             <span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></del>  -->
             &nbsp; <ins><span class="woocommerce-Price-amount amount">
-             <bdi>{{formatCurrency(item.price)}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></ins></span>
+             <bdi>{{formatCurrency(item.price)}}&nbsp;<span class="woocommerce-Price-currencySymbol"></span></bdi></span></ins></span>
             <div itemprop="description">
                <table class="hien_thi_cau_hinh">
                   <tbody>
@@ -225,36 +217,36 @@ role="button">
                            <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-electronics-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-electronics-32.png" data-ll-status="loaded" class="entered lazyloaded">
                            <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-electronics-32.png" /></noscript>
                         </td>
-                        <td>i5 13450HX</td>
+                        <td>{{item.cpu.slice(0,10)}}</td>
                         <td>
                            <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-graphics-card-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-graphics-card-32.png" data-ll-status="loaded" class="entered lazyloaded">
                            <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-graphics-card-32.png" /></noscript>
                         </td>
-                        <td>RTX 4050</td>
+                        <td>{{item.vga.slice(0,10)}}</td>
                      </tr>
                      <tr>
                         <td>
                            <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ram-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-ram-32.png" data-ll-status="loaded" class="entered lazyloaded">
                            <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ram-32.png" /></noscript>
                         </td>
-                        <td>DDR5 8GB</td>
+                        <td>{{item.ram.slice(0,10)}}</td>
                         <td>
                            <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ssd-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-ssd-32.png" data-ll-status="loaded" class="entered lazyloaded">
                            <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ssd-32.png" /></noscript>
                         </td>
-                        <td>512GB</td>
+                        <td>{{item.disk.slice(0,10)}}</td>
                      </tr>
                      <tr>
                         <td>
                            <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-warranty-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-warranty-32.png" data-ll-status="loaded" class="entered lazyloaded">
                            <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-warranty-32.png" /></noscript>
                         </td>
-                        <td>24 tháng</td>
+                        <td>{{item.guarantee}} tháng</td>
                         <td>
                            <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-widescreen-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-widescreen-32.png" data-ll-status="loaded" class="entered lazyloaded">
                            <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-widescreen-32.png" /></noscript>
                         </td>
-                        <td>16" FHD+ 165Hz</td>
+                        <td>{{item.monitor.slice(0,10)}}</td>
                      </tr>
                   </tbody>
                </table>
@@ -269,6 +261,7 @@ role="button">
       <div style="    margin: 20px;" class="d-flex justify-content-center">
         <pagination-controls
           previousLabel=""
+          
           nextLabel=""
           (pageChange)="onTableDataChange($event)"
         >

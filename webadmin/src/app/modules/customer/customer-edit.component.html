@@ -39,6 +39,10 @@
                                 color: white;
                                 border-radius: 4px;
                                 padding: 5px;">{{titleinfo}}</p>
+                                <p *ngIf="titleerorr" style="    background-color: red;
+                                color: white;
+                                border-radius: 4px;
+                                padding: 5px;">{{titleerorr}}</p>
                                 <!-- <div class="card-title">{{title}}</div> -->
                             </div>
                             <div class="card-body">
@@ -46,7 +50,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="useR_CODE" class="required">Mã khách hàng</label>
-                                            <input required #useR_CODE="ngModel" disabled="{{disabledInput}}" id="useR_CODE" name="useR_CODE"
+                                            <input style="color:black; font-weight: bold;" required #useR_CODE="ngModel" disabled="{{disabledInput}}" id="useR_CODE" name="useR_CODE"
                                              [(ngModel)]="inputModel!.useR_CODE" 
                                             type="text" class="form-control form-control" placeholder="Mã khách hàng">
                                             <div class="error-message" *ngIf="useR_CODE.invalid && isShowError">
@@ -57,7 +61,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="phone" class="required">Số điện thoại</label>
-                                            <input required #phone="ngModel" disabled="{{disabledInput}}" id="phone" name="phone" [(ngModel)]="inputModel!.useR_PHONE" 
+                                            <input style="color:black; font-weight: bold;" required #phone="ngModel" disabled="{{disabledInput}}" id="phone" name="phone" [(ngModel)]="inputModel!.useR_PHONE" 
                                             type="text" class="form-control form-control" placeholder="Số điện thoại">
                                             <div class="error-message" *ngIf="phone.invalid && isShowError">
                                                 <span>Số điện thoại không được để trống</span>
@@ -68,7 +72,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="useR_NAME" class="required">Tên đăng nhập</label>
-                                            <input required #useR_NAME="ngModel" disabled="{{disabledInput}}" id="useR_NAME" name="useR_NAME" 
+                                            <input style="color:black; font-weight: bold;" required #useR_NAME="ngModel" disabled="{{disabledInput}}" id="useR_NAME" name="useR_NAME" 
                                             [(ngModel)]="inputModel!.useR_NAME" 
                                             type="text" class="form-control form-control" placeholder="Tên đăng nhập">
                                             <div class="error-message" *ngIf="useR_NAME.invalid && isShowError">
@@ -76,7 +80,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <!-- <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="password" class="required">Mật khẩu</label>
                                             <input required #password="ngModel" disabled="{{disabledInput}}" id="password" name="password" 
@@ -85,11 +89,11 @@
                                                 <span>Mật khẩu không được để trống</span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="email" class="required">Email</label>
-                                            <input required #email="ngModel" disabled="{{disabledInput}}" id="email" name="email" 
+                                            <label  for="email" class="required">Email</label>
+                                            <input style="color:black; font-weight: bold;" required #email="ngModel" disabled="{{disabledInput}}" id="email" name="email" 
                                             [(ngModel)]="inputModel!.useR_EMAIL" 
                                             type="email" class="form-control form-control" placeholder="Email">
                                             <div class="error-message" *ngIf="email.invalid && isShowError">
@@ -100,7 +104,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="useR_FULLNAME" class="required">Họ tên khách hàng</label>
-                                            <input required #useR_FULLNAME="ngModel" disabled="{{disabledInput}}" id="useR_FULLNAME" name="useR_FULLNAME" 
+                                            <input style="color:black; font-weight: bold;" required #useR_FULLNAME="ngModel" disabled="{{disabledInput}}" id="useR_FULLNAME" name="useR_FULLNAME" 
                                             [(ngModel)]="inputModel!.useR_FULLNAME" 
                                             type="text" class="form-control form-control" placeholder="Họ tên khách hàng">
                                             <div class="error-message" *ngIf="useR_FULLNAME.invalid && isShowError">
@@ -125,7 +129,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="address" class="required">Địa chỉ</label>
-                                            <textarea required #address="ngModel" disabled="{{disabledInput}}" id="address" name="address" 
+                                            <textarea style="color:black; font-weight: bold;" required #address="ngModel" disabled="{{disabledInput}}" id="address" name="address" 
                                             [(ngModel)]="inputModel!.useR_ADDRESS" 
                                             type="date" class="form-control form-control" placeholder="Địa chỉ">
                                             </textarea>
@@ -142,30 +146,4 @@
             </form>
         </div>
     </div>
-    <footer class="footer">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.themekita.com">
-                            ThemeKita
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Help
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Licenses
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright ml-auto">
-                2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
-            </div>
-        </div>
-    </footer>
 </div>

@@ -7,15 +7,16 @@
               <div class="row align-items-center">
                   <div class="col-xl-2 col-lg-2">
                       <div class="logo">
-                          <a href="index.html"><img src="/assets/images/logo/logo-3.png" alt="logo"></a>
+                          <!-- <a href="index.html"><img src="/assets/images/logo/logo-3.png" alt="logo"></a> -->
+                          <span style="color: black;font-size: 30px;">HDSHOP</span>
                       </div>
                   </div>
                   <div class="col-xl-7 col-lg-7">
                       <div class="categori-search-wrap categori-search-wrap-modify-2">
                           <div class="search-wrap-3">
                               <form action="#">
-                                  <input placeholder="Bạn cần tìm sản phẩm gì?" type="text">
-                                  <button><i class="lnr lnr-magnifier"></i></button>
+                                  <input ngModel  [(ngModel)]="textFilter"  id="phone" name="phone" placeholder="Bạn cần tìm sản phẩm gì?" type="text">
+                                  <button><i class="lnr lnr-magnifier" (click)="searhProducts()"></i></button>
                               </form>
                           </div>
                       </div>
@@ -47,12 +48,12 @@
                       <div class="main-menu main-menu-white main-menu-font-size-14 main-menu-padding-3 main-menu-lh-5">
                           <nav>
                               <ul>
-                                  <li><a href="http://localhost:4953">Trang chủ</a>
+                                  <li><a href="http://localhost:4953">TRANG CHỦ</a>
                                   </li>
-                                  <li><a href="http://localhost:4953/products">Latop  </a>
-                                      <ul class="sub-menu-style">
+                                  <li *ngFor="let item of listProductType"><a href="http://localhost:4953/products;type={{item.producT_TYPE_ID}};typename={{item.producT_TYPE_NAME}}">{{item.producT_TYPE_NAME}}</a>
+                                      <!-- <ul class="sub-menu-style">
                                             <li *ngFor="let item of listProductType"><a href="http://localhost:4953/products;type={{item.producT_TYPE_NAME}}">{{item.producT_TYPE_NAME}}</a></li>
-                                      </ul>
+                                      </ul> -->
                                   </li>
                                   <!-- <li><a href="#">PC <i class="icon-arrow-down"></i> </a>
                                       <ul class="sub-menu-style">
@@ -67,15 +68,15 @@
                                           <li><a href="login-register.html">login / register </a></li>
                                       </ul>
                                   </li> -->
-                                  <li><a href="blog.html">Linh kiện </a>
+                                  <!-- <li><a href="blog.html">Linh kiện </a>
                                       <ul class="sub-menu-style">
                                           <li><a href="blog.html">Ram</a></li>
                                           <li><a href="blog-no-sidebar.html">Màn hình</a></li>
                                           <li><a href="blog-right-sidebar.html">Ổ cứng</a></li>
                                       </ul>
-                                  </li>
-                                  <li><a href="contact.html">Tin công nghệ </a></li>
-                                  <li><a href="shop.html">Tuyển dụng </a></li>
+                                  </li> -->
+                                  <!-- <li><a href="contact.html">Tin công nghệ </a></li>
+                                  <li><a href="shop.html">Tuyển dụng </a></li> -->
                                   <!-- <li><a href="shop.html">TVS & APPLIANCES </a></li>
                                   <li><a href="shop.html">MEN </a></li> -->
                               </ul>
