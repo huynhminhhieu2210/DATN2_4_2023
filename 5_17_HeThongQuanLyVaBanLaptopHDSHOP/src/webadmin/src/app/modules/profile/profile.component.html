@@ -1,0 +1,154 @@
+<div class="main-panel">
+    <div class="content">
+      <div class="page-header">
+        <h4 class="page-title"></h4>
+    </div>
+      
+          <section class="section profile">
+            <div class="row">
+              <div class="col-xl-4">
+      
+                <div class="card">
+                  <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+      
+                    <img src="../assets/img/profile.jpg" alt="Profile" class="rounded-circle">
+                    <h2>{{userfullname}}</h2>
+                    <h3>{{roleusername}}</h3>
+                    <div class="social-links mt-2">
+                      <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                      <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                      <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                      <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+      
+              </div>
+      
+              <div class="col-xl-8">
+      
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="nav nav-pills nav-secondary" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Thông tin cá nhân</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Chỉnh sửa thông tin</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Đổi mật khẩu</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content mt-2 mb-3" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                    <div class="row dongthongtin">
+                                        <div class="col-lg-3 col-md-4 label ">Chi nhánh</div>
+                                        <div class="col-lg-9 col-md-8">{{branchname}}</div>
+                                      </div>
+                                      <div class="row dongthongtin">
+                                        <div class="col-lg-3 col-md-4 label ">Mã nhân viên</div>
+                                        <div class="col-lg-9 col-md-8">{{usercode}}</div>
+                                      </div>
+                                        <div class="row dongthongtin">
+                                          <div class="col-lg-3 col-md-4 label ">Họ và tên</div>
+                                          <div class="col-lg-9 col-md-8">{{userfullname}}</div>
+                                        </div>
+                      
+                                        <div class="row dongthongtin">
+                                          <div class="col-lg-3 col-md-4 label">Tên đăng nhập</div>
+                                          <div class="col-lg-9 col-md-8">{{username}}</div>
+                                        </div>
+                      
+                                        <div class="row dongthongtin">
+                                          <div class="col-lg-3 col-md-4 label">Quyền</div>
+                                          <div class="col-lg-9 col-md-8">{{roleusername}}</div>
+                                        </div>
+                      
+                                        <div class="row dongthongtin">
+                                          <div class="col-lg-3 col-md-4 label">Email</div>
+                                          <div class="col-lg-9 col-md-8">{{inputModel!.useR_EMAIL}}</div>
+                                        </div>
+                      
+                                        <div class="row dongthongtin">
+                                          <div class="col-lg-3 col-md-4 label">Địa chỉ</div>
+                                          <div class="col-lg-9 col-md-8">{{inputModel!.useR_ADDRESS}}</div>
+                                        </div>
+                      
+                                        <div class="row dongthongtin">
+                                          <div class="col-lg-3 col-md-4 label">Số điện thoại</div>
+                                          <div class="col-lg-9 col-md-8">{{inputModel!.useR_PHONE}}</div>
+                                        </div>
+                      
+                                </div>
+                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                  <form #editForm="ngForm" class="form-signin" (ngSubmit)="onEditInfoUserLogin()">
+                                    <div style="border-radius: 3px; background-color: chartreuse;color: white;padding-left: 10px;" *ngIf="!indenerror_success">{{error}}</div>
+                                    <div style="border-radius: 3px;background-color: red;color: white;padding-left: 10px;" *ngIf="indenerror_success">{{error}}</div>
+                                    <div class="form-group">
+                                      <label for="phone">Số điện thoại</label>
+                                      <input required #phone="ngModel"  id="phone" name="phone" [(ngModel)]="inputModel!.useR_PHONE" type="text" class="form-control form-control" placeholder="Số điện thoại">
+                                      <div class="error-message" *ngIf="phone.invalid && isShowError">
+                                          <span>Số điện thoại không được để trống</span>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="address">Địa chỉ</label>
+                                    <textarea required #address="ngModel"  id="address" name="address" [(ngModel)]="inputModel!.useR_ADDRESS" type="date" class="form-control form-control" placeholder="Địa chỉ">
+                                        </textarea>
+                                    <div class="error-message" *ngIf="address.invalid && isShowError">
+                                        <span>Địa chỉ không được để trống</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="useR_FULLNAME">Họ tên nhân viên</label>
+                                  <input required #useR_FULLNAME="ngModel"  id="useR_FULLNAME" name="useR_FULLNAME" [(ngModel)]="inputModel!.useR_FULLNAME" type="text" class="form-control form-control" placeholder="Tên nhân viên">
+                                  <div class="error-message" *ngIf="useR_FULLNAME.invalid && isShowError">
+                                      <span>Họ tên nhân viên không được để trống</span>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="email">Email</label>
+                                <input required #email="ngModel"  id="email" name="email" [(ngModel)]="inputModel!.useR_EMAIL" type="email" class="form-control form-control" placeholder="Email">
+                                <div class="error-message" *ngIf="email.invalid && isShowError">
+                                    <span>Email không được để trống</span>
+                                </div>
+                            </div>
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                </form>
+                                </div>
+                                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                    <form #changePassForm="ngForm" class="form-signin" (ngSubmit)="onchangePass(changePassForm)">
+                                      <div style="border-radius: 3px; background-color: chartreuse;color: white;padding-left: 10px;" *ngIf="!indenerror_success">{{error}}</div>
+                                      <div style="border-radius: 3px;background-color: red;color: white;padding-left: 10px;" *ngIf="indenerror_success">{{error}}</div>
+                                        <div class="form-group">
+                                            <label for="passOld">Mật khẩu cũ</label>
+                                            <input required #passOld="ngModel" id="passOld" name="passOld" [(ngModel)]="inputModelChangePass!.useR_PASSWORD" type="password" class="form-control form-control" placeholder="Mật khẩu">
+                                            <div class="error-message" *ngIf="passOld.invalid && isShowError">
+                                                <span>Mật khẩu cũ không được để trống</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="passNew">Mật khẩu mới</label>
+                                            <input required #passNew="ngModel" id="passNew" name="passNew" [(ngModel)]="inputModelChangePass!.useR_PASSWORDNEW" type="password" class="form-control form-control" placeholder="Mật khẩu">
+                                            <div class="error-message" *ngIf="passNew.invalid && isShowError">
+                                                <span>Mật khẩu mới không được để trống</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="passNewCheck">Nhập lại mật khẩu mới</label>
+                                            <input (change)="onChangePassNewCheck()" required #passNewCheck="ngModel" id="passNewCheck" name="passNewCheck" [(ngModel)]="inputModelChangePass!.useR_PASSWORDNEWCHECK" type="password" class="form-control form-control" placeholder="Mật khẩu">
+                                                <span style="color:red">{{warning}}</span>
+                                        </div>
+                                        <button disabled="{{warning}}" type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+      
+              </div>
+            </div>
+          </section>
+    </div>
+</div>

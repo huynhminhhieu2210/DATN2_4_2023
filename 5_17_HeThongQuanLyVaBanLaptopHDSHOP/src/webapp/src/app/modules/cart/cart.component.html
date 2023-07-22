@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+  <div class="textgiohang">Giỏ hàng</div>
+      <table border="1">
+          <tr>
+              <th style="width: 211px"> Sản phẩm </th>
+              <th style="width: 523px"> Tên sản phẩm </th>
+              <th style="width: 157px"> Số lượng </th>
+              <th style="width: 185px"> Giá tiền </th>
+              <th style="width: 180px"> Xoá </th>
+          </tr>
+              <tr *ngFor="let item of listCart;let i = index">
+                  <td><a class="imgproduct" href=""><img src="https://product.hstatic.net/1000026716/product/a1403-a1503_product-photo_silver_37d5482f72ad4527a05eef4a3895687b.jpg" alt="" /></a></td>
+                  <td><a class="nameproduct" href="">{{item.producT_NAME}}</a></td>
+                  <td>
+                    <input type="number" name="quantity" [(ngModel)]="item.quantity" min="1" max="50">
+                  </td>
+                  <td>{{formatCurrency(item.price)}}</td>
+                  <td><button (click)="removeCart(item.producT_ID)" style="border: none;background-color:white;"><img src="../../../assets/images/icon-img/remove.png" alt="" /></button></td>
+              </tr>
+          <tr>
+              <td colspan="4">Tổng tiền</td>
+              <td>{{formatCurrency(total)}}</td>
+          </tr>
+      </table>
+  <div style="text-align:center;margin:20px">
+      <a routerLink="/checkout" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-right: 10px;"><button type="button" class="btn btn-primary">Mua hàng</button></a>
+      <button (click)="updateCart()" class="btn btn-primary">Cập nhật</button>
+  </div>
+</div>
+</div>

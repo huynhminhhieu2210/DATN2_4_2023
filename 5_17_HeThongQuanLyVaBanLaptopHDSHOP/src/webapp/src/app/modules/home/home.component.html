@@ -1,0 +1,277 @@
+<app-slideshow></app-slideshow>
+<div class="container"  style="padding: 42px 42px 0px 42px;">
+    <div class="elementor-widget-container" style="border: 12px solid red;">
+        <h2 class="elementor-heading-title elementor-size-default">
+            HOTDEAL</h2>		
+        </div>
+</div>
+    <div class="product-categories-area pt-60 pb-0">
+        <div class="container">
+            <div class="product-categories-slider-1 nav-style-3">
+                <div class="row row-cols-1 row-cols-md-4 g-2">
+    <ul style="display: grid;" class="products elementor-grid columns-4" *ngFor="let item of listProduct | paginate: {itemsPerPage: tableSize,currentPage: page,totalItems: count};let i = index">
+        <li class="tm-has-options product type-product post-22641 status-publish first instock product_cat-strix-g product_cat-intel-13th-gen-rtx-40-series product_cat-laptop product_cat-laptop-asus product_cat-laptop-gaming-intel product_cat-rog-series product_cat-rog-series-2023 has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+           <a href="http://localhost:4953/product-detail;productid={{item.producT_ID}}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+              <div style="position:relative;padding-left: 13px;padding-top: 10px;padding-bottom: 10px;">
+                 <img width="250" height="250" src="{{item.imG_URL}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail entered lazyloaded" alt="" decoding="async" data-lazy-srcset="{{item.imG_URL}} 250w, {{item.imG_URL}} 400w, {{item.imG_URL}} 280w, 
+                 {{item.imG_URL}} 768w, {{item.imG_URL}},
+                 {{item.imG_URL}}, 
+                 {{item.imG_URL}}" 
+                  data-lazy-sizes="(max-width: 250px) 100vw, 250px" 
+                  data-lazy-src="{{item.imG_URL}}"
+                   data-ll-status="loaded" sizes="(max-width: 250px) 100vw, 250px" 
+                   srcset="{{item.imG_URL}} 250w,
+                   {{item.imG_URL}} 400w,
+                   {{item.imG_URL}} 280w, 
+                   {{item.imG_URL}}768w, 
+                   {{item.imG_URL}} 500w, 
+                   {{item.imG_URL}} 100w, 
+                   {{item.imG_URL}} 800w">
+                 <noscript><img width="250" height="250" src="{{item.imG_URL}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" srcset="{{item.imG_URL}} 250w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1-400x400.jpg 400w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1-280x280.jpg 280w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1-768x768.jpg 768w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1-500x500.jpg 500w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1-100x100.jpg 100w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1.jpg 800w" sizes="(max-width: 250px) 100vw, 250px" /></noscript>
+              </div>
+              <h2  style="font-size: 0.9em;padding-left: 13px;" class="woocommerce-loop-product__title">{{item.producT_NAME}}</h2>
+              <span style="padding-left: 13px;" class="price">
+               <!-- <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>39,990,000&nbsp;
+              <span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></del>  -->
+              &nbsp; <ins><span class="woocommerce-Price-amount amount">
+               <bdi>{{formatCurrency(item.price)}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></ins></span>
+              <div itemprop="description">
+                 <table class="hien_thi_cau_hinh">
+                    <tbody>
+                       <tr>
+                          <td>
+                             <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-electronics-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-electronics-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                             <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-electronics-32.png" /></noscript>
+                          </td>
+                          <td>i5 13450HX</td>
+                          <td>
+                             <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-graphics-card-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-graphics-card-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                             <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-graphics-card-32.png" /></noscript>
+                          </td>
+                          <td>RTX 4050</td>
+                       </tr>
+                       <tr>
+                          <td>
+                             <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ram-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-ram-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                             <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ram-32.png" /></noscript>
+                          </td>
+                          <td>DDR5 8GB</td>
+                          <td>
+                             <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ssd-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-ssd-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                             <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ssd-32.png" /></noscript>
+                          </td>
+                          <td>512GB</td>
+                       </tr>
+                       <tr>
+                          <td>
+                             <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-warranty-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-warranty-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                             <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-warranty-32.png" /></noscript>
+                          </td>
+                          <td>24 tháng</td>
+                          <td>
+                             <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-widescreen-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-widescreen-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                             <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-widescreen-32.png" /></noscript>
+                          </td>
+                          <td>16" FHD+ 165Hz</td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </div>
+           </a>
+        </li>
+     </ul>
+                  </div>
+            </div>
+  
+        </div>
+        <div style="    margin: 20px;" class="d-flex justify-content-center">
+          <pagination-controls
+            previousLabel=""
+            nextLabel=""
+            (pageChange)="onTableDataChange($event)"
+          >
+          </pagination-controls>
+        </div>
+    </div>
+    <div class="product-categories-area pt-6 pb-0">
+      <div class="container">
+    <div class="elementor-motion-effects-layer" data-id="4f3e6c8" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;
+      classic&quot;,&quot;content_width&quot;:&quot;boxed&quot;}">
+      <div class="e-con-inner">
+   <div class="elementor-element elementor-element-74e3d3c elementor-widget__width-initial elementor-widget elementor-widget-heading" data-id="74e3d3c" 
+   data-element_type="widget" data-widget_type="heading.default">
+   <div class="elementor-widget-container-2">
+<h2 class="elementor-heading-title-2 elementor-size-default-2">LAPTOP</h2>		</div>
+   </div>
+   <div class="elementor-element elementor-element-10ac585 elementor-widget elementor-widget-button" data-id="10ac585" data-element_type="widget" 
+   data-widget_type="button.default">
+   <div class="elementor-widget-container-3">
+      <div class="elementor-button-wrapper">
+<a href="http://localhost:4953/products;type=ASUS" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" 
+role="button">
+         <span class="elementor-button-content-wrapper">
+         <span class="elementor-button-text">ASUS</span>
+</span>
+      </a>
+</div>
+   </div>
+   </div>
+   <div class="elementor-element elementor-element-e251e10 elementor-widget elementor-widget-button" data-id="e251e10" data-element_type="widget" 
+   data-widget_type="button.default">
+   <div class="elementor-widget-container-3">
+      <div class="elementor-button-wrapper">
+<a href="http://localhost:4953/products;type=ACER" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" 
+role="button">
+         <span class="elementor-button-content-wrapper">
+         <span class="elementor-button-text">ACER</span>
+</span>
+      </a>
+</div>
+   </div>
+   </div>
+   <div class="elementor-element elementor-element-5330994 elementor-widget elementor-widget-button" data-id="5330994" data-element_type="widget" 
+   data-widget_type="button.default">
+   <div class="elementor-widget-container-3">
+      <div class="elementor-button-wrapper">
+<a href="http://localhost:4953/products;type=MSI" 
+class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" role="button">
+         <span class="elementor-button-content-wrapper">
+         <span class="elementor-button-text">MSI</span>
+</span>
+      </a>
+</div>
+   </div>
+   </div>
+   <div class="elementor-element elementor-element-dceac8d elementor-widget elementor-widget-button" data-id="dceac8d" data-element_type="widget" 
+   data-widget_type="button.default">
+   <div class="elementor-widget-container-3">
+      <div class="elementor-button-wrapper">
+<a href="http://localhost:4953/products;type=DELL" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink"
+ role="button">
+         <span class="elementor-button-content-wrapper">
+         <span class="elementor-button-text">DELL</span>
+</span>
+      </a>
+</div>
+   </div>
+   </div>
+   <div class="elementor-element elementor-element-c3452e9 elementor-widget elementor-widget-button" data-id="c3452e9" data-element_type="widget" 
+   data-widget_type="button.default">
+   <div class="elementor-widget-container-3">
+      <div class="elementor-button-wrapper">
+<a href="http://localhost:4953/products;type=HP" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink" 
+role="button">
+         <span class="elementor-button-content-wrapper">
+         <span class="elementor-button-text">HP</span>
+</span>
+      </a>
+</div>
+   </div>
+   </div>
+   <div class="elementor-element elementor-element-f08ab5d elementor-widget elementor-widget-button" data-id="f08ab5d" data-element_type="widget" 
+   data-widget_type="button.default">
+   <div class="elementor-widget-container-3">
+      <div class="elementor-button-wrapper">
+<a href="http://localhost:4953/products;type=GIGABYTE" class="elementor-button-link elementor-button elementor-size-xs elementor-animation-shrink"
+ role="button">
+         <span class="elementor-button-content-wrapper">
+         <span class="elementor-button-text">GIGABYTE</span>
+</span>
+      </a>
+</div>
+   </div>
+   </div>
+      </div>
+   </div>
+</div>
+   </div>
+   <div class="product-categories-area pt-60 pb-0">
+      <div class="container">
+          <div class="product-categories-slider-1 nav-style-3">
+              <div class="row row-cols-1 row-cols-md-4 g-2">
+  <ul style="display: grid;" class="products elementor-grid columns-4" *ngFor="let item of listProduct | paginate: {itemsPerPage: tableSize,currentPage: page,totalItems: count};let i = index">
+      <li class="tm-has-options product type-product post-22641 status-publish first instock product_cat-strix-g product_cat-intel-13th-gen-rtx-40-series product_cat-laptop product_cat-laptop-asus product_cat-laptop-gaming-intel product_cat-rog-series product_cat-rog-series-2023 has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+         <a href="http://localhost:4953/product-detail;productid={{item.producT_ID}}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+            <div style="position:relative;padding-left: 13px;padding-top: 10px;padding-bottom: 10px;">
+               <img width="250" height="250" src="{{item.imG_URL}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail entered lazyloaded" alt="" decoding="async" data-lazy-srcset="{{item.imG_URL}} 250w, {{item.imG_URL}} 400w, {{item.imG_URL}} 280w, 
+               {{item.imG_URL}} 768w, {{item.imG_URL}},
+               {{item.imG_URL}}, 
+               {{item.imG_URL}}" 
+                data-lazy-sizes="(max-width: 250px) 100vw, 250px" 
+                data-lazy-src="{{item.imG_URL}}"
+                 data-ll-status="loaded" sizes="(max-width: 250px) 100vw, 250px" 
+                 srcset="{{item.imG_URL}} 250w,
+                 {{item.imG_URL}} 400w,
+                 {{item.imG_URL}} 280w, 
+                 {{item.imG_URL}}768w, 
+                 {{item.imG_URL}} 500w, 
+                 {{item.imG_URL}} 100w, 
+                 {{item.imG_URL}} 800w">
+               <noscript><img width="250" height="250" src="{{item.imG_URL}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" srcset="{{item.imG_URL}} 250w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1-400x400.jpg 400w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1-280x280.jpg 280w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1-768x768.jpg 768w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1-500x500.jpg 500w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1-100x100.jpg 100w, https://xgear.net/wp-content/uploads/2023/02/ROG-Strix-G16-G614JU-N3135W-1.jpg 800w" sizes="(max-width: 250px) 100vw, 250px" /></noscript>
+            </div>
+            <h2  style="font-size: 0.9em;padding-left: 13px;" class="woocommerce-loop-product__title">{{item.producT_NAME}}</h2>
+            <span style="padding-left: 13px;" class="price">
+               <!-- <del aria-hidden="true">
+               <span class="woocommerce-Price-amount amount">
+               <bdi>39,990,000&nbsp;
+            <span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></del>  -->
+            &nbsp; <ins><span class="woocommerce-Price-amount amount">
+             <bdi>{{formatCurrency(item.price)}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></ins></span>
+            <div itemprop="description">
+               <table class="hien_thi_cau_hinh">
+                  <tbody>
+                     <tr>
+                        <td>
+                           <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-electronics-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-electronics-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                           <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-electronics-32.png" /></noscript>
+                        </td>
+                        <td>i5 13450HX</td>
+                        <td>
+                           <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-graphics-card-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-graphics-card-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                           <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-graphics-card-32.png" /></noscript>
+                        </td>
+                        <td>RTX 4050</td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ram-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-ram-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                           <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ram-32.png" /></noscript>
+                        </td>
+                        <td>DDR5 8GB</td>
+                        <td>
+                           <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ssd-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-ssd-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                           <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-ssd-32.png" /></noscript>
+                        </td>
+                        <td>512GB</td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-warranty-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-warranty-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                           <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-warranty-32.png" /></noscript>
+                        </td>
+                        <td>24 tháng</td>
+                        <td>
+                           <img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-widescreen-32.png" data-lazy-src="../../../assets/images/icon-img/icons8-widescreen-32.png" data-ll-status="loaded" class="entered lazyloaded">
+                           <noscript><img width="32" height="32" decoding="async" id="img" src="../../../assets/images/icon-img/icons8-widescreen-32.png" /></noscript>
+                        </td>
+                        <td>16" FHD+ 165Hz</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </a>
+      </li>
+   </ul>
+                </div>
+          </div>
+
+      </div>
+      <div style="    margin: 20px;" class="d-flex justify-content-center">
+        <pagination-controls
+          previousLabel=""
+          nextLabel=""
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
+  </div>

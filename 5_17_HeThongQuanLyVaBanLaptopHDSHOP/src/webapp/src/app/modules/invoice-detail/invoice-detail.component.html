@@ -1,0 +1,58 @@
+<div style="margin-top: 10px;" class="container">
+  <div class="row">
+      <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <h5>Chi tiết đơn hàng #{{inputModel.invoicE_CODE}}</h5><br>
+        <h6>Thông tin nhận hàng</h6>
+        <span>Người nhận: {{inputModel.receiver}} - {{inputModel.receiveR_PHONE}}</span> <br>
+        <span>Địa chỉ: {{inputModel.receiveR_ADDRESS}}</span><br>
+        <span>Ghi chú: {{inputModel.notes}}</span>
+    </div>
+    <div class="col-md-5">
+      <span>Đặt lúc: {{inputModel.creatE_DATE| datetimeFormatPipe}}</span> <br><br>
+      <h6>Hình thức thanh toán</h6>
+      <span>{{inputModel.methoD_PAY}}</span>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+</div>
+<div style="margin-top: 10px;" class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <h6>Thông tin sản phẩm</h6>
+    <div *ngFor="let item of listInvoiceDt;let i = index" style="margin-top: 10px;" class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <a href="http://localhost:4953/product-detail;productid={{item.producT_ID}}"> <img style="width: 70px;
+            height: 66px;" src="{{item.imG_URL}}" alt=""></a>
+
+        </div>
+        <div  style="margin-top: 6px;" class="col-md-7">
+          <a href="http://localhost:4953/product-detail;productid={{item.producT_ID}}">  <span>{{item.producT_NAME}}</span> <br></a>
+           <span>Số lượng: {{item.quantity}}</span>
+        </div>
+        <div  style="margin-top: 6px;text-align: right;"  class="col-md-3">
+            <span style="color: red;font-weight: bold;">{{inputModel.invoicE_STATUS_NAME}}</span> <br>
+           <span>{{formatCurrency(item.price)}}</span>
+        </div>
+    </div>
+    </div>
+    <hr>
+    <div style="margin-top: 10px;" class="container">
+      <div class="row">
+        <div class="col-md-7"></div>
+        <div class="col-md-3">
+           <span>Tạm tính</span> <br>
+           <span style="font-weight: bold;">Cần thanh toán</span>
+        </div>
+        <div style="text-align: right;" class="col-md-2">
+           <span>{{formatCurrency(totaltmp)}}</span> <br>
+           <span style="color:red; font-weight: bold;">{{formatCurrency(total)}}</span>
+        </div>
+    </div>
+    </div>
+  </div>
+    <div class="col-md-1"></div>
+</div>
+</div>

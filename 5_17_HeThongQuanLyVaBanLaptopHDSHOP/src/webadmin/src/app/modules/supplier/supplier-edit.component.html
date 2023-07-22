@@ -1,0 +1,136 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <form #editForm="ngForm" class="form-signin" (ngSubmit)="onSave()">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="" style="position: fixed;top:60px;background-color: #f9fbfd;height: 39px;width: 100%;z-index: 1;"></div>
+                            <div class="" style="position: fixed;top:70px;background-color: #1572e8;height: 39px;width: 100%;z-index: 1;">
+                                <div class="d-flex align-items-center">
+                                    <button *ngIf="disabledInput"  style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" disabled>
+                                        <i style="margin: 2px;" class="fa fa-save"></i>
+                                        Lưu
+                                    </button>
+                                    <button *ngIf="!disabledInput" style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" >
+                                        <i style="margin: 2px;" class="fa fa-save"></i>
+                                        Lưu
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="page-header" style="padding-top: 19px;">
+                                <ul class="breadcrumbs">
+                                    <li class="" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                        <a style="margin-right: 5px;margin-left: 5px;" href="#">
+                                            <i class="flaticon-home"></i>
+                                            Trang chủ
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                        <a routerLink="/app/supplier" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-right: 5px;" href="#">Nhà cung cấp</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a>{{title}}</a>
+                                    </li>
+                                </ul>
+                            </div> 
+                            <div>
+                                <p *ngIf="titleinfo" style="    background-color: #00ce49;
+                                color: white;
+                                border-radius: 4px;
+                                padding: 5px;">{{titleinfo}}</p>
+                                <!-- <div class="card-title">{{title}}</div> -->
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="supplieR_CODE" class="required">Mã nhà cung cấp</label>
+                                            <input required #supplieR_CODE="ngModel" disabled="{{disabledInput}}" id="supplieR_CODE" name="supplieR_CODE" 
+                                            [(ngModel)]="inputModel!.supplieR_CODE" type="text" class="form-control form-control" placeholder="Mã nhà cung cấp">
+                                            <div class="error-message" *ngIf="supplieR_CODE.invalid && isShowError">
+                                                <span>Mã nhà cung cấp không được để trống</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="supplieR_PHONE" class="required">Số điện thoại</label>
+                                            <input required #supplieR_PHONE="ngModel" disabled="{{disabledInput}}" id="supplieR_PHONE" name="supplieR_PHONE" 
+                                            [(ngModel)]="inputModel!.supplieR_PHONE" type="text" class="form-control form-control" placeholder="Số điện thoại">
+                                            <div class="error-message" *ngIf="supplieR_PHONE.invalid && isShowError">
+                                                <span>Số điện thoại không được để trống</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="creatE_NAME">Người tạo</label>
+                                            <input style="color:black; font-weight: bold;" disabled="true" id="creatE_NAME" name="creatE_NAME" 
+                                            [(ngModel)]="inputModel!.creatE_NAME" type="text" class="form-control form-control" placeholder="Người tạo">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="supplieR_NAME" class="required">Tên nhà cung cấp</label>
+                                            <input required #supplieR_NAME="ngModel" disabled="{{disabledInput}}" id="supplieR_NAME" name="supplieR_NAME" 
+                                            [(ngModel)]="inputModel!.supplieR_NAME" type="text" class="form-control form-control" placeholder="Tên nhà cung cấp">
+                                            <div class="error-message" *ngIf="supplieR_NAME.invalid && isShowError">
+                                                <span>Tên nhà cung cấp không được để trống</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="supplieR_ADDRESS" class="required">Địa chỉ</label>
+                                            <textarea required #supplieR_ADDRESS="ngModel" disabled="{{disabledInput}}" id="supplieR_ADDRESS" name="supplieR_ADDRESS" 
+                                            [(ngModel)]="inputModel!.supplieR_ADDRESS" class="form-control form-control" placeholder="Địa chỉ">
+                                                </textarea>
+                                            <div class="error-message" *ngIf="supplieR_ADDRESS.invalid && isShowError">
+                                                <span>Địa chỉ không được để trống</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="creatE_DATE">Ngày tạo</label>
+                                            <input style="color:black; font-weight: bold;" disabled="true" id="creatE_DATE" name="creatE_DATE" 
+                                            [(ngModel)]="date" type="date" class="form-control form-control" placeholder="Ngày tạo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <nav class="pull-left">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.themekita.com">
+                            ThemeKita
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Help
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright ml-auto">
+                2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
+            </div>
+        </div>
+    </footer>
+</div>

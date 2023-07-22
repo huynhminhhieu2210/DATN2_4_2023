@@ -1,0 +1,88 @@
+<div style="margin-top: 10px;" class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form #editForm="ngForm" class="form-add" (ngSubmit)="onSaveInvoice()">
+        <h5>Thông tin khách hàng</h5>
+        <div class="form-group">
+            <label for="receiver">Họ và Tên</label>
+            <input #receiver="ngModel" [(ngModel)]="inputModel.receiver" id="receiver" name="receiver" type="text" class="form-control" placeholder="Họ và Tên" required/>
+            <div class="error-message-input" *ngIf="receiver.invalid && isShowError">
+              <span>Họ và tên không được để trống</span>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="receiveR_PHONE">Số điện thoại</label>
+            <input #receiveR_PHONE="ngModel" [(ngModel)]="inputModel.receiveR_PHONE" id="receiveR_PHONE" name="receiveR_PHONE" type="text" class="form-control" placeholder="Số điện thoại" required/>
+            <div class="error-message-input" *ngIf="receiveR_PHONE.invalid && isShowError">
+              <span>Số điện thoại không được để trống</span>
+          </div>
+          </div>
+        <div class="form-group">
+            <label for="receiveR_ADDRESS">Địa chỉ</label>
+            <input list="lstAddress"  #receiveR_ADDRESS="ngModel" [(ngModel)]="inputModel.receiveR_ADDRESS" id="receiveR_ADDRESSA" name="receiveR_ADDRESSA" class="form-control" required/>
+            <datalist id="lstAddress">
+              <option *ngFor="let item of lstAddressReceive" value="{{item.addresS_RECEIVE_NAME}}"> 
+            </datalist> 
+            <div class="error-message-input" *ngIf="receiveR_ADDRESS.invalid && isShowError">
+              <span>Địa chỉ không được để trống</span>
+          </div>
+          </div>
+        <div class="form-group">
+            <label for="notes">Ghi chú</label>
+            <input ngModel id="notes" [(ngModel)]="inputModel.notes" name="notes" type="text" class="form-control" placeholder="Ghi chú"/>
+        </div>
+        <h5>Phương thức thanh toán</h5>
+        <input (change)="changRadioBtn('T')"  id="payment-method-4" style="width: 19px; position: absolute;" class="input-radio" type="radio" checked name="payment_method"/>
+        <label style="margin-left: 29px;
+        margin-top: 9px;" for="payment-method-4">Thanh toán khi nhận hàng</label> <br>
+        <!-- <input (change)="changRadioBtn('D')"  id="payment-method-4" style="width: 19px; position: absolute;" class="input-radio" type="radio" name="payment_method"/>
+        <label style="margin-left: 29px;
+        margin-top: 9px;" for="payment-method-4">MOMO</label> -->
+          <div style="text-align:center;margin:20px">
+            <button type="submit" class="btn btn-primary">Hoàn tất đơn hàng</button>
+        </div>
+        </form>
+    </div>
+    <div style="margin-top: 10px;" class="col-md-6">
+        <div *ngFor="let item of listCart;let i = index" style="margin-top: 10px;" class="container">
+            <div class="row">
+              <div class="col-md-2">
+                <img style="width: 70px;
+                height: 66px;" src="{{item.imG_URL}}" alt="">
+              </div>
+              <div  style="margin-top: 6px;" class="col-md-8">
+                 <span>{{item.producT_NAME}}</span> <br>
+                 <span>Số lượng: {{item.quantity}}</span>
+              </div>
+              <div  style="margin-top: 6px;"  class="col-md-2">
+                 <span style="color: red;">{{formatCurrency(item.price)}}</span>
+              </div>
+          </div>
+          </div>
+          <hr>
+          <div style="margin-top: 10px;" class="container">
+            <div class="row">
+              <div class="col-md-10">
+                 <span>Tạm tính</span> <br>
+                 <span>Phí vận chuyển</span>
+              </div>
+              <div class="col-md-2">
+                 <span>{{formatCurrency(totaltmp)}}</span> <br>
+                 <span>Miễn phí</span>
+              </div>
+          </div>
+          </div>
+          <hr>
+          <div style="margin-top: 10px;" class="container">
+            <div class="row">
+              <div class="col-md-10">
+                 <span style="font-size: 20px;">Tổng cộng</span> <br>
+              </div>
+              <div class="col-md-2">
+                 <span style="font-size: 20px;">{{formatCurrency(total)}}</span>
+              </div>
+          </div>
+          </div>
+    </div>
+</div>
+</div>

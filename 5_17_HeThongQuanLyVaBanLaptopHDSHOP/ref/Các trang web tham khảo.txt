@@ -1,0 +1,7 @@
+https://mdbootstrap.com/
+https://stackoverflow.com/
+https://angular.io/
+https://mdbootstrap.com/
+https://blog.filestack.com/tutorials/angular-file-upload/
+https://ckeditor.com/docs/ckeditor5/latest/installation/integrations/angular.html
+https://code-maze.com/authentication-aspnetcore-jwt-1/

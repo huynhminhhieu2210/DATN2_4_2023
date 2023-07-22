@@ -1,0 +1,353 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <form #editForm="ngForm" class="form-signin"  enctype="multipart/form-data" method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="" style="position: fixed;top:60px;background-color: #f9fbfd;height: 39px;width: 100%;z-index: 1;"></div>
+                            <div class="" style="position: fixed;top:70px;background-color: #1572e8;height: 39px;width: 100%;z-index: 1;">
+                                <div class="d-flex align-items-center">
+                                    <button *ngIf="disabledInput"  style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" disabled>
+                                        <i style="margin: 2px;" class="fa fa-save"></i>
+                                        Lưu
+                                    </button>
+                                    <button (click)="onSave()" *ngIf="!disabledInput" style="padding: 8px;margin-bottom: 4px;"  class="btn btn-primary" >
+                                        <i style="margin: 2px;" class="fa fa-save"></i>
+                                        Lưu
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="page-header" style="padding-top: 19px;">
+                                <ul class="breadcrumbs">
+                                    <li class="" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                        <a style="margin-right: 5px;margin-left: 5px;" href="#">
+                                            <i class="flaticon-home"></i>
+                                            Trang chủ
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" style=" border-right: 1px solid #575962; margin-right: 5px;margin-left: 5px;">
+                                        <a routerLink="/app/products" routerLinkActive="active" ariaCurrentWhenActive="page" style="margin-right: 5px;" href="#">Sản phẩm</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a>{{title}}</a>
+                                    </li>
+                                </ul>
+                            </div> 
+                            <div>
+                                <p *ngIf="titleinfo" style="    background-color: #00ce49;
+                                color: white;
+                                border-radius: 4px;
+                                padding: 5px;">{{titleinfo}}</p>
+                                <p *ngIf="titleerorr" style="    background-color: red;
+                                color: white;
+                                border-radius: 4px;
+                                padding: 5px;">{{titleerorr}}</p>
+                                <!-- <div class="card-title">{{title}}</div> -->
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="producT_CODE" class="required">Mã sản phẩm</label>
+                                            <input required #producT_CODE="ngModel" disabled="{{disabledInput}}" 
+                                            id="producT_CODE" 
+                                            name="producT_CODE" [(ngModel)]="inputModel!.producT_CODE" type="text" 
+                                            class="form-control form-control" placeholder="Mã sản phẩm">
+                                            <div class="error-message" *ngIf="producT_CODE.invalid && isShowError">
+                                                <span>Mã sản phẩm không được để trống</span>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="producT_NAME" class="required">Tên sản phẩm</label>
+                                                <input required #producT_NAME="ngModel" disabled="{{disabledInput}}" 
+                                                id="producT_NAME" name="producT_NAME" [(ngModel)]="inputModel!.producT_NAME" 
+                                                type="text" class="form-control form-control" placeholder="Tên sản phẩm">
+                                                <div class="error-message" *ngIf="producT_NAME.invalid && isShowError">
+                                                    <span>Tên sản phẩm không được để trống</span>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="producT_TYPE_ID" class="required">Loại sản phẩm</label>
+                                                <select required #producT_TYPE_ID="ngModel" class="form-control" 
+                                                [(ngModel)]="inputModel!.producT_TYPE_ID" id="producT_TYPE_ID"
+                                                 name="producT_TYPE_ID">
+                                                    <option *ngFor="let item of listProductType"
+                                                     value="{{item.producT_TYPE_ID}}">{{item.producT_TYPE_NAME}}</option>
+                                                </select>
+                                                <div class="error-message" *ngIf="producT_TYPE_ID.invalid && isShowError">
+                                                    <span>Loại sản phẩm không được để trống</span>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="supplieR_ID" class="required">Nhà cung cấp</label>
+                                                    <select required #supplieR_ID="ngModel" class="form-control" 
+                                                    [(ngModel)]="inputModel!.supplieR_ID" 
+                                                    id="supplieR_ID" name="supplieR_ID">
+                                                        <option *ngFor="let item of listSupplier" 
+                                                        value="{{item.supplieR_ID}}">{{item.supplieR_NAME}}</option>
+                                                    </select>
+                                                    <div class="error-message" *ngIf="supplieR_ID.invalid && isShowError">
+                                                        <span>Nhà cung cấp không được để trống</span>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="price" class="required">Đơn giá</label>
+                                                        <input required #price="ngModel" disabled="{{disabledInput}}"
+                                                         id="price" name="price" [(ngModel)]="inputModel!.price" 
+                                                        type="number" class="form-control form-control" placeholder="Đơn giá">
+                                                        <div class="error-message" *ngIf="price.invalid && isShowError">
+                                                            <span>Đơn giá không được để trống</span>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="ram">Ram</label>
+                                            <input #ram="ngModel" disabled="{{disabledInput}}" id="ram" 
+                                            name="ram" [(ngModel)]="inputModel!.ram" type="text" 
+                                            class="form-control form-control" placeholder="Ram">
+                                            <!-- <div class="error-message" *ngIf="ram.invalid && isShowError">
+                                                <span>Ram không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="vga">VGA</label>
+                                            <input #vga="ngModel" disabled="{{disabledInput}}" 
+                                            id="vga" name="vga" [(ngModel)]="inputModel!.vga" 
+                                            type="text" class="form-control form-control" placeholder="Vga">
+                                            <!-- <div class="error-message" *ngIf="vga.invalid && isShowError">
+                                                <span>Vga không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="os">Hệ điều hành</label>
+                                            <input #os="ngModel" disabled="{{disabledInput}}" 
+                                            id="os" name="os" [(ngModel)]="inputModel!.os" type="text" 
+                                            class="form-control form-control" placeholder="Hệ điều hành">
+                                            <!-- <div class="error-message" *ngIf="os.invalid && isShowError">
+                                                <span>Hệ điều hành không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="color">Màu sắc</label>
+                                            <input #color="ngModel" disabled="{{disabledInput}}" 
+                                            id="color" name="color" [(ngModel)]="inputModel!.color" 
+                                            type="text" class="form-control form-control" placeholder="Màu sắc">
+                                            <!-- <div class="error-message" *ngIf="color.invalid && isShowError">
+                                                <span>Màu sắc không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="bluetooth">Bluetooth</label>
+                                            <input #bluetooth="ngModel" disabled="{{disabledInput}}" 
+                                            id="bluetooth" name="bluetooth" [(ngModel)]="inputModel!.bluetooth" 
+                                            type="text" class="form-control form-control" placeholder="Bluetooth">
+                                            <!-- <div class="error-message" *ngIf="bluetooth.invalid && isShowError">
+                                                <span>Bluetooth không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="cpu">CPU</label>
+                                            <input #cpu="ngModel" disabled="{{disabledInput}}" 
+                                            id="cpu" name="cpu" [(ngModel)]="inputModel!.cpu" type="text" 
+                                            class="form-control form-control" placeholder="CPU">
+                                            <!-- <div class="error-message" *ngIf="cpu.invalid && isShowError">
+                                                <span>CPU không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="monitor">Màn hình</label>
+                                            <input #monitor="ngModel" disabled="{{disabledInput}}" 
+                                            id="monitor" name="monitor" 
+                                            [(ngModel)]="inputModel!.monitor" 
+                                            type="text" class="form-control form-control" placeholder="Màn hình">
+                                            <!-- <div class="error-message" *ngIf="monitor.invalid && isShowError">
+                                                <span>Màn hình không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="weight"> Khối lượng</label>
+                                            <input #weight="ngModel" 
+                                            disabled="{{disabledInput}}" id="weight" 
+                                            name="weight" [(ngModel)]="inputModel!.weight" 
+                                            type="text" class="form-control form-control" placeholder="Khối lượng">
+                                            <!-- <div class="error-message" *ngIf="weight.invalid && isShowError">
+                                                <span>Khối lượng không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="battery">Pin</label>
+                                            <input #battery="ngModel" disabled="{{disabledInput}}" 
+                                            id="battery" name="battery" 
+                                            [(ngModel)]="inputModel!.battery"
+                                             type="text" class="form-control form-control" placeholder="Pin">
+                                            <!-- <div class="error-message" *ngIf="battery.invalid && isShowError">
+                                                <span>Pin không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="webcam">Webcam</label>
+                                            <input #webcam="ngModel" 
+                                            disabled="{{disabledInput}}" id="webcam" name="webcam" 
+                                            [(ngModel)]="inputModel!.webcam"
+                                             type="text" class="form-control form-control" placeholder="Webcam">
+                                            <!-- <div class="error-message" *ngIf="webcam.invalid && isShowError">
+                                                <span>Webcam không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="note">Ghi chú</label>
+                                            <input #note="ngModel" disabled="{{disabledInput}}" 
+                                            id="note" name="note" 
+                                            [(ngModel)]="inputModel!.note" type="text" 
+                                            class="form-control form-control" placeholder="Ghi chú">
+                                            <!-- <div class="error-message" *ngIf="note.invalid && isShowError">
+                                                <span>Ghi chú không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="disk">Ổ đĩa</label>
+                                            <input #disk="ngModel" disabled="{{disabledInput}}" 
+                                            id="disk" name="disk" 
+                                            [(ngModel)]="inputModel!.disk" type="text" 
+                                            class="form-control form-control" placeholder="Ổ đĩa">
+                                            <!-- <div class="error-message" *ngIf="disk.invalid && isShowError">
+                                                <span>Ổ đĩa không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="port">Cổng</label>
+                                            <input #port="ngModel" disabled="{{disabledInput}}" 
+                                            id="port" name="port" [(ngModel)]="inputModel!.port" 
+                                            type="text" class="form-control form-control" placeholder="Cổng">
+                                            <!-- <div class="error-message" *ngIf="port.invalid && isShowError">
+                                                <span>Cổng không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="size">Kích thước</label>
+                                            <input #size="ngModel"
+                                             disabled="{{disabledInput}}" 
+                                             id="size" name="size" [(ngModel)]="inputModel!.size"
+                                             type="text" class="form-control form-control" placeholder="Kích thước">
+                                            <!-- <div class="error-message" *ngIf="size.invalid && isShowError">
+                                                <span>Kích thước không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="leD_KEYBOARD">Led-keyboard</label>
+                                            <input #leD_KEYBOARD="ngModel" 
+                                            disabled="{{disabledInput}}" id="leD_KEYBOARD" 
+                                            name="leD_KEYBOARD" [(ngModel)]="inputModel!.leD_KEYBOARD" 
+                                            type="text" class="form-control form-control" 
+                                            placeholder="Ledkeyboard">
+                                            <!-- <div class="error-message" *ngIf="leD_KEYBOARD.invalid && isShowError">
+                                                <span>Ledkeyboard không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="imG_URL">Hình ảnh</label>
+                                                <input #imG_URL="ngModel" accept=".png, .jpg, .jpeg" 
+                                                (change)="onSelectFile($event)" disabled="{{disabledInput}}" 
+                                                id="imG_URL" name="imG_URL"
+                                                 [(ngModel)]="inputModel!.imG_URL"
+                                                 type="file" class="form-control form-control" placeholder="Hình ảnh">
+                                                <!-- <div class="error-message" *ngIf="imG_URL.invalid && isShowError">
+                                                    <span>Hình ảnh không được để trống</span>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="imG_URL">Hình ảnh hiện tại</label>
+                                                <img style="width: 200px;" src="{{imgCurennt}}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="description">Mô tả</label>
+                                            <ckeditor [editor]="Editor" 
+                                            #description="ngModel"
+                                            id="description" name="description" 
+                                            [(ngModel)]="inputModel!.description"
+                                            data="">
+                                            </ckeditor>
+                                            <!-- <div class="error-message" *ngIf="description.invalid && isShowError">
+                                                <span>Mô tả không được để trống</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <nav class="pull-left">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.themekita.com">
+                            ThemeKita
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Help
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright ml-auto">
+                2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
+            </div>
+        </div>
+    </footer>
+</div>
